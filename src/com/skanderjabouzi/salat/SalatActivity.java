@@ -1,5 +1,9 @@
 package com.skanderjabouzi.salat;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,18 +11,47 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.util.Log;
 
 public class SalatActivity extends Activity {
-	
-	String sataTimes[] = new String[7];
-	String[] hijriDates = new String[4];	
-	SalatApplication salatApp; 
-    /** Called when the activity is first created. */
+    
+    static final String SEND_SALATTIME_NOTIFICATIONS = "com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS";
+    String sataTimes[] = new String[7];
+    String[] hijriDates = new String[4];    
+    SalatApplication salatApp; 
+    SalatReceiver receiver;
+    IntentFilter filter;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
+        this.setSalatTimes();        
+        receiver = new SalatReceiver();
+        filter = new IntentFilter( SalatService.MIDNIGHT_INTENT );
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        this.setSalatTimes();
+
+        // Register the receiver
+        super.registerReceiver(receiver, filter, SEND_SALATTIME_NOTIFICATIONS, null);
+        Log.d("SalatActivity", "registerReceiver");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // UNregister the receiver
+        unregisterReceiver(receiver); 
+    }
+    
+    private void setSalatTimes()
+    {
         salatApp = (SalatApplication) getApplication();
         salatApp.initCalendar();
         salatApp.setSalatTimes();
@@ -32,6 +65,7 @@ public class SalatActivity extends Activity {
         printIshaTime();
         printShouroukTime();
         printHijriDate();
+        Log.d("SalatActivity", "setSalatTimes");
     }
     
     @Override
@@ -57,44 +91,52 @@ public class SalatActivity extends Activity {
     }
     
     public void printFajrTime()
-    {    	
-    	TextView fajrText =	(TextView)  findViewById(R.id.fajrText);
+    {        
+        TextView fajrText =    (TextView)  findViewById(R.id.fajrText);
         fajrText.setText(sataTimes[0]); 
     }
     
     public void printDuhrTime()
     {
-    	TextView duhrText =	(TextView)  findViewById(R.id.duhrText);
+        TextView duhrText =    (TextView)  findViewById(R.id.duhrText);
         duhrText.setText(sataTimes[2]); 
     }
     
     public void printAsrTime()
     {
-    	TextView asrText =	(TextView)  findViewById(R.id.asrText);
+        TextView asrText =    (TextView)  findViewById(R.id.asrText);
         asrText.setText(sataTimes[3]); 
     }
     
     public void printMaghribTime()
     {
-    	TextView maghribText =	(TextView)  findViewById(R.id.maghribText);
+        TextView maghribText =    (TextView)  findViewById(R.id.maghribText);
         maghribText.setText(sataTimes[5]); 
     }
     
     public void printIshaTime()
     {
-    	TextView ishaText =	(TextView)  findViewById(R.id.ishaText);
+        TextView ishaText =    (TextView)  findViewById(R.id.ishaText);
         ishaText.setText(sataTimes[6]); 
     }
     
     public void printShouroukTime()
     {
-    	TextView shouroukText =	(TextView)  findViewById(R.id.shouroukText);
+        TextView shouroukText =    (TextView)  findViewById(R.id.shouroukText);
         shouroukText.setText(sataTimes[1]); 
     }    
     
     public void printHijriDate()
     {
-		TextView date1Text =	(TextView)  findViewById(R.id.date1Text);
-		date1Text.setText(hijriDates[0] + " " + hijriDates[1] + " " + hijriDates[3]); 
+        TextView date1Text =    (TextView)  findViewById(R.id.date1Text);
+        date1Text.setText(hijriDates[0] + " " + hijriDates[1] + " " + hijriDates[3]); 
     }
+    
+    class SalatReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        setSalatTimes();
+        Log.d("SalatReceiver", "onReceived");
+    }
+  }
 }

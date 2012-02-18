@@ -11,6 +11,10 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
+import android.content.Context;
+import android.content.Intent;
+import android.app.PendingIntent;
+import android.app.AlarmManager;
 
 public class SalatApplication extends Application implements OnSharedPreferenceChangeListener {
 	
@@ -128,13 +132,39 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     public String getNextSalat()
     {
     	//return nextSalat;
-    	return "Salat Test";
+    	return "Test";
     }
     
     public boolean isSalat()
     {
     	//return isSalat;
     	return true;
+    }
+    
+    public void startAlarm(Context context)
+    {
+        Calendar now = Calendar.getInstance();
+        this.initCalendar();
+        this.setSalatTimes();
+        long timeToSalat = 60000; //salatApp.getTimeLeft() + cal.getTimeInMillis();     
+
+        Intent intent = new Intent(context, SalatService.class); 
+        PendingIntent pendingIntent = PendingIntent.getService(context, -1, intent, PendingIntent.FLAG_UPDATE_CURRENT); 
+
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), timeToSalat, pendingIntent);    
+        Log.i(TAG, "Alarm Started");
+
+    }
+  
+    public void stopAlarm(Context context)
+    {
+        Intent intent = new Intent(context, SalatService.class); 
+        PendingIntent pendingIntent = PendingIntent.getService(context, -1, intent, PendingIntent.FLAG_UPDATE_CURRENT); 
+        
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.cancel(pendingIntent);
+        Log.i(TAG, "Alarm Stopped");
     }
     
     
@@ -208,31 +238,5 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     private long getTimeInMS(long hour, long min)
     {
         return hour*3600*1000+min*60*1000;
-    }
-    
-     public void startAlarm(Context context)
-  {
-      /*if (this.getInterval() != this.INTERVAL_NEVER)
-      { 
-      
-          Calendar now = Calendar.getInstance();   
-        
-            // Setup alarm service to wake up and start service periodically
-            // <5>
-           Intent intent = new Intent(context, UpdaterService.class);  // <3>
-           PendingIntent pendingIntent = PendingIntent.getService(context, -1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-           AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-           alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), this.getInterval(), pendingIntent);
-           Log.i(TAG, "Alarm Started");
-       }*/
-  }
-  
-  public void stopAlarm(Context context)
-  {
-      /*Intent intent = new Intent(context, UpdaterService.class);  // <3>
-      PendingIntent pendingIntent = PendingIntent.getService(context, -1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-      AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-      alarmManager.cancel(pendingIntent);
-      Log.i(TAG, "Alarm Stopped");*/
-  }
+    }    
 }

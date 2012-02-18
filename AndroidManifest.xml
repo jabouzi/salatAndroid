@@ -3,9 +3,9 @@
       package="com.skanderjabouzi.salat"
       android:versionCode="1"
       android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="7" />
+    <uses-sdk android:minSdkVersion="4" />
 
-    <application android:icon="@drawable/mecque" android:label="@string/app_name" android:name=".SalatApplication"
+    <application android:icon="@drawable/makka" android:label="@string/app_name" android:name=".SalatApplication"
                  android:screenOrientation="nosensor"
                   android:launchMode="singleTop">
                   
@@ -29,7 +29,7 @@
     
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 	
-	<!-- <uses-permission android:name="com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS" />
+	<uses-permission android:name="com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS" />
     <uses-permission android:name="com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS" />
     
     <permission android:name="com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS"
@@ -38,7 +38,7 @@
 
   <permission android:name="com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS"
     android:permissionGroup="android.permission-group.PERSONAL_INFO"
-    android:protectionLevel="normal" />-->
+    android:protectionLevel="normal" />
 	
     </application>
 </manifest>
