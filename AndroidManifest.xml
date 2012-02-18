@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.skanderjabouzi.salat"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="7" />
+
+    <application android:icon="@drawable/mecque" android:label="@string/app_name" android:name=".SalatApplication"
+                 android:screenOrientation="nosensor"
+                  android:launchMode="singleTop">
+                  
+        <activity android:name=".SalatActivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+    <activity android:name=".CalculationActivity" android:label="@string/titleCalculation" />   
+    
+    <service android:name=".SalatService" />     
+    
+    <receiver android:name=".BootReceiver">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED" />
+      </intent-filter>
+    </receiver>
+    
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	
+	<!-- <uses-permission android:name="com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS" />
+    <uses-permission android:name="com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS" />
+    
+    <permission android:name="com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS"
+    android:permissionGroup="android.permission-group.PERSONAL_INFO"
+    android:protectionLevel="normal" />
+
+  <permission android:name="com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS"
+    android:permissionGroup="android.permission-group.PERSONAL_INFO"
+    android:protectionLevel="normal" />-->
+	
+    </application>
+</manifest>

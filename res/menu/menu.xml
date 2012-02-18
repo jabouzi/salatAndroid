@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/calculation"
+          android:title="Calculations"/>
+    <item android:id="@+id/location"
+          android:title="Location" />	
+    <item android:id="@+id/qibla"
+          android:title="Qibla" />
+    <item android:id="@+id/hijri"
+          android:title="Hijri conversion" />
+    <item android:id="@+id/audio"
+          android:title="Audio" />
+</menu>
