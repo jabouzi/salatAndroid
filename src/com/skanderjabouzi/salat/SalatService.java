@@ -13,7 +13,7 @@ public class SalatService extends IntentService {
   private static final String TAG = "SalatService";
 
   public static final String MIDNIGHT_INTENT = "com.skanderjabouzi.salat.MIDNIGHT_INTENT";
-  //public static final String NEW_STATUS_EXTRA_COUNT = "NEW_STATUS_EXTRA_COUNT";
+  public static final String NEW_STATUS_EXTRA_COUNT = "NEW_STATUS_EXTRA_COUNT";
   public static final String RECEIVE_SALATTIME_NOTIFICATIONS = "com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS";
 
   private NotificationManager notificationManager; 
@@ -28,8 +28,8 @@ public class SalatService extends IntentService {
   @Override
   protected void onHandleIntent(Intent inIntent) {
     Intent intent;
-    this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); // <3>
-    this.notification = new Notification(R.drawable.makka,"", 0); // <4>
+    this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
+    this.notification = new Notification(R.drawable.makka,"", 0); 
         
     Calendar cal = Calendar.getInstance();
     cal.setTimeInMillis(System.currentTimeMillis());
@@ -43,7 +43,8 @@ public class SalatService extends IntentService {
     String nextSalat = salatApp.getNextSalat();
     if ("Test" == nextSalat) {
       Log.d(TAG, "It's midnight");
-      intent = new Intent(MIDNIGHT_INTENT);      
+      intent = new Intent(MIDNIGHT_INTENT); 
+      intent.putExtra(NEW_STATUS_EXTRA_COUNT, nextSalat);     
       sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
       sendTimelineNotification(nextSalat);
     }
@@ -61,9 +62,9 @@ public class SalatService extends IntentService {
     PendingIntent pendingIntent = PendingIntent.getActivity(this, -1, new Intent(this, SalatActivity.class), PendingIntent.FLAG_UPDATE_CURRENT); 
     this.notification.when = System.currentTimeMillis(); 
     this.notification.flags |= Notification.FLAG_AUTO_CANCEL;
-    CharSequence notificationTitle = this.getText(R.string.msgNotificationTitle); // <9>
+    CharSequence notificationTitle = this.getText(R.string.msgNotificationTitle); 
     CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, nextSalat);
-    this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent); // <10>
+    this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent); 
     this.notificationManager.notify(0, this.notification);
     Log.d(TAG, "sendTimelineNotificationed");
   }

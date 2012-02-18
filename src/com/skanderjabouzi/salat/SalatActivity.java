@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.util.Log;
+import android.widget.Toast;
 
 public class SalatActivity extends Activity {
     
@@ -26,9 +27,10 @@ public class SalatActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        this.setSalatTimes();        
-        receiver = new SalatReceiver();
-        filter = new IntentFilter( SalatService.MIDNIGHT_INTENT );
+        salatApp = (SalatApplication) getApplication();
+        //this.setSalatTimes();        
+        receiver = new SalatReceiver();        
+        Log.d("SalatActivity", "Created");
     }
     
     @Override
@@ -38,6 +40,7 @@ public class SalatActivity extends Activity {
         this.setSalatTimes();
 
         // Register the receiver
+        filter = new IntentFilter( "com.skanderjabouzi.salat.MIDNIGHT_INTENT" );
         super.registerReceiver(receiver, filter, SEND_SALATTIME_NOTIFICATIONS, null);
         Log.d("SalatActivity", "registerReceiver");
     }
@@ -51,8 +54,7 @@ public class SalatActivity extends Activity {
     }
     
     private void setSalatTimes()
-    {
-        salatApp = (SalatApplication) getApplication();
+    {        
         salatApp.initCalendar();
         salatApp.setSalatTimes();
         salatApp.setHijriDate();
@@ -135,8 +137,10 @@ public class SalatActivity extends Activity {
     class SalatReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        setSalatTimes();
-        Log.d("SalatReceiver", "onReceived");
+        //setSalatTimes();
+        //Toast.makeText(getApplicationContext(), "received", Toast.LENGTH_SHORT).show();
+        String msg_for_me = intent.getStringExtra("NEW_STATUS_EXTRA_COUNT");
+        Log.d("SalatActivity", msg_for_me);
     }
   }
 }
