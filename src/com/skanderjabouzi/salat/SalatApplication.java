@@ -26,9 +26,10 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
 	private int year;
 	private int month;
 	private int day;
-	private Boolean isSalat;	
+	private boolean isSalat;	
 	protected Toast mToast; 
 	private String nextSalat;
+    public boolean FIRST_TIME = true;
 	
 	@Override
 	  public void onCreate() {
@@ -153,7 +154,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), timeToSalat, pendingIntent);    
-        Log.i(TAG, "Alarm Started");
+        Log.i("app", "Alarm Started");
 
     }
   
@@ -164,7 +165,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
-        Log.i(TAG, "Alarm Stopped");
+        Log.i("app", "Alarm Stopped");
     }
     
     

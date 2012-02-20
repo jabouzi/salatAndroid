@@ -28,25 +28,34 @@ public class SalatService extends IntentService {
   @Override
   protected void onHandleIntent(Intent inIntent) {
     Intent intent;
-    this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
-    this.notification = new Notification(R.drawable.makka,"", 0); 
-        
-    Calendar cal = Calendar.getInstance();
-    cal.setTimeInMillis(System.currentTimeMillis());
-    Date date = cal.getTime();
-    int mHour = date.getHours();
-    int mMinute = date.getMinutes();
-    int mSeconds = date.getSeconds();
-
-    Log.d(TAG, "onHandleIntent " + mHour + "  " + mMinute+ "  " + mSeconds);
     SalatApplication salatApp = (SalatApplication) getApplication();
-    String nextSalat = salatApp.getNextSalat();
-    if ("Test" == nextSalat) {
-      Log.d(TAG, "It's midnight");
-      intent = new Intent(MIDNIGHT_INTENT); 
-      intent.putExtra(NEW_STATUS_EXTRA_COUNT, nextSalat);     
-      sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
-      sendTimelineNotification(nextSalat);
+    if (salatApp.FIRST_TIME)
+    {
+        salatApp.FIRST_TIME = false;
+        salatApp.startAlarm(getApplicationContext());
+    }
+    else
+    {    
+        this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
+        this.notification = new Notification(R.drawable.makka,"", 0); 
+            
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(System.currentTimeMillis());
+        Date date = cal.getTime();
+        int mHour = date.getHours();
+        int mMinute = date.getMinutes();
+        int mSeconds = date.getSeconds();
+
+        Log.d(TAG, "onHandleIntent " + mHour + "  " + mMinute+ "  " + mSeconds);
+        //SalatApplication salatApp = (SalatApplication) getApplication();
+        String nextSalat = salatApp.getNextSalat();
+        if ("Test" == nextSalat) {
+          Log.d(TAG, "It's midnight");
+          intent = new Intent(MIDNIGHT_INTENT); 
+          intent.putExtra(NEW_STATUS_EXTRA_COUNT, nextSalat);     
+          sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
+          sendTimelineNotification(nextSalat);
+        }
     }
   }
 
