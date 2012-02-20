@@ -26,35 +26,37 @@ public class SalatService extends IntentService {
   }
 
   @Override
-  protected void onHandleIntent(Intent inIntent) {
+  protected void onHandleIntent(Intent inIntent) { 
     Intent intent;
-    SalatApplication salatApp = (SalatApplication) getApplication();
-    if (salatApp.FIRST_TIME)
+    SalatApplication salatApp = (SalatApplication) getApplication();    
+    Calendar cal = Calendar.getInstance();
+    cal.setTimeInMillis(System.currentTimeMillis());
+    Date date = cal.getTime();
+    int mHour = date.getHours();
+    int mMinute = date.getMinutes();
+    int mSeconds = date.getSeconds();    
+    Log.d(TAG, "onHandleIntent #1 " +  mHour + " - " + mMinute+ " - " + mSeconds + " -> " + salatApp.FIRST_TIME);
+    if (salatApp.FIRST_TIME == true)
     {
+        Log.d(TAG, "onHandleIntent #2 " + salatApp.FIRST_TIME);
         salatApp.FIRST_TIME = false;
         salatApp.startAlarm(getApplicationContext());
     }
     else
     {    
         this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
-        this.notification = new Notification(R.drawable.makka,"", 0); 
-            
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(System.currentTimeMillis());
-        Date date = cal.getTime();
-        int mHour = date.getHours();
-        int mMinute = date.getMinutes();
-        int mSeconds = date.getSeconds();
+        this.notification = new Notification(R.drawable.makka,"", 0);         
 
-        Log.d(TAG, "onHandleIntent " + mHour + "  " + mMinute+ "  " + mSeconds);
+        Log.d(TAG, "onHandleIntent #3 " + mHour + "  " + mMinute+ "  " + mSeconds);
         //SalatApplication salatApp = (SalatApplication) getApplication();
         String nextSalat = salatApp.getNextSalat();
-        if ("Test" == nextSalat) {
-          Log.d(TAG, "It's midnight");
-          intent = new Intent(MIDNIGHT_INTENT); 
-          intent.putExtra(NEW_STATUS_EXTRA_COUNT, nextSalat);     
-          sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
-          sendTimelineNotification(nextSalat);
+        if ("Fajr" == nextSalat) {
+            Log.d(TAG, "It's midnight");
+            intent = new Intent(MIDNIGHT_INTENT); 
+            intent.putExtra(NEW_STATUS_EXTRA_COUNT, salatApp.getCurrentSalat());     
+            sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
+            sendTimelineNotification(nextSalat);
+            //salatApp.startAlarm(getApplicationContext());
         }
     }
   }
@@ -66,13 +68,13 @@ public class SalatService extends IntentService {
    * @param timelineUpdateCount
    *          Number of new statuses
    */
-  private void sendTimelineNotification(String nextSalat) {
+  private void sendTimelineNotification(String currentSalat) {
     Log.d(TAG, "sendTimelineNotification'ing");
     PendingIntent pendingIntent = PendingIntent.getActivity(this, -1, new Intent(this, SalatActivity.class), PendingIntent.FLAG_UPDATE_CURRENT); 
     this.notification.when = System.currentTimeMillis(); 
     this.notification.flags |= Notification.FLAG_AUTO_CANCEL;
     CharSequence notificationTitle = this.getText(R.string.msgNotificationTitle); 
-    CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, nextSalat);
+    CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, currentSalat);
     this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent); 
     this.notificationManager.notify(0, this.notification);
     Log.d(TAG, "sendTimelineNotificationed");

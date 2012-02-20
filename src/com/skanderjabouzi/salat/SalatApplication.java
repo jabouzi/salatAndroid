@@ -29,6 +29,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
 	private boolean isSalat;	
 	protected Toast mToast; 
 	private String nextSalat;
+	private String currentSalat;
     public boolean FIRST_TIME = true;
 	
 	@Override
@@ -93,53 +94,65 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     	if (getFajr() > 0) 
     	{
      		nextSalat = "Fajr";
+            currentSalat = "Midnight";
      		isSalat = true;
      		timeLeft = getFajr();
     	}
     	else if (getDuhr() > 0) 
     	{
     		nextSalat = "Duhr";
+            currentSalat = "Fajr";
     		isSalat = true;
     		timeLeft = getDuhr();
     	}
     	else if (getAsr() > 0) 
     	{
     		nextSalat = "Asr";
+            currentSalat = "Duhr";
     		isSalat = true;
     		timeLeft = getAsr();
     	}
     	else if (getMaghrib() > 0)
     	{
     		nextSalat = "Maghrib";
+            currentSalat = "Asr";
     		isSalat = true;
     		timeLeft = getMaghrib();
     	}
     	else if (getIsha() > 0)
     	{
     		nextSalat = "Isha";
+            currentSalat = "Maghrib";
     		isSalat = true;
     		timeLeft = getIsha();
     	}
     	else if (getMidNight() > 0)
     	{  
     		nextSalat = "Fajr";
+            currentSalat = "Isha";
     		isSalat = false;
     		timeLeft = getMidNight();
     	}    	
-    	//return timeLeft;
-    	return 60000;
+    	return timeLeft;
+    	//return 60000;
     }
     
     public String getNextSalat()
     {
-    	//return nextSalat;
-    	return "Test";
+    	return nextSalat;
+    	//return "Test";
+    }
+
+    public String getCurrentSalat()
+    {
+    	return currentSalat;
+    	//return "Test";
     }
     
     public boolean isSalat()
     {
-    	//return isSalat;
-    	return true;
+    	return isSalat;
+    	//return true;
     }
     
     public void startAlarm(Context context)
@@ -147,14 +160,14 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         Calendar now = Calendar.getInstance();
         this.initCalendar();
         this.setSalatTimes();
-        long timeToSalat = 60000; //salatApp.getTimeLeft() + cal.getTimeInMillis();     
+        long timeToSalat = this.getTimeLeft() + now.getTimeInMillis();     
 
-        Intent intent = new Intent(context, SalatService.class); 
+        Intent intent = new Intent(context, SalatService.class);  
         PendingIntent pendingIntent = PendingIntent.getService(context, -1, intent, PendingIntent.FLAG_UPDATE_CURRENT); 
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, now.getTimeInMillis(), timeToSalat, pendingIntent);    
-        Log.i("app", "Alarm Started");
+        alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);    
+        Log.i("app", "Next salat is " + this.getNextSalat()  + " in " + timeToSalat);
 
     }
   

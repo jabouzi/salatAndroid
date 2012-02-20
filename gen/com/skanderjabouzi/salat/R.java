@@ -24,10 +24,11 @@ public final class R {
         public static final int calculation=0x7f020000;
         public static final int hijri=0x7f020001;
         public static final int icon=0x7f020002;
-        public static final int mecque=0x7f020003;
-        public static final int qibla=0x7f020004;
-        public static final int qsalat=0x7f020005;
-        public static final int world=0x7f020006;
+        public static final int makka=0x7f020003;
+        public static final int mecque=0x7f020004;
+        public static final int qibla=0x7f020005;
+        public static final int qsalat=0x7f020006;
+        public static final int world=0x7f020007;
     }
     public static final class id {
         public static final int asrText=0x7f090003;
@@ -64,6 +65,9 @@ public final class R {
         public static final int isha=0x7f060007;
         public static final int location=0x7f060009;
         public static final int maghrib=0x7f060006;
+        public static final int msgNotificationMessage=0x7f06001b;
+        public static final int msgNotificationTitle=0x7f06001a;
+        public static final int msgSetupPrefs=0x7f060019;
         public static final int receive_salat_notifications_permission_description=0x7f06000e;
         public static final int receive_salat_notifications_permission_label=0x7f06000d;
         public static final int send_salat_notifications_permission_description=0x7f06000c;

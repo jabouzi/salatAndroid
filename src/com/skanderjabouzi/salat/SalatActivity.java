@@ -30,7 +30,7 @@ public class SalatActivity extends Activity {
         salatApp = (SalatApplication) getApplication();
         //this.setSalatTimes();        
         receiver = new SalatReceiver();        
-        Log.d("SalatActivity", "Created");
+        Log.d("SalatActivity", "Created"); 
     }
     
     @Override
