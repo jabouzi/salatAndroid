@@ -160,7 +160,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         Calendar now = Calendar.getInstance();
         this.initCalendar();
         this.setSalatTimes();
-        long timeToSalat = this.getTimeLeft() + now.getTimeInMillis();     
+        long timeToSalat = 60*1000 + now.getTimeInMillis();     
 
         Intent intent = new Intent(context, SalatService.class);  
         PendingIntent pendingIntent = PendingIntent.getService(context, -1, intent, PendingIntent.FLAG_UPDATE_CURRENT); 

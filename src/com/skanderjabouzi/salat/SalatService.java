@@ -34,30 +34,20 @@ public class SalatService extends IntentService {
         Date date = cal.getTime();
         int mHour = date.getHours();
         int mMinute = date.getMinutes();
-        int mSeconds = date.getSeconds();    
-        Log.d(TAG, "onHandleIntent #1 " +  mHour + " - " + mMinute+ " - " + mSeconds + " -> " + salatApp.FIRST_TIME);
-        if (salatApp.FIRST_TIME == true)
-        {
-            Log.d(TAG, "onHandleIntent #2 " + salatApp.FIRST_TIME);
-            salatApp.FIRST_TIME = false;
-            salatApp.startAlarm(getApplicationContext());
-        }
-        else
-        {    
-            this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
-            this.notification = new Notification(R.drawable.makka,"", 0);         
+        int mSeconds = date.getSeconds();       
+        this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
+        this.notification = new Notification(R.drawable.makka,"", 0);         
 
-            Log.d(TAG, "onHandleIntent #3 " + mHour + "  " + mMinute+ "  " + mSeconds);
-            String currentSalat = salatApp.getCurrentSalat();
-            sendTimelineNotification(currentSalat);
-            salatApp.startAlarm(getApplicationContext());
-            if ("Midnight" == currentSalat) {
-                Log.d(TAG, "It's midnight");
-                intent = new Intent(MIDNIGHT_INTENT); 
-                intent.putExtra(NEW_STATUS_EXTRA_COUNT, salatApp.getCurrentSalat());     
-                sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
-            }
-        }
+        Log.d(TAG, "onHandleIntent #3 " + mHour + "  " + mMinute+ "  " + mSeconds);
+        String currentSalat = salatApp.getCurrentSalat();
+        sendTimelineNotification(currentSalat);
+        salatApp.startAlarm(getApplicationContext());
+        if ("Midnight" == currentSalat) {
+            Log.d(TAG, "It's midnight");
+            intent = new Intent(MIDNIGHT_INTENT); 
+            intent.putExtra(NEW_STATUS_EXTRA_COUNT, salatApp.getCurrentSalat());     
+            sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
+        }        
     }
 
     /**
