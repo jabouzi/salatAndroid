@@ -14,8 +14,8 @@ public class SalatBootReceiver extends BroadcastReceiver {
   @Override
   public void onReceive(Context context, Intent intent) {
       
-    SalatApplication salatApp = (SalatApplication) getApplication();  
-    salatApp.startAlarm();
+    SalatApplication salatApp = (SalatApplication) context.getApplicationContext();  
+    salatApp.startAlarm(context);
     Log.d("SalatBootReceiver", "SalatOnReceived");
   }
 	

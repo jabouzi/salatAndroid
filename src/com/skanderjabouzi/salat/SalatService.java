@@ -20,15 +20,15 @@ public class SalatService extends IntentService {
     private Notification notification; 
 
     public SalatService() {
-    super(TAG);
+        super(TAG);
 
-    Log.d(TAG, "SalatService constructed");
+        Log.d(TAG, "SalatService constructed");
     }
 
     @Override
     protected void onHandleIntent(Intent inIntent) { 
         Intent intent;
-        SalatApplication salatApp = (SalatApplication) getApplication();    
+        SalatApplication salatApp = (SalatApplication) getApplication();  
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(System.currentTimeMillis());
         Date date = cal.getTime();

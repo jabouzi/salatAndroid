@@ -28,8 +28,8 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
 	private int day;
 	private boolean isSalat;	
 	protected Toast mToast; 
-	private String nextSalat;
-	private String currentSalat;
+	private static String nextSalat;
+	private static String currentSalat;
     public boolean FIRST_TIME = true;
 	
 	@Override
@@ -128,7 +128,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     	}
     	else if (getMidNight() > 0)
     	{  
-    		nextSalat = "Fajr";
+    		nextSalat = "Midhight";
             currentSalat = "Isha";
     		isSalat = false;
     		timeLeft = getMidNight();
@@ -160,7 +160,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         Calendar now = Calendar.getInstance();
         this.initCalendar();
         this.setSalatTimes();
-        long timeToSalat = 60*1000 + now.getTimeInMillis();     
+        long timeToSalat = this.getTimeLeft() + now.getTimeInMillis();     
 
         Intent intent = new Intent(context, SalatService.class);  
         PendingIntent pendingIntent = PendingIntent.getService(context, -1, intent, PendingIntent.FLAG_UPDATE_CURRENT); 
@@ -187,7 +187,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     	String[] times = salaTimes[0].split(":");
     	Calendar time = Calendar.getInstance();
     	time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
-    	long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1])) - getCurrentTimeInMS();        
+    	long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();        
     	return diff;
     }
     
@@ -196,7 +196,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     	String[] times = salaTimes[2].split(":");
     	Calendar time = Calendar.getInstance();
     	time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
-    	long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1])) - getCurrentTimeInMS();        
+    	long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();        
     	return diff;
     }
     
@@ -205,7 +205,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     	String[] times = salaTimes[3].split(":");
     	Calendar time = Calendar.getInstance();
     	time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
-    	long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1])) - getCurrentTimeInMS();        
+    	long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();        
     	return diff;
     }
     
@@ -214,7 +214,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     	String[] times = salaTimes[5].split(":");
     	Calendar time = Calendar.getInstance();
     	time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
-    	long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1])) - getCurrentTimeInMS();      
+    	long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();      
     	return diff;
     }
     
@@ -223,7 +223,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     	String[] times = salaTimes[6].split(":");
     	Calendar time = Calendar.getInstance();
     	time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
-    	long diff = getTimeInMS(22,55) - getCurrentTimeInMS();        
+    	long diff = getTimeInMS(22,50,1) - getCurrentTimeInMS();        
     	return diff;
     }
     
@@ -231,7 +231,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     {
     	Calendar time = Calendar.getInstance();
     	time.set(year, month, day, 24, 0);
-    	long diff = getTimeInMS(24,0) - getCurrentTimeInMS();        
+    	long diff = getTimeInMS(22,53,1) - getCurrentTimeInMS();        
     	return diff;
     }
     
@@ -249,8 +249,8 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         return ms1+ms2+ms3;    
     }
     
-    private long getTimeInMS(long hour, long min)
+    private long getTimeInMS(long hour, long min, long sec)
     {
-        return hour*3600*1000+min*60*1000;
+        return hour*3600*1000+min*60*1000+sec*1000;
     }    
 }
