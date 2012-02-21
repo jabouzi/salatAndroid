@@ -18,7 +18,4 @@ public class SalatBootReceiver extends BroadcastReceiver {
     salatApp.startAlarm(context);
     Log.d("SalatBootReceiver", "SalatOnReceived");
   }
-	
-	
-
 }

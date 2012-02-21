@@ -39,13 +39,13 @@ public class SalatService extends IntentService {
         this.notification = new Notification(R.drawable.makka,"", 0);         
 
         Log.d(TAG, "onHandleIntent #3 " + mHour + "  " + mMinute+ "  " + mSeconds);
-        String currentSalat = salatApp.getCurrentSalat();
+        String currentSalat = salatApp.getNextSalat();
         sendTimelineNotification(currentSalat);
         salatApp.startAlarm(getApplicationContext());
         if ("Midnight" == currentSalat) {
             Log.d(TAG, "It's midnight");
             intent = new Intent(MIDNIGHT_INTENT); 
-            intent.putExtra(NEW_STATUS_EXTRA_COUNT, salatApp.getCurrentSalat());     
+            intent.putExtra(NEW_STATUS_EXTRA_COUNT, currentSalat);     
             sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
         }        
     }

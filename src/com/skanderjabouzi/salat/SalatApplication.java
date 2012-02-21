@@ -2,6 +2,7 @@ package com.skanderjabouzi.salat;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Arrays;
 
 import android.app.Application;
 import android.content.ContentValues;
@@ -17,142 +18,145 @@ import android.app.PendingIntent;
 import android.app.AlarmManager;
 
 public class SalatApplication extends Application implements OnSharedPreferenceChangeListener {
-	
-	private static final String TAG = SalatApplication.class.getSimpleName();
-	private SharedPreferences prefs;
-	//private boolean serviceRunning;
-	private String salaTimes[] = new String[7];
-	private String[] hijriDates = new String[4];	
-	private int year;
-	private int month;
-	private int day;
-	private boolean isSalat;	
-	protected Toast mToast; 
-	private static String nextSalat;
-	private static String currentSalat;
+    
+    private static final String TAG = SalatApplication.class.getSimpleName();
+    private SharedPreferences prefs;
+    //private boolean serviceRunning;
+    private String salaTimes[] = new String[7];
+    private String[] hijriDates = new String[4];    
+    private int year;
+    private int month;
+    private int day;
+    private boolean isSalat;    
+    protected Toast mToast; 
+    private static String nextSalat;
+    private static String currentSalat;
     public boolean FIRST_TIME = true;
-	
-	@Override
-	  public void onCreate() {
-	    super.onCreate();
-	    this.prefs = PreferenceManager.getDefaultSharedPreferences(this);
-	    this.prefs.registerOnSharedPreferenceChangeListener(this);
-	    Log.i(TAG, "onCreated");
-	  }
+    
+    @Override
+      public void onCreate() {
+        super.onCreate();
+        this.prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        this.prefs.registerOnSharedPreferenceChangeListener(this);
+        Log.i(TAG, "onCreated");
+      }
 
-	  @Override
-	  public void onTerminate() {
-	    super.onTerminate();
-	    Log.i(TAG, "onTerminated");
-	  }
+      @Override
+      public void onTerminate() {
+        super.onTerminate();
+        Log.i(TAG, "onTerminated");
+      }
 
-	@Override
-	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
-			String key) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public void initCalendar()
-    {    	
-    	Calendar cal = Calendar.getInstance();
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+            String key) {
+        // TODO Auto-generated method stub
+        
+    }
+    
+    public void initCalendar()
+    {        
+        Calendar cal = Calendar.getInstance();
         year = cal.get(java.util.Calendar.YEAR);
         month = cal.get(java.util.Calendar.MONTH);
         day = cal.get(java.util.Calendar.DAY_OF_MONTH); 
     }
     
     public void setSalatTimes()
-    {    	
-    	Salat prayers = new Salat();
-		prayers.setCalcMethod(2);
-		prayers.setAsrMethod(0);
-		prayers.setDhuhrMinutes(0);
-		prayers.setHighLatsMethod(0);
-		
-		salaTimes = prayers.getDatePrayerTimes(year,month+1,day,45.5454,-73.6391,-5); 
+    {        
+        Salat prayers = new Salat();
+        prayers.setCalcMethod(2);
+        prayers.setAsrMethod(0);
+        prayers.setDhuhrMinutes(0);
+        prayers.setHighLatsMethod(0);
+        
+        salaTimes = prayers.getDatePrayerTimes(year,month+1,day,45.5454,-73.6391,-5);
+        salaTimes[0] = "09:08";
+        salaTimes[2] = "09:10";
+        salaTimes[3] = "09:12";
+        salaTimes[5] = "09:14";
+        salaTimes[6] = "09:16";
+        Log.i("app", "Sataltimes : "+java.util.Arrays.asList(salaTimes).toString());
     }
     
     public String[] getSalatTimes()
     {
-    	return salaTimes;
+        return salaTimes;
     }    
     
     public void setHijriDate()
     {
-    	Hijri hijri = new Hijri();		
-    	hijriDates = hijri.isToString(year,month+1,day,0);		
+        Hijri hijri = new Hijri();        
+        hijriDates = hijri.isToString(year,month+1,day,0);        
     }
     
     public String[] getHijriDates()
     {
-    	return hijriDates;
+        return hijriDates;
     }
     
     public long getTimeLeft()
     {
-    	long timeLeft = 0;
-    	if (getFajr() > 0) 
-    	{
-     		nextSalat = "Fajr";
+        long timeLeft = 0;
+        if (getFajr() > 0) 
+        {
+             nextSalat = "Fajr";
             currentSalat = "Midnight";
-     		isSalat = true;
-     		timeLeft = getFajr();
-    	}
-    	else if (getDuhr() > 0) 
-    	{
-    		nextSalat = "Duhr";
+             isSalat = true;
+             timeLeft = getFajr();
+        }
+        else if (getDuhr() > 0) 
+        {
+            nextSalat = "Duhr";
             currentSalat = "Fajr";
-    		isSalat = true;
-    		timeLeft = getDuhr();
-    	}
-    	else if (getAsr() > 0) 
-    	{
-    		nextSalat = "Asr";
+            isSalat = true;
+            timeLeft = getDuhr();
+        }
+        else if (getAsr() > 0) 
+        {
+            nextSalat = "Asr";
             currentSalat = "Duhr";
-    		isSalat = true;
-    		timeLeft = getAsr();
-    	}
-    	else if (getMaghrib() > 0)
-    	{
-    		nextSalat = "Maghrib";
+            isSalat = true;
+            timeLeft = getAsr();
+        }
+        else if (getMaghrib() > 0)
+        {
+            nextSalat = "Maghrib";
             currentSalat = "Asr";
-    		isSalat = true;
-    		timeLeft = getMaghrib();
-    	}
-    	else if (getIsha() > 0)
-    	{
-    		nextSalat = "Isha";
+            isSalat = true;
+            timeLeft = getMaghrib();
+        }
+        else if (getIsha() > 0)
+        {
+            nextSalat = "Isha";
             currentSalat = "Maghrib";
-    		isSalat = true;
-    		timeLeft = getIsha();
-    	}
-    	else if (getMidNight() > 0)
-    	{  
-    		nextSalat = "Midhight";
+            isSalat = true;
+            timeLeft = getIsha();
+        }
+        else if (getMidNight() > 0)
+        {  
+            nextSalat = "Midhight";
             currentSalat = "Isha";
-    		isSalat = false;
-    		timeLeft = getMidNight();
-    	}    	
-    	return timeLeft;
-    	//return 60000;
+            isSalat = false;
+            timeLeft = getMidNight();
+        }        
+        return timeLeft;
+        //return 60000;
     }
     
     public String getNextSalat()
     {
-    	return nextSalat;
-    	//return "Test";
+        return SalatApplication.nextSalat;
     }
 
     public String getCurrentSalat()
     {
-    	return currentSalat;
-    	//return "Test";
+        return SalatApplication.currentSalat;
     }
     
     public boolean isSalat()
     {
-    	return isSalat;
-    	//return true;
+        return isSalat;
     }
     
     public void startAlarm(Context context)
@@ -184,55 +188,61 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     
     private long getFajr()
     {
-    	String[] times = salaTimes[0].split(":");
-    	Calendar time = Calendar.getInstance();
-    	time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
-    	long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();        
-    	return diff;
+        String[] times = salaTimes[0].split(":");
+        Calendar time = Calendar.getInstance();
+        time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
+        long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();
+        Log.i("app", "fajr : "+diff);      
+        return diff;
     }
     
     private long getDuhr()
     {
-    	String[] times = salaTimes[2].split(":");
-    	Calendar time = Calendar.getInstance();
-    	time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
-    	long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();        
-    	return diff;
+        String[] times = salaTimes[2].split(":");
+        Calendar time = Calendar.getInstance();
+        time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
+        long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();
+        Log.i("app", "duhr : "+diff);   
+        return diff;
     }
     
     private long getAsr()
     {
-    	String[] times = salaTimes[3].split(":");
-    	Calendar time = Calendar.getInstance();
-    	time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
-    	long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();        
-    	return diff;
+        String[] times = salaTimes[3].split(":");
+        Calendar time = Calendar.getInstance();
+        time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
+        long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();
+        Log.i("app", "asr : "+diff);   
+        return diff;
     }
     
     private long getMaghrib()
     {
-    	String[] times = salaTimes[5].split(":");
-    	Calendar time = Calendar.getInstance();
-    	time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
-    	long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();      
-    	return diff;
+        String[] times = salaTimes[5].split(":");
+        Calendar time = Calendar.getInstance();
+        time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
+        long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();
+        Log.i("app", "maghrib : "+diff);   
+        return diff;
     }
     
     private long getIsha()
     {
-    	String[] times = salaTimes[6].split(":");
-    	Calendar time = Calendar.getInstance();
-    	time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
-    	long diff = getTimeInMS(22,50,1) - getCurrentTimeInMS();        
-    	return diff;
+        String[] times = salaTimes[6].split(":");
+        Calendar time = Calendar.getInstance();
+        time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
+        long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();
+        Log.i("app", "isha : "+diff);    
+        return diff;
     }
     
     private long getMidNight()
     {
-    	Calendar time = Calendar.getInstance();
-    	time.set(year, month, day, 24, 0);
-    	long diff = getTimeInMS(22,53,1) - getCurrentTimeInMS();        
-    	return diff;
+        Calendar time = Calendar.getInstance();
+        time.set(year, month, day, 24, 0);
+        long diff = getTimeInMS(24,0,1) - getCurrentTimeInMS();
+        Log.i("app", "midnight : "+diff);   
+        return diff;
     }
     
     private long getCurrentTimeInMS()
