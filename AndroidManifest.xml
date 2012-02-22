@@ -29,22 +29,22 @@
 
     <!--<receiver android:name=".SalatReceiver" />--> 
     
-	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-	
-	<uses-permission android:name="com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    
+    <!--<uses-permission android:name="com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS" />
     <uses-permission android:name="com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS" />
     
     <permission android:name="com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS"
-    android:label="@string/send_salat_notifications_permission_label"
-    android:description="@string/send_salat_notifications_permission_description"
-    android:permissionGroup="android.permission-group.PERSONAL_INFO"
-    android:protectionLevel="normal" />
+        android:label="@string/send_salat_notifications_permission_label"
+        android:description="@string/send_salat_notifications_permission_description"
+        android:permissionGroup="android.permission-group.PERSONAL_INFO"
+        android:protectionLevel="normal" />
 
-  <permission android:name="com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS"
-    android:label="@string/receive_salat_notifications_permission_label"
-    android:description="@string/receive_salat_notifications_permission_description"
-    android:permissionGroup="android.permission-group.PERSONAL_INFO"
-    android:protectionLevel="normal" />   
-	
+    <permission android:name="com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS"
+        android:label="@string/receive_salat_notifications_permission_label"
+        android:description="@string/receive_salat_notifications_permission_description"
+        android:permissionGroup="android.permission-group.PERSONAL_INFO"
+        android:protectionLevel="normal" />-->
+    
     </application>
 </manifest>

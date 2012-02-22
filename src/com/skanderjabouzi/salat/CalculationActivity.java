@@ -1,4 +1,4 @@
-     com.skanderjabouzi.salat;
+package com.skanderjabouzi.salat;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;

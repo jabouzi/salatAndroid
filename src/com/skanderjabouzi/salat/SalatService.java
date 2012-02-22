@@ -42,12 +42,14 @@ public class SalatService extends IntentService {
         String currentSalat = salatApp.getNextSalat();
         sendTimelineNotification(currentSalat);
         salatApp.startAlarm(getApplicationContext());
-        if ("Midnight" == currentSalat) {
-            Log.d(TAG, "It's midnight");
-            intent = new Intent(MIDNIGHT_INTENT); 
+        //if ("Midnight" == currentSalat) {
+            //Log.d(TAG, "It's midnight");
+            /*intent = new Intent(MIDNIGHT_INTENT); 
             intent.putExtra(NEW_STATUS_EXTRA_COUNT, currentSalat);     
-            sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
-        }        
+            sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);*/
+            Intent i = new Intent("android.intent.action.MAIN").putExtra("some_msg", "I will be sent!");
+            this.sendBroadcast(i);
+        //}        
     }
 
     /**
