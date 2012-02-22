@@ -10,11 +10,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class SalatService extends IntentService {
+    
     private static final String TAG = "SalatService";
-
-    public static final String MIDNIGHT_INTENT = "com.skanderjabouzi.salat.MIDNIGHT_INTENT";
-    public static final String NEW_STATUS_EXTRA_COUNT = "NEW_STATUS_EXTRA_COUNT";
-    public static final String RECEIVE_SALATTIME_NOTIFICATIONS = "com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS";
 
     private NotificationManager notificationManager; 
     private Notification notification; 
@@ -36,36 +33,23 @@ public class SalatService extends IntentService {
         int mMinute = date.getMinutes();
         int mSeconds = date.getSeconds();       
         this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
-        this.notification = new Notification(R.drawable.makka,"", 0);         
+        this.notification = new Notification(R.drawable.makka_icon,"", 0);         
 
         Log.d(TAG, "onHandleIntent #3 " + mHour + "  " + mMinute+ "  " + mSeconds);
-        String currentSalat = salatApp.getNextSalat();
-        sendTimelineNotification(currentSalat);
+        String salatName = salatApp.getNextSalat();
+        sendTimelineNotification(salatName);
         salatApp.startAlarm(getApplicationContext());
-        //if ("Midnight" == currentSalat) {
-            //Log.d(TAG, "It's midnight");
-            /*intent = new Intent(MIDNIGHT_INTENT); 
-            intent.putExtra(NEW_STATUS_EXTRA_COUNT, currentSalat);     
-            sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);*/
-            Intent i = new Intent("android.intent.action.MAIN").putExtra("some_msg", "I will be sent!");
-            this.sendBroadcast(i);
-        //}        
+        Intent i = new Intent("android.intent.action.MAIN").putExtra("salatTime", salatName);
+        this.sendBroadcast(i);     
     }
 
-    /**
-    * Creates a notification in the notification bar telling user there are new
-    * messages
-    * 
-    * @param timelineUpdateCount
-    *          Number of new statuses
-    */
-    private void sendTimelineNotification(String currentSalat) {
+    private void sendTimelineNotification(String salatName) {
         Log.d(TAG, "sendTimelineNotification'ing");
         PendingIntent pendingIntent = PendingIntent.getActivity(this, -1, new Intent(this, SalatActivity.class), PendingIntent.FLAG_UPDATE_CURRENT); 
         this.notification.when = System.currentTimeMillis(); 
         this.notification.flags |= Notification.FLAG_AUTO_CANCEL;
         CharSequence notificationTitle = this.getText(R.string.msgNotificationTitle); 
-        CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, currentSalat);
+        CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, salatName);
         this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent); 
         this.notificationManager.notify(0, this.notification);
         Log.d(TAG, "sendTimelineNotificationed");

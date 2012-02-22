@@ -1,12 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-	<item android:id="@+id/calculation"
-          android:title="Calculations"/>
-    <item android:id="@+id/location"
-          android:title="Location" />	
-    <item android:id="@+id/qibla"
-          android:title="Qibla" />
-    <item android:id="@+id/hijri"
-          android:title="Hijri conversion" />
-    <item android:id="@+id/audio"
-          android:title="Audio" />
+	<item android:id="@+id/options" android:title="Options" android:icon="@drawable/makka"></item>
+    <item android:id="@+id/location" android:title="Location" android:icon="@drawable/world"></item>
+    <item android:id="@+id/qibla" android:title="Qibla" android:icon="@drawable/qibla"></item>
+    <item android:id="@+id/hijri" android:title="Hijri conversion" android:icon="@drawable/hijri"></item>
 </menu>

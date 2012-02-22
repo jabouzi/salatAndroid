@@ -16,12 +16,11 @@ import android.widget.Toast;
 
 public class SalatActivity extends Activity {
     
-    private BroadcastReceiver mReceiver;
+    private BroadcastReceiver salatReceiver;
     static final String SEND_SALATTIME_NOTIFICATIONS = "com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS";
     String sataTimes[] = new String[7];
     String[] hijriDates = new String[4];    
     SalatApplication salatApp; 
-    SalatReceiver receiver;
     IntentFilter filter;
     
     @Override
@@ -29,8 +28,6 @@ public class SalatActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         salatApp = (SalatApplication) getApplication();
-        //receiver = new SalatReceiver(); 
-        //filter = new IntentFilter( SalatService.MIDNIGHT_INTENT );
         Log.d("SalatActivity", "Created"); 
     }
     
@@ -38,32 +35,28 @@ public class SalatActivity extends Activity {
     protected void onResume() {
         super.onResume();
         setSalatTimes();
-        //super.registerReceiver(receiver, filter, SEND_SALATTIME_NOTIFICATIONS, null);
         
         IntentFilter intentFilter = new IntentFilter("android.intent.action.MAIN");
  
-        mReceiver = new BroadcastReceiver() {
+        salatReceiver = new BroadcastReceiver() {
  
             @Override
             public void onReceive(Context context, Intent intent) {
-                //extract our message from intent
-                String msg_for_me = intent.getStringExtra("some_msg");
-                //log our message value
-                Log.i("SalatReceiver", msg_for_me);
- 
+                String salatName = intent.getStringExtra("salatTime");
+                Log.i("SalatReceiver", salatName);
+                //if (salatName == "Midnight") setSalatTimes();
+                setSalatTimes(); 
             }
         };
-        //registering our receiver
-        this.registerReceiver(mReceiver, intentFilter);
-        
+
+        this.registerReceiver(salatReceiver, intentFilter);        
         Log.d("SalatActivity", "registerReceiver");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        //unregisterReceiver(receiver); 
-        this.unregisterReceiver(this.mReceiver);
+        this.unregisterReceiver(this.salatReceiver);
     }
     
     private void setSalatTimes()
@@ -93,14 +86,10 @@ public class SalatActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) { 
 
       switch (item.getItemId()) {
-      case R.id.calculation:
+      case R.id.options:
         startActivity(new Intent(this, CalculationActivity.class)
             .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-        break;      
-      case R.id.audio:
-        startService(new Intent(this, SalatService.class));
-        break;      
-     
+        break;     
       }
       return true;
     }
@@ -145,15 +134,5 @@ public class SalatActivity extends Activity {
     {
         TextView date1Text =    (TextView)  findViewById(R.id.date1Text);
         date1Text.setText(hijriDates[0] + " " + hijriDates[1] + " " + hijriDates[3]); 
-    }
-    
-    class SalatReceiver extends BroadcastReceiver {
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        setSalatTimes();
-        Toast.makeText(getApplicationContext(), "received", Toast.LENGTH_SHORT).show();
-        String msg_for_me = intent.getStringExtra("NEW_STATUS_EXTRA_COUNT");
-        Log.d("SalatActivity", msg_for_me);
-    }
-  }
+    }    
 }
