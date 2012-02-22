@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.os.Vibrator;
 import android.content.Intent;
 import android.util.Log;
 import java.util.Calendar;
@@ -37,10 +38,11 @@ public class SalatService extends IntentService {
 
         Log.d(TAG, "onHandleIntent #3 " + mHour + "  " + mMinute+ "  " + mSeconds);
         String salatName = salatApp.getNextSalat();
+        ((Vibrator)getSystemService(VIBRATOR_SERVICE)).vibrate(300);
         sendTimelineNotification(salatName);
         salatApp.startAlarm(getApplicationContext());
         Intent i = new Intent("android.intent.action.MAIN").putExtra("salatTime", salatName);
-        this.sendBroadcast(i);     
+        this.sendBroadcast(i);        
     }
 
     private void sendTimelineNotification(String salatName) {

@@ -43,9 +43,11 @@ public class SalatActivity extends Activity {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String salatName = intent.getStringExtra("salatTime");
+                Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();
                 Log.i("SalatReceiver", salatName);
                 //if (salatName == "Midnight") setSalatTimes();
-                setSalatTimes(); 
+                setSalatTimes();
+                
             }
         };
 
