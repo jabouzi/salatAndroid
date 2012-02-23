@@ -46,8 +46,7 @@ public class SalatActivity extends Activity {
                 Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();
                 Log.i("SalatReceiver", salatName);
                 //if (salatName == "Midnight") setSalatTimes();
-                setSalatTimes();
-                
+                setSalatTimes();                
             }
         };
 

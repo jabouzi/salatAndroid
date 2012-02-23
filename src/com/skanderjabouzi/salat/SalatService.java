@@ -37,7 +37,7 @@ public class SalatService extends IntentService {
         int mSeconds = date.getSeconds();       
         this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
         this.notification = new Notification(R.drawable.makka_icon,"", 0);         
-
+        this.notification.defaults |= Notification.DEFAULT_VIBRATE;
         Log.d(TAG, "onHandleIntent #3 " + mHour + "  " + mMinute+ "  " + mSeconds);
         String salatName = salatApp.getNextSalat();
         /*long[] vibrate = {0,100,200,300};
@@ -52,11 +52,16 @@ public class SalatService extends IntentService {
         this.sendBroadcast(i);        
     }
 
-    private void sendTimelineNotification(String salatName) {
+    private void sendTimelineNotification(String salatName) {        
         Log.d(TAG, "sendTimelineNotification'ing");
         PendingIntent pendingIntent = PendingIntent.getActivity(this, -1, new Intent(this, SalatActivity.class), PendingIntent.FLAG_UPDATE_CURRENT); 
-        this.notification.when = System.currentTimeMillis(); 
-        this.notification.flags |= Notification.FLAG_AUTO_CANCEL;
+        this.notification.when = System.currentTimeMillis();        
+        this.notification.flags |= Notification.FLAG_AUTO_CANCEL ;
+        this.notification.flags |= Notification.FLAG_SHOW_LIGHTS;
+        this.notification.ledARGB = 0xff00ff00;
+        this.notification.ledOnMS = 300;
+        this.notification.ledOffMS = 1000;
+        this.notification.vibrate = new long[]{0,100,200,300};
         CharSequence notificationTitle = this.getText(R.string.msgNotificationTitle); 
         CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, salatName);
         this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent); 
