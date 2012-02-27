@@ -4,7 +4,11 @@
       android:versionCode="1"
       android:versionName="1.0">
     <uses-sdk android:minSdkVersion="4" />
-
+    
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" /> 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> 
+    
     <application android:icon="@drawable/makka_icon" android:label="@string/app_name" android:name=".SalatApplication">
                           
         <activity android:name=".SalatActivity"
@@ -24,10 +28,7 @@
       <intent-filter>
         <action android:name="android.intent.action.BOOT_COMPLETED" />
       </intent-filter>
-    </receiver>
-
-    <uses-permission android:name="android.permission.VIBRATE" /> 
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    </receiver> 
     
     </application>
 </manifest>
