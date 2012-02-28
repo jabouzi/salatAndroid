@@ -2,5 +2,6 @@
 	<item android:id="@+id/options" android:title="Options" android:icon="@drawable/makka"></item>
     <item android:id="@+id/location" android:title="Location" android:icon="@drawable/world"></item>
     <item android:id="@+id/qibla" android:title="Qibla" android:icon="@drawable/qibla"></item>
-    <item android:id="@+id/hijri" android:title="Hijri conversion" android:icon="@drawable/hijri"></item>
+    <item android:id="@+id/hijri" android:title="Hijri Conversion" android:icon="@drawable/hijri"></item>
+    <item android:id="@+id/athan" android:title="Stop Athan" android:icon="@drawable/hijri"></item>
 </menu>

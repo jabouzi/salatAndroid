@@ -16,6 +16,10 @@ import android.media.MediaPlayer;
 public class SalatService extends IntentService {
     
     private static final String TAG = "SalatService";
+    
+    public static final String MIDNIGHT_INTENT = "com.skanderjabouzi.salat.MIDNIGHT_INTENT";
+    public static final String SALATTIME = "SALATTIME";
+    public static final String RECEIVE_SALATTIME_NOTIFICATIONS = "com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS";
 
     private NotificationManager notificationManager; 
     private Notification notification;
@@ -55,8 +59,14 @@ public class SalatService extends IntentService {
         this.notification.flags |= Notification.FLAG_SHOW_LIGHTS;*/
         sendTimelineNotification(salatName);
         salatApp.startAlarm(getApplicationContext());
-        Intent i = new Intent("android.intent.action.MAIN").putExtra("salatTime", salatName);
-        this.sendBroadcast(i);        
+        //Intent i = new Intent("android.intent.action.MAIN").putExtra("salatTime", salatName);
+        //this.sendBroadcast(i);   
+        //if ("Midnight" == currentSalat) {
+            Log.d(TAG, "It's midnight");
+            intent = new Intent(MIDNIGHT_INTENT); 
+            intent.putExtra(SALATTIME, salatName);     
+            sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
+        //}           
     }
 
     private void sendTimelineNotification(String salatName) {        
@@ -75,19 +85,10 @@ public class SalatService extends IntentService {
         CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, salatName);
         this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent); 
         this.notificationManager.notify(0, this.notification);
-        playAudio();
+        startService(new Intent(this, SalatService.class));
         wl.release();
         Log.d(TAG, "sendTimelineNotificationed");
     }
     
-    private void playAudio()
-    {
-        mMediaPlayer = MediaPlayer.create(this, R.raw.athan);
-        mMediaPlayer.start();
-    }
     
-    private void stopAudio()
-    {
-        mMediaPlayer.stop();
-    }
 }

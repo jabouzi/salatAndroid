@@ -16,11 +16,12 @@ import android.widget.Toast;
 
 public class SalatActivity extends Activity {
     
-    private BroadcastReceiver salatReceiver;
+    //private BroadcastReceiver salatReceiver;
     static final String SEND_SALATTIME_NOTIFICATIONS = "com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS";
     String sataTimes[] = new String[7];
     String[] hijriDates = new String[4];    
     SalatApplication salatApp; 
+    SalatReceiver receiver;
     IntentFilter filter;
     
     @Override
@@ -28,6 +29,7 @@ public class SalatActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         salatApp = (SalatApplication) getApplication();
+        receiver = new SalatReceiver();   
         Log.d("SalatActivity", "Created"); 
     }
     
@@ -36,7 +38,11 @@ public class SalatActivity extends Activity {
         super.onResume();
         setSalatTimes();
         
-        IntentFilter intentFilter = new IntentFilter("android.intent.action.MAIN");
+        filter = new IntentFilter( "com.skanderjabouzi.salat.MIDNIGHT_INTENT" );
+        super.registerReceiver(receiver, filter, SEND_SALATTIME_NOTIFICATIONS, null);
+        Log.d("SalatActivity", "registerReceiver");
+        
+        /*IntentFilter intentFilter = new IntentFilter("android.intent.action.MAIN");
  
         salatReceiver = new BroadcastReceiver() {
  
@@ -51,13 +57,14 @@ public class SalatActivity extends Activity {
         };
 
         this.registerReceiver(salatReceiver, intentFilter);        
-        Log.d("SalatActivity", "registerReceiver");
+        Log.d("SalatActivity", "registerReceiver");*/
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        this.unregisterReceiver(this.salatReceiver);
+        //this.unregisterReceiver(this.salatReceiver);
+        unregisterReceiver(receiver); 
     }
     
     private void setSalatTimes()
@@ -90,7 +97,10 @@ public class SalatActivity extends Activity {
       case R.id.options:
         startActivity(new Intent(this, CalculationActivity.class)
             .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-        break;     
+        break;    
+      case R.id.athan:
+        stopService(new Intent(this, AthanService.class));
+        break; 
       }
       return true;
     }
@@ -136,4 +146,16 @@ public class SalatActivity extends Activity {
         TextView date1Text =    (TextView)  findViewById(R.id.date1Text);
         date1Text.setText(hijriDates[0] + " " + hijriDates[1] + " " + hijriDates[3]); 
     }    
+    
+    
+    class SalatReceiver extends BroadcastReceiver {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			setSalatTimes();
+			String salatName = intent.getStringExtra("SALATTIME");
+            Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();
+			//String msg_for_me = intent.getStringExtra("NEW_STATUS_EXTRA_COUNT");
+			Log.d("SalatActivity", salatName);
+		}
+	}
 }
