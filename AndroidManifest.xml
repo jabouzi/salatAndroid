@@ -38,6 +38,7 @@
     <activity android:name=".CalculationActivity" android:label="@string/titleCalculation" />   
     
     <service android:name=".SalatService" />     
+    <service android:name=".AthanService" />     
     
     <receiver android:name=".SalatBootReceiver">
       <intent-filter>

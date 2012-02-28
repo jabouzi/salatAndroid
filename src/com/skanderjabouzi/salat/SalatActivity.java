@@ -155,7 +155,7 @@ public class SalatActivity extends Activity {
 			String salatName = intent.getStringExtra("SALATTIME");
             Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();
 			//String msg_for_me = intent.getStringExtra("NEW_STATUS_EXTRA_COUNT");
-			Log.d("SalatActivity", salatName);
+			Log.d("SalatReceiver", salatName);
 		}
 	}
 }

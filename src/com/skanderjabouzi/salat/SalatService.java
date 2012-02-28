@@ -37,6 +37,7 @@ public class SalatService extends IntentService {
         Intent intent;
         pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
+        wl.acquire();
         //this.notification.defaults |= Notification.DEFAULT_VIBRATE;
         //this.notification.defaults |= Notification.DEFAULT_LIGHTS;
         SalatApplication salatApp = (SalatApplication) getApplication();  
@@ -61,17 +62,16 @@ public class SalatService extends IntentService {
         salatApp.startAlarm(getApplicationContext());
         //Intent i = new Intent("android.intent.action.MAIN").putExtra("salatTime", salatName);
         //this.sendBroadcast(i);   
-        //if ("Midnight" == currentSalat) {
-            Log.d(TAG, "It's midnight");
+        if ("Midnight" == salatName) {
+            //Log.d(TAG, "It's midnight");
             intent = new Intent(MIDNIGHT_INTENT); 
             intent.putExtra(SALATTIME, salatName);     
             sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
-        //}           
+        }           
     }
 
     private void sendTimelineNotification(String salatName) {        
-        Log.d(TAG, "sendTimelineNotification'ing");
-        wl.acquire();
+        Log.d(TAG, "sendTimelineNotification'ing");        
         PendingIntent pendingIntent = PendingIntent.getActivity(this, -1, new Intent(this, SalatActivity.class), PendingIntent.FLAG_UPDATE_CURRENT); 
         this.notification.when = System.currentTimeMillis();   
         this.notification.defaults |= Notification.DEFAULT_VIBRATE;     
@@ -85,7 +85,7 @@ public class SalatService extends IntentService {
         CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, salatName);
         this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent); 
         this.notificationManager.notify(0, this.notification);
-        startService(new Intent(this, SalatService.class));
+        startService(new Intent(this, AthanService.class));
         wl.release();
         Log.d(TAG, "sendTimelineNotificationed");
     }
