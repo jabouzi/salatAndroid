@@ -12,6 +12,7 @@ public class AthanService extends Service{
 
     private MediaPlayer player;
     private String athan;
+    public static boolean isPlaying = false;
     
     @Override
     public IBinder onBind(Intent arg0) {
@@ -41,6 +42,7 @@ public class AthanService extends Service{
         });
         player.start();
         player.setLooping(false);
+        AthanService.isPlaying = true;
         Log.d("AthanService", "start");
     }
 
@@ -50,6 +52,7 @@ public class AthanService extends Service{
         player.stop();
         player.release();
         WakeLock.release();
+        AthanService.isPlaying = false;
         Log.d("AthanService","stop");
     }
 }

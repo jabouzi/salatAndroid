@@ -5,13 +5,11 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.os.Vibrator;
-import android.os.PowerManager;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import java.util.Calendar;
 import java.util.Date;
-import android.media.MediaPlayer;
 
 public class SalatService extends IntentService {
     
@@ -23,9 +21,6 @@ public class SalatService extends IntentService {
 
     private NotificationManager notificationManager; 
     private Notification notification;
-    private PowerManager pm;
-    private PowerManager.WakeLock wl;
-    private MediaPlayer mMediaPlayer;
 
     public SalatService() {
         super(TAG);        
