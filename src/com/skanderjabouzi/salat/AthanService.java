@@ -11,6 +11,7 @@ import android.util.Log;
 public class AthanService extends Service{
 
     private MediaPlayer player;
+    private String athan;
     
     @Override
     public IBinder onBind(Intent arg0) {
@@ -23,14 +24,22 @@ public class AthanService extends Service{
         String salatName = salatApp.getNextSalat();
         if ("Fajr" == salatName)
         {
-			player = MediaPlayer.create(this, R.raw.athan);
-            player.start();
+			player = MediaPlayer.create(this, R.raw.fajr);
 		}
 		else if ("Midnight" != salatName)
         {
-			player = MediaPlayer.create(AthanService.this, R.raw.fajr);			
-            player.start();
+			player = MediaPlayer.create(this, R.raw.athan);
 		}        
+        
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                player.stop();
+                player.release();
+                WakeLock.release();
+            }
+        });
+        player.start();
         player.setLooping(false);
         Log.d("AthanService", "start");
     }
@@ -39,6 +48,8 @@ public class AthanService extends Service{
     public void onDestroy() {
         super.onDestroy();
         player.stop();
+        player.release();
+        WakeLock.release();
         Log.d("AthanService","stop");
     }
 }

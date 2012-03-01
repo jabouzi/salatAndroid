@@ -35,9 +35,7 @@ public class SalatService extends IntentService {
     @Override
     protected void onHandleIntent(Intent inIntent) { 
         Intent intent;
-        pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
-        wl.acquire();
+        WakeLock.acquire(getApplicationContext());
         //this.notification.defaults |= Notification.DEFAULT_VIBRATE;
         //this.notification.defaults |= Notification.DEFAULT_LIGHTS;
         SalatApplication salatApp = (SalatApplication) getApplication();  
@@ -86,7 +84,7 @@ public class SalatService extends IntentService {
         this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent); 
         this.notificationManager.notify(0, this.notification);
         startService(new Intent(this, AthanService.class));
-        wl.release();
+        //wl.release();
         Log.d(TAG, "sendTimelineNotificationed");
     }
     
