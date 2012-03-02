@@ -68,7 +68,7 @@ public class SalatService extends IntentService {
         CharSequence notificationTitle = this.getText(R.string.msgNotificationTitle); 
         CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, salatName);
         this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent); 
-        this.notificationManager.notify(0, this.notification);
+        this.notificationManager.notify(0, this.notification);        
         startService(new Intent(this, AthanService.class));
         Log.d(TAG, "sendTimelineNotificationed");
     }

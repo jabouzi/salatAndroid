@@ -34,25 +34,39 @@ public class AthanService extends Service{
         
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
-            public void onCompletion(MediaPlayer mp) {
-                player.stop();
-                player.release();
+            public void onCompletion(MediaPlayer player) {
+                stop();
                 WakeLock.release();
+                AthanService.isPlaying = false;
+                Log.d("AthanService","stop1");
             }
         });
+        
         player.start();
         player.setLooping(false);
         AthanService.isPlaying = true;
         Log.d("AthanService", "start");
-    }
+    }    
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        player.stop();
-        player.release();
+        stop();
         WakeLock.release();
         AthanService.isPlaying = false;
-        Log.d("AthanService","stop");
+        Log.d("AthanService","stop2");
+    }
+    
+    private void stop()
+    {
+        if (player != null) {
+            try {
+                player.stop();
+                player.release();
+            } finally {
+                player = null;
+            }
+        }
+        stopService(new Intent(this, AthanService.class));
     }
 }
