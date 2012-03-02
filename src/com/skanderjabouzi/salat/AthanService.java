@@ -35,7 +35,7 @@ public class AthanService extends Service{
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer player) {
-                stop();
+                stopService();
                 WakeLock.release();
                 AthanService.isPlaying = false;
                 Log.d("AthanService","stop1");
@@ -57,6 +57,11 @@ public class AthanService extends Service{
         Log.d("AthanService","stop2");
     }
     
+    private void stopService()
+    {        
+        stopService(new Intent(this, AthanService.class));
+    }
+    
     private void stop()
     {
         if (player != null) {
@@ -67,6 +72,5 @@ public class AthanService extends Service{
                 player = null;
             }
         }
-        stopService(new Intent(this, AthanService.class));
     }
 }
