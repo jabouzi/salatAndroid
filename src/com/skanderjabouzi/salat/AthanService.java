@@ -25,18 +25,18 @@ public class AthanService extends Service{
         String salatName = salatApp.getNextSalat();
         if ("Fajr" == salatName)
         {
-			player = MediaPlayer.create(this, R.raw.fajr);
+			player = MediaPlayer.create(this, R.raw.bismillah);
 		}
 		else if ("Midnight" != salatName)
         {
-			player = MediaPlayer.create(this, R.raw.athan);
+			player = MediaPlayer.create(this, R.raw.bismillah);
 		}        
         
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer player) {
                 stopService();
-                WakeLock.release();
+                //WakeLock.release();
                 AthanService.isPlaying = false;
                 Log.d("AthanService","stop1");
             }
@@ -45,7 +45,7 @@ public class AthanService extends Service{
         player.start();
         player.setLooping(false);
         AthanService.isPlaying = true;
-        Log.d("AthanService", "start");
+        Log.d("AthanService", "start " + salatName);
     }    
 
     @Override

@@ -40,7 +40,7 @@ public class SalatService extends IntentService {
         int mSeconds = date.getSeconds();       
         this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
         this.notification = new Notification(R.drawable.makka_icon,"", 0);         
-        Log.d(TAG, "onHandleIntent #3 " + mHour + "  " + mMinute+ "  " + mSeconds);
+        
         String salatName = salatApp.getNextSalat();        
         salatApp.startAlarm(getApplicationContext());
         if ("Midnight" == salatName) {
@@ -52,6 +52,8 @@ public class SalatService extends IntentService {
         {
             sendTimelineNotification(salatName);
         }
+        
+        Log.d(TAG, "onHandleIntent #3 " + mHour + "  " + mMinute+ "  " + mSeconds + " : " + salatName);
     }
 
     private void sendTimelineNotification(String salatName) {        
@@ -68,9 +70,10 @@ public class SalatService extends IntentService {
         CharSequence notificationTitle = this.getText(R.string.msgNotificationTitle); 
         CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, salatName);
         this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent); 
-        this.notificationManager.notify(0, this.notification);        
+        this.notificationManager.notify(0, this.notification);     
         startService(new Intent(this, AthanService.class));
-        Log.d(TAG, "sendTimelineNotificationed");
+        
+        Log.d(TAG, "sendTimelineNotificationed -> " + salatName);
     }
     
     
