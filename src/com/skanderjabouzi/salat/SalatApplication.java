@@ -20,6 +20,13 @@ import android.app.AlarmManager;
 public class SalatApplication extends Application implements OnSharedPreferenceChangeListener {
     
     private static final String TAG = SalatApplication.class.getSimpleName();
+    public static final int FAJR = 0;
+    public static final int DUHR = 1;
+    public static final int ASR = 2;
+    public static final int MAGHRIB = 3;
+    public static final int ISHA = 4;
+    public static final int MIDNIGHT = 5;
+    
     private SharedPreferences prefs;
     //private boolean serviceRunning;
     private String salaTimes[] = new String[7];
@@ -27,11 +34,11 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     private int year;
     private int month;
     private int day;
-    private boolean isSalat;    
+    //private boolean isSalat;    
     protected Toast mToast; 
     public static int nextSalat;
     public String[] salatNames = new String[5];
-    public boolean FIRST_TIME = true;
+    
     
     @Override
       public void onCreate() {
@@ -110,37 +117,37 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         long timeLeft = 0;
         if (getFajr() > 0) 
         {
-            nextSalat = 0;
+            nextSalat = FAJR;
             isSalat = true;
             timeLeft = getFajr();
         }
         else if (getDuhr() > 0) 
         {
-            nextSalat = 1;
+            nextSalat = DUHR;
             isSalat = true;
             timeLeft = getDuhr();
         }
         else if (getAsr() > 0) 
         {
-            nextSalat = 2;
+            nextSalat = ASR;
             isSalat = true;
             timeLeft = getAsr();
         }
         else if (getMaghrib() > 0)
         {
-            nextSalat = 3;
+            nextSalat = MAGHRIB;
             isSalat = true;
             timeLeft = getMaghrib();
         }
         else if (getIsha() > 0)
         {
-            nextSalat = 4;
+            nextSalat = ISHA;
             isSalat = true;
             timeLeft = getIsha();
         }
         else if (getMidNight() > 0)
         {  
-            nextSalat = 5;
+            nextSalat = MIDNIGHT;
             isSalat = false;
             timeLeft = getMidNight();
         }        
@@ -154,10 +161,12 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     }
 */
 
+/*
     public boolean isSalat()
     {
         return isSalat;
     }
+*/
     
     public void startAlarm(Context context)
     {

@@ -23,12 +23,12 @@ public class AthanService extends Service{
         super.onCreate();
         salat = SalatApplication.nextSalat;
         SalatApplication salatApp = (SalatApplication) getApplication(); 
-        if (0 == SalatApplication.nextSalat)
+        if (SalatApplication.FAJR == SalatApplication.nextSalat)
         {
 			player = MediaPlayer.create(this, R.raw.fajr);
 			//player = MediaPlayer.create(this, R.raw.bismillah);
 		}
-		else if (5 > SalatApplication.nextSalat)
+		else if (SalatApplication.MIDNIGHT > SalatApplication.nextSalat)
         {
 			player = MediaPlayer.create(this, R.raw.athan);
 			//player = MediaPlayer.create(this, R.raw.bismillah);

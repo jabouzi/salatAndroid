@@ -42,7 +42,7 @@ public class SalatService extends IntentService {
 */
          
                
-        if (SalatApplication.nextSalat < 5) 
+        if (SalatApplication.nextSalat < SalatApplication.MIDNIGHT) 
         {
             this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
             this.notification = new Notification(R.drawable.makka_icon,"", 0);        
