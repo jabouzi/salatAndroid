@@ -29,7 +29,8 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     private int day;
     private boolean isSalat;    
     protected Toast mToast; 
-    private static String nextSalat;
+    public static int nextSalat;
+    public String[] salatNames = new String[5];
     public boolean FIRST_TIME = true;
     
     @Override
@@ -37,6 +38,11 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         super.onCreate();
         this.prefs = PreferenceManager.getDefaultSharedPreferences(this);
         this.prefs.registerOnSharedPreferenceChangeListener(this);
+        salatNames[0] = "Fajr";
+        salatNames[1] = "Duhr";
+        salatNames[2] = "Asr";
+        salatNames[3] = "Maghrib";
+        salatNames[4] = "Isha";        
         Log.i(TAG, "onCreated");
       }
 
@@ -70,13 +76,14 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         prayers.setHighLatsMethod(0);
         
         salaTimes = prayers.getDatePrayerTimes(year,month+1,day,45.5454,-73.6391,-5);
-
-
-        salaTimes[0] = "12:07";
-        salaTimes[2] = "12:08";
-        salaTimes[3] = "12:09";
-        salaTimes[5] = "13:10";
-        salaTimes[6] = "13:11";
+        
+/*
+        salaTimes[0] = "22:25";
+        salaTimes[2] = "22:26";
+        salaTimes[3] = "22:27";
+        salaTimes[5] = "22:28";
+        salaTimes[6] = "22:29";
+*/
 
 
         Log.i("app", "Sataltimes : "+java.util.Arrays.asList(salaTimes).toString());
@@ -103,47 +110,49 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         long timeLeft = 0;
         if (getFajr() > 0) 
         {
-            nextSalat = "Fajr";
+            nextSalat = 0;
             isSalat = true;
             timeLeft = getFajr();
         }
         else if (getDuhr() > 0) 
         {
-            nextSalat = "Duhr";
+            nextSalat = 1;
             isSalat = true;
             timeLeft = getDuhr();
         }
         else if (getAsr() > 0) 
         {
-            nextSalat = "Asr";
+            nextSalat = 2;
             isSalat = true;
             timeLeft = getAsr();
         }
         else if (getMaghrib() > 0)
         {
-            nextSalat = "Maghrib";
+            nextSalat = 3;
             isSalat = true;
             timeLeft = getMaghrib();
         }
         else if (getIsha() > 0)
         {
-            nextSalat = "Isha";
+            nextSalat = 4;
             isSalat = true;
             timeLeft = getIsha();
         }
         else if (getMidNight() > 0)
         {  
-            nextSalat = "Midnight";
+            nextSalat = 5;
             isSalat = false;
             timeLeft = getMidNight();
         }        
         return timeLeft;
     }
     
+/*
     public String getNextSalat()
     {
         return SalatApplication.nextSalat;
     }
+*/
 
     public boolean isSalat()
     {
@@ -162,7 +171,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);    
-        Log.i("app", "Next salat is " + getNextSalat()  + " in " + timeToSalat);
+        Log.i("app", "Next salat is " + nextSalat  + " in " + timeToSalat);
 
     }
   
@@ -175,7 +184,6 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         alarmManager.cancel(pendingIntent);
         Log.i("app", "Alarm Stopped");
     }
-    
     
     private long getFajr()
     {

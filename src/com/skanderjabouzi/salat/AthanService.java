@@ -12,7 +12,7 @@ public class AthanService extends Service{
 
     private MediaPlayer player;
     private String athan;
-    public static boolean isPlaying = false;
+    public int salat;
     
     @Override
     public IBinder onBind(Intent arg0) {
@@ -21,15 +21,17 @@ public class AthanService extends Service{
     @Override
     public void onCreate() {
         super.onCreate();
+        salat = SalatApplication.nextSalat;
         SalatApplication salatApp = (SalatApplication) getApplication(); 
-        String salatName = salatApp.getNextSalat();
-        if ("Fajr" == salatName)
+        if (0 == SalatApplication.nextSalat)
         {
-			player = MediaPlayer.create(this, R.raw.bismillah);
+			player = MediaPlayer.create(this, R.raw.fajr);
+			//player = MediaPlayer.create(this, R.raw.bismillah);
 		}
-		else if ("Midnight" != salatName)
+		else if (5 > SalatApplication.nextSalat)
         {
-			player = MediaPlayer.create(this, R.raw.bismillah);
+			player = MediaPlayer.create(this, R.raw.athan);
+			//player = MediaPlayer.create(this, R.raw.bismillah);
 		}        
         
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -37,15 +39,15 @@ public class AthanService extends Service{
             public void onCompletion(MediaPlayer player) {
                 stopService();
                 //WakeLock.release();
-                AthanService.isPlaying = false;
+                //AthanService.isPlaying = false;
                 Log.d("AthanService","stop1");
             }
         });
         
         player.start();
         player.setLooping(false);
-        AthanService.isPlaying = true;
-        Log.d("AthanService", "start " + salatName);
+        //AthanService.isPlaying = true;
+        Log.d("AthanService", "start " + salat);
     }    
 
     @Override
@@ -53,7 +55,7 @@ public class AthanService extends Service{
         super.onDestroy();
         stop();
         WakeLock.release();
-        AthanService.isPlaying = false;
+        //AthanService.isPlaying = false;
         Log.d("AthanService","stop2");
     }
     

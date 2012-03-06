@@ -32,28 +32,31 @@ public class SalatService extends IntentService {
         Intent intent;
         WakeLock.acquire(getApplicationContext());
         SalatApplication salatApp = (SalatApplication) getApplication();  
+/*
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(System.currentTimeMillis());
         Date date = cal.getTime();
         int mHour = date.getHours();
         int mMinute = date.getMinutes();
         int mSeconds = date.getSeconds();       
-        this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
-        this.notification = new Notification(R.drawable.makka_icon,"", 0);         
-        
-        String salatName = salatApp.getNextSalat();        
-        salatApp.startAlarm(getApplicationContext());
-        if ("Midnight" == salatName) {
+*/
+         
+               
+        if (SalatApplication.nextSalat < 5) 
+        {
+            this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
+            this.notification = new Notification(R.drawable.makka_icon,"", 0);        
+            String salatName = salatApp.salatNames[SalatApplication.nextSalat];       
+            sendTimelineNotification(salatName);
+            Log.d(TAG, "onHandleIntent #3 " + SalatApplication.nextSalat + " : " + salatName);
+        }
+        else {
             intent = new Intent(MIDNIGHT_INTENT); 
-            intent.putExtra(SALATTIME, salatName);     
+            intent.putExtra(SALATTIME, "Midnight");     
             sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
         }
-        else
-        {
-            sendTimelineNotification(salatName);
-        }
         
-        Log.d(TAG, "onHandleIntent #3 " + mHour + "  " + mMinute+ "  " + mSeconds + " : " + salatName);
+        salatApp.startAlarm(getApplicationContext());         
     }
 
     private void sendTimelineNotification(String salatName) {        
