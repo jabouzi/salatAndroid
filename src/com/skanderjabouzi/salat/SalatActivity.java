@@ -100,6 +100,10 @@ public class SalatActivity extends Activity {
         break;    
       case R.id.athan:
         stopService(new Intent(this, AthanService.class));
+        break;       
+      case R.id.location:
+        salatApp.stopAlarm(getApplicationContext());
+        salatApp.startAlarm(getApplicationContext());
         break; 
       }
       return true;

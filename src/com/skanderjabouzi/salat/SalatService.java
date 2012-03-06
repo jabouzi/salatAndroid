@@ -30,7 +30,7 @@ public class SalatService extends IntentService {
     @Override
     protected void onHandleIntent(Intent inIntent) { 
         Intent intent;
-        WakeLock.acquire(getApplicationContext());
+        WakeLock.acquire(getApplicationContext());        
         SalatApplication salatApp = (SalatApplication) getApplication();  
 /*
         Calendar cal = Calendar.getInstance();
@@ -54,6 +54,7 @@ public class SalatService extends IntentService {
             intent = new Intent(MIDNIGHT_INTENT); 
             intent.putExtra(SALATTIME, "Midnight");     
             sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
+            WakeLock.release();
         }
         
         salatApp.startAlarm(getApplicationContext());         

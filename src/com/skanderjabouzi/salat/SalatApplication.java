@@ -84,13 +84,13 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         
         salaTimes = prayers.getDatePrayerTimes(year,month+1,day,45.5454,-73.6391,-5);
         
-/*
-        salaTimes[0] = "22:25";
-        salaTimes[2] = "22:26";
-        salaTimes[3] = "22:27";
-        salaTimes[5] = "22:28";
-        salaTimes[6] = "22:29";
-*/
+
+        salaTimes[0] = "23:55";
+        salaTimes[2] = "23:56";
+        salaTimes[3] = "23:57";
+        salaTimes[5] = "23:58";
+        salaTimes[6] = "23:59";
+
 
 
         Log.i("app", "Sataltimes : "+java.util.Arrays.asList(salaTimes).toString());
@@ -118,37 +118,37 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         if (getFajr() > 0) 
         {
             nextSalat = FAJR;
-            isSalat = true;
+            //isSalat = true;
             timeLeft = getFajr();
         }
         else if (getDuhr() > 0) 
         {
             nextSalat = DUHR;
-            isSalat = true;
+            //isSalat = true;
             timeLeft = getDuhr();
         }
         else if (getAsr() > 0) 
         {
             nextSalat = ASR;
-            isSalat = true;
+            //isSalat = true;
             timeLeft = getAsr();
         }
         else if (getMaghrib() > 0)
         {
             nextSalat = MAGHRIB;
-            isSalat = true;
+            //isSalat = true;
             timeLeft = getMaghrib();
         }
         else if (getIsha() > 0)
         {
             nextSalat = ISHA;
-            isSalat = true;
+            //isSalat = true;
             timeLeft = getIsha();
         }
         else if (getMidNight() > 0)
         {  
             nextSalat = MIDNIGHT;
-            isSalat = false;
+            //isSalat = false;
             timeLeft = getMidNight();
         }        
         return timeLeft;

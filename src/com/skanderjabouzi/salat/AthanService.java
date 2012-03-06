@@ -25,14 +25,14 @@ public class AthanService extends Service{
         SalatApplication salatApp = (SalatApplication) getApplication(); 
         if (SalatApplication.FAJR == SalatApplication.nextSalat)
         {
-			player = MediaPlayer.create(this, R.raw.fajr);
-			//player = MediaPlayer.create(this, R.raw.bismillah);
-		}
-		else if (SalatApplication.MIDNIGHT > SalatApplication.nextSalat)
+            //player = MediaPlayer.create(this, R.raw.fajr);
+            player = MediaPlayer.create(this, R.raw.bismillah);
+        }
+        else if (SalatApplication.MIDNIGHT > SalatApplication.nextSalat)
         {
-			player = MediaPlayer.create(this, R.raw.athan);
-			//player = MediaPlayer.create(this, R.raw.bismillah);
-		}        
+            //player = MediaPlayer.create(this, R.raw.athan);
+            player = MediaPlayer.create(this, R.raw.bismillah);
+        }        
         
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
