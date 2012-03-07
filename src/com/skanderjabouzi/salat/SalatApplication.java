@@ -27,7 +27,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     public static final int ISHA = 4;
     public static final int MIDNIGHT = 5;
     
-    private SharedPreferences prefs;
+    private SharedPreferences salatOptions;
     //private boolean serviceRunning;
     private String salaTimes[] = new String[7];
     private String[] hijriDates = new String[4];    
@@ -43,8 +43,8 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     @Override
       public void onCreate() {
         super.onCreate();
-        this.prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        this.prefs.registerOnSharedPreferenceChangeListener(this);
+        this.salatOptions = PreferenceManager.getDefaultSharedPreferences(this);
+        this.salatOptions.registerOnSharedPreferenceChangeListener(this);
         salatNames[0] = "Fajr";
         salatNames[1] = "Duhr";
         salatNames[2] = "Asr";
