@@ -75,10 +75,10 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     
     public void setOptions()
     {
-        calcMethod = Integer.parseInt(salatOptions.getString("calculation", null));
-        asrMethod = Integer.parseInt(salatOptions.getString("asr", null));
-        hijriDays = Integer.parseInt(salatOptions.getString("hijri", null));
-        highLatitude = Integer.parseInt(salatOptions.getString("highLatitudes", null));
+        calcMethod = Integer.parseInt(salatOptions.getString("calculation", "0"));
+        asrMethod = Integer.parseInt(salatOptions.getString("asr", "0"));
+        hijriDays = Integer.parseInt(salatOptions.getString("hijri", "0"));
+        highLatitude = Integer.parseInt(salatOptions.getString("highLatitudes", "0"));
     }
     
     public void initCalendar()

@@ -43,7 +43,6 @@
 	</string-array>
 	
 	<string-array name="calculationValues">
-		<item>0</item>
 		<item>1</item>
 		<item>2</item>
 		<item>3</item>
@@ -51,6 +50,7 @@
 		<item>5</item>
 		<item>6</item>
 		<item>7</item>
+		<item>8</item>
 	</string-array>
 	
 	<string-array name="asr">
@@ -59,12 +59,12 @@
 	</string-array>
 	
 	<string-array name="asrValues">
-		<item>0</item>
-		<item>1</item>		
+		<item>1</item>
+		<item>2</item>		
 	</string-array>
 	
 	<string-array name="hijri">
-		<item>+ o day</item>
+		<item>+ 0 day</item>
 		<item>+ 1 day</item>
 		<item>+ 2 days</item>		
 		<item>- 1 day</item>
@@ -72,11 +72,11 @@
 	</string-array>
 	
 	<string-array name="hijriValues">
-		<item>0</item>
-		<item>1</item>	
+		<item>1</item>
 		<item>2</item>	
-		<item>-1</item>	
-		<item>-2</item>	
+		<item>3</item>	
+		<item>4</item>	
+		<item>5</item>	
 	</string-array>
 	
 	<string-array name="highLatitudes">
@@ -87,10 +87,10 @@
 	</string-array>
 	
 	<string-array name="highLatitudesValues">
-		<item>0</item>
-		<item>1</item>	
+		<item>1</item>
 		<item>2</item>	
-		<item>3</item>		
+		<item>3</item>	
+		<item>4</item>		
 	</string-array>
     
 </resources>
