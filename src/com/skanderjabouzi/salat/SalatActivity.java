@@ -36,7 +36,14 @@ public class SalatActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        setSalatTimes();
+        if (salatApp.checkOptions())
+        {
+            setSalatTimes();
+        }
+        else
+        {
+            startActivity(new Intent(this, OptionsActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+        }
         
         filter = new IntentFilter( "com.skanderjabouzi.salat.MIDNIGHT_INTENT" );
         super.registerReceiver(receiver, filter, SEND_SALATTIME_NOTIFICATIONS, null);

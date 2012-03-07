@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
         
-    <activity android:name=".CalculationActivity" android:label="@string/titleCalculation" />   
+    <activity android:name=".OptionsActivity" android:label="@string/titleCalculation" />   
     
     <service android:name=".SalatService" />     
     <service android:name=".AthanService" />     

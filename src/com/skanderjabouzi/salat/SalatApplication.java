@@ -19,6 +19,12 @@ import android.app.AlarmManager;
 
 public class SalatApplication extends Application implements OnSharedPreferenceChangeListener {
     
+/*
+    public static final String MIDNIGHT_INTENT = "com.skanderjabouzi.salat.MIDNIGHT_INTENT";
+    public static final String SALATTIME = "SALATTIME";
+    public static final String RECEIVE_SALATTIME_NOTIFICATIONS = "com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS";
+*/
+
     private static final String TAG = SalatApplication.class.getSimpleName();
     public static final int FAJR = 0;
     public static final int DUHR = 1;
@@ -30,7 +36,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     private SharedPreferences salatOptions;
     //private boolean serviceRunning;
     private String salaTimes[] = new String[7];
-    private String[] hijriDates = new String[4];    
+    private String[] hijriDates = new String[4];
     private int year;
     private int month;
     private int day;
@@ -50,7 +56,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         super.onCreate();
         salatOptions = PreferenceManager.getDefaultSharedPreferences(this);
         salatOptions.registerOnSharedPreferenceChangeListener(this);
-        setOptions();
+        
         salatNames[0] = "Fajr";
         salatNames[1] = "Duhr";
         salatNames[2] = "Asr";
@@ -66,20 +72,33 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
       }
 
     @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
-            String key) {
-        // TODO Auto-generated method stub
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        
+        //Intent intent;
         this.stopAlarm(this);
         this.startAlarm(this);
+        //intent = new Intent(MIDNIGHT_INTENT); 
+        //intent.putExtra(SALATTIME, "Midnight");     
+        //sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
+        //Log.i("app", "sendBroadcast");
     }
     
     public void setOptions()
     {
         this.calcMethod = Integer.parseInt(salatOptions.getString("calculation", "0"));
-        this.asrMethod = Integer.parseInt(salatOptions.getString("asr", "0"));
-        this.hijriDays = Integer.parseInt(salatOptions.getString("hijri", "0"));
-        this.highLatitude = Integer.parseInt(salatOptions.getString("highLatitudes", "0"));
+        this.asrMethod = Integer.parseInt(salatOptions.getString("asr", "1"));
+        this.hijriDays = Integer.parseInt(salatOptions.getString("hijri", "1"));
+        this.highLatitude = Integer.parseInt(salatOptions.getString("highLatitudes", "1"));
         Log.i("app", "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
+    }
+    
+    public boolean checkOptions()
+    {
+        if (Integer.parseInt(salatOptions.getString("calculation", "0")) == 0) 
+        {
+            return false;
+        }
+        return true;
     }
     
     public void initCalendar()
@@ -94,10 +113,10 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     {        
         setOptions();
         Salat prayers = new Salat();
-        prayers.setCalcMethod(2);
-        prayers.setAsrMethod(0);
+        prayers.setCalcMethod(this.calcMethod - 1);
+        prayers.setAsrMethod(this.asrMethod - 1);
         prayers.setDhuhrMinutes(0);
-        prayers.setHighLatsMethod(0);
+        prayers.setHighLatsMethod(this.highLatitude - 1);
         
         this.salaTimes = prayers.getDatePrayerTimes(year,month+1,day,45.5454,-73.6391,-5);
         
@@ -122,8 +141,14 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     
     public void setHijriDate()
     {
+        int[] hijriAdjustement = new int[5];
+        hijriAdjustement[0] = 0;
+        hijriAdjustement[1] = 1;
+        hijriAdjustement[2] = 2;
+        hijriAdjustement[3] = -1;
+        hijriAdjustement[4] = -2;
         Hijri hijri = new Hijri();        
-        this.hijriDates = hijri.isToString(year,month+1,day,0);        
+        this.hijriDates = hijri.isToString(year,month+1,day,hijriAdjustement[this.hijriDays - 1]);        
     }
     
     public String[] getHijriDates()
