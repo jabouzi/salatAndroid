@@ -34,6 +34,11 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     private int year;
     private int month;
     private int day;
+    private int calcMethod;
+    private int asrMethod;
+    private int hijriDays;
+    private int highLatitude;
+    
     //private boolean isSalat;    
     protected Toast mToast; 
     public static int nextSalat;
@@ -43,14 +48,16 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     @Override
       public void onCreate() {
         super.onCreate();
-        this.salatOptions = PreferenceManager.getDefaultSharedPreferences(this);
-        this.salatOptions.registerOnSharedPreferenceChangeListener(this);
+        salatOptions = PreferenceManager.getDefaultSharedPreferences(this);
+        salatOptions.registerOnSharedPreferenceChangeListener(this);
+        setOptions();
         salatNames[0] = "Fajr";
         salatNames[1] = "Duhr";
         salatNames[2] = "Asr";
         salatNames[3] = "Maghrib";
         salatNames[4] = "Isha";        
         Log.i(TAG, "onCreated");
+        Log.i(TAG, "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
       }
 
       @Override
@@ -64,6 +71,14 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
             String key) {
         // TODO Auto-generated method stub
         
+    }
+    
+    public void setOptions()
+    {
+        calcMethod = Integer.parseInt(salatOptions.getString("calculation", null));
+        asrMethod = Integer.parseInt(salatOptions.getString("asr", null));
+        hijriDays = Integer.parseInt(salatOptions.getString("hijri", null));
+        highLatitude = Integer.parseInt(salatOptions.getString("highLatitudes", null));
     }
     
     public void initCalendar()

@@ -95,7 +95,7 @@ public class SalatActivity extends Activity {
 
       switch (item.getItemId()) {
       case R.id.options:
-        startActivity(new Intent(this, CalculationActivity.class)
+        startActivity(new Intent(this, OptionsActivity.class) 
             .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
         break;    
       case R.id.athan:
