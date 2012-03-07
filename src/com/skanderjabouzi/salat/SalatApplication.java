@@ -56,55 +56,59 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         salatNames[2] = "Asr";
         salatNames[3] = "Maghrib";
         salatNames[4] = "Isha";        
-        Log.i(TAG, "onCreated");
-        Log.i(TAG, "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
+        Log.i("app", "onCreated");        
       }
 
       @Override
       public void onTerminate() {
         super.onTerminate();
-        Log.i(TAG, "onTerminated");
+        Log.i("app", "onTerminated");
       }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
             String key) {
         // TODO Auto-generated method stub
-        
+        this.stopAlarm(this);
+        this.startAlarm(this);
     }
     
     public void setOptions()
     {
-        calcMethod = Integer.parseInt(salatOptions.getString("calculation", "0"));
-        asrMethod = Integer.parseInt(salatOptions.getString("asr", "0"));
-        hijriDays = Integer.parseInt(salatOptions.getString("hijri", "0"));
-        highLatitude = Integer.parseInt(salatOptions.getString("highLatitudes", "0"));
+        this.calcMethod = Integer.parseInt(salatOptions.getString("calculation", "0"));
+        this.asrMethod = Integer.parseInt(salatOptions.getString("asr", "0"));
+        this.hijriDays = Integer.parseInt(salatOptions.getString("hijri", "0"));
+        this.highLatitude = Integer.parseInt(salatOptions.getString("highLatitudes", "0"));
+        Log.i("app", "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
     }
     
     public void initCalendar()
     {        
         Calendar cal = Calendar.getInstance();
-        year = cal.get(java.util.Calendar.YEAR);
-        month = cal.get(java.util.Calendar.MONTH);
-        day = cal.get(java.util.Calendar.DAY_OF_MONTH); 
+        this.year = cal.get(java.util.Calendar.YEAR);
+        this.month = cal.get(java.util.Calendar.MONTH);
+        this.day = cal.get(java.util.Calendar.DAY_OF_MONTH); 
     }
     
     public void setSalatTimes()
     {        
+        setOptions();
         Salat prayers = new Salat();
         prayers.setCalcMethod(2);
         prayers.setAsrMethod(0);
         prayers.setDhuhrMinutes(0);
         prayers.setHighLatsMethod(0);
         
-        salaTimes = prayers.getDatePrayerTimes(year,month+1,day,45.5454,-73.6391,-5);
+        this.salaTimes = prayers.getDatePrayerTimes(year,month+1,day,45.5454,-73.6391,-5);
         
 
-        salaTimes[0] = "23:55";
-        salaTimes[2] = "23:56";
-        salaTimes[3] = "23:57";
-        salaTimes[5] = "23:58";
-        salaTimes[6] = "23:59";
+/*
+        this.salaTimes[0] = "23:55";
+        this.salaTimes[2] = "23:56";
+        this.salaTimes[3] = "23:57";
+        this.salaTimes[5] = "23:58";
+        this.salaTimes[6] = "23:59";
+*/
 
 
 
@@ -113,18 +117,18 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     
     public String[] getSalatTimes()
     {
-        return salaTimes;
+        return this.salaTimes;
     }    
     
     public void setHijriDate()
     {
         Hijri hijri = new Hijri();        
-        hijriDates = hijri.isToString(year,month+1,day,0);        
+        this.hijriDates = hijri.isToString(year,month+1,day,0);        
     }
     
     public String[] getHijriDates()
     {
-        return hijriDates;
+        return this.hijriDates;
     }
     
     public long getTimeLeft()
@@ -132,37 +136,37 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         long timeLeft = 0;
         if (getFajr() > 0) 
         {
-            nextSalat = FAJR;
+            this.nextSalat = FAJR;
             //isSalat = true;
             timeLeft = getFajr();
         }
         else if (getDuhr() > 0) 
         {
-            nextSalat = DUHR;
+            this.nextSalat = DUHR;
             //isSalat = true;
             timeLeft = getDuhr();
         }
         else if (getAsr() > 0) 
         {
-            nextSalat = ASR;
+            this.nextSalat = ASR;
             //isSalat = true;
             timeLeft = getAsr();
         }
         else if (getMaghrib() > 0)
         {
-            nextSalat = MAGHRIB;
+            this.nextSalat = MAGHRIB;
             //isSalat = true;
             timeLeft = getMaghrib();
         }
         else if (getIsha() > 0)
         {
-            nextSalat = ISHA;
+            this.nextSalat = ISHA;
             //isSalat = true;
             timeLeft = getIsha();
         }
         else if (getMidNight() > 0)
         {  
-            nextSalat = MIDNIGHT;
+            this.nextSalat = MIDNIGHT;
             //isSalat = false;
             timeLeft = getMidNight();
         }        
@@ -211,7 +215,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     
     private long getFajr()
     {
-        String[] times = salaTimes[0].split(":");
+        String[] times = this.salaTimes[0].split(":");
         Calendar time = Calendar.getInstance();
         time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
         long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();
@@ -221,7 +225,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     
     private long getDuhr()
     {
-        String[] times = salaTimes[2].split(":");
+        String[] times = this.salaTimes[2].split(":");
         Calendar time = Calendar.getInstance();
         time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
         long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();
@@ -231,7 +235,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     
     private long getAsr()
     {
-        String[] times = salaTimes[3].split(":");
+        String[] times = this.salaTimes[3].split(":");
         Calendar time = Calendar.getInstance();
         time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
         long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();
@@ -241,7 +245,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     
     private long getMaghrib()
     {
-        String[] times = salaTimes[5].split(":");
+        String[] times = this.salaTimes[5].split(":");
         Calendar time = Calendar.getInstance();
         time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
         long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();
@@ -251,7 +255,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     
     private long getIsha()
     {
-        String[] times = salaTimes[6].split(":");
+        String[] times = this.salaTimes[6].split(":");
         Calendar time = Calendar.getInstance();
         time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
         long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();
