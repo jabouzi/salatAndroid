@@ -105,6 +105,14 @@ public class SalatActivity extends Activity {
         startActivity(new Intent(this, OptionsActivity.class) 
             .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
         break;    
+      case R.id.location:
+        startActivity(new Intent(this, SalatLocation.class) 
+            .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+        break;    
+      case R.id.qibla:
+        startActivity(new Intent(this, SalatQibla.class) 
+            .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+        break;    
       case R.id.athan:
         stopService(new Intent(this, AthanService.class));
         break;      
