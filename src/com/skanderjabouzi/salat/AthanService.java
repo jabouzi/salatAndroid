@@ -21,17 +21,18 @@ public class AthanService extends Service{
     @Override
     public void onCreate() {
         super.onCreate();
+        SalatApplication.athanPlaying = true;
         salat = SalatApplication.nextSalat;
         SalatApplication salatApp = (SalatApplication) getApplication(); 
         if (SalatApplication.FAJR == SalatApplication.nextSalat)
         {
-            //player = MediaPlayer.create(this, R.raw.fajr);
-            player = MediaPlayer.create(this, R.raw.bismillah);
+            player = MediaPlayer.create(this, R.raw.fajr_athan);
+            //player = MediaPlayer.create(this, R.raw.bismillah);
         }
         else if (SalatApplication.MIDNIGHT > SalatApplication.nextSalat)
         {
-            //player = MediaPlayer.create(this, R.raw.athan);
-            player = MediaPlayer.create(this, R.raw.bismillah);
+            player = MediaPlayer.create(this, R.raw.reg_athan);
+            //player = MediaPlayer.create(this, R.raw.bismillah);
         }        
         
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -55,7 +56,7 @@ public class AthanService extends Service{
         super.onDestroy();
         stop();
         WakeLock.release();
-        //AthanService.isPlaying = false;
+        SalatApplication.athanPlaying = false;
         Log.d("AthanService","stop2");
     }
     

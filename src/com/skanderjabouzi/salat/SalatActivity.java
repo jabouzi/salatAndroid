@@ -107,13 +107,15 @@ public class SalatActivity extends Activity {
         break;    
       case R.id.athan:
         stopService(new Intent(this, AthanService.class));
-        break;       
-      case R.id.location:
-        salatApp.stopAlarm(getApplicationContext());
-        salatApp.startAlarm(getApplicationContext());
-        break; 
+        break;      
       }
       return true;
+    }
+    
+    @Override
+    public boolean onMenuOpened(int featureId, Menu menu) {
+        menu.findItem(R.id.athan).setVisible(SalatApplication.athanPlaying);
+        return true;
     }
     
     public void printFajrTime()

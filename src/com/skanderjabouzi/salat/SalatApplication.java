@@ -32,11 +32,13 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     public static final int MAGHRIB = 3;
     public static final int ISHA = 4;
     public static final int MIDNIGHT = 5;
+    public String[] salatNames = new String[5];
     
     private SharedPreferences salatOptions;
     //private boolean serviceRunning;
     private String salaTimes[] = new String[7];
     private String[] hijriDates = new String[4];
+    
     private int year;
     private int month;
     private int day;
@@ -48,8 +50,8 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     //private boolean isSalat;    
     protected Toast mToast; 
     public static int nextSalat;
-    public String[] salatNames = new String[5];
-    
+    public static boolean athanPlaying = false;
+        
     
     @Override
       public void onCreate() {
@@ -119,18 +121,15 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         prayers.setHighLatsMethod(this.highLatitude - 1);
         
         this.salaTimes = prayers.getDatePrayerTimes(year,month+1,day,45.5454,-73.6391,-5);
-        
 
 /*
-        this.salaTimes[0] = "23:55";
-        this.salaTimes[2] = "23:56";
-        this.salaTimes[3] = "23:57";
-        this.salaTimes[5] = "23:58";
-        this.salaTimes[6] = "23:59";
+        this.salaTimes[0] = "22:34";
+        this.salaTimes[2] = "22:35";
+        this.salaTimes[3] = "22:36";
+        this.salaTimes[5] = "22:37";
+        this.salaTimes[6] = "22:38";
 */
-
-
-
+        
         Log.i("app", "Sataltimes : "+java.util.Arrays.asList(salaTimes).toString());
     }
     
