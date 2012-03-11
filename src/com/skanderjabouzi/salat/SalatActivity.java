@@ -21,7 +21,7 @@ public class SalatActivity extends Activity {
     String sataTimes[] = new String[7];
     String[] hijriDates = new String[4];    
     SalatApplication salatApp; 
-    SalatReceiver receiver;
+    MidnightReceiver receiver;
     IntentFilter filter;
     
     @Override
@@ -29,7 +29,7 @@ public class SalatActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         salatApp = (SalatApplication) getApplication();
-        receiver = new SalatReceiver();   
+        receiver = new MidnightReceiver();   
         Log.d("SalatActivity", "Created"); 
     }
     
@@ -169,7 +169,7 @@ public class SalatActivity extends Activity {
     }    
     
     
-    class SalatReceiver extends BroadcastReceiver {
+    class MidnightReceiver extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			setSalatTimes();
