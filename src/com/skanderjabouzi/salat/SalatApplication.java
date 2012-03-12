@@ -116,13 +116,15 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         
         this.salaTimes = prayers.getDatePrayerTimes(year,month+1,day,45.5454,-73.6391,-4 );
 
+
 /*
-        this.salaTimes[0] = "07:35";
-        this.salaTimes[2] = "07:36";
-        this.salaTimes[3] = "07:37";
-        this.salaTimes[5] = "07:45";
-        this.salaTimes[6] = "07:46";
+        this.salaTimes[0] = "00:01";
+        this.salaTimes[2] = "00:02";
+        this.salaTimes[3] = "00:03";
+        this.salaTimes[5] = "23:58";
+        this.salaTimes[6] = "23:59";
 */
+
                 
         Log.i("app", "Sataltimes : "+java.util.Arrays.asList(salaTimes).toString());
     }

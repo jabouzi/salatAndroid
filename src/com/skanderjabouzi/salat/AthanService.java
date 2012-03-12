@@ -54,10 +54,10 @@ public class AthanService extends Service{
     public void onCreate() {
         super.onCreate();
         
-        salatApp = (SalatApplication) getApplication();
+        this.salatApp = (SalatApplication) getApplication();
         mTelephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
-        startAthan();
+        this.startAthan();
         WakeLock.acquire(this);
         Log.d(TAG, "start " + salat);
     }    
@@ -119,6 +119,7 @@ public class AthanService extends Service{
             intent = new Intent(MIDNIGHT_INTENT); 
             intent.putExtra(SALATTIME, "Midnight");     
             sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
+            stopService();
         }
         
         salatApp.startAlarm(getApplicationContext());         
