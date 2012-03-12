@@ -114,18 +114,16 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         prayers.setDhuhrMinutes(0);
         prayers.setHighLatsMethod(this.highLatitude - 1);
         
-        this.salaTimes = prayers.getDatePrayerTimes(year,month+1,day,45.5454,-73.6391,-5);
+        this.salaTimes = prayers.getDatePrayerTimes(year,month+1,day,45.5454,-73.6391,-4 );
 
-
-
+/*
         this.salaTimes[0] = "07:35";
         this.salaTimes[2] = "07:36";
         this.salaTimes[3] = "07:37";
-        this.salaTimes[5] = "07:38";
-        this.salaTimes[6] = "07:39";
-
-
-        
+        this.salaTimes[5] = "07:45";
+        this.salaTimes[6] = "07:46";
+*/
+                
         Log.i("app", "Sataltimes : "+java.util.Arrays.asList(salaTimes).toString());
     }
     

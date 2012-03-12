@@ -58,7 +58,6 @@ public class AthanService extends Service{
         mTelephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
         startAthan();
-        play();
         WakeLock.acquire(this);
         Log.d(TAG, "start " + salat);
     }    
@@ -79,13 +78,13 @@ public class AthanService extends Service{
         //SalatApplication salatApp = (SalatApplication) getApplication(); 
         if (SalatApplication.FAJR == SalatApplication.nextSalat)
         {
-            //player = MediaPlayer.create(this, R.raw.fajr_athan);
-            player = MediaPlayer.create(this, R.raw.bismillah);
+            player = MediaPlayer.create(this, R.raw.fajr_athan);
+            //player = MediaPlayer.create(this, R.raw.bismillah);
         }
         else if (SalatApplication.MIDNIGHT > SalatApplication.nextSalat)
         {
-            //player = MediaPlayer.create(this, R.raw.reg_athan);
-            player = MediaPlayer.create(this, R.raw.bismillah);
+            player = MediaPlayer.create(this, R.raw.reg_athan);
+            //player = MediaPlayer.create(this, R.raw.bismillah);
         }        
         
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -113,6 +112,7 @@ public class AthanService extends Service{
             this.notification = new Notification(R.drawable.makka_icon,"", 0);        
             String salatName = salatApp.salatNames[SalatApplication.nextSalat];       
             sendTimelineNotification(salatName);
+            play();
             Log.d(TAG, "onHandleIntent #3 " + SalatApplication.nextSalat + " : " + salatName);
         }
         else {
