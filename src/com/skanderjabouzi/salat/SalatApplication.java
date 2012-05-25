@@ -26,6 +26,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     public static final int MAGHRIB = 3;
     public static final int ISHA = 4;
     public static final int MIDNIGHT = 5;
+
     public String[] salatNames = new String[5];
     
     private SharedPreferences salatOptions;
@@ -40,11 +41,15 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     private int asrMethod;
     private int hijriDays;
     private int highLatitude;
+    private int latitude;
+    private int longitude;
+    private int timezone;
     
     //private boolean isSalat;    
     protected Toast mToast; 
     public static int nextSalat;
     public static boolean athanPlaying = false;
+    public static int prefType;
         
     
     @Override
@@ -85,6 +90,9 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         this.asrMethod = Integer.parseInt(salatOptions.getString("asr", "1"));
         this.hijriDays = Integer.parseInt(salatOptions.getString("hijri", "1"));
         this.highLatitude = Integer.parseInt(salatOptions.getString("highLatitudes", "1"));
+        this.longitude = Integer.parseInt(salatOptions.getString("longitude", "0"));
+        this.latitude = Integer.parseInt(salatOptions.getString("latitude", "0"));
+        this.timezone = Integer.parseInt(salatOptions.getString("timezone", "0"));
         Log.i("app", "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
     }
     
@@ -92,6 +100,22 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     {
         if (Integer.parseInt(salatOptions.getString("calculation", "0")) == 0) 
         {
+            this.prefType = 0;
+            return false;
+        }
+        else if (salatOptions.getString("longitude", null) == null)
+        {            
+            this.prefType = 1;
+            return false;
+        }
+        else if (salatOptions.getString("latitude", null) == null)
+        {
+            this.prefType = 1;
+            return false;
+        }
+        else if (salatOptions.getString("timezone", null) == null)
+        {
+            this.prefType = 1;
             return false;
         }
         return true;
@@ -114,7 +138,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         prayers.setDhuhrMinutes(0);
         prayers.setHighLatsMethod(this.highLatitude - 1);
         
-        this.salaTimes = prayers.getDatePrayerTimes(year,month+1,day,45.5454,-73.6391,-4 );
+        this.salaTimes = prayers.getDatePrayerTimes(year, month+1, day, this.latitude, this.longitude, this.timezone);
 
 
 /*

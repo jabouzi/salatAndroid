@@ -42,7 +42,14 @@ public class SalatActivity extends Activity {
         }
         else
         {
-            startActivity(new Intent(this, OptionsActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+            if (salatApp.prefType == 0)
+            {
+                startActivity(new Intent(this, OptionsActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+            }
+            else if(salatApp.prefType == 1)
+            {
+                startActivity(new Intent(this, LocationActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+            }
         }
         
         filter = new IntentFilter( "com.skanderjabouzi.salat.MIDNIGHT_INTENT" );
@@ -106,7 +113,7 @@ public class SalatActivity extends Activity {
             .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
         break;    
       case R.id.location:
-        startActivity(new Intent(this, SalatLocation.class) 
+        startActivity(new Intent(this, LocationActivity.class) 
             .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
         break;    
       case R.id.qibla:

@@ -28,71 +28,81 @@
     <string name="titleAsr">Asr Options</string>
     <string name="summaryAsr">Asr Calculation Options</string>
     <string name="titleHighLatitudes">High Latitudes</string>
-    <string name="summaryHighLatitudes">High Latitudes Calculation options</string>	
+    <string name="summaryHighLatitudes">High Latitudes Calculation options</string>    
     <string name="msgSetupPrefs">Please Setup Salat Calculation options</string>
     <string name="msgNotificationTitle">It\'s Salat Time</string>
-    <string name="msgNotificationMessage">It\'s time time for salat %s </string>
-	
-	<string-array name="calculation">
-		<item>Ithna Ashari</item>
-		<item>University of Islamic Sciences, Karachi</item>
-		<item>Islamic Society of North America (ISNA)</item>
-		<item>Muslim World League (MWL)</item>
-		<item>Umm al-Qura, Makkah</item>
-		<item>Egyptian General Authority of Survey</item>
-		<item>Institute of Geophysics, University of Tehran</item>
-		<item>Custom Setting</item>
-	</string-array>
-	
-	<string-array name="calculationValues">
-		<item>1</item>
-		<item>2</item>
-		<item>3</item>
-		<item>4</item>
-		<item>5</item>
-		<item>6</item>
-		<item>7</item>
-		<item>8</item>
-	</string-array>
-	
-	<string-array name="asr">
-		<item>Shafii</item>
-		<item>Hanafi</item>		
-	</string-array>
-	
-	<string-array name="asrValues">
-		<item>1</item>
-		<item>2</item>		
-	</string-array>
-	
-	<string-array name="hijri">
-		<item>+ 0 day</item>
-		<item>+ 1 day</item>
-		<item>+ 2 days</item>		
-		<item>- 1 day</item>
-		<item>- 2 days</item>
-	</string-array>
-	
-	<string-array name="hijriValues">
-		<item>1</item>
-		<item>2</item>	
-		<item>3</item>	
-		<item>4</item>	
-		<item>5</item>	
-	</string-array>
-	
-	<string-array name="highLatitudes">
-		<item>No adjustment</item>	
-	    <item>middle of night</item>	
-	    <item>1/7th of night</item>	
-	    <item>angle/60th of night</item>
-	</string-array>
-	
-	<string-array name="highLatitudesValues">
-		<item>1</item>
-		<item>2</item>	
-		<item>3</item>	
-		<item>4</item>		
-	</string-array>
+    <string name="msgNotificationMessage">It\'s time time for salat %s </string>    
+    <string name="titleLongitude">Longitude</string>
+    <string name="summaryLongitude">Location Longitude</string>
+    <string name="titleLatitude">Latitude</string>
+    <string name="summaryLatitude">Location Latitude</string>
+    <string name="titleTimezone">Timezone</string>
+    <string name="summaryTimezone">Location Timezone</string>
+    <string name="titleCity">City</string>
+    <string name="summaryCity">City Name</string>
+    <string name="titleCountry">Country</string>
+    <string name="summaryCountry">Country Name</string>    
+    
+    <string-array name="calculation">
+        <item>Ithna Ashari</item>
+        <item>University of Islamic Sciences, Karachi</item>
+        <item>Islamic Society of North America (ISNA)</item>
+        <item>Muslim World League (MWL)</item>
+        <item>Umm al-Qura, Makkah</item>
+        <item>Egyptian General Authority of Survey</item>
+        <item>Institute of Geophysics, University of Tehran</item>
+        <item>Custom Setting</item>
+    </string-array>
+    
+    <string-array name="calculationValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    
+    <string-array name="asr">
+        <item>Shafii</item>
+        <item>Hanafi</item>        
+    </string-array>
+    
+    <string-array name="asrValues">
+        <item>1</item>
+        <item>2</item>        
+    </string-array>
+    
+    <string-array name="hijri">
+        <item>+ 0 day</item>
+        <item>+ 1 day</item>
+        <item>+ 2 days</item>        
+        <item>- 1 day</item>
+        <item>- 2 days</item>
+    </string-array>
+    
+    <string-array name="hijriValues">
+        <item>1</item>
+        <item>2</item>    
+        <item>3</item>    
+        <item>4</item>    
+        <item>5</item>    
+    </string-array>
+    
+    <string-array name="highLatitudes">
+        <item>No adjustment</item>    
+        <item>middle of night</item>    
+        <item>1/7th of night</item>    
+        <item>angle/60th of night</item>
+    </string-array>
+    
+    <string-array name="highLatitudesValues">
+        <item>1</item>
+        <item>2</item>    
+        <item>3</item>    
+        <item>4</item>        
+    </string-array>
     
 </resources>
