@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-  <EditTextPreference android:title="@string/titleApiMap" android:summary="@string/summaryApiMap" android:key="apiMap"></EditTextPreference>
-  <ListPreference android:entryValues="@array/calculationValues" android:summary="@string/summaryCalculation" android:title="@string/titleCalculation" android:key="calculation" android:entries="@array/calculation"/>
-  <ListPreference android:entries="@array/asr" android:entryValues="@array/asrValues" android:key="asr" android:title="@string/titleAsr" android:summary="@string/summaryAsr"></ListPreference>
-  <ListPreference android:entries="@array/hijri" android:summary="@string/summaryHijri" android:title="@string/titleHijri" android:key="hijri" android:entryValues="@array/hijriValues"></ListPreference>
-  <ListPreference android:entries="@array/highLatitudes" android:summary="@string/summaryHighLatitudes" android:title="@string/titleHighLatitudes" android:key="highLatitudes" android:entryValues="@array/highLatitudesValues"></ListPreference>
+  <EditTextPreference android:title="@string/titleApiMap" 
+                      android:summary="@string/summaryApiMap" 
+                      android:key="apiMap"
+                      android:defaultValue="Nothing"></EditTextPreference>
+  <ListPreference android:entryValues="@array/calculationValues" 
+                  android:summary="@string/summaryCalculation" 
+                  android:title="@string/titleCalculation" 
+                  android:key="calculation" 
+                  android:entries="@array/calculation"
+                  android:defaultValue="1"></ListPreference>
+  <ListPreference android:entries="@array/asr" 
+                  android:entryValues="@array/asrValues" 
+                  android:key="asr" android:title="@string/titleAsr" 
+                  android:summary="@string/summaryAsr"
+                  android:defaultValue="1"></ListPreference>
+  <ListPreference android:entries="@array/hijri" 
+                  android:summary="@string/summaryHijri" 
+                  android:title="@string/titleHijri" 
+                  android:key="hijri" 
+                  android:entryValues="@array/hijriValues"
+                  android:defaultValue="1"></ListPreference>
+  <ListPreference android:entries="@array/highLatitudes" 
+                  android:summary="@string/summaryHighLatitudes" 
+                  android:title="@string/titleHighLatitudes" 
+                  android:key="highLatitudes" 
+                  android:entryValues="@array/highLatitudesValues"
+                  android:defaultValue="1"></ListPreference>
 </PreferenceScreen>

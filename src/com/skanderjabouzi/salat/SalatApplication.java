@@ -41,8 +41,8 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     private int asrMethod;
     private int hijriDays;
     private int highLatitude;
-    private int latitude;
-    private int longitude;
+    private float latitude;
+    private float longitude;
     private int timezone;
     
     //private boolean isSalat;    
@@ -90,8 +90,8 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         this.asrMethod = Integer.parseInt(salatOptions.getString("asr", "1"));
         this.hijriDays = Integer.parseInt(salatOptions.getString("hijri", "1"));
         this.highLatitude = Integer.parseInt(salatOptions.getString("highLatitudes", "1"));
-        this.longitude = Integer.parseInt(salatOptions.getString("longitude", "0"));
-        this.latitude = Integer.parseInt(salatOptions.getString("latitude", "0"));
+        this.longitude = Float.valueOf(salatOptions.getString("longitude", "0"));
+        this.latitude = Float.valueOf(salatOptions.getString("latitude", "0"));
         this.timezone = Integer.parseInt(salatOptions.getString("timezone", "0"));
         Log.i("app", "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
     }
