@@ -62,13 +62,13 @@ public class LocationActivity extends PreferenceActivity implements LocationList
                 //Toast.makeText( getApplicationContext(),Double.toString(location.getLatitude()),Toast.LENGTH_SHORT).show();  
                 if (location == null) 
                 {   
-                    alert.setButton("OK", new DialogInterface.OnClickListener() 
-                    {
-                        public void onClick(DialogInterface dialog, int which) 
-                        {
+                    //alert.setButton("OK", new DialogInterface.OnClickListener() 
+                    //{
+                        //public void onClick(DialogInterface dialog, int which) 
+                        //{
                             //alert.close();                 
-                        }                 
-                    });
+                        //}                 
+                    //s});
                     alert.setTitle("Error");
                     alert.setMessage("Please connect to the internet or set options manually.");
                     alert.show();
