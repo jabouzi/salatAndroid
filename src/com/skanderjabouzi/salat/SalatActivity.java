@@ -95,6 +95,7 @@ public class SalatActivity extends Activity {
         printIshaTime();
         printShouroukTime();
         printHijriDate();
+        printLocation();
         Log.d("SalatActivity", "setSalatTimes");
     }
     
@@ -175,15 +176,21 @@ public class SalatActivity extends Activity {
         date1Text.setText(hijriDates[0] + " " + hijriDates[1] + " " + hijriDates[3]); 
     }    
     
+    public void printLocation()
+    {
+        TextView locationText =    (TextView)  findViewById(R.id.locationText);
+        locationText.setText(salatApp.getCity() + ", " + salatApp.getCountry()); 
+    }    
+    
     
     class MidnightReceiver extends BroadcastReceiver {
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			setSalatTimes();
-			String salatName = intent.getStringExtra("SALATTIME");
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            setSalatTimes();
+            String salatName = intent.getStringExtra("SALATTIME");
             Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();
-			//String msg_for_me = intent.getStringExtra("NEW_STATUS_EXTRA_COUNT");
-			Log.d("SalatReceiver", salatName);
-		}
-	}
+            //String msg_for_me = intent.getStringExtra("NEW_STATUS_EXTRA_COUNT");
+            Log.d("SalatReceiver", salatName);
+        }
+    }
 }

@@ -43,7 +43,9 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     private int highLatitude;
     private float latitude;
     private float longitude;
-    private int timezone;
+    private int timezone;    
+    private String city;
+    private String country;
     
     //private boolean isSalat;    
     protected Toast mToast; 
@@ -93,6 +95,8 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         this.longitude = Float.valueOf(salatOptions.getString("longitude", "0"));
         this.latitude = Float.valueOf(salatOptions.getString("latitude", "0"));
         this.timezone = Integer.parseInt(salatOptions.getString("timezone", "0"));
+        this.city = salatOptions.getString("city", " ");
+        this.country = salatOptions.getString("country", " ");
         Log.i("app", "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
     }
     
@@ -242,6 +246,16 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
         Log.i("app", "Alarm Stopped");
+    }
+    
+    public String getCity()
+    {
+        return this.city;
+    }
+    
+    public String getCountry()
+    {
+        return this.country;
     }
     
     private long getFajr()

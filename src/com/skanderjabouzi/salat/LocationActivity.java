@@ -62,44 +62,41 @@ public class LocationActivity extends PreferenceActivity implements LocationList
                 //Toast.makeText( getApplicationContext(),Double.toString(location.getLatitude()),Toast.LENGTH_SHORT).show();  
                 if (location == null) 
                 {   
-                    //alert.setButton("OK", new DialogInterface.OnClickListener() 
-                    //{
-                        //public void onClick(DialogInterface dialog, int which) 
-                        //{
-                            //alert.close();                 
-                        //}                 
-                    //s});
+                    alert.setPositiveButton("OK", new DialogInterface.OnClickListener() 
+                    {
+                        public void onClick(DialogInterface dialog, int which) 
+                        {
+                            dialog.cancel();                 
+                        }                 
+                    });
                     alert.setTitle("Error");
-                    alert.setMessage("Please connect to the internet or set options manually.");
+                    alert.setMessage("Please connect to the internet or set options manually or try again.");
                     alert.show();
                 }
                 else
-                {
-                    editor.putString("latitude", "37.55");                    
-                    editor.putString("longitude", "55.55");
-                    editor.putString("timezone", "-4");
-                    editor.putString("city", "Montreal");
-                    editor.putString("country", "Canada");
-                    prefLatitude.setText( "37.55");
-                    prefLongitude.setText( "55.55");
-                    prefTimezone.setText( "-4");
-                    prefCity.setText( "Montreal");
-                    prefCountry.setText( "Canada");
-                    editor.commit();
+                {                 
                     
-                    salatOptions.getString("latitude", null);
-                    salatOptions.getString("timezone", null);
-                    //Toast.makeText( getApplicationContext(),salatOptions.getString("longitude", "111"),Toast.LENGTH_SHORT).show(); 
-                    //latitude.setText(Double.toString(location.getLatitude()),TextView.BufferType.EDITABLE);
-                    //longitude.setText(Double.toString(location.getLongitude()),TextView.BufferType.EDITABLE);
-                    TimeZone tz = TimeZone.getDefault();
+                    editor.putString("latitude", Double.toString(location.getLatitude()) );                    
+                    editor.putString("longitude", Double.toString(location.getLongitude()) );                    
+                    prefLatitude.setText( Double.toString(location.getLatitude()) );
+                    prefLongitude.setText( Double.toString(location.getLongitude()) );
+                    
+                    TimeZone tz = TimeZone.getDefault();                    
+                    editor.putString("timezone", Integer.toString((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000) );
+                    prefTimezone.setText( Integer.toString((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000) );                    
+                                                      
                     //timezone.setText(Integer.toString(tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000));
                     Geocoder gcd = new Geocoder(getApplicationContext());
                     try {
                         List<Address> addresses = gcd.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                        editor.putString("city", addresses.get(0).getLocality() );
+                        editor.putString("country", addresses.get(0).getCountryName() );
+                        prefCity.setText( addresses.get(0).getLocality() );
+                        prefCountry.setText( addresses.get(0).getCountryName() );
                         //city.setText(addresses.get(0).getLocality());
                         //country.setText(addresses.get(0).getCountryName());
-                    } catch (IOException e) {   }                    
+                    } catch (IOException e) {   } 
+                    editor.commit();                   
                     cleanLocation();
                 }                       
             }
