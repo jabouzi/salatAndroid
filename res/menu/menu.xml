@@ -3,5 +3,6 @@
     <item android:id="@+id/location" android:title="Location" android:icon="@drawable/world"></item>
     <item android:id="@+id/qibla" android:title="Qibla" android:icon="@drawable/qibla"></item>
     <item android:id="@+id/hijri" android:title="Hijri Conversion" android:icon="@drawable/hijri"></item>
+    <item android:id="@+id/athan" android:title="Adhan options" android:icon="@android:drawable/ic_media_pause"></item>
     <item android:id="@+id/athan" android:title="Stop Athan" android:icon="@android:drawable/ic_media_pause"></item>
 </menu>
