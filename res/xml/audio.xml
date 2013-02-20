@@ -4,15 +4,15 @@
         android:title="Play Adhan"
         android:defaultValue="true"
         android:summary="Play Adhan audio on each Salat time"
-        android:key="playPref"><CheckBoxPreference>
+        android:key="playPref"></CheckBoxPreference>
     <CheckBoxPreference
         android:title="Vibrate"
         android:defaultValue="true"
         android:summary="Make the phone vibrate on each Salat time"
-        android:key="vibratePref"><CheckBoxPreference>
+        android:key="vibratePref"></CheckBoxPreference>
     <CheckBoxPreference
         android:title="Turn led on"
         android:defaultValue="true"
         android:summary="Turn on the led notification on each Salat time"
-        android:key="ledPref"><CheckBoxPreference>
+        android:key="ledPref"></CheckBoxPreference>
 </PreferenceScreen>
