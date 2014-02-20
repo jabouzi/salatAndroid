@@ -83,10 +83,10 @@ public class SalatActivity extends Activity {
     
     private void setSalatTimes()
     {        
-		Display display = getWindowManager().getDefaultDisplay(); 
-		int width = display.getWidth();
-		int height = display.getHeight();
-		Toast.makeText( getApplicationContext(),"Screen: "+ width + " / " + height,Toast.LENGTH_SHORT).show();
+		//Display display = getWindowManager().getDefaultDisplay(); 
+		//int width = display.getWidth();
+		//int height = display.getHeight();
+		//Toast.makeText( getApplicationContext(),"Screen: "+ width + " / " + height,Toast.LENGTH_SHORT).show();
         salatApp.initCalendar();
         salatApp.setSalatTimes();
         salatApp.setHijriDate();
