@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -129,6 +128,9 @@ public class SalatActivity extends Activity {
       case R.id.athan:
         stopService(new Intent(this, AthanService.class));
         break;      
+      //case R.id.play:
+        //startService(new Intent(this, AthanService.class));
+        //break;      
       }
       return true;
     }

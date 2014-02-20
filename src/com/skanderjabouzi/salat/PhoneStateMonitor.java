@@ -1,6 +1,8 @@
 package com.skanderjabouzi.salat;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.widget.Toast;
@@ -28,6 +30,7 @@ public class PhoneStateMonitor extends PhoneStateListener {
 			break;
 		case TelephonyManager.CALL_STATE_RINGING:  //Phone is Ringing
 			Toast.makeText(context, "Phone State is RINGING", Toast.LENGTH_LONG).show();
+			//stopService(new Intent(this, AthanService.class));
 			break;
 		case TelephonyManager.CALL_STATE_OFFHOOK:  //Call is Received
 			Toast.makeText(context, "Call State is OFFHOOK",Toast.LENGTH_LONG).show();

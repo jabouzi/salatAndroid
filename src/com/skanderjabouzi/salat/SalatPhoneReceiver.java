@@ -6,8 +6,43 @@ import android.content.Context;
 import android.content.Intent;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
+import android.widget.Toast;
+
 //Automatically called when State Change is Detected because this Receiver is Registered for PHONE_STATE intent filter in AndroidManifest.xml
 public class SalatPhoneReceiver extends BroadcastReceiver {
+	
+	public void onReceive(Context context, Intent intent) {
+
+        String incomingPhoneNumber =  intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
+        Toast.makeText(context, "Phone State - "+TelephonyManager.EXTRA_STATE+" Incoming Number - "+incomingPhoneNumber, Toast.LENGTH_LONG).show();
+		context.stopService(new Intent(context, AthanService.class));
+		Toast.makeText(context, "Athan service stopped", Toast.LENGTH_LONG).show();
+        
+        /*if (intent.getStringExtra(TelephonyManager.EXTRA_STATE).equals(TelephonyManager.CALL_STATE_IDLE))
+        {
+			Toast.makeText(context, "Phone State is IDLE", Toast.LENGTH_LONG).show();
+        }
+
+        if (intent.getStringExtra(TelephonyManager.EXTRA_STATE).equals(TelephonyManager.EXTRA_STATE_OFFHOOK))
+        {
+            Toast.makeText(context, "Call State is OFFHOOK",Toast.LENGTH_LONG).show();
+        }
+
+        if (intent.getStringExtra(TelephonyManager.EXTRA_STATE).equals(TelephonyManager.EXTRA_STATE_RINGING))
+        {
+            Toast.makeText(context, "Phone State is RINGING", Toast.LENGTH_LONG).show();
+        }*/
+	}
+
+}
+
+/*import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
+//Automatically called when State Change is Detected because this Receiver is Registered for PHONE_STATE intent filter in AndroidManifest.xml
+public class PhoneStateReceiver extends BroadcastReceiver {
 	
 	TelephonyManager manager;       
 	PhoneStateMonitor phoneStateListener;
@@ -20,54 +55,12 @@ public class SalatPhoneReceiver extends BroadcastReceiver {
 		manager=(TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);//Getting the Telephony Service Object
 		if(!isAlreadyListening)//Checking Listener is Not Registered with Telephony Services
 		{
-            manager.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);//Registering the Listener with Telephony to listen the State Change
-			isAlreadyListening=true;  //setting true to indicate that Listener is listening the Phone State
+              manager.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);//Registering the Listener with Telephony to listen the State Change
+	      isAlreadyListening=true;  //setting true to indicate that Listener is listening the Phone State
 		}
 
 	}
 
 }
 
-/*import java.util.Calendar;
-
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.telephony.PhoneStateListener;
-import android.telephony.TelephonyManager;
-import android.util.Log;
-import android.widget.Toast;
-
-public class SalatPhoneReceiver extends BroadcastReceiver {
-	
-	public void onReceive(Context context, Intent intent) {
-        
-	   // TELEPHONY MANAGER class object to register one listner
-		TelephonyManager tmgr = (TelephonyManager) context
-				.getSystemService(Context.TELEPHONY_SERVICE);
-				
-		//Create Listner
-		MyPhoneStateListener PhoneListener = new MyPhoneStateListener();
-		
-		// Register listener for LISTEN_CALL_STATE
-		tmgr.listen(PhoneListener, PhoneStateListener.LISTEN_CALL_STATE);
-
-    }
-
-    private class MyPhoneStateListener extends PhoneStateListener {
-        public void onCallStateChanged(int state, String incomingNumber) {
-        
-            Log.d("MyPhoneListener",state+"   incoming no:"+incomingNumber);
-
-            if (state == 1) {
-
-                String msg = "New Phone Call Event. Incomming Number : "+incomingNumber;
-                int duration = Toast.LENGTH_LONG;
-                Toast.makeText(context, msg, duration).show();
-            }
-        }
-    }
-}
 */
