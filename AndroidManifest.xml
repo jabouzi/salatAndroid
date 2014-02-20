@@ -67,5 +67,11 @@
         </intent-filter>
     </receiver>
     
+    <receiver android:name=".MidnightReceiver">
+        <intent-filter>
+           <action android:name="com.skanderjabouzi.salat.MIDNIGHT_INTENT" />
+        </intent-filter>
+    </receiver>
+    
     </application>
 </manifest>

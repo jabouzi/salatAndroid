@@ -223,12 +223,14 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     
     public void startAlarm(Context context)
     {
+		Intent intent;
         Calendar now = Calendar.getInstance();
         this.initCalendar();
         this.setSalatTimes();
         long timeToSalat = this.getTimeLeft() + now.getTimeInMillis();     
 
-        Intent intent = new Intent(context, SalatReceiver.class);  
+		if (this.nextSalat == MIDNIGHT) intent = new Intent(context, MidnightReceiver.class);
+        else intent = new Intent(context, SalatReceiver.class); 
         //PendingIntent pendingIntent = PendingIntent.getService(context, -1, intent, PendingIntent.FLAG_UPDATE_CURRENT); 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 

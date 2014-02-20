@@ -1,6 +1,6 @@
 package com.skanderjabouzi.salat;
 
-import android.content.BroadcastReceiver;
+//import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -21,7 +21,7 @@ public class SalatActivity extends Activity {
     String sataTimes[] = new String[7];
     String[] hijriDates = new String[4];    
     SalatApplication salatApp; 
-    MidnightReceiver receiver;
+    //MidnightReceiver receiver;
     IntentFilter filter;
     
     @Override
@@ -29,7 +29,7 @@ public class SalatActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         salatApp = (SalatApplication) getApplication();
-        receiver = new MidnightReceiver();   
+        //receiver = new MidnightReceiver();   
         Log.d("SalatActivity", "Created"); 
     }
     
@@ -52,9 +52,9 @@ public class SalatActivity extends Activity {
             }
         }
         
-        filter = new IntentFilter( "com.skanderjabouzi.salat.MIDNIGHT_INTENT" );
-        super.registerReceiver(receiver, filter, SEND_SALATTIME_NOTIFICATIONS, null);
-        Log.d("SalatActivity", "registerReceiver");
+        //filter = new IntentFilter( "com.skanderjabouzi.salat.MIDNIGHT_INTENT" );
+        //super.registerReceiver(receiver, filter, SEND_SALATTIME_NOTIFICATIONS, null);
+        //Log.d("SalatActivity", "registerReceiver");
         
         /*IntentFilter intentFilter = new IntentFilter("android.intent.action.MAIN");
  
@@ -78,7 +78,7 @@ public class SalatActivity extends Activity {
     protected void onPause() {
         super.onPause();
         //this.unregisterReceiver(this.salatReceiver);
-        unregisterReceiver(receiver); 
+        //unregisterReceiver(receiver); 
     }
     
     private void setSalatTimes()
@@ -190,14 +190,14 @@ public class SalatActivity extends Activity {
     }    
     
     
-    class MidnightReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            setSalatTimes();
-            String salatName = intent.getStringExtra("SALATTIME");
-            Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();
-            //String msg_for_me = intent.getStringExtra("NEW_STATUS_EXTRA_COUNT");
-            Log.d("SalatReceiver", salatName);
-        }
-    }
+    //class MidnightReceiver extends BroadcastReceiver {
+        //@Override
+        //public void onReceive(Context context, Intent intent) {
+            //setSalatTimes();
+            //String salatName = intent.getStringExtra("SALATTIME");
+            //Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();
+            ////String msg_for_me = intent.getStringExtra("NEW_STATUS_EXTRA_COUNT");
+            //Log.d("SalatReceiver", salatName);
+        //}
+    //}
 }
