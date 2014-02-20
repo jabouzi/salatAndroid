@@ -10,8 +10,6 @@ import android.app.PendingIntent;
 import android.os.Vibrator;
 import android.os.Binder;
 import android.os.IBinder;
-import android.telephony.PhoneStateListener;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 
 public class AthanService extends Service{
@@ -26,7 +24,6 @@ public class AthanService extends Service{
     private Notification notification;
     private MediaPlayer player;
     private String athan;
-    private TelephonyManager mTelephonyManager;
     private int mInitialCallState;
     public int salat;
     SalatApplication salatApp;
@@ -36,27 +33,11 @@ public class AthanService extends Service{
         return null;
     }
     
-    private PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
-        @Override
-        public void onCallStateChanged(int state, String ignored) {
-            // The user might already be in a call when the alarm fires. When
-            // we register onCallStateChanged, we get the initial in-call state
-            // which kills the alarm. Check against the initial call state so
-            // we don't kill the alarm during a call.
-            if (state != TelephonyManager.CALL_STATE_IDLE
-                    && state != mInitialCallState) {
-                stopService();
-            }
-        }
-    };
-    
     @Override
     public void onCreate() {
         super.onCreate();
         
         this.salatApp = (SalatApplication) getApplication();
-        mTelephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
         this.startAthan();
         WakeLock.acquire(this);
         Log.d(TAG, "start " + salat);
@@ -160,7 +141,5 @@ public class AthanService extends Service{
                 player = null;
             }
         }
-        
-        mTelephonyManager.listen(mPhoneStateListener, 0);
     }
 }
