@@ -13,10 +13,10 @@ public class SalatPhoneReceiver extends BroadcastReceiver {
 	
 	public void onReceive(Context context, Intent intent) {
 
-        String incomingPhoneNumber =  intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
-        Toast.makeText(context, "Phone State - "+TelephonyManager.EXTRA_STATE+" Incoming Number - "+incomingPhoneNumber, Toast.LENGTH_LONG).show();
-		context.stopService(new Intent(context, AthanService.class));
-		Toast.makeText(context, "Athan service stopped", Toast.LENGTH_LONG).show();
+        //String incomingPhoneNumber =  intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
+        //Toast.makeText(context, "Phone State - "+TelephonyManager.EXTRA_STATE+" Incoming Number - "+incomingPhoneNumber, Toast.LENGTH_LONG).show();
+		
+		//Toast.makeText(context, "Athan service stopped", Toast.LENGTH_LONG).show();
         
         /*if (intent.getStringExtra(TelephonyManager.EXTRA_STATE).equals(TelephonyManager.CALL_STATE_IDLE))
         {
@@ -26,12 +26,13 @@ public class SalatPhoneReceiver extends BroadcastReceiver {
         if (intent.getStringExtra(TelephonyManager.EXTRA_STATE).equals(TelephonyManager.EXTRA_STATE_OFFHOOK))
         {
             Toast.makeText(context, "Call State is OFFHOOK",Toast.LENGTH_LONG).show();
-        }
+        }*/
 
         if (intent.getStringExtra(TelephonyManager.EXTRA_STATE).equals(TelephonyManager.EXTRA_STATE_RINGING))
         {
-            Toast.makeText(context, "Phone State is RINGING", Toast.LENGTH_LONG).show();
-        }*/
+            //Toast.makeText(context, "Phone State is RINGING", Toast.LENGTH_LONG).show();
+            context.stopService(new Intent(context, AthanService.class));
+        }
 	}
 
 }
