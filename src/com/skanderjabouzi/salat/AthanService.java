@@ -100,6 +100,7 @@ public class AthanService extends Service{
             intent = new Intent(MIDNIGHT_INTENT); 
             intent.putExtra(SALATTIME, "Midnight");     
             sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
+            Log.d(TAG, "onHandleIntent #4 " + "Midnight");
             stopService();
         }
         

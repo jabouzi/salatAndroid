@@ -41,9 +41,7 @@
         
     <activity android:name=".LocationActivity" android:label="@string/titleCalculation" />   
     <activity android:name=".OptionsActivity" android:label="@string/titleCalculation" />   
-<!--
     <activity android:name=".SalatLocation" android:label="@string/titleSalatLocation" />   
--->
     <activity android:name=".SalatQibla" android:label="@string/titleSalatQibla" />     
     
     <service android:name=".SalatService" />     
@@ -67,9 +65,9 @@
         </intent-filter>
     </receiver>
     
-    <receiver android:name=".MidnightReceiver">
+    <receiver android:name=".SalatTimeReceiver">
         <intent-filter>
-           <action android:name="com.skanderjabouzi.salat.MIDNIGHT_INTENT" />
+           <action android:name="android.intent.action.ACTION_TIME_CHANGED" />
         </intent-filter>
     </receiver>
     
