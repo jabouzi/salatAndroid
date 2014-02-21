@@ -9,10 +9,14 @@ import android.widget.Toast;
 class SalatTimeReciever extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {	
-			
-    SalatApplication salatApp = (SalatApplication) context.getApplicationContext();  
-    salatApp.stopAlarm(context);
-    salatApp.startAlarm(context);
-    Log.d("SalatBootReceiver", "SalatOnReceived");
+		final String action = intent.getAction();
+		if (action.equals(Intent.ACTION_TIME_CHANGED) || action.equals(Intent.ACTION_DATE_CHANGED))
+		{
+			SalatApplication salatApp = (SalatApplication) context.getApplicationContext();  
+			salatApp.stopAlarm(context);
+			salatApp.startAlarm(context);
+		}
+		
+		Log.i("SalatBootReceiver", Intent.ACTION_TIME_CHANGED);
 	}
 }
