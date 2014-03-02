@@ -1,5 +1,6 @@
 package com.skanderjabouzi.salat;
 
+import java.util.Calendar;
 import android.media.MediaPlayer;
 import android.app.Service;
 import android.content.Context;
@@ -38,9 +39,13 @@ public class AthanService extends Service{
         super.onCreate();
         
         this.salatApp = (SalatApplication) getApplication();
+        Calendar calendar = Calendar.getInstance();
+        int hour  = calendar.get(Calendar.HOUR_OF_DAY); // 24 hour clock
+		int minute = calendar.get(Calendar.MINUTE);
+        Log.i(TAG, "ALARM TIME : " + salatApp.getSalatTimes()[SalatApplication.nextSalat] + " -> " + hour + ':' + minute);
         this.startAthan();
         WakeLock.acquire(this);
-        Log.i(TAG, "start " + salat);
+        Log.i(TAG, "start " + SalatApplication.nextSalat);
     }    
 
     @Override
