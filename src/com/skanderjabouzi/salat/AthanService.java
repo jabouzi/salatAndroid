@@ -55,7 +55,7 @@ public class AthanService extends Service{
     public void play() {
         super.onCreate();
         SalatApplication.athanPlaying = true;
-        salat = SalatApplication.nextSalat;
+        //salat = SalatApplication.nextSalat;
         //SalatApplication salatApp = (SalatApplication) getApplication(); 
         if (SalatApplication.FAJR == SalatApplication.nextSalat)
         {
@@ -86,7 +86,7 @@ public class AthanService extends Service{
     
     private void startAthan() { 
         Intent intent;
-        
+        Log.i(TAG, "##SERVICE## --> " + SalatApplication.nextSalat + " - " + SalatApplication.MIDNIGHT);
         if (SalatApplication.nextSalat < SalatApplication.MIDNIGHT) 
         {
             this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
@@ -104,7 +104,7 @@ public class AthanService extends Service{
             stopService();
         }
         
-        salatApp.startAlarm(getApplicationContext());         
+                 
     }
 
     private void sendTimelineNotification(String salatName) {        

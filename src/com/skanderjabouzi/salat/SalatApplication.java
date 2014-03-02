@@ -240,7 +240,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
   
     public void stopAlarm(Context context)
     {
-        Intent intent = new Intent(context, SalatService.class); 
+        Intent intent = new Intent(context, SalatReceiver.class); 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
         
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
