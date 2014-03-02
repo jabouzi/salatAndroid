@@ -110,7 +110,7 @@ public class AthanService extends Service{
 			String equal = "False";
 			if (this.salatApp.getSalatTimes()[SalatApplication.nextSalat].toString().equals(now.toString())) equal = "True";
 			Log.i(TAG, "ALARM TIME : " + this.salatApp.getSalatTimes()[SalatApplication.nextSalat] + " -> " + now + " - " + equal);
-			if (this.salatApp.getSalatTimes()[SalatApplication.nextSalat].equals(now))
+			if (this.salatApp.getSalatTimes()[SalatApplication.nextSalat].toString().equals(now.toString()))
 			{
 				this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
 				this.notification = new Notification(R.drawable.makka_icon,"", 0);        
