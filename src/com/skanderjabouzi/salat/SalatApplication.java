@@ -65,13 +65,13 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         salatNames[2] = "Asr";
         salatNames[3] = "Maghrib";
         salatNames[4] = "Isha";        
-        Log.i("app", "onCreated");        
+        Log.i("Salat app", "onCreated");        
       }
 
       @Override
       public void onTerminate() {
         super.onTerminate();
-        Log.i("app", "onTerminated");
+        Log.i("Salat app", "onTerminated");
       }
 
     @Override
@@ -97,7 +97,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         this.timezone = Integer.parseInt(salatOptions.getString("timezone", "0"));
         this.city = salatOptions.getString("city", " ");
         this.country = salatOptions.getString("country", " ");
-        Log.i("app", "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
+        Log.i("Salat app", "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
     }
     
     public boolean checkOptions()
@@ -154,7 +154,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
 */
 
                 
-        Log.i("app", "Sataltimes : "+java.util.Arrays.asList(salaTimes).toString());
+        Log.i("Salat app", "Sataltimes : "+java.util.Arrays.asList(salaTimes).toString());
     }
     
     public String[] getSalatTimes()
@@ -234,7 +234,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);    
-        Log.i("app", "Next salat is " + nextSalat  + " in " + timeToSalat);
+        Log.i("Salat app", "Next salat is " + nextSalat  + " in " + timeToSalat);
 
     }
   
@@ -245,7 +245,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
-        Log.i("app", "Alarm Stopped");
+        Log.i("Salat app", "Alarm Stopped");
     }
     
     public String getCity()
@@ -264,7 +264,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         Calendar time = Calendar.getInstance();
         time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
         long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();
-        Log.i("app", "fajr : "+diff);      
+        Log.i("Salat app", "fajr : "+diff);      
         return diff;
     }
     
@@ -274,7 +274,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         Calendar time = Calendar.getInstance();
         time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
         long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();
-        Log.i("app", "duhr : "+diff);   
+        Log.i("Salat app", "duhr : "+diff);   
         return diff;
     }
     
@@ -284,7 +284,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         Calendar time = Calendar.getInstance();
         time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
         long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();
-        Log.i("app", "asr : "+diff);   
+        Log.i("Salat app", "asr : "+diff);   
         return diff;
     }
     
@@ -294,7 +294,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         Calendar time = Calendar.getInstance();
         time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
         long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();
-        Log.i("app", "maghrib : "+diff);   
+        Log.i("Salat app", "maghrib : "+diff);   
         return diff;
     }
     
@@ -304,7 +304,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         Calendar time = Calendar.getInstance();
         time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
         long diff = getTimeInMS(Integer.parseInt(times[0]), Integer.parseInt(times[1]),1) - getCurrentTimeInMS();
-        Log.i("app", "isha : "+diff);    
+        Log.i("Salat app", "isha : "+diff);    
         return diff;
     }
     
@@ -313,7 +313,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         Calendar time = Calendar.getInstance();
         time.set(year, month, day, 24, 0);
         long diff = getTimeInMS(24,0,1) - getCurrentTimeInMS();
-        Log.i("app", "midnight : "+diff);   
+        Log.i("Salat app", "midnight : "+diff);   
         return diff;
     }
     

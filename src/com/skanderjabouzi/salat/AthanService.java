@@ -14,7 +14,7 @@ import android.util.Log;
 
 public class AthanService extends Service{
 
-    private static final String TAG = "AthanService";
+    private static final String TAG = "Salat AthanService";
     
     public static final String MIDNIGHT_INTENT = "com.skanderjabouzi.salat.MIDNIGHT_INTENT";
     public static final String SALATTIME = "SALATTIME";

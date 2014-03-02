@@ -9,7 +9,7 @@ public class WakeLock {
 	private static PowerManager.WakeLock WakeLock;
 
     static void acquire(Context context) {
-        Log.d("WakeLock" , "Acquiring cpu wake lock");
+        Log.d("SalatWakeLock" , "Acquiring cpu wake lock");
         if (WakeLock != null) {
             return;
         }
@@ -25,7 +25,7 @@ public class WakeLock {
     }
 
     static void release() {
-        Log.d("WakeLock" ,"Releasing cpu wake lock");
+        Log.d("SalatWakeLock" ,"Releasing cpu wake lock");
         if (WakeLock != null) {
             WakeLock.release();
             WakeLock = null;
