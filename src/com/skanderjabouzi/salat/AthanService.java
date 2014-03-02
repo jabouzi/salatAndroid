@@ -45,9 +45,9 @@ public class AthanService extends Service{
 		//Date date = new Date();
 		//String now = dateFormat.format(date);
 		//String equal = "False";
-        //if (salatApp.getSalatTimes()[SalatApplication.nextSalat] == now) equal = "True";
-        //Log.i(TAG, "ALARM TIME : " + salatApp.getSalatTimes()[SalatApplication.nextSalat] + " -> " + now + " - " + equal);
-        //if (salatApp.getSalatTimes()[SalatApplication.nextSalat] == now)
+        //if (this.salatApp.getSalatTimes()[SalatApplication.nextSalat] == now) equal = "True";
+        //Log.i(TAG, "ALARM TIME : " + this.salatApp.getSalatTimes()[SalatApplication.nextSalat] + " -> " + now + " - " + equal);
+        //if (this.salatApp.getSalatTimes()[SalatApplication.nextSalat] == now)
         //{
 			this.startAthan();
 			WakeLock.acquire(this);
@@ -68,7 +68,8 @@ public class AthanService extends Service{
         super.onCreate();
         SalatApplication.athanPlaying = true;
         //salat = SalatApplication.nextSalat;
-        //SalatApplication salatApp = (SalatApplication) getApplication(); 
+        //SalatApplication this.salatApp = (SalatApplication) getApplication(); 
+        Log.i(TAG, "##MEDIAPLAYER## --> " + SalatApplication.nextSalat);
         if (SalatApplication.FAJR == SalatApplication.nextSalat)
         {
             player = MediaPlayer.create(this, R.raw.fajr_athan);
@@ -106,14 +107,14 @@ public class AthanService extends Service{
 			SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
 			Date date = new Date();
 			String now = dateFormat.format(date);
-			//String equal = "False";
-			//if (salatApp.getSalatTimes()[SalatApplication.nextSalat] == now) equal = "True";
-			Log.i(TAG, "ALARM TIME : " + salatApp.getSalatTimes()[SalatApplication.nextSalat] + " -> " + now + " - " + equal);
-			if (salatApp.getSalatTimes()[SalatApplication.nextSalat] == now)
+			String equal = "False";
+			if (this.salatApp.getSalatTimes()[SalatApplication.nextSalat].equals(now)) equal = "True";
+			Log.i(TAG, "ALARM TIME : " + this.salatApp.getSalatTimes()[SalatApplication.nextSalat] + " -> " + now + " - " + equal);
+			if (this.salatApp.getSalatTimes()[SalatApplication.nextSalat].equals(now))
 			{
 				this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
 				this.notification = new Notification(R.drawable.makka_icon,"", 0);        
-				String salatName = salatApp.salatNames[SalatApplication.nextSalat];       
+				String salatName = this.salatApp.salatNames[SalatApplication.nextSalat];       
 				sendTimelineNotification(salatName);
 				play();
 				Log.i(TAG, "onHandleIntent #3 " + SalatApplication.nextSalat + " : " + salatName);
@@ -127,7 +128,7 @@ public class AthanService extends Service{
             stopService();
         }
         
-                 
+        this.salatApp.startAlarm(getApplicationContext());           
     }
 
     private void sendTimelineNotification(String salatName) {        
