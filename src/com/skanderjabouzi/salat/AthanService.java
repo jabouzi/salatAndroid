@@ -49,7 +49,7 @@ public class AthanService extends Service{
         //Log.i(TAG, "ALARM TIME : " + this.salatApp.getSalatTimes()[SalatApplication.nextSalat] + " -> " + now + " - " + equal);
         //if (this.salatApp.getSalatTimes()[SalatApplication.nextSalat] == now)
         //{
-			this.startAthan();
+			startAthan();
 			WakeLock.acquire(this);
 		//}
         Log.i(TAG, "start " + SalatApplication.nextSalat);
@@ -108,7 +108,7 @@ public class AthanService extends Service{
 			Date date = new Date();
 			String now = dateFormat.format(date);
 			String equal = "False";
-			if (this.salatApp.getSalatTimes()[SalatApplication.nextSalat].equals(now)) equal = "True";
+			if (this.salatApp.getSalatTimes()[SalatApplication.nextSalat].toString().equals(now.toString())) equal = "True";
 			Log.i(TAG, "ALARM TIME : " + this.salatApp.getSalatTimes()[SalatApplication.nextSalat] + " -> " + now + " - " + equal);
 			if (this.salatApp.getSalatTimes()[SalatApplication.nextSalat].equals(now))
 			{
