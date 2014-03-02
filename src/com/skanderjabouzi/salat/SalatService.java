@@ -29,32 +29,25 @@ public class SalatService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent inIntent) { 
-        Intent intent;
-        WakeLock.acquire(getApplicationContext());        
+        Intent intent;        
         SalatApplication salatApp = (SalatApplication) getApplication();  
-/*
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(System.currentTimeMillis());
-        Date date = cal.getTime();
-        int mHour = date.getHours();
-        int mMinute = date.getMinutes();
-        int mSeconds = date.getSeconds();       
-*/
-         
-               
+        
+        Log.i(TAG, "##SERVICE## --> " + SalatApplication.nextSalat + " - " + SalatApplication.MIDNIGHT);      
         if (SalatApplication.nextSalat < SalatApplication.MIDNIGHT) 
         {
+			WakeLock.acquire(getApplicationContext());        
             this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE); 
             this.notification = new Notification(R.drawable.makka_icon,"", 0);        
             String salatName = salatApp.salatNames[SalatApplication.nextSalat];       
             sendTimelineNotification(salatName);
+            WakeLock.release();
             Log.i(TAG, "onHandleIntent #3 " + SalatApplication.nextSalat + " : " + salatName);
         }
         else {
-            intent = new Intent(MIDNIGHT_INTENT); 
-            intent.putExtra(SALATTIME, "Midnight");     
-            sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
-            WakeLock.release();
+            //~ intent = new Intent(MIDNIGHT_INTENT); 
+            //~ intent.putExtra(SALATTIME, "Midnight");     
+            //~ sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
+            //~ WakeLock.release();
         }
         
         salatApp.startAlarm(getApplicationContext());         

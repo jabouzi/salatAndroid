@@ -9,7 +9,7 @@ public class SalatReceiver extends BroadcastReceiver {
 
   @Override
   public void onReceive(Context context, Intent intent) { 
-    WakeLock.acquire(context);    
+    //~ WakeLock.acquire(context);    
     //SalatApplication salatApp = (SalatApplication) getApplication(); 
     //this.startAthan(context);
     context.startService(new Intent(context, AthanService.class)); 
