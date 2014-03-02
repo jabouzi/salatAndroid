@@ -21,11 +21,11 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     
     private static final String TAG = SalatApplication.class.getSimpleName();
     public static final int FAJR = 0;
-    public static final int DUHR = 1;
-    public static final int ASR = 2;
-    public static final int MAGHRIB = 3;
-    public static final int ISHA = 4;
-    public static final int MIDNIGHT = 5;
+    public static final int DUHR = 2;
+    public static final int ASR = 3;
+    public static final int MAGHRIB = 5;
+    public static final int ISHA = 6;
+    public static final int MIDNIGHT = 7;
 
     public String[] salatNames = new String[5];
     
