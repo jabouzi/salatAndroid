@@ -39,12 +39,17 @@ public class AthanService extends Service{
         super.onCreate();
         
         this.salatApp = (SalatApplication) getApplication();
-        Calendar calendar = Calendar.getInstance();
-        String now = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY))+":"+nteger.toString(calendar.get(Calendar.MINUTE));
-		int minute = calendar.get(Calendar.MINUTE);
-        Log.i(TAG, "ALARM TIME : " + salatApp.getSalatTimes()[SalatApplication.nextSalat] + " -> " + hour + ':' + minute);
-        this.startAthan();
-        WakeLock.acquire(this);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+		Date date = new Date();
+		String now = dateFormat.format(date); //2013/10/15 16:16:39
+		String equal = "False";
+        if (salatApp.getSalatTimes()[SalatApplication.nextSalat].equal(now) equal = "True";
+        Log.i(TAG, "ALARM TIME : " + salatApp.getSalatTimes()[SalatApplication.nextSalat] + " -> " + now + ' - ' + equal);
+        if (salatApp.getSalatTimes()[SalatApplication.nextSalat].equal(now))
+        {
+			this.startAthan();
+			WakeLock.acquire(this);
+		}
         Log.i(TAG, "start " + SalatApplication.nextSalat);
     }    
 
