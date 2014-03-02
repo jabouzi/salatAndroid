@@ -40,7 +40,7 @@ public class AthanService extends Service{
         
         this.salatApp = (SalatApplication) getApplication();
         Calendar calendar = Calendar.getInstance();
-        int hour  = calendar.get(Calendar.HOUR_OF_DAY); // 24 hour clock
+        String now = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY))+":"+nteger.toString(calendar.get(Calendar.MINUTE));
 		int minute = calendar.get(Calendar.MINUTE);
         Log.i(TAG, "ALARM TIME : " + salatApp.getSalatTimes()[SalatApplication.nextSalat] + " -> " + hour + ':' + minute);
         this.startAthan();
