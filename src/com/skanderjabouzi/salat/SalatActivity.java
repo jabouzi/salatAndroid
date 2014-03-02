@@ -30,7 +30,7 @@ public class SalatActivity extends Activity {
         setContentView(R.layout.main);
         salatApp = (SalatApplication) getApplication();
         //receiver = new MidnightReceiver();   
-        Log.d("SalatActivity", "Created"); 
+        Log.i("SalatActivity", "Created"); 
     }
     
     @Override
@@ -54,7 +54,7 @@ public class SalatActivity extends Activity {
         
         //filter = new IntentFilter( "com.skanderjabouzi.salat.MIDNIGHT_INTENT" );
         //super.registerReceiver(receiver, filter, SEND_SALATTIME_NOTIFICATIONS, null);
-        //Log.d("SalatActivity", "registerReceiver");
+        //Log.i("SalatActivity", "registerReceiver");
         
         /*IntentFilter intentFilter = new IntentFilter("android.intent.action.MAIN");
  
@@ -71,7 +71,7 @@ public class SalatActivity extends Activity {
         };
 
         this.registerReceiver(salatReceiver, intentFilter);        
-        Log.d("SalatActivity", "registerReceiver");*/
+        Log.i("SalatActivity", "registerReceiver");*/
     }
 
     @Override
@@ -100,7 +100,7 @@ public class SalatActivity extends Activity {
         printShouroukTime();
         printHijriDate();
         printLocation();
-        Log.d("SalatActivity", "setSalatTimes");
+        Log.i("SalatActivity", "setSalatTimes");
     }
     
     @Override
@@ -197,7 +197,7 @@ public class SalatActivity extends Activity {
             //String salatName = intent.getStringExtra("SALATTIME");
             //Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();
             ////String msg_for_me = intent.getStringExtra("NEW_STATUS_EXTRA_COUNT");
-            //Log.d("SalatReceiver", salatName);
+            //Log.i("SalatReceiver", salatName);
         //}
     //}
 }

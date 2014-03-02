@@ -24,7 +24,7 @@ public class SalatService extends IntentService {
 
     public SalatService() {
         super(TAG);        
-        Log.d(TAG, "SalatService constructed");
+        Log.i(TAG, "SalatService constructed");
     }
 
     @Override
@@ -48,7 +48,7 @@ public class SalatService extends IntentService {
             this.notification = new Notification(R.drawable.makka_icon,"", 0);        
             String salatName = salatApp.salatNames[SalatApplication.nextSalat];       
             sendTimelineNotification(salatName);
-            Log.d(TAG, "onHandleIntent #3 " + SalatApplication.nextSalat + " : " + salatName);
+            Log.i(TAG, "onHandleIntent #3 " + SalatApplication.nextSalat + " : " + salatName);
         }
         else {
             intent = new Intent(MIDNIGHT_INTENT); 
@@ -61,7 +61,7 @@ public class SalatService extends IntentService {
     }
 
     private void sendTimelineNotification(String salatName) {        
-        Log.d(TAG, "sendTimelineNotification'ing");        
+        Log.i(TAG, "sendTimelineNotification'ing");        
         PendingIntent pendingIntent = PendingIntent.getActivity(this, -1, new Intent(this, SalatActivity.class), PendingIntent.FLAG_UPDATE_CURRENT); 
         this.notification.when = System.currentTimeMillis();   
         this.notification.defaults |= Notification.DEFAULT_VIBRATE;     
@@ -77,7 +77,7 @@ public class SalatService extends IntentService {
         this.notificationManager.notify(0, this.notification);     
         startService(new Intent(this, AthanService.class));
         
-        Log.d(TAG, "sendTimelineNotificationed -> " + salatName);
+        Log.i(TAG, "sendTimelineNotificationed -> " + salatName);
     }
     
     

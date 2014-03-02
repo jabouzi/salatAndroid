@@ -40,7 +40,7 @@ public class AthanService extends Service{
         this.salatApp = (SalatApplication) getApplication();
         this.startAthan();
         WakeLock.acquire(this);
-        Log.d(TAG, "start " + salat);
+        Log.i(TAG, "start " + salat);
     }    
 
     @Override
@@ -49,7 +49,7 @@ public class AthanService extends Service{
         stop();
         WakeLock.release();
         SalatApplication.athanPlaying = false;
-        Log.d(TAG,"stop2");
+        Log.i(TAG,"stop2");
     }
     
     public void play() {
@@ -74,14 +74,14 @@ public class AthanService extends Service{
                 stopService();
                 //WakeLock.release();
                 //AthanService.isPlaying = false;
-                Log.d(TAG,"stop1");
+                Log.i(TAG,"stop1");
             }
         });
         
         player.start();
         player.setLooping(false);
         //AthanService.isPlaying = true;
-        Log.d(TAG, "start " + salat);
+        Log.i(TAG, "start " + salat);
     }    
     
     private void startAthan() { 
@@ -94,13 +94,13 @@ public class AthanService extends Service{
             String salatName = salatApp.salatNames[SalatApplication.nextSalat];       
             sendTimelineNotification(salatName);
             play();
-            Log.d(TAG, "onHandleIntent #3 " + SalatApplication.nextSalat + " : " + salatName);
+            Log.i(TAG, "onHandleIntent #3 " + SalatApplication.nextSalat + " : " + salatName);
         }
         else {
             intent = new Intent(MIDNIGHT_INTENT); 
             intent.putExtra(SALATTIME, "Midnight");     
             sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
-            Log.d(TAG, "onHandleIntent #4 " + "Midnight");
+            Log.i(TAG, "onHandleIntent #4 " + "Midnight");
             stopService();
         }
         
@@ -108,7 +108,7 @@ public class AthanService extends Service{
     }
 
     private void sendTimelineNotification(String salatName) {        
-        Log.d(TAG, "sendTimelineNotification'ing");        
+        Log.i(TAG, "sendTimelineNotification'ing");        
         PendingIntent pendingIntent = PendingIntent.getActivity(this, -1, new Intent(this, SalatActivity.class), PendingIntent.FLAG_UPDATE_CURRENT); 
         this.notification.when = System.currentTimeMillis();   
         this.notification.defaults |= Notification.DEFAULT_VIBRATE;     
@@ -124,7 +124,7 @@ public class AthanService extends Service{
         this.notificationManager.notify(0, this.notification);     
         //startService(new Intent(this, AthanService.class));
         
-        Log.d(TAG, "sendTimelineNotificationed -> " + salatName);
+        Log.i(TAG, "sendTimelineNotificationed -> " + salatName);
     }
     
     private void stopService()

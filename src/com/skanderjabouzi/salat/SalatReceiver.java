@@ -13,6 +13,6 @@ public class SalatReceiver extends BroadcastReceiver {
     //SalatApplication salatApp = (SalatApplication) getApplication(); 
     //this.startAthan(context);
     context.startService(new Intent(context, AthanService.class)); 
-    Log.d("SalatReceiver", "onReceived");
+    Log.i("SalatReceiver", "onReceived");
   }
 }
