@@ -218,20 +218,21 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
             //isSalat = false;
             timeLeft = getMidNight();
         }        
+        Toast.makeText( getApplicationContext(),"nextSalat : "+ this.nextSalat,Toast.LENGTH_SHORT).show();
         return timeLeft;
     }
     
     public void startAlarm(Context context)
     {
         Calendar now = Calendar.getInstance();
-        this.initCalendar();
-        this.setSalatTimes();
+        initCalendar();
+        setSalatTimes();
         long timeToSalat = this.getTimeLeft() + now.getTimeInMillis();     
 
         Intent intent = new Intent(context, SalatReceiver.class); 
         //intent.putExtra("ACTION","ATHAN_ALERT");
         //PendingIntent pendingIntent = PendingIntent.getService(context, -1, intent, PendingIntent.FLAG_UPDATE_CURRENT); 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_ONE_SHOT );
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);    

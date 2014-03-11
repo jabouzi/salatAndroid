@@ -47,7 +47,8 @@
     <activity android:name=".SalatLocation" android:label="@string/titleSalatLocation" />   
     <activity android:name=".SalatQibla" android:label="@string/titleSalatQibla" />     
        
-    <service android:name=".AthanService" />     
+    <service android:name=".AthanService" />    
+    <service android:name=".MidnightService" />     
     
     <receiver android:name=".SalatBootReceiver">
       <intent-filter>
@@ -64,17 +65,9 @@
     <receiver android:name=".SalatReceiver"></receiver>
     
     <receiver android:name=".SalatTimeReciever">
-<!--
-        <intent-filter>
-           <action android:name="android.intent.action.DATE_CHANGED" />
-        </intent-filter>
--->
         <intent-filter>
 			<action android:name="android.intent.action.TIMEZONE_CHANGED" /> 
 			<action android:name="android.intent.action.TIME_SET" />
-<!--
-			<action android:name="android.intent.action.DATE_SET" />
--->
         </intent-filter>
     </receiver>
     

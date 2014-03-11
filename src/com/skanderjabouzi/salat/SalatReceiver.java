@@ -20,8 +20,17 @@ public class SalatReceiver extends BroadcastReceiver {
 	//{
 		//final String action = intent.getAction();
 		//Log.i("ACTION2", action);
-		context.startService(new Intent(context, AthanService.class)); 
-		Log.i("SalatReceiver", "onReceived");
+		SalatApplication salatApp = (SalatApplication) context.getApplicationContext();
+		if (SalatApplication.nextSalat == SalatApplication.MIDNIGHT)
+		{
+			context.startService(new Intent(context, AthanService.class)); 
+			Log.i("SalatReceiver", "onReceived 1");
+		}
+		else
+		{
+			context.startService(new Intent(context, MidnightService.class)); 
+			Log.i("SalatReceiver", "onReceived 2");
+		}
 	//}
   }
 }

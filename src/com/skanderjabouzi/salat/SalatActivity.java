@@ -129,9 +129,9 @@ public class SalatActivity extends Activity {
       case R.id.athan:
         stopService(new Intent(this, AthanService.class));
         break;      
-      //case R.id.play:
-        //startService(new Intent(this, AthanService.class));
-        //break;      
+      case R.id.play:
+        startService(new Intent(this, AthanService.class));
+        break;      
       }
       return true;
     }
