@@ -30,7 +30,7 @@ public class SalatActivity extends Activity {
         setContentView(R.layout.main);
         salatApp = (SalatApplication) getApplication();
         receiver = new MidnightReceiver();   
-        filter = new IntentFilter( AthanService.MIDNIGHT_INTENT );
+        filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );
         Log.i("SalatActivity", "Created"); 
     }
     

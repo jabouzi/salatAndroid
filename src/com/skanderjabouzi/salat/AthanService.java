@@ -33,10 +33,10 @@ public class AthanService extends Service{
     public void onCreate() {
         super.onCreate();
         
-        this.salatApp = (SalatApplication) getApplication();
-        this.startAthan();
+        salatApp = (SalatApplication) getApplication();
+        startAthan();
         WakeLock.acquire(this);
-        Log.i(TAG, "start " + salat);
+        Log.i(TAG, "start");
     }    
 
     @Override

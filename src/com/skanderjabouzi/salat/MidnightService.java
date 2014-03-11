@@ -16,8 +16,6 @@ public class MidnightService extends Service{
     public static final String SALATTIME = "SALATTIME";
     public static final String RECEIVE_SALATTIME_NOTIFICATIONS = "com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS";
 
-    private NotificationManager notificationManager; 
-    private Notification notification;
     SalatApplication salatApp;
     
     @Override
@@ -27,17 +25,15 @@ public class MidnightService extends Service{
     
     @Override
     public void onCreate() {
-        super.onCreate();
-        
+        super.onCreate();        
         salatApp = (SalatApplication) getApplication();
         changeDay();
-        Log.i(TAG, "start " + salat);
+        Log.i(TAG, "start" );
     }    
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        stop();
         WakeLock.release();
         SalatApplication.athanPlaying = false;
         Log.i(TAG,"stop2");
