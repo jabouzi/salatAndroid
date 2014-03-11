@@ -11,13 +11,14 @@ public class SalatTimeReciever extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {	
 		final String action = intent.getAction();
-		//if (action.equals(Intent.ACTION_TIME_CHANGED) || action.equals(Intent.ACTION_DATE_CHANGED))
-		//{
+		Log.i("ACTION2", action);
+		if (action.equals("android.intent.action.TIME_SET") || action.equals("android.intent.action.TIMEZONE_CHANGED"))
+		{
 			SalatApplication salatApp = (SalatApplication) context.getApplicationContext();  
 			salatApp.stopAlarm(context);
 			salatApp.startAlarm(context);
-		//}
+		}
 		
-		Log.d("SalatBootReceiver", "DATE CHANGED");
+		Log.d("SalatTimeReceiver", "DATE CHANGED");
 	}
 }

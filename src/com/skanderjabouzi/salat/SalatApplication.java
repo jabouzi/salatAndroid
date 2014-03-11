@@ -27,7 +27,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
     public static final int ISHA = 6;
     public static final int MIDNIGHT = 7;
 
-    public String[] salatNames = new String[5];
+    public String[] salatNames = new String[7];
     
     private SharedPreferences salatOptions;
     //private boolean serviceRunning;
@@ -61,10 +61,10 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         salatOptions.registerOnSharedPreferenceChangeListener(this);
         
         salatNames[0] = "Fajr";
-        salatNames[1] = "Duhr";
-        salatNames[2] = "Asr";
-        salatNames[3] = "Maghrib";
-        salatNames[4] = "Isha";        
+        salatNames[2] = "Duhr";
+        salatNames[3] = "Asr";
+        salatNames[5] = "Maghrib";
+        salatNames[6] = "Isha";        
         Log.i("Salat app", "onCreated");        
       }
 
@@ -229,6 +229,7 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         long timeToSalat = this.getTimeLeft() + now.getTimeInMillis();     
 
         Intent intent = new Intent(context, SalatReceiver.class); 
+        //intent.putExtra("ACTION","ATHAN_ALERT");
         //PendingIntent pendingIntent = PendingIntent.getService(context, -1, intent, PendingIntent.FLAG_UPDATE_CURRENT); 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 

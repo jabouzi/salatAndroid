@@ -12,10 +12,14 @@ import android.util.Log;
 public class SalatBootReceiver extends BroadcastReceiver {
 
   @Override
-  public void onReceive(Context context, Intent intent) {
-      
-    SalatApplication salatApp = (SalatApplication) context.getApplicationContext();  
-    salatApp.startAlarm(context);
-    Log.i("SalatBootReceiver", "SalatOnReceived");
+  public void onReceive(Context context, Intent intent) {    
+		final String action = intent.getAction();
+		Log.i("ACTION2", action);
+		if (action.equals("android.intent.action.BOOT_COMPLETED"))
+		{		
+			SalatApplication salatApp = (SalatApplication) context.getApplicationContext();  
+			salatApp.startAlarm(context);
+			Log.i("SalatBootReceiver", "SalatOnReceived");
+		}
   }
 }
