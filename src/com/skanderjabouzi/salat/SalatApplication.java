@@ -260,6 +260,20 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         return this.country;
     }
     
+    public boolean isValidSalatTime()
+    {
+		String[] timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()).split(":");
+		if (nextSalat < 7)
+		{
+			String[] times = salaTimes[nextSalat].split(":");
+			return (Integer.parseInt(timeStamp[0]) == Integer.parseInt(times[0]) && Integer.parseInt(timeStamp[1]) == Integer.parseInt(times[1]));
+		}
+		else
+		{
+			return (Integer.parseInt(timeStamp[0]) == 0 && Integer.parseInt(timeStamp[1]) == 0);
+		}
+	}
+    
     private long getFajr()
     {
         String[] times = this.salaTimes[0].split(":");

@@ -21,15 +21,25 @@ public class SalatReceiver extends BroadcastReceiver {
 		//final String action = intent.getAction();
 		//Log.i("ACTION2", action);
 		SalatApplication salatApp = (SalatApplication) context.getApplicationContext();
-		if (SalatApplication.nextSalat == SalatApplication.MIDNIGHT)
+		if (salatApp.isValidSalatTime())
 		{
-			context.startService(new Intent(context, MidnightService.class)); 
-			Log.i("SalatReceiver", "onReceived 1");
+			if (SalatApplication.nextSalat == SalatApplication.MIDNIGHT)
+			{
+				context.startService(new Intent(context, MidnightService.class)); 
+				Log.i("SalatReceiver", "onReceived 1");
+			}
+			else
+			{
+				context.startService(new Intent(context, AthanService.class)); 
+				Log.i("SalatReceiver", "onReceived 2");
+			}
+			Log.i("VALIDTIME", "TRUE");
 		}
 		else
 		{
-			context.startService(new Intent(context, AthanService.class)); 
-			Log.i("SalatReceiver", "onReceived 2");
+			salatApp.stopAlarm(context);
+			salatApp.startAlarm(context);
+			Log.i("VALIDTIME", "FALSE");
 		}
 	//}
   }
