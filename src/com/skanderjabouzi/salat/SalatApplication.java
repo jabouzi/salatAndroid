@@ -55,7 +55,7 @@ public class SalatApplication extends Application{
     @Override
       public void onCreate() {
         super.onCreate();
-        salatOptions = PreferenceManager.getDefaultSharedPreferences(this);
+        //salatOptions = PreferenceManager.getDefaultSharedPreferences(this);
         
         salatNames[0] = "Fajr";
         salatNames[2] = "Duhr";

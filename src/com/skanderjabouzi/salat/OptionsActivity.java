@@ -1,8 +1,10 @@
 package com.skanderjabouzi.salat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
 public class OptionsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener{
@@ -18,7 +20,7 @@ public class OptionsActivity extends PreferenceActivity implements OnSharedPrefe
     @Override
 	public void onStart() {
 		super.onStart();
-		salatOptions = PreferenceManager.getDefaultSharedPreferences(getActivity());
+		salatOptions = PreferenceManager.getDefaultSharedPreferences(this);
 		salatOptions.registerOnSharedPreferenceChangeListener(this);
 	}
 
@@ -31,6 +33,6 @@ public class OptionsActivity extends PreferenceActivity implements OnSharedPrefe
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
 			String key) {
-		getActivity().sendBroadcast( new Intent("com.marakana.android.yamba.action.UPDATED_INTERVAL") );
+		//getActivity().sendBroadcast( new Intent("com.marakana.android.yamba.action.UPDATED_INTERVAL") );
 	}
 }
