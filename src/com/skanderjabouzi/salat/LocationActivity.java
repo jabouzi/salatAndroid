@@ -37,7 +37,6 @@ public class LocationActivity extends PreferenceActivity implements LocationList
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.location);
         setContentView(R.layout.location);      
-        salatOptions = PreferenceManager.getDefaultSharedPreferences(this);
         editor = salatOptions.edit();
         final Button button = (Button) findViewById(R.id.locationButton);
         final EditTextPreference prefLatitude = (EditTextPreference) findPreference("latitude");
@@ -104,6 +103,25 @@ public class LocationActivity extends PreferenceActivity implements LocationList
         });        
 
     }
+    
+    @Override
+	public void onStart() {
+		super.onStart();
+		salatOptions = PreferenceManager.getDefaultSharedPreferences(getActivity());
+		salatOptions.registerOnSharedPreferenceChangeListener(this);
+	}
+
+	@Override
+	public void onStop() {
+		super.onStop();
+		salatOptions.unregisterOnSharedPreferenceChangeListener(this);
+	}
+
+	@Override
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+			String key) {
+		getActivity().sendBroadcast( new Intent("com.marakana.android.yamba.action.UPDATED_INTERVAL") );
+	}
     
     public void onLocationChanged(Location location) {
 
