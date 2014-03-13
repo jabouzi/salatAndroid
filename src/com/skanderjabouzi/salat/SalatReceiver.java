@@ -10,16 +10,7 @@ public class SalatReceiver extends BroadcastReceiver {
 
   @Override
   public void onReceive(Context context, Intent intent) { 
-    //~ WakeLock.acquire(context);    
-    //SalatApplication salatApp = (SalatApplication) getApplication(); 
-    //this.startAthan(context);Bundle bundle = intent.getExtras();
-    //Bundle bundle = intent.getExtras();
-	//String action = bundle.getString("ACTION");
-	//Log.i("ACTION1", action);
-    //if (action.equals("ATHAN_ALERT"))
-	//{
-		//final String action = intent.getAction();
-		//Log.i("ACTION2", action);
+		WakeLock.acquire(context);    
 		SalatApplication salatApp = (SalatApplication) context.getApplicationContext();
 		if (salatApp.isValidSalatTime())
 		{

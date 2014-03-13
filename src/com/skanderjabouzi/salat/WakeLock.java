@@ -14,8 +14,7 @@ public class WakeLock {
             return;
         }
 
-        PowerManager pm =
-                (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
 
         WakeLock = pm.newWakeLock(
                 PowerManager.PARTIAL_WAKE_LOCK |

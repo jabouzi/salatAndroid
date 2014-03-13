@@ -32,10 +32,9 @@ public class AthanService extends Service{
     @Override
     public void onCreate() {
         super.onCreate();
-        
-        salatApp = (SalatApplication) getApplication();
-        startAthan();
         WakeLock.acquire(this);
+        salatApp = (SalatApplication) getApplication();
+        startAthan();        
         Log.i(TAG, "start");
     }    
 
@@ -43,8 +42,8 @@ public class AthanService extends Service{
     public void onDestroy() {
         super.onDestroy();
         stop();
-        WakeLock.release();
         SalatApplication.athanPlaying = false;
+        WakeLock.release();
         Log.i(TAG,"stop2");
     }
     
