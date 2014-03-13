@@ -4,14 +4,22 @@ package com.skanderjabouzi.salat;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.app.PendingIntent;
+import android.app.AlarmManager;
 import android.util.Log;
 
 public class SalatReceiver extends BroadcastReceiver {     
 
   @Override
   public void onReceive(Context context, Intent intent) { 
-		WakeLock.acquire(context);    
+		WakeLock.acquire(context); 
 		SalatApplication salatApp = (SalatApplication) context.getApplicationContext();
+		long timeToSalat = salatApp.getTimeToSalat();
+		Intent intent = new Intent(context, SalatReceiver.class);  
+		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+		alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);    
+		Log.i("SalatReceiver", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
 		if (salatApp.isValidSalatTime())
 		{
 			if (SalatApplication.nextSalat == SalatApplication.MIDNIGHT)
@@ -28,8 +36,6 @@ public class SalatReceiver extends BroadcastReceiver {
 		}
 		else
 		{
-			salatApp.stopAlarm(context);
-			salatApp.startAlarm(context);
 			Log.i("VALIDTIME", "FALSE");
 		}
 	//}

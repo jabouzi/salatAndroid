@@ -7,7 +7,6 @@ import java.util.Arrays;
 import android.app.Application;
 import android.content.ContentValues;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -15,9 +14,8 @@ import android.widget.Toast;
 import android.content.Context;
 import android.content.Intent;
 import android.app.PendingIntent;
-import android.app.AlarmManager;
 
-public class SalatApplication extends Application implements OnSharedPreferenceChangeListener {
+public class SalatApplication extends Application{
     
     private static final String TAG = SalatApplication.class.getSimpleName();
     public static final int FAJR = 0;
@@ -58,7 +56,6 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
       public void onCreate() {
         super.onCreate();
         salatOptions = PreferenceManager.getDefaultSharedPreferences(this);
-        salatOptions.registerOnSharedPreferenceChangeListener(this);
         
         salatNames[0] = "Fajr";
         salatNames[2] = "Duhr";
@@ -74,17 +71,12 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         Log.i("Salat app", "onTerminated");
       }
 
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        
-        //Intent intent;
-        this.stopAlarm(this);
-        this.startAlarm(this);
-        //intent = new Intent(MIDNIGHT_INTENT); 
-        //intent.putExtra(SALATTIME, "Midnight");     
-        //sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
-        //Log.i("app", "sendBroadcast");
-    }
+    //@Override
+    //public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        //
+        //this.stopAlarm(this);
+        //this.startAlarm(this);
+    //}
     
     public void setOptions()
     {
@@ -222,33 +214,37 @@ public class SalatApplication extends Application implements OnSharedPreferenceC
         return timeLeft;
     }
     
-    public void startAlarm(Context context)
+    public long getTimeToSalat()
     {
-        Calendar now = Calendar.getInstance();
-        initCalendar();
-        setSalatTimes();
-        long timeToSalat = this.getTimeLeft() + now.getTimeInMillis();     
-
-        Intent intent = new Intent(context, SalatReceiver.class); 
-        //intent.putExtra("ACTION","ATHAN_ALERT");
-        //PendingIntent pendingIntent = PendingIntent.getService(context, -1, intent, PendingIntent.FLAG_UPDATE_CURRENT); 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_ONE_SHOT );
-
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);    
-        Log.i("Salat app", "Next salat is " + nextSalat  + " in " + timeToSalat);
-
-    }
+		Calendar now = Calendar.getInstance();
+		initCalendar();
+		setSalatTimes();
+		return this.getTimeLeft() + now.getTimeInMillis();
+	}
+    
+    //public void startAlarm(Context context)
+    //{
+        //Calendar now = Calendar.getInstance();
+        //initCalendar();
+        //setSalatTimes();
+        //long timeToSalat = this.getTimeLeft() + now.getTimeInMillis();
+        //Intent intent = new Intent(context, SalatReceiver.class);  
+        //PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        //AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        //alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);    
+        //Log.i("Salat app", "Next salat is " + nextSalat  + " in " + timeToSalat);
+//
+    //}
   
-    public void stopAlarm(Context context)
-    {
-        Intent intent = new Intent(context, SalatReceiver.class); 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.cancel(pendingIntent);
-        Log.i("Salat app", "Alarm Stopped");
-    }
+    //public void stopAlarm(Context context)
+    //{
+        //Intent intent = new Intent(context, SalatReceiver.class); 
+        //PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        //
+        //AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        //alarmManager.cancel(pendingIntent);
+        //Log.i("Salat app", "Alarm Stopped");
+    //}
     
     public String getCity()
     {

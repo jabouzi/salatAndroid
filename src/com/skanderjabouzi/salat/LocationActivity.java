@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.preference.EditTextPreference;
 import android.content.SharedPreferences;
 import android.content.DialogInterface;
@@ -24,7 +25,7 @@ import java.io.IOException;
 import java.util.List;
 
 
-public class LocationActivity extends PreferenceActivity implements LocationListener{
+public class LocationActivity extends PreferenceActivity implements LocationListener, OnSharedPreferenceChangeListener{
     
     private LocationManager locationManager;
     private String bestProvider;

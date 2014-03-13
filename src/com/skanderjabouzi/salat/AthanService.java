@@ -75,8 +75,6 @@ public class AthanService extends Service{
 		sendTimelineNotification(salatName);
 		playAthan();
 		Log.i(TAG, "onHandleIntent #3 " + SalatApplication.nextSalat + " : " + salatName);
-                
-        salatApp.startAlarm(getApplicationContext());         
     }
 
     private void sendTimelineNotification(String salatName) {        
