@@ -14,9 +14,8 @@ import android.view.Display;
 import android.util.Log;
 import android.widget.Toast;
 
-public class SalatActivity extends Activity {
-    
-    //private BroadcastReceiver salatReceiver;
+public class SalatActivity extends Activity {    
+
     static final String SEND_SALATTIME_NOTIFICATIONS = "com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS";
     String sataTimes[] = new String[7];
     String[] hijriDates = new String[4];    

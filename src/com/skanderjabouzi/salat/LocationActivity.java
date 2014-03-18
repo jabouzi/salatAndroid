@@ -10,36 +10,48 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.preference.EditTextPreference;
 import android.content.SharedPreferences;
 import android.content.DialogInterface;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.location.LocationProvider;
 import android.widget.Button;
 import android.widget.Toast;
 import android.view.View;
 import android.view.View.OnKeyListener;
-import android.location.Geocoder;
-import android.location.Address;
-import java.util.TimeZone;
-import java.io.IOException;
-import java.util.List;
+//import java.util.TimeZone;
+//import java.io.IOException;
+//import java.util.List;
 
 
 public class LocationActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener{
-    
-    private LocationManager locationManager;
-    private String bestProvider;
-    private SharedPreferences salatOptions; 
-    private SharedPreferences.Editor editor;
 
-    	@Override
+	//private LocationManager locationManager;
+	private String bestProvider;
+	private SharedPreferences salatOptions;
+	private SharedPreferences.Editor editor;
+
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.xml.options);
+	   super.onCreate(savedInstanceState);
+		addPreferencesFromResource(R.xml.location);
+		setContentView(R.layout.location);
+		salatOptions = PreferenceManager.getDefaultSharedPreferences(this);
+		editor = salatOptions.edit();
+		final Button button = (Button) findViewById(R.id.locationButton);
+		final EditTextPreference prefLatitude = (EditTextPreference) findPreference("latitude");
+		final EditTextPreference prefLongitude = (EditTextPreference) findPreference("longitude");
+		final EditTextPreference prefTimezone = (EditTextPreference) findPreference("timezone");
+		final EditTextPreference prefCity = (EditTextPreference) findPreference("city");
+		final EditTextPreference prefCountry = (EditTextPreference) findPreference("country");
+		//final AlertDialog.Builder alert  = new AlertDialog.Builder(this);
+		//alert.setCancelable(true);
+		button.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent serviceIntent = new Intent();
+				serviceIntent.setAction("com.skanderjabouzi.salat.LocationService");
+				startService(serviceIntent);
+			}
+		});
+
 	}
-    
-    @Override
+
+	@Override
 	public void onStart() {
 		super.onStart();
 		salatOptions = PreferenceManager.getDefaultSharedPreferences(this);
@@ -57,6 +69,6 @@ public class LocationActivity extends PreferenceActivity implements OnSharedPref
 			String key) {
 		//getActivity().sendBroadcast( new Intent("com.marakana.android.yamba.action.UPDATED_INTERVAL") );
 	}
-    
-    
+
+
 }

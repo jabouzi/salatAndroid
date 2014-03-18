@@ -47,7 +47,7 @@ public class MidnightService extends Service{
         sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
         Log.i(TAG, "onHandleIntent #4 " + "Midnight");
         stopService();        
-        salatApp.startAlarm(getApplicationContext());         
+        //salatApp.startAlarm(getApplicationContext());         
     }
     
     private void stopService()

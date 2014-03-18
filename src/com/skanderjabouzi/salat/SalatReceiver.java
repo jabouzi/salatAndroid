@@ -15,8 +15,8 @@ public class SalatReceiver extends BroadcastReceiver {
 		WakeLock.acquire(context); 
 		SalatApplication salatApp = (SalatApplication) context.getApplicationContext();
 		long timeToSalat = salatApp.getTimeToSalat();
-		Intent intent = new Intent(context, SalatReceiver.class);  
-		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+		Intent athanIntent = new Intent(context, SalatReceiver.class);  
+		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, 0);
 		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 		alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);    
 		Log.i("SalatReceiver", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
