@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-  <EditTextPreference android:title="@string/titleLongitude" android:summary="@string/summaryLongitude" android:key="longitude"></EditTextPreference>
-  <EditTextPreference android:title="@string/titleLatitude" android:summary="@string/summaryLatitude" android:key="latitude"></EditTextPreference>
-  <EditTextPreference android:title="@string/titleTimezone" android:summary="@string/summaryTimezone" android:key="timezone"></EditTextPreference>
-  <EditTextPreference android:title="@string/titleCity" android:summary="@string/summaryCity" android:key="city"></EditTextPreference>
-  <EditTextPreference android:title="@string/titleCountry" android:summary="@string/summaryCountry" android:key="country"></EditTextPreference>
+	<EditTextPreference android:title="@string/titleLongitude" android:summary="@string/summaryLongitude" android:key="longitude"></EditTextPreference>
+	<EditTextPreference android:title="@string/titleLatitude" android:summary="@string/summaryLatitude" android:key="latitude"></EditTextPreference>
+	<EditTextPreference android:title="@string/titleTimezone" android:summary="@string/summaryTimezone" android:key="timezone"></EditTextPreference>
+	<EditTextPreference android:title="@string/titleCity" android:summary="@string/summaryCity" android:key="city"></EditTextPreference>
+	<EditTextPreference android:title="@string/titleCountry" android:summary="@string/summaryCountry" android:key="country"></EditTextPreference>
 </PreferenceScreen>
+
+
