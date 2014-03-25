@@ -52,41 +52,17 @@ public class SalatActivity extends Activity {
             }
         }
         
-        //filter = new IntentFilter( "com.skanderjabouzi.salat.MIDNIGHT_INTENT" );
         super.registerReceiver(receiver, filter, SEND_SALATTIME_NOTIFICATIONS, null);
-        //Log.i("SalatActivity", "registerReceiver");
-        
-        /*IntentFilter intentFilter = new IntentFilter("android.intent.action.MAIN");
- 
-        salatReceiver = new BroadcastReceiver() {
- 
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                String salatName = intent.getStringExtra("salatTime");
-                Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();
-                Log.i("SalatReceiver", salatName);
-                //if (salatName == "Midnight") setSalatTimes();
-                setSalatTimes();                
-            }
-        };
-
-        this.registerReceiver(salatReceiver, intentFilter);        
-        Log.i("SalatActivity", "registerReceiver");*/
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        //this.unregisterReceiver(this.salatReceiver);
         unregisterReceiver(receiver); 
     }
     
     private void setSalatTimes()
     {        
-		//Display display = getWindowManager().getDefaultDisplay(); 
-		//int width = display.getWidth();
-		//int height = display.getHeight();
-		//Toast.makeText( getApplicationContext(),"Screen: "+ width + " / " + height,Toast.LENGTH_SHORT).show();
         salatApp.initCalendar();
         salatApp.setSalatTimes();
         salatApp.setHijriDate();

@@ -42,6 +42,9 @@
     <string name="summaryCity">City Name</string>
     <string name="titleCountry">Country</string>
     <string name="summaryCountry">Country Name</string>    
+    <string name="detectLocation">Detect location</string>    
+    <string name="saveLocation">Save location</string>    
+    <string name="saveOptions">Save options</string>    
     
     <string-array name="calculation">
         <item>Ithna Ashari</item>
