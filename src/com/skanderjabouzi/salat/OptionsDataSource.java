@@ -1,4 +1,4 @@
-package com.db;
+package com.skanderjabouzi.salat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-public class CommentsDataSource {
+public class OptionsDataSource {
 
 	// Database fields
 	private SQLiteDatabase database;
@@ -17,7 +17,7 @@ public class CommentsDataSource {
 	private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
 			MySQLiteHelper.COLUMN_COMMENT };
 
-	public CommentsDataSource(Context context) {
+	public OptionsDataSource(Context context) {
 		dbHelper = new MySQLiteHelper(context);
 	}
 
@@ -29,47 +29,47 @@ public class CommentsDataSource {
 		dbHelper.close();
 	}
 
-	public Comment createComment(String comment) {
+	/*public Options createOptions(String options) {
 		ContentValues values = new ContentValues();
-		values.put(MySQLiteHelper.COLUMN_COMMENT, comment);
+		values.put(MySQLiteHelper.COLUMN_COMMENT, options);
 		long insertId = database.insert(MySQLiteHelper.TABLE_COMMENTS, null,
 				values);
 		Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
 				allColumns, MySQLiteHelper.COLUMN_ID + " = " + insertId, null,
 				null, null, null);
 		cursor.moveToFirst();
-		Comment newComment = cursorToComment(cursor);
+		Options newOptions = cursorToOptions(cursor);
 		cursor.close();
-		return newComment;
+		return newOptions;
 	}
 
-	public void deleteComment(Comment comment) {
-		long id = comment.getId();
-		System.out.println("Comment deleted with id: " + id);
+	public void deleteOptions(Options options) {
+		long id = options.getId();
+		System.out.println("Options deleted with id: " + id);
 		database.delete(MySQLiteHelper.TABLE_COMMENTS, MySQLiteHelper.COLUMN_ID
 				+ " = " + id, null);
 	}
 
-	public List<Comment> getAllComments() {
-		List<Comment> comments = new ArrayList<Comment>();
+	public List<Options> getAllOptionss() {
+		List<Options> optionss = new ArrayList<Options>();
 
 		Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
 				allColumns, null, null, null, null, null);
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
-			Comment comment = cursorToComment(cursor);
-			comments.add(comment);
+			Options options = cursorToOptions(cursor);
+			optionss.add(options);
 			cursor.moveToNext();
 		}
 		// Make sure to close the cursor
 		cursor.close();
-		return comments;
+		return optionss;
 	}
 
-	private Comment cursorToComment(Cursor cursor) {
-		Comment comment = new Comment();
-		comment.setId(cursor.getLong(0));
-		comment.setComment(cursor.getString(1));
-		return comment;
-	}
+	private Options cursorToOptions(Cursor cursor) {
+		Options options = new Options();
+		options.setId(cursor.getLong(0));
+		options.setOptions(cursor.getString(1));
+		return options;
+	}*/
 }

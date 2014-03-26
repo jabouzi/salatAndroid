@@ -42,7 +42,7 @@ public class Location {
 	}
 
 	public String getCountry() {
-		return comment;
+		return country;
 	}
 
 	public void setCountry(String country) {
@@ -50,7 +50,7 @@ public class Location {
 	}
 	
 	public String getCity() {
-		return comment;
+		return city;
 	}
 
 	public void setCity(String city) {

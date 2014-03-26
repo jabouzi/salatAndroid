@@ -33,5 +33,19 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
     protected void onPause() {
         super.onPause();
     }
+    
+    public void addListenerOnSpinnerItemSelection() {
+		options = (Spinner) findViewById(R.id.options);
+		options.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+		
+		asr = (Spinner) findViewById(R.id.asr);
+		asr.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+		
+		hijri = (Spinner) findViewById(R.id.hijri);
+		hijri.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+		
+		higherLatitudes = (Spinner) findViewById(R.id.higherLatitudes);
+		higherLatitudes.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+	}
 
 }

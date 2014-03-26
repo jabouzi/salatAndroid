@@ -1,4 +1,4 @@
-package com.db;
+package com.skanderjabouzi.salat;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
