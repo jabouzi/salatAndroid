@@ -16,12 +16,14 @@ import android.widget.Toast;
 public class OptionsActivity extends Activity implements OnItemSelectedListener{
 
 	private Spinner options, asr, hijri, higherLatitudes;
-	private Button btnSubmit;
+	private Button btnSaveOptions;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.options);
+        addListenerOnButton();
+		addListenerOnSpinnerItemSelection();
     }
     
     @Override
@@ -36,16 +38,55 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
     
     public void addListenerOnSpinnerItemSelection() {
 		options = (Spinner) findViewById(R.id.options);
-		options.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+		options.setOnItemSelectedListener(this);
 		
 		asr = (Spinner) findViewById(R.id.asr);
-		asr.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+		asr.setOnItemSelectedListener(this);
 		
 		hijri = (Spinner) findViewById(R.id.hijri);
-		hijri.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+		hijri.setOnItemSelectedListener(this);
 		
 		higherLatitudes = (Spinner) findViewById(R.id.higherLatitudes);
-		higherLatitudes.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+		higherLatitudes.setOnItemSelectedListener(this);
+	}
+	
+	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+		Toast.makeText(parent.getContext(), 
+				"OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString(),
+				Toast.LENGTH_SHORT).show();
+	}
+	
+	@Override
+	public void onNothingSelected(AdapterView<?> arg0) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	public void addListenerOnButton() {
+
+		options = (Spinner) findViewById(R.id.options);
+		asr = (Spinner) findViewById(R.id.asr);		
+		hijri = (Spinner) findViewById(R.id.hijri);		
+		higherLatitudes = (Spinner) findViewById(R.id.higherLatitudes);
+		
+		btnSaveOptions = (Button) findViewById(R.id.saveOptions);
+
+		btnSaveOptions.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				Toast.makeText(MyAndroidAppActivity.this,
+						"OnClickListener : " + 
+						"\nSpinner 1 : " + String.valueOf(options.getSelectedItem()) +
+						"\nSpinner 2 : " + String.valueOf(asr.getSelectedItem()),
+						"\nSpinner 3 : " + String.valueOf(hijri.getSelectedItem()),
+						"\nSpinner 4 : " + String.valueOf(higherLatitudes.getSelectedItem()),
+						Toast.LENGTH_SHORT).show();
+			}
+
+		});
+
 	}
 
 }
