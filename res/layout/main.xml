@@ -72,7 +72,7 @@
           android:textColor="#fff"
           android:id="@+id/shouroukText">
 </TextView>
-<TextView android:text="@string/location"
+<TextView android:text="@string/cityCountry"
 		  android:layout_width="fill_parent"
           android:layout_height="0dip" 
           android:layout_weight="15"

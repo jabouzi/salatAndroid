@@ -9,7 +9,7 @@
     <string name="maghrib">00:00</string>
     <string name="isha">00:00</string>
     <string name="shourouk">00:00</string>
-    <string name="location">City, Country</string>
+    <string name="cityCountry">City, Country</string>
     <string name="titleCalculations">Salat Times Optionsn</string>
     <string name="titleSalatLocation">Salat Location Options</string>
     <string name="titleSalatQibla">Salat Qibla Direction</string>
@@ -45,6 +45,12 @@
     <string name="detectLocation">Detect location</string>    
     <string name="saveLocation">Save location</string>    
     <string name="saveOptions">Save options</string>    
+    <string name="options">Options</string>    
+    <string name="location">Location</string>    
+    <string name="qibla">Qibla</string>    
+    <string name="hijriConversion">Hijri Conversion</string>    
+    <string name="adhanOptions">Adhan Options</string>    
+    <string name="stopAthan">Stop Athan</string>    
     
     <string-array name="calculation">
         <item>Ithna Ashari</item>

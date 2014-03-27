@@ -1,8 +1,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-	<item android:id="@+id/options" android:title="Options" android:icon="@drawable/makka"></item>
-    <item android:id="@+id/location" android:title="Location" android:icon="@drawable/world"></item>
-    <item android:id="@+id/qibla" android:title="Qibla" android:icon="@drawable/qibla"></item>
-    <item android:id="@+id/hijri" android:title="Hijri Conversion" android:icon="@drawable/hijri"></item>
-    <item android:id="@+id/play" android:title="Adhan options" android:icon="@android:drawable/ic_media_play"></item>
-    <item android:id="@+id/athan" android:title="Stop Athan" android:icon="@android:drawable/ic_media_pause"></item>
+	<item android:id="@+id/options" android:title="@string/options" android:icon="@drawable/makka"></item>
+    <item android:id="@+id/location" android:title="@string/location" android:icon="@drawable/world"></item>
+    <item android:id="@+id/qibla" android:title="@string/qibla" android:icon="@drawable/qibla"></item>
+    <item android:id="@+id/hijri" android:title="@string/hijriConversion" android:icon="@drawable/hijri"></item>
+    <item android:id="@+id/play" android:title="@string/adhanOptions" android:icon="@android:drawable/ic_media_play"></item>
+    <item android:id="@+id/athan" android:title="@string/stopAthan" android:icon="@android:drawable/ic_media_pause"></item>
 </menu>

@@ -12,10 +12,11 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.content.Context;
 
 public class OptionsActivity extends Activity implements OnItemSelectedListener{
 
-	private Spinner options, asr, hijri, higherLatitudes;
+	private Spinner options, asr, hijri, highLatitudes;
 	private Button btnSaveOptions;
 	
 	@Override
@@ -46,8 +47,8 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 		hijri = (Spinner) findViewById(R.id.hijri);
 		hijri.setOnItemSelectedListener(this);
 		
-		higherLatitudes = (Spinner) findViewById(R.id.higherLatitudes);
-		higherLatitudes.setOnItemSelectedListener(this);
+		highLatitudes = (Spinner) findViewById(R.id.highLatitudes);
+		highLatitudes.setOnItemSelectedListener(this);
 	}
 	
 	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -67,7 +68,7 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 		options = (Spinner) findViewById(R.id.options);
 		asr = (Spinner) findViewById(R.id.asr);		
 		hijri = (Spinner) findViewById(R.id.hijri);		
-		higherLatitudes = (Spinner) findViewById(R.id.higherLatitudes);
+		highLatitudes = (Spinner) findViewById(R.id.highLatitudes);
 		
 		btnSaveOptions = (Button) findViewById(R.id.saveOptions);
 
@@ -76,12 +77,12 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 			@Override
 			public void onClick(View v) {
 
-				Toast.makeText(MyAndroidAppActivity.this,
+				Toast.makeText(OptionsActivity.this,
 						"OnClickListener : " + 
 						"\nSpinner 1 : " + String.valueOf(options.getSelectedItem()) +
-						"\nSpinner 2 : " + String.valueOf(asr.getSelectedItem()),
-						"\nSpinner 3 : " + String.valueOf(hijri.getSelectedItem()),
-						"\nSpinner 4 : " + String.valueOf(higherLatitudes.getSelectedItem()),
+						"\nSpinner 2 : " + String.valueOf(asr.getSelectedItem()) +
+						"\nSpinner 3 : " + String.valueOf(hijri.getSelectedItem()) +
+						"\nSpinner 4 : " + String.valueOf(highLatitudes.getSelectedItem()),
 						Toast.LENGTH_SHORT).show();
 			}
 
