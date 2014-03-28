@@ -18,6 +18,7 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 
 	private Spinner options, asr, hijri, highLatitudes;
 	private Button btnSaveOptions;
+	private OptionsDataSource datasource;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,8 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
         setContentView(R.layout.options);
         addListenerOnButton();
 		addListenerOnSpinnerItemSelection();
+		datasource = new CommentsDataSource(this);
+		datasource.open();
     }
     
     @Override
@@ -85,9 +88,7 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 						"\nSpinner 4 : " + String.valueOf(highLatitudes.getSelectedItem()),
 						Toast.LENGTH_SHORT).show();
 			}
-
 		});
-
 	}
 
 }
