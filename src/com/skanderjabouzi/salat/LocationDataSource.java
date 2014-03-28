@@ -29,7 +29,7 @@ public class LocationDataSource {
 		dbHelper.close();
 	}
 
-	/*public Location createLocation(String location) {
+	public Location createLocation(String location) {
 		ContentValues values = new ContentValues();
 		values.put(MySQLiteHelper.COLUMN_COMMENT, location);
 		long insertId = database.insert(MySQLiteHelper.TABLE_COMMENTS, null,
