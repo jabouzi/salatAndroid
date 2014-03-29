@@ -13,12 +13,10 @@ public class OptionsDataSource {
 
 	// Database fields
 	private SQLiteDatabase database;
-	private MySQLiteHelper dbHelper;
-	private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
-			MySQLiteHelper.COLUMN_COMMENT };
+	private DBHelper dbHelper;
 
 	public OptionsDataSource(Context context) {
-		dbHelper = new MySQLiteHelper(context);
+		dbHelper = new DBHelper(context);
 	}
 
 	public void open() throws SQLException {
@@ -29,47 +27,92 @@ public class OptionsDataSource {
 		dbHelper.close();
 	}
 
-	/*public Options createOptions(String options) {
+	void addOptions(Options options) {
+		SQLiteDatabase db = DBHelper.getWritableDatabase();
+
 		ContentValues values = new ContentValues();
-		values.put(MySQLiteHelper.COLUMN_COMMENT, options);
-		long insertId = database.insert(MySQLiteHelper.TABLE_COMMENTS, null,
-				values);
-		Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
-				allColumns, MySQLiteHelper.COLUMN_ID + " = " + insertId, null,
-				null, null, null);
-		cursor.moveToFirst();
-		Options newOptions = cursorToOptions(cursor);
-		cursor.close();
-		return newOptions;
+		values.put('id', options.geId());
+		values.put('method', options.geMethod());
+		values.put('asr', options.geAsr());
+		values.put('hijri', options.getHijri());
+		values.put('higherLatitude', options.getHigherLatitude());
+
+		db.insert('options', null, values);
+		db.close();
 	}
 
-	public void deleteOptions(Options options) {
-		long id = options.getId();
-		System.out.println("Options deleted with id: " + id);
-		database.delete(MySQLiteHelper.TABLE_COMMENTS, MySQLiteHelper.COLUMN_ID
-				+ " = " + id, null);
-	}
+	// Getting single options
+	Options getOptions(int id) {
+		SQLiteDatabase db = DBHelper.getReadableDatabase();
 
-	public List<Options> getAllOptionss() {
-		List<Options> optionss = new ArrayList<Options>();
+		Cursor cursor = db.query('options', new String[] { KEY_ID,
+				KEY_NAME, KEY_PH_NO }, KEY_ID + "=?",
+				new String[] { String.valueOf(id) }, null, null, null, null);
+		if (cursor != null)
+			cursor.moveToFirst();
 
-		Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
-				allColumns, null, null, null, null, null);
-		cursor.moveToFirst();
-		while (!cursor.isAfterLast()) {
-			Options options = cursorToOptions(cursor);
-			optionss.add(options);
-			cursor.moveToNext();
-		}
-		// Make sure to close the cursor
-		cursor.close();
-		return optionss;
-	}
-
-	private Options cursorToOptions(Cursor cursor) {
-		Options options = new Options();
-		options.setId(cursor.getLong(0));
-		options.setOptions(cursor.getString(1));
+		Options options = new Options(Integer.parseInt(cursor.getString(0)),
+				cursor.getString(1), cursor.getString(2));
+		// return options
 		return options;
-	}*/
+	}
+
+	// Getting All Options
+	public List<Options> getAllOptions() {
+		List<Options> optionsList = new ArrayList<Options>();
+		// Select All Query
+		String selectQuery = "SELECT  * FROM " + 'options';
+
+		SQLiteDatabase db = DBHelper.getWritableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
+
+		// looping through all rows and adding to list
+		if (cursor.moveToFirst()) {
+			do {
+				Options options = new Options();
+				options.setID(Integer.parseInt(cursor.getString(0)));
+				options.setName(cursor.getString(1));
+				options.setPhoneNumber(cursor.getString(2));
+				// Adding options to list
+				optionsList.add(options);
+			} while (cursor.moveToNext());
+		}
+
+		// return options list
+		return optionsList;
+	}
+
+	// Updating single options
+	public int updateOptions(Options options) {
+		SQLiteDatabase db = DBHelper.getWritableDatabase();
+
+		ContentValues values = new ContentValues();
+		values.put(KEY_NAME, options.getName());
+		values.put(KEY_PH_NO, options.getPhoneNumber());
+
+		// updating row
+		return db.update('options', values, KEY_ID + " = ?",
+				new String[] { String.valueOf(options.getID()) });
+	}
+
+	// Deleting single options
+	public void deleteOptions(Options options) {
+		SQLiteDatabase db = DBHelper.getWritableDatabase();
+		db.delete('options', KEY_ID + " = ?",
+				new String[] { String.valueOf(options.getID()) });
+		db.close();
+	}
+
+
+	// Getting options Count
+	public int getOptionsCount() {
+		String countQuery = "SELECT  * FROM " + 'options';
+		SQLiteDatabase db = DBHelper.getReadableDatabase();
+		Cursor cursor = db.rawQuery(countQuery, null);
+		cursor.close();
+
+		// return count
+		return cursor.getCount();
+	}
+
 }

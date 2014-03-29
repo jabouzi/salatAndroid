@@ -4,10 +4,9 @@ public class Options {
 
 	private long id;
 	private int method;
-	private int asr; 
-	private int hijri; 
+	private int asr;
+	private int hijri;
 	private int higherLatitude;
-
 
 	public long getId() {
 		return id;
@@ -16,7 +15,7 @@ public class Options {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
+
 	public int getMethod() {
 		return method;
 	}
@@ -24,7 +23,7 @@ public class Options {
 	public void setMethod(int method) {
 		this.method = method;
 	}
-	
+
 	public int getAsr() {
 		return asr;
 	}
@@ -32,7 +31,7 @@ public class Options {
 	public void setAsr(int method) {
 		this.asr = asr;
 	}
-	
+
 	public int getHijri() {
 		return hijri;
 	}
@@ -40,7 +39,7 @@ public class Options {
 	public void setHijri(int hijri) {
 		this.hijri = hijri;
 	}
-	
+
 	public int getHigherLatitude() {
 		return higherLatitude;
 	}
@@ -49,9 +48,4 @@ public class Options {
 		this.higherLatitude = higherLatitude;
 	}
 
-	// Will be used by the ArrayAdapter in the ListView
-	//@Override
-	//public String toString() {
-		//return comment;
-	//}
 }
