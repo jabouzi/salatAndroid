@@ -13,58 +13,52 @@ public class OptionsDataSource {
 
 	// Database fields
 	private SQLiteDatabase database;
-	private DBHelper dbHelper;
+	private DBHelper DBHelper;
 
 	public OptionsDataSource(Context context) {
-		dbHelper = new DBHelper(context);
+		DBHelper = new DBHelper(context);
 	}
 
 	public void open() throws SQLException {
-		database = dbHelper.getWritableDatabase();
+		database = DBHelper.getWritableDatabase();
 	}
 
 	public void close() {
-		dbHelper.close();
+		DBHelper.close();
 	}
 
 	void addOptions(Options options) {
-		SQLiteDatabase db = DBHelper.getWritableDatabase();
-
 		ContentValues values = new ContentValues();
-		values.put('id', options.geId());
-		values.put('method', options.geMethod());
-		values.put('asr', options.geAsr());
-		values.put('hijri', options.getHijri());
-		values.put('higherLatitude', options.getHigherLatitude());
+		values.put("id", options.getId());
+		values.put("method", options.getMethod());
+		values.put("asr", options.getAsr());
+		values.put("hijri", options.getHijri());
+		values.put("higherLatitude", options.getHigherLatitude());
 
-		db.insert('options', null, values);
-		db.close();
+		database.insert("options", null, values);
+		database.close();
 	}
 
 	// Getting single options
 	Options getOptions(int id) {
-		SQLiteDatabase db = DBHelper.getReadableDatabase();
-
-		Cursor cursor = db.query('options', new String[] { KEY_ID,
-				KEY_NAME, KEY_PH_NO }, KEY_ID + "=?",
+		Cursor cursor = database.query("options", new String[] { "id",
+				"method", "asr", "hijri", "higherLatitude"}," id = ?",
 				new String[] { String.valueOf(id) }, null, null, null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
 
 		Options options = new Options(Integer.parseInt(cursor.getString(0)),
-				cursor.getString(1), cursor.getString(2));
+				cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
 		// return options
 		return options;
 	}
 
 	// Getting All Options
-	public List<Options> getAllOptions() {
+	/*public List<Options> getAllOptions() {
 		List<Options> optionsList = new ArrayList<Options>();
 		// Select All Query
-		String selectQuery = "SELECT  * FROM " + 'options';
-
-		SQLiteDatabase db = DBHelper.getWritableDatabase();
-		Cursor cursor = db.rawQuery(selectQuery, null);
+		String selectQuery = "SELECT  * FROM " + "options";
+		Cursor cursor = database.rawQuery(selectQuery, null);
 
 		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
@@ -80,35 +74,33 @@ public class OptionsDataSource {
 
 		// return options list
 		return optionsList;
-	}
+	}*/
 
 	// Updating single options
 	public int updateOptions(Options options) {
-		SQLiteDatabase db = DBHelper.getWritableDatabase();
-
 		ContentValues values = new ContentValues();
-		values.put(KEY_NAME, options.getName());
-		values.put(KEY_PH_NO, options.getPhoneNumber());
+		values.put("method", options.getMethod());
+		values.put("asr", options.getAsr());
+		values.put("hijri", options.getHijri());
+		values.put("higherLatitude", options.getHigherLatitude());
 
 		// updating row
-		return db.update('options', values, KEY_ID + " = ?",
-				new String[] { String.valueOf(options.getID()) });
+		return database.update("options", values," id = ?",
+				new String[] { String.valueOf(options.getId()) });
 	}
 
 	// Deleting single options
 	public void deleteOptions(Options options) {
-		SQLiteDatabase db = DBHelper.getWritableDatabase();
-		db.delete('options', KEY_ID + " = ?",
-				new String[] { String.valueOf(options.getID()) });
-		db.close();
+		database.delete("options"," id = ?",
+				new String[] { String.valueOf(options.getId()) });
+		database.close();
 	}
 
 
 	// Getting options Count
 	public int getOptionsCount() {
-		String countQuery = "SELECT  * FROM " + 'options';
-		SQLiteDatabase db = DBHelper.getReadableDatabase();
-		Cursor cursor = db.rawQuery(countQuery, null);
+		String countQuery = "SELECT  * FROM " + "options";
+		Cursor cursor = database.rawQuery(countQuery, null);
 		cursor.close();
 
 		// return count

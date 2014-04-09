@@ -26,7 +26,7 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
         setContentView(R.layout.options);
         addListenerOnButton();
 		addListenerOnSpinnerItemSelection();
-		datasource = new CommentsDataSource(this);
+		datasource = new OptionsDataSource(this);
 		datasource.open();
     }
     

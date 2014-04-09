@@ -12,13 +12,13 @@ import android.database.sqlite.SQLiteDatabase;
 public class LocationDataSource {
 
 	// Database fields
-	private SQLiteDatabase database;
-	private MySQLiteHelper dbHelper;
-	private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
-			MySQLiteHelper.COLUMN_COMMENT };
+	/*private SQLiteDatabase database;
+	private DBHelper dbHelper;
+	private String[] allColumns = { DBHelper.COLUMN_ID,
+			DBHelper.COLUMN_COMMENT };
 
 	public LocationDataSource(Context context) {
-		dbHelper = new MySQLiteHelper(context);
+		dbHelper = new DBHelper(context);
 	}
 
 	public void open() throws SQLException {
@@ -31,11 +31,11 @@ public class LocationDataSource {
 
 	public Location createLocation(String location) {
 		ContentValues values = new ContentValues();
-		values.put(MySQLiteHelper.COLUMN_COMMENT, location);
-		long insertId = database.insert(MySQLiteHelper.TABLE_COMMENTS, null,
+		values.put(DBHelper.COLUMN_COMMENT, location);
+		long insertId = database.insert(DBHelper.TABLE_COMMENTS, null,
 				values);
-		Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
-				allColumns, MySQLiteHelper.COLUMN_ID + " = " + insertId, null,
+		Cursor cursor = database.query(DBHelper.TABLE_COMMENTS,
+				allColumns, DBHelper.COLUMN_ID + " = " + insertId, null,
 				null, null, null);
 		cursor.moveToFirst();
 		Location newLocation = cursorToLocation(cursor);
@@ -46,14 +46,14 @@ public class LocationDataSource {
 	public void deleteLocation(Location location) {
 		long id = location.getId();
 		System.out.println("Location deleted with id: " + id);
-		database.delete(MySQLiteHelper.TABLE_COMMENTS, MySQLiteHelper.COLUMN_ID
+		database.delete(DBHelper.TABLE_COMMENTS, DBHelper.COLUMN_ID
 				+ " = " + id, null);
 	}
 
 	public List<Location> getAllLocations() {
 		List<Location> locations = new ArrayList<Location>();
 
-		Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
+		Cursor cursor = database.query(DBHelper.TABLE_COMMENTS,
 				allColumns, null, null, null, null, null);
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
