@@ -12,18 +12,18 @@ import android.util.Log;
 public class SalatBootReceiver extends BroadcastReceiver {
 
   @Override
-  public void onReceive(Context context, Intent intent) {    
+  public void onReceive(Context context, Intent intent) {
 		final String action = intent.getAction();
 		Log.i("ACTION2", action);
 		if (action.equals("android.intent.action.BOOT_COMPLETED"))
-		{		
-			//SalatApplication salatApp = (SalatApplication) context.getApplicationContext();  
-			SalatApplication salatApp = new SalatApplication();  
+		{
+			//SalatApplication salatApp = (SalatApplication) context.getApplicationContext();
+			SalatApplication salatApp = new SalatApplication();
 			long timeToSalat = salatApp.getTimeToSalat();
-			Intent athanIntent = new Intent(context, SalatReceiver.class);  
+			Intent athanIntent = new Intent(context, SalatReceiver.class);
 			PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, 0);
 			AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-			alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);    
+			alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
 			Log.i("SalatBootReceiver", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
 			Log.i("SalatBootReceiver", "SalatOnReceived");
 		}

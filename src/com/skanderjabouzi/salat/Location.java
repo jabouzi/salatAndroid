@@ -16,7 +16,7 @@ public class Location {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
+
 	public float getLatitude() {
 		return latitude;
 	}
@@ -24,7 +24,7 @@ public class Location {
 	public void setLatitude(float latitude) {
 		this.latitude = latitude;
 	}
-	
+
 	public float getLongitude() {
 		return longitude;
 	}
@@ -32,7 +32,7 @@ public class Location {
 	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
-	
+
 	public int getTimezone() {
 		return timezone;
 	}
@@ -48,7 +48,7 @@ public class Location {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
+
 	public String getCity() {
 		return city;
 	}

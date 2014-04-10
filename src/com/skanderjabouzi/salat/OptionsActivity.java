@@ -20,7 +20,7 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 	private Button btnSaveOptions;
 	private OptionsDataSource datasource;
 	private Options options;
-	
+
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,7 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 		datasource.open();
 		options = datasource.getOptions(1);
     }
-    
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -43,51 +43,51 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
         super.onPause();
         datasource.close();
     }
-    
+
     public void addListenerOnSpinnerItemSelection() {
 		method = (Spinner) findViewById(R.id.calculation);
 		method.setOnItemSelectedListener(this);
 		method.setSelection(options.getMethod());
-		
+
 		asr = (Spinner) findViewById(R.id.asr);
 		asr.setOnItemSelectedListener(this);
 		asr.setSelection(options.getAsr());
-		
+
 		hijri = (Spinner) findViewById(R.id.hijri);
 		hijri.setOnItemSelectedListener(this);
 		hijri.setSelection(options.getHijri());
-		
+
 		highLatitudes = (Spinner) findViewById(R.id.highLatitudes);
 		highLatitudes.setOnItemSelectedListener(this);
 		highLatitudes.setSelection(options.getHigherLatitude());
 	}
-	
+
 	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-		Toast.makeText(parent.getContext(), 
+		Toast.makeText(parent.getContext(),
 				"OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString(),
 				Toast.LENGTH_SHORT).show();
 	}
-	
+
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	public void addListenerOnButton() {
 
 		method = (Spinner) findViewById(R.id.calculation);
-		asr = (Spinner) findViewById(R.id.asr);		
-		hijri = (Spinner) findViewById(R.id.hijri);		
+		asr = (Spinner) findViewById(R.id.asr);
+		hijri = (Spinner) findViewById(R.id.hijri);
 		highLatitudes = (Spinner) findViewById(R.id.highLatitudes);
-		
+
 		btnSaveOptions = (Button) findViewById(R.id.saveOptions);
 
 		btnSaveOptions.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				
+
 				//Options options = new Options();
 				options.setId(1);
 				options.setMethod(Integer.parseInt(String.valueOf(method.getSelectedItem())));
@@ -95,9 +95,9 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 				options.setHijri(Integer.parseInt(String.valueOf(hijri.getSelectedItem())));
 				options.setHigherLatitude(Integer.parseInt(String.valueOf(highLatitudes.getSelectedItem())));
 				datasource.updateOptions(options);
-				
+
 				Toast.makeText(OptionsActivity.this,
-						"OnClickListener : " + 
+						"OnClickListener : " +
 						"\nSpinner 1 : " + String.valueOf(method.getSelectedItem()) +
 						"\nSpinner 2 : " + String.valueOf(asr.getSelectedItem()) +
 						"\nSpinner 3 : " + String.valueOf(hijri.getSelectedItem()) +

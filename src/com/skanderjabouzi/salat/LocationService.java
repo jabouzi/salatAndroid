@@ -33,17 +33,17 @@ import java.util.List;
 
 
 public class LocationService extends Service implements LocationListener{
-    
+
     private LocationManager locationManager;
     private String bestProvider;
-    //private SharedPreferences salatOptions; 
+    //private SharedPreferences salatOptions;
     //private SharedPreferences.Editor editor;
 
      /*@Override
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.location);
-        setContentView(R.layout.location);      
+        setContentView(R.layout.location);
         salatOptions = PreferenceManager.getDefaultSharedPreferences(this);
         editor = salatOptions.edit();
         final Button button = (Button) findViewById(R.id.locationButton);
@@ -66,33 +66,33 @@ public class LocationService extends Service implements LocationListener{
                 bestProvider = locationManager.getBestProvider(criteria, false);
                 Toast.makeText( getApplicationContext(),"BEST Provider: "+bestProvider,Toast.LENGTH_SHORT).show();
                 Location location = locationManager.getLastKnownLocation(bestProvider);
-                
-                //Toast.makeText( getApplicationContext(),Double.toString(location.getLatitude()),Toast.LENGTH_SHORT).show();  
-                if (location == null) 
-                {   
-                    alert.setPositiveButton("OK", new DialogInterface.OnClickListener() 
+
+                //Toast.makeText( getApplicationContext(),Double.toString(location.getLatitude()),Toast.LENGTH_SHORT).show();
+                if (location == null)
+                {
+                    alert.setPositiveButton("OK", new DialogInterface.OnClickListener()
                     {
-                        public void onClick(DialogInterface dialog, int which) 
+                        public void onClick(DialogInterface dialog, int which)
                         {
-                            dialog.cancel();                 
-                        }                 
+                            dialog.cancel();
+                        }
                     });
                     alert.setTitle("Error");
                     alert.setMessage("Please connect to the internet or set options manually or try again.");
                     alert.show();
                 }
                 else
-                {                 
-                    
-                    editor.putString("latitude", Double.toString(location.getLatitude()) );                    
-                    editor.putString("longitude", Double.toString(location.getLongitude()) );                    
+                {
+
+                    editor.putString("latitude", Double.toString(location.getLatitude()) );
+                    editor.putString("longitude", Double.toString(location.getLongitude()) );
                     prefLatitude.setText( Double.toString(location.getLatitude()) );
                     prefLongitude.setText( Double.toString(location.getLongitude()) );
-                    
-                    TimeZone tz = TimeZone.getDefault();                    
+
+                    TimeZone tz = TimeZone.getDefault();
                     editor.putString("timezone", Integer.toString((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000) );
-                    prefTimezone.setText( Integer.toString((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000) );                    
-                                                      
+                    prefTimezone.setText( Integer.toString((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000) );
+
                     //timezone.setText(Integer.toString(tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000));
                     Geocoder gcd = new Geocoder(getApplicationContext());
                     try {
@@ -103,15 +103,15 @@ public class LocationService extends Service implements LocationListener{
                         prefCountry.setText( addresses.get(0).getCountryName() );
                         //city.setText(addresses.get(0).getLocality());
                         //country.setText(addresses.get(0).getCountryName());
-                    } catch (IOException e) {   } 
-                    editor.commit();                   
+                    } catch (IOException e) {   }
+                    editor.commit();
                     cleanLocation();
-                }                       
+                }
             }
         });
 
     }*/
-    
+
      @Override
     public IBinder onBind(Intent arg0) {
 		final AlertDialog.Builder alert  = new AlertDialog.Builder(this);
@@ -126,33 +126,33 @@ public class LocationService extends Service implements LocationListener{
 		bestProvider = locationManager.getBestProvider(criteria, false);
 		Toast.makeText( getApplicationContext(),"BEST Provider: "+bestProvider,Toast.LENGTH_SHORT).show();
 		Location location = locationManager.getLastKnownLocation(bestProvider);
-		
-		//Toast.makeText( getApplicationContext(),Double.toString(location.getLatitude()),Toast.LENGTH_SHORT).show();  
-		if (location == null) 
-		{   
-			alert.setPositiveButton("OK", new DialogInterface.OnClickListener() 
+
+		//Toast.makeText( getApplicationContext(),Double.toString(location.getLatitude()),Toast.LENGTH_SHORT).show();
+		if (location == null)
+		{
+			alert.setPositiveButton("OK", new DialogInterface.OnClickListener()
 			{
-				public void onClick(DialogInterface dialog, int which) 
+				public void onClick(DialogInterface dialog, int which)
 				{
-					dialog.cancel();                 
-				}                 
+					dialog.cancel();
+				}
 			});
 			alert.setTitle("Error");
 			alert.setMessage("Please connect to the internet or set options manually or try again.");
 			alert.show();
 		}
 		else
-		{                 
-			
-			//editor.putString("latitude", Double.toString(location.getLatitude()) );                    
-			//editor.putString("longitude", Double.toString(location.getLongitude()) );                    
+		{
+
+			//editor.putString("latitude", Double.toString(location.getLatitude()) );
+			//editor.putString("longitude", Double.toString(location.getLongitude()) );
 			//prefLatitude.setText( Double.toString(location.getLatitude()) );
 			//prefLongitude.setText( Double.toString(location.getLongitude()) );
-			
-			TimeZone tz = TimeZone.getDefault();                    
+
+			TimeZone tz = TimeZone.getDefault();
 			//editor.putString("timezone", Integer.toString((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000) );
-			//prefTimezone.setText( Integer.toString((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000) );                    
-											  
+			//prefTimezone.setText( Integer.toString((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000) );
+
 			//timezone.setText(Integer.toString(tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000));
 			Geocoder gcd = new Geocoder(getApplicationContext());
 			try {
@@ -163,23 +163,23 @@ public class LocationService extends Service implements LocationListener{
 				//prefCountry.setText( addresses.get(0).getCountryName() );
 				//city.setText(addresses.get(0).getLocality());
 				//country.setText(addresses.get(0).getCountryName());
-			} catch (IOException e) {   } 
-			//editor.commit();                   
+			} catch (IOException e) {   }
+			//editor.commit();
 			cleanLocation();
 		}
         return null;
     }
-    
+
     @Override
     public void onCreate() {
-        super.onCreate();        
-    }    
+        super.onCreate();
+    }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-    }    
-    
+    }
+
     public void onLocationChanged(Location location) {
 
     }
@@ -195,7 +195,7 @@ public class LocationService extends Service implements LocationListener{
     public void onStatusChanged(String provider, int status, Bundle extras) {
 
     }
-    
+
     private void printProvider(String provider) {
         LocationProvider info = locationManager.getProvider(provider);
     }

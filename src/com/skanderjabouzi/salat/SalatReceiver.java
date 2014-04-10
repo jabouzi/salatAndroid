@@ -8,28 +8,28 @@ import android.app.PendingIntent;
 import android.app.AlarmManager;
 import android.util.Log;
 
-public class SalatReceiver extends BroadcastReceiver {     
+public class SalatReceiver extends BroadcastReceiver {
 
   @Override
-  public void onReceive(Context context, Intent intent) { 
-		WakeLock.acquire(context); 
+  public void onReceive(Context context, Intent intent) {
+		WakeLock.acquire(context);
 		SalatApplication salatApp = new SalatApplication();
 		long timeToSalat = salatApp.getTimeToSalat();
-		Intent athanIntent = new Intent(context, SalatReceiver.class);  
+		Intent athanIntent = new Intent(context, SalatReceiver.class);
 		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, 0);
 		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-		alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);    
+		alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
 		Log.i("SalatReceiver", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
 		if (salatApp.isValidSalatTime())
 		{
 			if (SalatApplication.nextSalat == SalatApplication.MIDNIGHT)
 			{
-				context.startService(new Intent(context, MidnightService.class)); 
+				context.startService(new Intent(context, MidnightService.class));
 				Log.i("SalatReceiver", "onReceived 1");
 			}
 			else
 			{
-				context.startService(new Intent(context, AthanService.class)); 
+				context.startService(new Intent(context, AthanService.class));
 				Log.i("SalatReceiver", "onReceived 2");
 			}
 			Log.i("VALIDTIME", "TRUE");

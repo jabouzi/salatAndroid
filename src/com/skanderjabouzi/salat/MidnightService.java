@@ -11,25 +11,25 @@ import android.util.Log;
 public class MidnightService extends Service{
 
     private static final String TAG = "MidhightService";
-    
+
     public static final String MIDNIGHT_INTENT = "com.skanderjabouzi.salat.MIDNIGHT_INTENT";
     public static final String SALATTIME = "SALATTIME";
     public static final String RECEIVE_SALATTIME_NOTIFICATIONS = "com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS";
 
     SalatApplication salatApp;
-    
+
     @Override
     public IBinder onBind(Intent arg0) {
         return null;
     }
-    
+
     @Override
     public void onCreate() {
-        super.onCreate();        
+        super.onCreate();
         salatApp = new SalatApplication();
         changeDay();
         Log.i(TAG, "start" );
-    }    
+    }
 
     @Override
     public void onDestroy() {
@@ -37,21 +37,21 @@ public class MidnightService extends Service{
         WakeLock.release();
         SalatApplication.athanPlaying = false;
         Log.i(TAG,"stop2");
-    }    
-    
-    private void changeDay() { 
+    }
+
+    private void changeDay() {
         Intent intent;
-        
-        intent = new Intent(MIDNIGHT_INTENT); 
-        intent.putExtra(SALATTIME, "Midnight");     
+
+        intent = new Intent(MIDNIGHT_INTENT);
+        intent.putExtra(SALATTIME, "Midnight");
         sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
         Log.i(TAG, "onHandleIntent #4 " + "Midnight");
-        stopService();        
-        //salatApp.startAlarm(getApplicationContext());         
+        stopService();
+        //salatApp.startAlarm(getApplicationContext());
     }
-    
+
     private void stopService()
-    {        
+    {
         stopService(new Intent(this, MidnightService.class));
     }
 }
