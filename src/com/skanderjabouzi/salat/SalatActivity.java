@@ -27,7 +27,7 @@ public class SalatActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        salatApp = (SalatApplication) getApplication();
+        salatApp = new SalatApplication();
         receiver = new MidnightReceiver();   
         filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );
         Log.i("SalatActivity", "Created"); 

@@ -15,7 +15,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.app.PendingIntent;
 
-public class SalatApplication extends Application{
+public class SalatApplication{
     
     private static final String TAG = SalatApplication.class.getSimpleName();
     public static final int FAJR = 0;
@@ -27,7 +27,7 @@ public class SalatApplication extends Application{
 
     public String[] salatNames = new String[7];
     
-    private SharedPreferences salatOptions;
+    //private SharedPreferences salatOptions;
     //private boolean serviceRunning;
     private String salaTimes[] = new String[7];
     private String[] hijriDates = new String[4];
@@ -52,9 +52,8 @@ public class SalatApplication extends Application{
     public static int prefType;
         
     
-    @Override
-      public void onCreate() {
-        super.onCreate();
+    public SalatApplication() {
+        //super.onCreate();
         //salatOptions = PreferenceManager.getDefaultSharedPreferences(this);
         
         salatNames[0] = "Fajr";
@@ -65,11 +64,11 @@ public class SalatApplication extends Application{
         Log.i("Salat app", "onCreated");        
       }
 
-      @Override
-      public void onTerminate() {
-        super.onTerminate();
-        Log.i("Salat app", "onTerminated");
-      }
+      //@Override
+      //public void onTerminate() {
+        //super.onTerminate();
+        //Log.i("Salat app", "onTerminated");
+      //}
 
     //@Override
     //public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {

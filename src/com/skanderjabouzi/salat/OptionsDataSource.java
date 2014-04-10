@@ -47,8 +47,12 @@ public class OptionsDataSource {
 		if (cursor != null)
 			cursor.moveToFirst();
 
-		Options options = new Options(Integer.parseInt(cursor.getString(0)),
-				cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+		Options options = new Options();
+		options.setId(cursor.getLong(0));
+		options.setMethod(cursor.getInt(1));
+		options.setAsr(cursor.getInt(2));
+		options.setHijri(cursor.getInt(3));
+		options.setHigherLatitude(cursor.getInt(4));
 		// return options
 		return options;
 	}

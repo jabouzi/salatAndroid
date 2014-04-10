@@ -13,7 +13,7 @@ public class SalatReceiver extends BroadcastReceiver {
   @Override
   public void onReceive(Context context, Intent intent) { 
 		WakeLock.acquire(context); 
-		SalatApplication salatApp = (SalatApplication) context.getApplicationContext();
+		SalatApplication salatApp = new SalatApplication();
 		long timeToSalat = salatApp.getTimeToSalat();
 		Intent athanIntent = new Intent(context, SalatReceiver.class);  
 		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, 0);

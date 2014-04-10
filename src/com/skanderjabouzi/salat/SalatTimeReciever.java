@@ -16,7 +16,7 @@ public class SalatTimeReciever extends BroadcastReceiver {
 		Log.i("ACTION2", action);
 		if (action.equals("android.intent.action.TIME_SET") || action.equals("android.intent.action.TIMEZONE_CHANGED"))
 		{
-			SalatApplication salatApp = (SalatApplication) context.getApplicationContext();
+			SalatApplication salatApp = new SalatApplication();
 			long timeToSalat = salatApp.getTimeToSalat();
 			Intent athanIntent = new Intent(context, SalatReceiver.class);  
 			PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, 0);
