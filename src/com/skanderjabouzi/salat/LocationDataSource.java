@@ -44,7 +44,7 @@ public class LocationDataSource {
 	Location getLocation(int id) {
 		Cursor cursor = database.query("location", new String[] { "id",
 				"latitude", "longitude", "city", "country", "timezone"}," id = ?",
-				new String[] { String.valueOf(id) }, null, null, null, null);
+				new String[] { String.valueOf(id) }, null, null, null, null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
 
