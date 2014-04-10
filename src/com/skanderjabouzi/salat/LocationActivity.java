@@ -15,12 +15,17 @@ public class LocationActivity extends Activity{
 
 	private EditText latitude, longitude, timezone, city, country;
 	private Button btnSaveLocation, btnDetectLocation;
+	private LocationDataSource datasource;
+	private Location location;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location);
         addListenerOnButton();
+        datasource = new LocationDataSource(this);
+		datasource.open();
+		location = datasource.getLocation(1);
     }
 
     @Override
@@ -35,15 +40,18 @@ public class LocationActivity extends Activity{
 
     public void addListenerOnButton() {
 		latitude = (EditText) findViewById(R.id.latitude);
+		latitude.setText(String.valueOf(location.getLatitude()));
 		longitude = (EditText) findViewById(R.id.longitude);
+		longitude.setText(String.valueOf(location.getLongitude()));
 		timezone = (EditText) findViewById(R.id.timezone);
+		timezone.setText(String.valueOf(location.getTimezone()));
 		city = (EditText) findViewById(R.id.city);
+		city.setText(location.getCity());
 		country = (EditText) findViewById(R.id.country);
-
+		country.setText(location.getCountry());
 		btnSaveLocation = (Button) findViewById(R.id.saveLocation);
-
 		btnSaveLocation.setOnClickListener(new OnClickListener() {
-
+		// CALL LOCATION SERVICE
 			@Override
 			public void onClick(View v) {
 

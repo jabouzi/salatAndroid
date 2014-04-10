@@ -22,6 +22,10 @@ public class SalatActivity extends Activity {
     SalatApplication salatApp;
     MidnightReceiver receiver;
     IntentFilter filter;
+    private OptionsDataSource optionsDataSource;
+    private LocationDataSource locationDataSource;
+	private Options salatOptions;
+	private Location salatLocation;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +33,14 @@ public class SalatActivity extends Activity {
         setContentView(R.layout.main);
         salatApp = new SalatApplication();
         receiver = new MidnightReceiver();
-        filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );
+        filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );        
+        optionsDataSource = new OptionsDataSource(this);
+		optionsDataSource.open();
+		salatOptions = optionsDataSource.getOptions(1);		
+		locationDataSource = new LocationDataSource(this);
+		locationDataSource.open();
+		salatLocation = locationDataSource.getLocation(1);
+		salatApp.setOptions(salatOptions, salatLocation);
         Log.i("SalatActivity", "Created");
     }
 

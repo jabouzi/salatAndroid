@@ -4,20 +4,20 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Arrays;
 
-import android.app.Application;
-import android.content.ContentValues;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
+//import android.app.Application;
+//import android.content.ContentValues;
+//import android.content.SharedPreferences;
+//import android.preference.PreferenceManager;
+//import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
-import android.content.Context;
-import android.content.Intent;
-import android.app.PendingIntent;
+//import android.widget.Toast;
+//import android.content.Context;
+//import android.content.Intent;
+//import android.app.PendingIntent;
 
 public class SalatApplication{
 
-    private static final String TAG = SalatApplication.class.getSimpleName();
+    private static final String TAG = "SALATAPPLICATION";
     public static final int FAJR = 0;
     public static final int DUHR = 2;
     public static final int ASR = 3;
@@ -26,9 +26,6 @@ public class SalatApplication{
     public static final int MIDNIGHT = 7;
 
     public String[] salatNames = new String[7];
-
-    //private SharedPreferences salatOptions;
-    //private boolean serviceRunning;
     private String salaTimes[] = new String[7];
     private String[] hijriDates = new String[4];
 
@@ -46,7 +43,7 @@ public class SalatApplication{
     private String country;
 
     //private boolean isSalat;
-    protected Toast mToast;
+    //protected Toast mToast;
     public static int nextSalat;
     public static boolean athanPlaying = false;
     public static int prefType;
@@ -55,13 +52,12 @@ public class SalatApplication{
     public SalatApplication() {
         //super.onCreate();
         //salatOptions = PreferenceManager.getDefaultSharedPreferences(this);
-
         salatNames[0] = "Fajr";
         salatNames[2] = "Duhr";
         salatNames[3] = "Asr";
         salatNames[5] = "Maghrib";
         salatNames[6] = "Isha";
-        Log.i("Salat app", "onCreated");
+        Log.i("Salat app", "Constructor");
       }
 
       //@Override
@@ -77,38 +73,38 @@ public class SalatApplication{
         //this.startAlarm(this);
     //}
 
-    public void setOptions()
+    public void setOptions(Options salatOptions, Location salatLocation)
     {
-        this.calcMethod = Integer.parseInt(salatOptions.getString("calculation", "0"));
-        this.asrMethod = Integer.parseInt(salatOptions.getString("asr", "1"));
-        this.hijriDays = Integer.parseInt(salatOptions.getString("hijri", "1"));
-        this.highLatitude = Integer.parseInt(salatOptions.getString("highLatitudes", "1"));
-        this.longitude = Float.valueOf(salatOptions.getString("longitude", "0"));
-        this.latitude = Float.valueOf(salatOptions.getString("latitude", "0"));
-        this.timezone = Integer.parseInt(salatOptions.getString("timezone", "0"));
-        this.city = salatOptions.getString("city", " ");
-        this.country = salatOptions.getString("country", " ");
+        this.calcMethod = salatOptions.getMethod();
+        this.asrMethod = salatOptions.getAsr();
+        this.hijriDays = salatOptions.getHijri();
+        this.highLatitude = salatOptions.getHigherLatitude();
+        this.longitude = salatLocation.getLatitude();
+        this.latitude = salatLocation.getLongitude();
+        this.timezone = salatLocation.getTimezone();
+        this.city = salatLocation.getCity();
+        this.country = salatLocation.getCountry();
         Log.i("Salat app", "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
     }
 
     public boolean checkOptions()
     {
-        if (Integer.parseInt(salatOptions.getString("calculation", "0")) == 0)
+        if (this.calcMethod == 0)
         {
             this.prefType = 0;
             return false;
         }
-        else if (salatOptions.getString("longitude", null) == null)
+        else if (this.longitude == 0)
         {
             this.prefType = 1;
             return false;
         }
-        else if (salatOptions.getString("latitude", null) == null)
+        else if (this.latitude == 0)
         {
             this.prefType = 1;
             return false;
         }
-        else if (salatOptions.getString("timezone", null) == null)
+        else if (this.timezone == 0)
         {
             this.prefType = 1;
             return false;
@@ -126,7 +122,7 @@ public class SalatApplication{
 
     public void setSalatTimes()
     {
-        setOptions();
+        //setOptions();
         Salat prayers = new Salat();
         prayers.setCalcMethod(this.calcMethod - 1);
         prayers.setAsrMethod(this.asrMethod - 1);
@@ -209,7 +205,7 @@ public class SalatApplication{
             //isSalat = false;
             timeLeft = getMidNight();
         }
-        Toast.makeText( getApplicationContext(),"nextSalat : "+ this.nextSalat,Toast.LENGTH_SHORT).show();
+        //Toast.makeText( getApplicationContext(),"nextSalat : "+ this.nextSalat,Toast.LENGTH_SHORT).show();
         return timeLeft;
     }
 

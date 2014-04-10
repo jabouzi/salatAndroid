@@ -12,10 +12,8 @@ import android.database.sqlite.SQLiteDatabase;
 public class LocationDataSource {
 
 	// Database fields
-	/*private SQLiteDatabase database;
+	private SQLiteDatabase database;
 	private DBHelper dbHelper;
-	private String[] allColumns = { DBHelper.COLUMN_ID,
-			DBHelper.COLUMN_COMMENT };
 
 	public LocationDataSource(Context context) {
 		dbHelper = new DBHelper(context);
@@ -29,47 +27,90 @@ public class LocationDataSource {
 		dbHelper.close();
 	}
 
-	public Location createLocation(String location) {
+	void addLocation(Location location) {
 		ContentValues values = new ContentValues();
-		values.put(DBHelper.COLUMN_COMMENT, location);
-		long insertId = database.insert(DBHelper.TABLE_COMMENTS, null,
-				values);
-		Cursor cursor = database.query(DBHelper.TABLE_COMMENTS,
-				allColumns, DBHelper.COLUMN_ID + " = " + insertId, null,
-				null, null, null);
-		cursor.moveToFirst();
-		Location newLocation = cursorToLocation(cursor);
-		cursor.close();
-		return newLocation;
+		values.put("id", location.getId());
+		values.put("latitude", location.getLatitude());
+		values.put("longitude", location.getLongitude());
+		values.put("city", location.getCity());
+		values.put("country", location.getCountry());
+		values.put("timezone", location.getTimezone());
+
+		database.insert("location", null, values);
+		database.close();
 	}
 
-	public void deleteLocation(Location location) {
-		long id = location.getId();
-		System.out.println("Location deleted with id: " + id);
-		database.delete(DBHelper.TABLE_COMMENTS, DBHelper.COLUMN_ID
-				+ " = " + id, null);
-	}
+	// Getting single location
+	Location getLocation(int id) {
+		Cursor cursor = database.query("location", new String[] { "id",
+				"latitude", "longitude", "city", "country", "timezone"}," id = ?",
+				new String[] { String.valueOf(id) }, null, null, null, null);
+		if (cursor != null)
+			cursor.moveToFirst();
 
-	public List<Location> getAllLocations() {
-		List<Location> locations = new ArrayList<Location>();
-
-		Cursor cursor = database.query(DBHelper.TABLE_COMMENTS,
-				allColumns, null, null, null, null, null);
-		cursor.moveToFirst();
-		while (!cursor.isAfterLast()) {
-			Location location = cursorToLocation(cursor);
-			locations.add(location);
-			cursor.moveToNext();
-		}
-		// Make sure to close the cursor
-		cursor.close();
-		return locations;
-	}
-
-	private Location cursorToLocation(Cursor cursor) {
 		Location location = new Location();
 		location.setId(cursor.getLong(0));
-		location.setLocation(cursor.getString(1));
+		location.setLatitude(cursor.getInt(1));
+		location.setLongitude(cursor.getInt(2));
+		location.setCity(cursor.getString(3));
+		location.setCountry(cursor.getString(4));
+		location.setTimezone(cursor.getInt(5));
+		// return location
 		return location;
+	}
+
+	// Getting All Location
+	/*public List<Location> getAllLocation() {
+		List<Location> locationList = new ArrayList<Location>();
+		// Select All Query
+		String selectQuery = "SELECT  * FROM " + "location";
+		Cursor cursor = database.rawQuery(selectQuery, null);
+
+		// looping through all rows and adding to list
+		if (cursor.moveToFirst()) {
+			do {
+				Location location = new Location();
+				location.setID(Integer.parseInt(cursor.getString(0)));
+				location.setName(cursor.getString(1));
+				location.setPhoneNumber(cursor.getString(2));
+				// Adding location to list
+				locationList.add(location);
+			} while (cursor.moveToNext());
+		}
+
+		// return location list
+		return locationList;
 	}*/
+
+	// Updating single location
+	public int updateLocation(Location location) {
+		ContentValues values = new ContentValues();
+		values.put("latitude", location.getLatitude());
+		values.put("longitude", location.getLongitude());
+		values.put("city", location.getCity());
+		values.put("country", location.getCountry());
+		values.put("timezone", location.getTimezone());
+
+		// updating row
+		return database.update("location", values," id = ?",
+				new String[] { String.valueOf(location.getId()) });
+	}
+
+	// Deleting single location
+	public void deleteLocation(Location location) {
+		database.delete("location"," id = ?",
+				new String[] { String.valueOf(location.getId()) });
+		database.close();
+	}
+
+
+	// Getting location Count
+	public int getLocationCount() {
+		String countQuery = "SELECT  * FROM " + "location";
+		Cursor cursor = database.rawQuery(countQuery, null);
+		cursor.close();
+
+		// return count
+		return cursor.getCount();
+	}
 }

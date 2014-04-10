@@ -1,17 +1,24 @@
 package com.skanderjabouzi.salat;
 
-public class Hijri {
+public class Hijri 
+{
+	public Hijri()
+	{
+		
+	}
+	
 
-    //utility function
-    int intPart(int floatNum){
+    private int intPart(int floatNum)
+    {
         if ((float)floatNum < -0.0000001){
          return (int) Math.ceil(floatNum-0.0000001);
         }
-    return (int)Math.floor(floatNum +0.0000001);    
+		return (int)Math.floor(floatNum +0.0000001);    
     }
 
     //christian to islamic calendar
-    int[] chrToIsl(int y, int m, int d, int diff) {
+    public int[] chrToIsl(int y, int m, int d, int diff)
+    {
         
         int jd = 0;
         if ((y>1582)||((y==1582)&&(m>10))||((y==1582)&&(m==10)&&(d>14))) 
@@ -41,8 +48,8 @@ public class Hijri {
     }
 
     //islamic to christian calendar
-    int[] islToChr(int y, int m, int d, int diff) {
-        
+    public int[] islToChr(int y, int m, int d, int diff)
+    {
         int jd=intPart((11*y+3)/30)+354*y+30*m-intPart((m-1)/2)+d+1948440-385-diff;    
         if (jd> 2299160 )
         {
@@ -79,7 +86,7 @@ public class Hijri {
     }
 
     //islamic calendar to string
-    String[] isToString(int y, int m, int d, int diff){
+    public String[] isToString(int y, int m, int d, int diff){
         String months[] = {"Muharram","Safar","Rabi-al Awwal","Rabi-al Thani","Jumada al-Ula","Jumada al-Thani","Rajab","Sha\'ban","Ramadhan","Shawwal","Dhul Qa\'dah","Dhul Hijjah"};
         String monthsH[] = {"محرّم" ,"صفر" ,"ربيع الأول" ,"ربيع الثاني"  ,"جمادى الأولى" ,"جمادى الثاني" ,"رجب" ,"شعبان" ,"رمضان" ,"شوال" ,"ذو القعدة" ,"ذو الحجة"};
         int[] res = new int [3];
@@ -93,7 +100,7 @@ public class Hijri {
     }
 
     //christian calendar to string
-    String[] chrToString(int y, int m, int d, int diff){
+    public String[] chrToString(int y, int m, int d, int diff){
         String months[] = {"January","February","March","April","May","June","July","August","September","October","November","December"};
         int[] res = new int [3];
         res = islToChr(y,m,d,diff);
