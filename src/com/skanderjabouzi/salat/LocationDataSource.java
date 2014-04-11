@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 public class LocationDataSource {
 
@@ -21,6 +22,7 @@ public class LocationDataSource {
 
 	public void open() throws SQLException {
 		database = dbHelper.getWritableDatabase();
+		Log.i("LocationDataSource", "open");
 	}
 
 	public void close() {
@@ -29,7 +31,7 @@ public class LocationDataSource {
 
 	void addLocation(Location location) {
 		ContentValues values = new ContentValues();
-		values.put("id", location.getId());
+		values.put("_id", location.getId());
 		values.put("latitude", location.getLatitude());
 		values.put("longitude", location.getLongitude());
 		values.put("city", location.getCity());
@@ -42,9 +44,9 @@ public class LocationDataSource {
 
 	// Getting single location
 	Location getLocation(int id) {
-		Cursor cursor = database.query("location", new String[] { "id",
+		Cursor cursor = database.query("location", new String[] { "_id",
 				"latitude", "longitude", "city", "country", "timezone"}," id = ?",
-				new String[] { String.valueOf(id) }, null, null, null, null, null);
+				new String[] { String.valueOf(id) }, null, null, null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
 

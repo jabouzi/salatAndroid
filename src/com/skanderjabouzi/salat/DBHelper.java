@@ -11,8 +11,8 @@ public class DBHelper extends SQLiteOpenHelper {
 	private static final int DATABASE_VERSION = 1;
 
 	private static final String DATABASE_CREATE =
-	" CREATE TABLE options (id integer, method integer, asr integer, hijri integer, higherLatitude integer); " +
-	" CREATE TABLE location (id integer, latitude float, longitude float, country string, city string, timezone integer); " +
+	" CREATE TABLE options (_id integer, method integer, asr integer, hijri integer, higherLatitude integer); " +
+	" CREATE TABLE location (_id integer, latitude float, longitude float, country string, city string, timezone integer); " +
 	" INSERT INTO options VALUES ('1','0','0','0','0'); " +
 	" INSERT INTO location VALUES ('1','0','0','0','0','0'); ";
 
@@ -23,6 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase database) {
 		database.execSQL(DATABASE_CREATE);
+		Log.i("DBHelper", "DB Created");
 	}
 
 	@Override

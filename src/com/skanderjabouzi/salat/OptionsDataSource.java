@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 public class OptionsDataSource {
 
@@ -21,6 +22,7 @@ public class OptionsDataSource {
 
 	public void open() throws SQLException {
 		database = DBHelper.getWritableDatabase();
+		Log.i("OptionsDataSource", "open");
 	}
 
 	public void close() {
@@ -29,7 +31,7 @@ public class OptionsDataSource {
 
 	void addOptions(Options options) {
 		ContentValues values = new ContentValues();
-		values.put("id", options.getId());
+		values.put("_id", options.getId());
 		values.put("method", options.getMethod());
 		values.put("asr", options.getAsr());
 		values.put("hijri", options.getHijri());
@@ -41,7 +43,7 @@ public class OptionsDataSource {
 
 	// Getting single options
 	Options getOptions(int id) {
-		Cursor cursor = database.query("options", new String[] { "id",
+		Cursor cursor = database.query("options", new String[] { "_id",
 				"method", "asr", "hijri", "higherLatitude"}," id = ?",
 				new String[] { String.valueOf(id) }, null, null, null, null);
 		if (cursor != null)
@@ -103,7 +105,7 @@ public class OptionsDataSource {
 
 	// Getting options Count
 	public int getOptionsCount() {
-		String countQuery = "SELECT  * FROM " + "options";
+		String countQuery = "SELECT  * FROM options";
 		Cursor cursor = database.rawQuery(countQuery, null);
 		cursor.close();
 
