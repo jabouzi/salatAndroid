@@ -34,14 +34,14 @@ public class SalatActivity extends Activity {
         salatApp = new SalatApplication();
         receiver = new MidnightReceiver();
         filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );        
-        optionsDataSource = new OptionsDataSource(this);
-		optionsDataSource.open();
+        //optionsDataSource = new OptionsDataSource(this);
+		//optionsDataSource.open();
 		//salatOptions = optionsDataSource.getOptions(1);		
-		locationDataSource = new LocationDataSource(this);
-		locationDataSource.open();
+		//locationDataSource = new LocationDataSource(this);
+		//locationDataSource.open();
 		//salatLocation = locationDataSource.getLocation(1);
 		//salatApp.setOptions(salatOptions, salatLocation);
-        Log.i("SalatActivity", "Created" + String.valueOf(optionsDataSource.getOptionsCount()));
+        //Log.i("SalatActivity", "Created" + String.valueOf(optionsDataSource.getOptionsCount()));
     }
 
     @Override

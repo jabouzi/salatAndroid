@@ -31,7 +31,7 @@ public class LocationDataSource {
 
 	void addLocation(Location location) {
 		ContentValues values = new ContentValues();
-		values.put("_id", location.getId());
+		values.put("id", location.getId());
 		values.put("latitude", location.getLatitude());
 		values.put("longitude", location.getLongitude());
 		values.put("city", location.getCity());
@@ -44,7 +44,7 @@ public class LocationDataSource {
 
 	// Getting single location
 	Location getLocation(int id) {
-		Cursor cursor = database.query("location", new String[] { "_id",
+		Cursor cursor = database.query("location", new String[] { "id",
 				"latitude", "longitude", "city", "country", "timezone"}," id = ?",
 				new String[] { String.valueOf(id) }, null, null, null, null);
 		if (cursor != null)

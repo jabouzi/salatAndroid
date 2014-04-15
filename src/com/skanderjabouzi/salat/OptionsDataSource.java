@@ -31,7 +31,7 @@ public class OptionsDataSource {
 
 	void addOptions(Options options) {
 		ContentValues values = new ContentValues();
-		values.put("_id", options.getId());
+		values.put("id", options.getId());
 		values.put("method", options.getMethod());
 		values.put("asr", options.getAsr());
 		values.put("hijri", options.getHijri());
@@ -43,7 +43,7 @@ public class OptionsDataSource {
 
 	// Getting single options
 	Options getOptions(int id) {
-		Cursor cursor = database.query("options", new String[] { "_id",
+		Cursor cursor = database.query("options", new String[] { "id",
 				"method", "asr", "hijri", "higherLatitude"}," id = ?",
 				new String[] { String.valueOf(id) }, null, null, null, null);
 		if (cursor != null)
