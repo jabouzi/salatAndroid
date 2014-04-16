@@ -7,7 +7,7 @@ public class Location {
 	private float longitude;
 	private String country;
 	private String city;
-	private int timezone;
+	private float timezone;
 
 	public long getId() {
 		return id;
@@ -33,11 +33,11 @@ public class Location {
 		this.longitude = longitude;
 	}
 
-	public int getTimezone() {
+	public float getTimezone() {
 		return timezone;
 	}
 
-	public void setTimezone(int timezone) {
+	public void setTimezone(float timezone) {
 		this.timezone = timezone;
 	}
 

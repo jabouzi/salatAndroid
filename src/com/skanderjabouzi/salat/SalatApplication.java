@@ -38,7 +38,7 @@ public class SalatApplication{
     private int highLatitude;
     private float latitude;
     private float longitude;
-    private int timezone;
+    private float timezone;
     private String city;
     private String country;
 
@@ -79,12 +79,13 @@ public class SalatApplication{
         this.asrMethod = salatOptions.getAsr();
         this.hijriDays = salatOptions.getHijri();
         this.highLatitude = salatOptions.getHigherLatitude();
-        this.longitude = salatLocation.getLatitude();
-        this.latitude = salatLocation.getLongitude();
+        this.latitude = salatLocation.getLatitude();
+        this.longitude = salatLocation.getLongitude();
         this.timezone = salatLocation.getTimezone();
         this.city = salatLocation.getCity();
         this.country = salatLocation.getCountry();
         Log.i("Salat app", "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
+        Log.i("Salat app", "Location " + String.valueOf(longitude) + " " + String.valueOf(latitude) + " " + String.valueOf(timezone));
     }
 
     public boolean checkOptions()

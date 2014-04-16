@@ -22,10 +22,11 @@ public class LocationActivity extends Activity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location);
-        addListenerOnButton();
         datasource = new LocationDataSource(this);
 		datasource.open();
 		location = datasource.getLocation(1);
+		setLocationTexts();
+		addListenerOnButton();
     }
 
     @Override
@@ -37,8 +38,9 @@ public class LocationActivity extends Activity{
     protected void onPause() {
         super.onPause();
     }
-
-    public void addListenerOnButton() {
+    
+    public void setLocationTexts() {
+		
 		latitude = (EditText) findViewById(R.id.latitude);
 		latitude.setText(String.valueOf(location.getLatitude()));
 		longitude = (EditText) findViewById(R.id.longitude);
@@ -49,20 +51,41 @@ public class LocationActivity extends Activity{
 		city.setText(location.getCity());
 		country = (EditText) findViewById(R.id.country);
 		country.setText(location.getCountry());
+	}
+
+    public void addListenerOnButton() {
+
 		btnSaveLocation = (Button) findViewById(R.id.saveLocation);
 		btnSaveLocation.setOnClickListener(new OnClickListener() {
 		// CALL LOCATION SERVICE
 			@Override
 			public void onClick(View v) {
-
-				Toast.makeText(LocationActivity.this,
-						"OnClickListener : " +
-						"\nEditText 1 : " + latitude.getText().toString() +
-						"\nEditText 2 : " + longitude.getText().toString() +
-						"\nEditText 3 : " + timezone.getText().toString() +
-						"\nEditText 4 : " + city.getText().toString() +
-						"\nEditText 5 : " + country.getText().toString(),
-						Toast.LENGTH_SHORT).show();
+				
+				location.setId(1);
+				latitude = (EditText) findViewById(R.id.latitude);
+				location.setLatitude(Float.parseFloat(String.valueOf(latitude.getText())));
+				
+				longitude = (EditText) findViewById(R.id.longitude);
+				location.setLongitude(Float.parseFloat(String.valueOf(longitude.getText())));
+				
+				timezone = (EditText) findViewById(R.id.timezone);
+				location.setTimezone(Float.parseFloat(String.valueOf(timezone.getText())));
+				
+				city = (EditText) findViewById(R.id.city);
+				location.setCity(String.valueOf(city.getText()));
+				
+				country = (EditText) findViewById(R.id.country);
+				location.setCountry(String.valueOf(country.getText()));
+				
+				datasource.updateLocation(location);
+				//Toast.makeText(LocationActivity.this,
+						//"OnClickListener : " +
+						//"\nEditText 1 : " + latitude.getText().toString() +
+						//"\nEditText 2 : " + longitude.getText().toString() +
+						//"\nEditText 3 : " + timezone.getText().toString() +
+						//"\nEditText 4 : " + city.getText().toString() +
+						//"\nEditText 5 : " + country.getText().toString(),
+						//Toast.LENGTH_SHORT).show();
 			}
 
 		});

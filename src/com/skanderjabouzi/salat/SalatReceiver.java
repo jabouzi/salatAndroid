@@ -9,11 +9,24 @@ import android.app.AlarmManager;
 import android.util.Log;
 
 public class SalatReceiver extends BroadcastReceiver {
+	
+	private OptionsDataSource optionsDataSource;
+	private LocationDataSource locationDataSource;
+	private Options salatOptions;
+	private Location salatLocation;
 
   @Override
   public void onReceive(Context context, Intent intent) {
+		
 		WakeLock.acquire(context);
+		optionsDataSource = new OptionsDataSource(context);
+		optionsDataSource.open();
+		salatOptions = optionsDataSource.getOptions(1);		
+		locationDataSource = new LocationDataSource(context);
+		locationDataSource.open();
+		salatLocation = locationDataSource.getLocation(1);
 		SalatApplication salatApp = new SalatApplication();
+		salatApp.setOptions(salatOptions, salatLocation);
 		long timeToSalat = salatApp.getTimeToSalat();
 		Intent athanIntent = new Intent(context, SalatReceiver.class);
 		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, 0);

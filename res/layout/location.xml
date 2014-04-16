@@ -9,20 +9,16 @@
 		<TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_gravity="left|center_vertical" android:layout_weight="1" /> 
 	</LinearLayout>
 	<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-		<TextView android:layout_width="0dp" android:layout_height="wrap_content" android:text="@string/titleLongitude" android:layout_gravity="left|center_vertical" android:layout_weight="1" /> 
-		<EditText android:id="@+id/longitude" android:layout_width="0dp" android:layout_height="wrap_content" android:inputType="number" android:layout_gravity="right" android:layout_weight="1" /> 
-	</LinearLayout>
-	<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
 		<TextView android:layout_width="0dp" android:layout_height="wrap_content" android:text="@string/titleLatitude" android:layout_gravity="left|center_vertical" android:layout_weight="1" /> 
-		<EditText android:id="@+id/latitude" android:layout_width="0dp" android:layout_height="wrap_content" android:inputType="number" android:layout_gravity="right" android:layout_weight="1" /> 
+		<EditText android:id="@+id/latitude" android:layout_width="0dp" android:layout_height="wrap_content" android:inputType="numberDecimal|numberSigned" android:layout_gravity="right" android:layout_weight="1" /> 
+	</LinearLayout>
+	<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+		<TextView android:layout_width="0dp" android:layout_height="wrap_content" android:text="@string/titleLongitude" android:layout_gravity="left|center_vertical" android:layout_weight="1" /> 
+		<EditText android:id="@+id/longitude" android:layout_width="0dp" android:layout_height="wrap_content" android:inputType="numberDecimal|numberSigned" android:layout_gravity="right" android:layout_weight="1" /> 
 	</LinearLayout>
 	<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
 		<TextView android:layout_width="0dp" android:layout_height="wrap_content" android:text="@string/titleTimezone" android:layout_gravity="left|center_vertical" android:layout_weight="1" /> 
-		<EditText android:id="@+id/timezone" android:layout_width="0dp" android:layout_height="wrap_content" android:inputType="number" android:layout_gravity="right" android:layout_weight="1" /> 
-	</LinearLayout>
-	<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-		<TextView android:layout_width="0dp" android:layout_height="wrap_content" android:text="@string/titleTimezone" android:layout_gravity="left|center_vertical" android:layout_weight="1" /> 
-		<EditText android:id="@+id/timezone" android:layout_width="0dp" android:layout_height="wrap_content" android:inputType="number" android:layout_gravity="right" android:layout_weight="1" /> 
+		<EditText android:id="@+id/timezone" android:layout_width="0dp" android:layout_height="wrap_content" android:inputType="numberDecimal|numberSigned" android:layout_gravity="right" android:layout_weight="1" /> 
 	</LinearLayout>
 	<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
 		<TextView android:layout_width="0dp" android:layout_height="wrap_content" android:text="@string/titleCountry" android:layout_gravity="left|center_vertical" android:layout_weight="1" /> 

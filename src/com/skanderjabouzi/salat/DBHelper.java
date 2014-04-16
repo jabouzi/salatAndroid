@@ -13,7 +13,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	private static final String OPTIONS_CREATE =
 	" CREATE TABLE options (id integer, method integer, asr integer, hijri integer, higherLatitude integer); ";
 	private static final String LOCATION_CREATE =	
-	" CREATE TABLE location (id integer, latitude float, longitude float, country string, city string, timezone integer); ";
+	" CREATE TABLE location (id integer, latitude float, longitude float, country string, city string, timezone float); ";
 
 	public DBHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);

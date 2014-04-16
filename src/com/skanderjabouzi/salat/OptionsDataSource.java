@@ -55,6 +55,8 @@ public class OptionsDataSource {
 		options.setAsr(cursor.getInt(2));
 		options.setHijri(cursor.getInt(3));
 		options.setHigherLatitude(cursor.getInt(4));
+		cursor.close();
+		
 		// return options
 		return options;
 	}
@@ -107,10 +109,11 @@ public class OptionsDataSource {
 	public int getOptionsCount() {
 		String countQuery = "SELECT  * FROM options";
 		Cursor cursor = database.rawQuery(countQuery, null);
+		int count = cursor.getCount();
 		cursor.close();
 
 		// return count
-		return cursor.getCount();
+		return count;
 	}
 
 }

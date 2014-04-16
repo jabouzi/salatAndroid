@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.content.Context;
+import android.util.Log;
 
 public class OptionsActivity extends Activity implements OnItemSelectedListener{
 
@@ -20,16 +21,17 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 	private Button btnSaveOptions;
 	private OptionsDataSource datasource;
 	private Options options;
+	private int pos = 0;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.options);
-        addListenerOnButton();
-		addListenerOnSpinnerItemSelection();
 		datasource = new OptionsDataSource(this);
 		datasource.open();
 		options = datasource.getOptions(1);
+		setSpinnerItemSelection();
+		addListenerOnButton();
     }
 
     @Override
@@ -44,33 +46,39 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
         datasource.close();
     }
 
-    public void addListenerOnSpinnerItemSelection() {
+    public void setSpinnerItemSelection() {
+		
 		method = (Spinner) findViewById(R.id.calculation);
 		method.setOnItemSelectedListener(this);
-		method.setSelection(options.getMethod());
+		pos = options.getMethod() - 1;
+		if (pos < 0) pos = 0;
+		method.setSelection(pos);
 
 		asr = (Spinner) findViewById(R.id.asr);
 		asr.setOnItemSelectedListener(this);
-		asr.setSelection(options.getAsr());
+		pos = options.getAsr() - 1;
+		if (pos < 0) pos = 0;
+		asr.setSelection(pos);
 
 		hijri = (Spinner) findViewById(R.id.hijri);
 		hijri.setOnItemSelectedListener(this);
-		hijri.setSelection(options.getHijri());
+		pos = options.getHijri() - 1;
+		if (pos < 0) pos = 0;
+		hijri.setSelection(pos);
 
 		highLatitudes = (Spinner) findViewById(R.id.highLatitudes);
 		highLatitudes.setOnItemSelectedListener(this);
-		highLatitudes.setSelection(options.getHigherLatitude());
+		pos = options.getHigherLatitude() - 1;
+		if (pos < 0) pos = 0;
+		highLatitudes.setSelection(pos);
 	}
 
 	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-		Toast.makeText(parent.getContext(),
-				"OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString(),
-				Toast.LENGTH_SHORT).show();
+
 	}
 
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -80,7 +88,7 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 		asr = (Spinner) findViewById(R.id.asr);
 		hijri = (Spinner) findViewById(R.id.hijri);
 		highLatitudes = (Spinner) findViewById(R.id.highLatitudes);
-
+		
 		btnSaveOptions = (Button) findViewById(R.id.saveOptions);
 
 		btnSaveOptions.setOnClickListener(new OnClickListener() {
@@ -88,21 +96,23 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 			@Override
 			public void onClick(View v) {
 
-				//Options options = new Options();
 				options.setId(1);
-				options.setMethod(Integer.parseInt(String.valueOf(method.getSelectedItem())));
-				options.setAsr(Integer.parseInt(String.valueOf(asr.getSelectedItem())));
-				options.setHijri(Integer.parseInt(String.valueOf(hijri.getSelectedItem())));
-				options.setHigherLatitude(Integer.parseInt(String.valueOf(highLatitudes.getSelectedItem())));
-				datasource.updateOptions(options);
+				pos = method.getSelectedItemPosition() + 1;
+				options.setMethod(pos);				
+				pos = asr.getSelectedItemPosition() + 1;
+				options.setAsr(pos);				
+				pos = hijri.getSelectedItemPosition() + 1;
+				options.setHijri(pos);				
+				pos = highLatitudes.getSelectedItemPosition() + 1;
+				options.setHigherLatitude(pos);
 
-				Toast.makeText(OptionsActivity.this,
-						"OnClickListener : " +
-						"\nSpinner 1 : " + String.valueOf(method.getSelectedItem()) +
-						"\nSpinner 2 : " + String.valueOf(asr.getSelectedItem()) +
-						"\nSpinner 3 : " + String.valueOf(hijri.getSelectedItem()) +
-						"\nSpinner 4 : " + String.valueOf(highLatitudes.getSelectedItem()),
-						Toast.LENGTH_SHORT).show();
+				datasource.updateOptions(options);
+				salatApp.setOptions(salatOptions, salatLocation);
+				long timeToSalat = salatApp.getTimeToSalat();
+				Intent athanIntent = new Intent(context, SalatReceiver.class);
+				PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, 0);
+				AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+				alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
 			}
 		});
 	}
