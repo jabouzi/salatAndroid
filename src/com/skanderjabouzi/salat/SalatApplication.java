@@ -12,8 +12,9 @@ import java.util.Arrays;
 import android.util.Log;
 //import android.widget.Toast;
 import android.content.Context;
-//import android.content.Intent;
-//import android.app.PendingIntent;
+import android.content.Intent;
+import android.app.PendingIntent;
+import android.app.AlarmManager;
 
 public class SalatApplication{
 
@@ -230,19 +231,19 @@ public class SalatApplication{
 		return this.getTimeLeft() + now.getTimeInMillis();
 	}
 
-    //public void startAlarm(Context context)
-    //{
-        //Calendar now = Calendar.getInstance();
-        //initCalendar();
-        //setSalatTimes();
-        //long timeToSalat = this.getTimeLeft() + now.getTimeInMillis();
-        //Intent intent = new Intent(context, SalatReceiver.class);
-        //PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        //AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        //alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
-        //Log.i("Salat app", "Next salat is " + nextSalat  + " in " + timeToSalat);
-//
-    //}
+    public void startAlarm(Context context)
+    {
+        Calendar now = Calendar.getInstance();
+        initCalendar();
+        setSalatTimes();
+        long timeToSalat = this.getTimeLeft() + now.getTimeInMillis();
+        Intent intent = new Intent(context, SalatReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
+        Log.i("Salat app", "Next salat is " + nextSalat  + " in " + timeToSalat);
+
+    }
 
     //public void stopAlarm(Context context)
     //{

@@ -86,13 +86,8 @@ public class LocationActivity extends Activity{
 				location.setCountry(String.valueOf(country.getText()));
 
 				datasource.updateLocation(location);
-
-				long timeToSalat = salatApp.getTimeToSalat();
-				Intent athanIntent = new Intent(context, SalatReceiver.class);
-				PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, 0);
-				AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-				alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
-				Log.i("LocationActivity", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
+				
+				salatApp.startAlarm(context);
 			}
 
 		});

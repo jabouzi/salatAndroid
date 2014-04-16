@@ -117,13 +117,13 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 
 				datasource.updateOptions(options);
 
-				
-				long timeToSalat = salatApp.getTimeToSalat();
-				Intent athanIntent = new Intent(context, SalatReceiver.class);
-				PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, 0);
-				AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-				alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
-				Log.i("OptionsActivity", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
+				salatApp.startAlarm(context);
+				//long timeToSalat = salatApp.getTimeToSalat();
+				//Intent athanIntent = new Intent(context, SalatReceiver.class);
+				//PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, 0);
+				//AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+				//alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
+				//Log.i("OptionsActivity", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
 			}
 		});
 	}
