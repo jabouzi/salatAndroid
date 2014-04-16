@@ -22,37 +22,37 @@ public class SalatActivity extends Activity {
     SalatApplication salatApp;
     MidnightReceiver receiver;
     IntentFilter filter;
-    private OptionsDataSource optionsDataSource;
-    private LocationDataSource locationDataSource;
-	private Options salatOptions;
-	private Location salatLocation;
+    //private OptionsDataSource optionsDataSource;
+    //private LocationDataSource locationDataSource;
+	//private Options salatOptions;
+	//private Location salatLocation;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        salatApp = new SalatApplication();
+        salatApp = new SalatApplication(this);
         receiver = new MidnightReceiver();
         filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );        
-        optionsDataSource = new OptionsDataSource(this);
-		optionsDataSource.open();
-		salatOptions = optionsDataSource.getOptions(1);		
-		locationDataSource = new LocationDataSource(this);
-		locationDataSource.open();
-		salatLocation = locationDataSource.getLocation(1);
-		salatApp.setOptions(salatOptions, salatLocation);
+        //optionsDataSource = new OptionsDataSource(this);
+		//optionsDataSource.open();
+		//salatOptions = optionsDataSource.getOptions(1);		
+		//locationDataSource = new LocationDataSource(this);
+		//locationDataSource.open();
+		//salatLocation = locationDataSource.getLocation(1);
+		//salatApp.setOptions(salatOptions, salatLocation);
 		//setSalatTimes();
-        //Log.i("SalatActivity", "Created" + String.valueOf(optionsDataSource.getOptionsCount()));
+        Log.i("SalatActivity", "Created");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        optionsDataSource.open();
-        salatOptions = optionsDataSource.getOptions(1);	
-        locationDataSource.open();
-		salatLocation = locationDataSource.getLocation(1);
-		salatApp.setOptions(salatOptions, salatLocation);		
+        //optionsDataSource.open();
+        //salatOptions = optionsDataSource.getOptions(1);	
+        //locationDataSource.open();
+		//salatLocation = locationDataSource.getLocation(1);
+		//salatApp.setOptions(salatOptions, salatLocation);		
         if (salatApp.checkOptions())
         {
             setSalatTimes();
@@ -70,6 +70,7 @@ public class SalatActivity extends Activity {
         }
 
         super.registerReceiver(receiver, filter, SEND_SALATTIME_NOTIFICATIONS, null);
+        Log.i("SalatActivity", "Reseumed");
     }
 
     @Override
@@ -186,11 +187,11 @@ public class SalatActivity extends Activity {
     class MidnightReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-			optionsDataSource.open();
-			salatOptions = optionsDataSource.getOptions(1);	
-			locationDataSource.open();
-			salatLocation = locationDataSource.getLocation(1);
-			salatApp.setOptions(salatOptions, salatLocation);	
+			//optionsDataSource.open();
+			//salatOptions = optionsDataSource.getOptions(1);	
+			//locationDataSource.open();
+			//salatLocation = locationDataSource.getLocation(1);
+			//salatApp.setOptions(salatOptions, salatLocation);	
             setSalatTimes();
             String salatName = intent.getStringExtra("SALATTIME");
             Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();

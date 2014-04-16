@@ -33,7 +33,7 @@ public class AthanService extends Service{
     public void onCreate() {
         super.onCreate();
         WakeLock.acquire(this);
-        salatApp = new SalatApplication();
+        salatApp = new SalatApplication(this);
         startAthan();
         Log.i(TAG, "start");
     }

@@ -26,7 +26,7 @@ public class MidnightService extends Service{
     @Override
     public void onCreate() {
         super.onCreate();
-        salatApp = new SalatApplication();
+        salatApp = new SalatApplication(this);
         changeDay();
         Log.i(TAG, "start" );
     }

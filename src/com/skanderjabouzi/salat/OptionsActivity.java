@@ -107,12 +107,12 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 				options.setHigherLatitude(pos);
 
 				datasource.updateOptions(options);
-				salatApp.setOptions(salatOptions, salatLocation);
-				long timeToSalat = salatApp.getTimeToSalat();
-				Intent athanIntent = new Intent(context, SalatReceiver.class);
-				PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, 0);
-				AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-				alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
+				//salatApp.setOptions(salatOptions, salatLocation);
+				//long timeToSalat = salatApp.getTimeToSalat();
+				//Intent athanIntent = new Intent(context, SalatReceiver.class);
+				//PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, 0);
+				//AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+				//alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
 			}
 		});
 	}

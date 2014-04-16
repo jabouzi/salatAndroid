@@ -11,7 +11,7 @@ import java.util.Arrays;
 //import android.text.TextUtils;
 import android.util.Log;
 //import android.widget.Toast;
-//import android.content.Context;
+import android.content.Context;
 //import android.content.Intent;
 //import android.app.PendingIntent;
 
@@ -47,9 +47,14 @@ public class SalatApplication{
     public static int nextSalat;
     public static boolean athanPlaying = false;
     public static int prefType;
+    
+    private OptionsDataSource optionsDataSource;
+    private LocationDataSource locationDataSource;
+	private Options salatOptions;
+	private Location salatLocation;
 
 
-    public SalatApplication() {
+    public SalatApplication(Context context) {
         //super.onCreate();
         //salatOptions = PreferenceManager.getDefaultSharedPreferences(this);
         salatNames[0] = "Fajr";
@@ -57,6 +62,9 @@ public class SalatApplication{
         salatNames[3] = "Asr";
         salatNames[5] = "Maghrib";
         salatNames[6] = "Isha";
+        optionsDataSource = new OptionsDataSource(context);
+		locationDataSource = new LocationDataSource(context);
+		setOptions();
         Log.i("Salat app", "Constructor");
       }
 
@@ -73,8 +81,12 @@ public class SalatApplication{
         //this.startAlarm(this);
     //}
 
-    public void setOptions(Options salatOptions, Location salatLocation)
+    public void setOptions()
     {
+		this.optionsDataSource.open();
+		this.salatOptions = optionsDataSource.getOptions(1);
+		this.locationDataSource.open();
+		this.salatLocation = locationDataSource.getLocation(1);
         this.calcMethod = salatOptions.getMethod();
         this.asrMethod = salatOptions.getAsr();
         this.hijriDays = salatOptions.getHijri();
@@ -123,7 +135,7 @@ public class SalatApplication{
 
     public void setSalatTimes()
     {
-        //setOptions();
+        setOptions();
         Salat prayers = new Salat();
         prayers.setCalcMethod(this.calcMethod - 1);
         prayers.setAsrMethod(this.asrMethod - 1);
