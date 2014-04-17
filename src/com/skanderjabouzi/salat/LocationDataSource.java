@@ -52,11 +52,11 @@ public class LocationDataSource {
 
 		Location location = new Location();
 		location.setId(cursor.getLong(0));
-		location.setLatitude(cursor.getInt(1));
-		location.setLongitude(cursor.getInt(2));
+		location.setLatitude(cursor.getFloat(1));
+		location.setLongitude(cursor.getFloat(2));
 		location.setCity(cursor.getString(3));
 		location.setCountry(cursor.getString(4));
-		location.setTimezone(cursor.getInt(5));
+		location.setTimezone(cursor.getFloat(5));
 		// return location
 		return location;
 	}

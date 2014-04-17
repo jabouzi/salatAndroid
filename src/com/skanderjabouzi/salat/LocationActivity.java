@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.app.PendingIntent;
 import android.app.AlarmManager;
 import android.util.Log;
+import java.text.DecimalFormat;
 
 public class LocationActivity extends Activity{
 
@@ -24,12 +25,16 @@ public class LocationActivity extends Activity{
 	private Location location;
 	private SalatApplication salatApp;
 	private Context context;
+	private Intent athanIntent;
+	private PendingIntent pendingIntent;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location);
         salatApp = new SalatApplication(this);
+        athanIntent = new Intent(this, SalatReceiver.class);
+		pendingIntent = PendingIntent.getBroadcast(this, 0, athanIntent, 0);
         datasource = new LocationDataSource(this);
 		datasource.open();
 		location = datasource.getLocation(1);
@@ -48,11 +53,15 @@ public class LocationActivity extends Activity{
     }
 
     public void setLocationTexts() {
-
+		
+		DecimalFormat formatter = new DecimalFormat("#00.0000");
+		DecimalFormat formatter2 = new DecimalFormat("#00.0");
+		
+		Log.i("LocationActivity", "latitude1 " + location.getLatitude());
 		latitude = (EditText) findViewById(R.id.latitude);
 		latitude.setText(String.valueOf(location.getLatitude()));
 		longitude = (EditText) findViewById(R.id.longitude);
-		longitude.setText(String.valueOf(location.getLongitude()));
+		longitude.setText(String.valueOf(location.getLongitude()));		
 		timezone = (EditText) findViewById(R.id.timezone);
 		timezone.setText(String.valueOf(location.getTimezone()));
 		city = (EditText) findViewById(R.id.city);
@@ -68,7 +77,7 @@ public class LocationActivity extends Activity{
 		// CALL LOCATION SERVICE
 			@Override
 			public void onClick(View v) {
-
+		
 				location.setId(1);
 				latitude = (EditText) findViewById(R.id.latitude);
 				location.setLatitude(Float.parseFloat(String.valueOf(latitude.getText())));
@@ -87,7 +96,13 @@ public class LocationActivity extends Activity{
 
 				datasource.updateLocation(location);
 				
-				salatApp.startAlarm(context);
+				long timeToSalat = salatApp.getTimeToSalat();
+				AlarmManager alarmManager = (AlarmManager) (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+				alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
+				Log.i("LocationActivity", "latitude2 " + location.getLatitude());
+				Log.i("LocationActivity", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
+				
+				finish();
 			}
 
 		});

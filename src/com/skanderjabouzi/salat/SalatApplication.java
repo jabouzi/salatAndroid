@@ -231,19 +231,19 @@ public class SalatApplication{
 		return this.getTimeLeft() + now.getTimeInMillis();
 	}
 
-    public void startAlarm(Context context)
-    {
-        Calendar now = Calendar.getInstance();
-        initCalendar();
-        setSalatTimes();
-        long timeToSalat = this.getTimeLeft() + now.getTimeInMillis();
-        Intent intent = new Intent(context, SalatReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
-        Log.i("Salat app", "Next salat is " + nextSalat  + " in " + timeToSalat);
-
-    }
+    //public void startAlarm(Context context)
+    //{
+        //Calendar now = Calendar.getInstance();
+        //initCalendar();
+        //setSalatTimes();
+        //long timeToSalat = this.getTimeLeft() + now.getTimeInMillis();
+        //Intent intent = new Intent(context, SalatReceiver.class);
+        //PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        //AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        //alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
+        //Log.i("Salat app", "Next salat is " + nextSalat  + " in " + timeToSalat);
+//
+    //}
 
     //public void stopAlarm(Context context)
     //{
@@ -268,9 +268,10 @@ public class SalatApplication{
     public boolean isValidSalatTime()
     {
 		String[] timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()).split(":");
+		String[] times = salaTimes[nextSalat].split(":");
+		Log.i("Salat app", "VALIDATE : "+ timeStamp[0] + timeStamp[1] + " <->" + times[0] + times[1]);
 		if (nextSalat < 7)
 		{
-			String[] times = salaTimes[nextSalat].split(":");
 			return (Integer.parseInt(timeStamp[0]) == Integer.parseInt(times[0]) && Integer.parseInt(timeStamp[1]) == Integer.parseInt(times[1]));
 		}
 		else

@@ -27,12 +27,16 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 	private int pos = 0;
 	private SalatApplication salatApp;
 	private Context context;
+	private Intent athanIntent;
+	private PendingIntent pendingIntent;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.options);
         salatApp = new SalatApplication(this);
+        athanIntent = new Intent(this, SalatReceiver.class);
+		pendingIntent = PendingIntent.getBroadcast(this, 0, athanIntent, 0);
 		datasource = new OptionsDataSource(this);
 		datasource.open();
 		options = datasource.getOptions(1);
@@ -117,13 +121,13 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 
 				datasource.updateOptions(options);
 
-				salatApp.startAlarm(context);
-				//long timeToSalat = salatApp.getTimeToSalat();
-				//Intent athanIntent = new Intent(context, SalatReceiver.class);
-				//PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, 0);
-				//AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-				//alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
-				//Log.i("OptionsActivity", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
+				//salatApp.startAlarm(context);
+				long timeToSalat = salatApp.getTimeToSalat();
+				AlarmManager alarmManager = (AlarmManager) (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+				alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
+				Log.i("OptionsActivity", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
+				
+				finish();
 			}
 		});
 	}
