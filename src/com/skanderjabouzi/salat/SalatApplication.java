@@ -26,9 +26,9 @@ public class SalatApplication{
     public static final int ISHA = 6;
     public static final int MIDNIGHT = 7;
 
-    public String[] salatNames = new String[7];
-    private String salaTimes[] = new String[7];
-    private String[] hijriDates = new String[4];
+    public static  String[] salatNames = new String[7];
+    private static String salaTimes[] = new String[7];
+    private static String[] hijriDates = new String[4];
 
     private int year;
     private int month;
@@ -97,8 +97,8 @@ public class SalatApplication{
         this.timezone = salatLocation.getTimezone();
         this.city = salatLocation.getCity();
         this.country = salatLocation.getCountry();
-        Log.i("Salat app", "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
-        Log.i("Salat app", "Location " + String.valueOf(longitude) + " " + String.valueOf(latitude) + " " + String.valueOf(timezone));
+        //Log.i("Salat app", "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
+        //Log.i("Salat app", "Location " + String.valueOf(longitude) + " " + String.valueOf(latitude) + " " + String.valueOf(timezone));
     }
 
     public boolean checkOptions()
@@ -268,10 +268,11 @@ public class SalatApplication{
     public boolean isValidSalatTime()
     {
 		String[] timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()).split(":");
-		String[] times = salaTimes[nextSalat].split(":");
-		Log.i("Salat app", "VALIDATE : "+ timeStamp[0] + timeStamp[1] + " <->" + times[0] + times[1]);
+		Log.i("Salat app", "VALIDATE : "+ nextSalat);
+		Log.i("Salat app", "Sataltimes : "+java.util.Arrays.asList(salaTimes).toString());
 		if (nextSalat < 7)
 		{
+			String[] times = salaTimes[nextSalat].split(":");
 			return (Integer.parseInt(timeStamp[0]) == Integer.parseInt(times[0]) && Integer.parseInt(timeStamp[1]) == Integer.parseInt(times[1]));
 		}
 		else

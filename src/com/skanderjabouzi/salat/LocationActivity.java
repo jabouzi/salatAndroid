@@ -25,6 +25,7 @@ public class LocationActivity extends Activity{
 	private SalatApplication salatApp;
 	private Context context;
 	private Intent athanIntent;
+	private Intent locationIntent;
 	private PendingIntent pendingIntent;
 
 	@Override
@@ -33,6 +34,7 @@ public class LocationActivity extends Activity{
         setContentView(R.layout.location);
         salatApp = new SalatApplication(this);
         athanIntent = new Intent(this, SalatReceiver.class);
+        locationIntent = new Intent(this, LocationService.class);
 		pendingIntent = PendingIntent.getBroadcast(this, 0, athanIntent, 0);
         datasource = new LocationDataSource(this);
 		datasource.open();
@@ -95,9 +97,20 @@ public class LocationActivity extends Activity{
 				AlarmManager alarmManager = (AlarmManager) (AlarmManager)getSystemService(Context.ALARM_SERVICE);
 				alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
 
-				Log.i("LocationActivity", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
+				//Log.i("LocationActivity", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
 				
 				finish();
+			}
+
+		});
+		btnDetectLocation = (Button) findViewById(R.id.detectLocation);
+		btnDetectLocation.setOnClickListener(new OnClickListener() {
+		// CALL LOCATION SERVICE
+			@Override
+			public void onClick(View v) {
+				
+				context = getApplicationContext();
+				context.startService(locationIntent);
 			}
 
 		});

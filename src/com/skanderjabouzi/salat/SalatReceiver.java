@@ -26,13 +26,6 @@ public class SalatReceiver extends BroadcastReceiver {
 		//locationDataSource.open();
 		//salatLocation = locationDataSource.getLocation(1);
 		SalatApplication salatApp = new SalatApplication(context);
-		//salatApp.setOptions(salatOptions, salatLocation);
-		long timeToSalat = salatApp.getTimeToSalat();
-		Intent athanIntent = new Intent(context, SalatReceiver.class);
-		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, 0);
-		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-		alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
-		Log.i("SalatReceiver", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
 		if (salatApp.isValidSalatTime())
 		{
 			if (SalatApplication.nextSalat == SalatApplication.MIDNIGHT)
@@ -51,6 +44,13 @@ public class SalatReceiver extends BroadcastReceiver {
 		{
 			Log.i("VALIDTIME", "FALSE");
 		}
+		//salatApp.setOptions(salatOptions, salatLocation);
+		long timeToSalat = salatApp.getTimeToSalat();
+		Intent athanIntent = new Intent(context, SalatReceiver.class);
+		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, 0);
+		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+		alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
+		Log.i("SalatReceiver", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
 	//}
   }
 }

@@ -14,7 +14,7 @@ import android.util.Log;
 
 public class AthanService extends Service{
 
-    private static final String TAG = "AthanService";
+    private static final String TAG = "ATHANSERVICE";
 
     private NotificationManager notificationManager;
     private Notification notification;
@@ -51,15 +51,21 @@ public class AthanService extends Service{
         super.onCreate();
         SalatApplication.athanPlaying = true;
         salat = SalatApplication.nextSalat;
+        if (salat == 0) salat = 7;
+        else if (salat == 2) salat = 0;
+        else if (salat == 5) salat = 3;
+        else salat = salat - 1;
         //SalatApplication salatApp = (SalatApplication) getApplication();
-        if (SalatApplication.FAJR == SalatApplication.nextSalat)
+        if (SalatApplication.FAJR == salat)
         {
+			Log.i(TAG, "play -> " + salat);
             player = MediaPlayer.create(this, R.raw.fajr_athan);
             play();
             //player = MediaPlayer.create(this, R.raw.bismillah);
         }
-        else if (SalatApplication.MIDNIGHT > SalatApplication.nextSalat)
+        else if (SalatApplication.MIDNIGHT > salat)
         {
+			Log.i(TAG, "play -> " + salat);
             player = MediaPlayer.create(this, R.raw.reg_athan);
             play();
             //player = MediaPlayer.create(this, R.raw.bismillah);
@@ -71,14 +77,14 @@ public class AthanService extends Service{
 
 		this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		this.notification = new Notification(R.drawable.makka_icon,"", 0);
-		String salatName = salatApp.salatNames[SalatApplication.nextSalat];
+		String salatName = salatApp.salatNames[salat];
 		sendTimelineNotification(salatName);
 		playAthan();
-		Log.i(TAG, "onHandleIntent #3 " + SalatApplication.nextSalat + " : " + salatName);
+		Log.i(TAG, "onHandleIntent #3 " + salat + " : " + salatName);
     }
 
     private void sendTimelineNotification(String salatName) {
-        Log.i(TAG, "sendTimelineNotification");
+
         PendingIntent pendingIntent = PendingIntent.getActivity(this, -1, new Intent(this, SalatActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
         this.notification.when = System.currentTimeMillis();
         this.notification.defaults |= Notification.DEFAULT_VIBRATE;
@@ -94,7 +100,7 @@ public class AthanService extends Service{
         this.notificationManager.notify(0, this.notification);
         //startService(new Intent(this, AthanService.class));
 
-        Log.i(TAG, "sendTimelineNotificationed -> " + salatName);
+        Log.i(TAG, "sendTimelineNotificatione -> " + salatName);
     }
 
     private void play()

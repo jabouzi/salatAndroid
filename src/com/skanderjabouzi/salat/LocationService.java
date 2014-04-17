@@ -157,12 +157,18 @@ public class LocationService extends Service implements LocationListener{
 			Geocoder gcd = new Geocoder(getApplicationContext());
 			try {
 				List<Address> addresses = gcd.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+				Toast.makeText( getApplicationContext(), Double.toString(location.getLatitude()) + " " 
+				+ Double.toString(location.getLongitude())  + " " 
+				+ Double.toString((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000) + " " 
+				+ addresses.get(0).getLocality()  + " " 
+				+ addresses.get(0).getCountryName()   + " " 
 				//editor.putString("city", addresses.get(0).getLocality() );
 				//editor.putString("country", addresses.get(0).getCountryName() );
 				//prefCity.setText( addresses.get(0).getLocality() );
 				//prefCountry.setText( addresses.get(0).getCountryName() );
 				//city.setText(addresses.get(0).getLocality());
 				//country.setText(addresses.get(0).getCountryName());
+				,Toast.LENGTH_SHORT).show();
 			} catch (IOException e) {   }
 			//editor.commit();
 			cleanLocation();

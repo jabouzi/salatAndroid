@@ -125,7 +125,7 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 				long timeToSalat = salatApp.getTimeToSalat();
 				AlarmManager alarmManager = (AlarmManager) (AlarmManager)getSystemService(Context.ALARM_SERVICE);
 				alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
-				Log.i("OptionsActivity", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
+				//Log.i("OptionsActivity", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
 				
 				finish();
 			}
