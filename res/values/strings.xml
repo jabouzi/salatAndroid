@@ -19,6 +19,12 @@
     <string name="receive_salat_notifications_permission_label">Receive salat Notifications</string>
     <string name="receive_salat_notifications_permission_description">Allow this application to receive salat
     notifications from other applications</string>
+    <string name="send_location_notifications_permission_label">Sends location Notifications</string>
+    <string name="send_location_notifications_permission_description">Allow this application to send location
+    notifications to other applications</string>
+    <string name="receive_location_notifications_permission_label">Receive location Notifications</string>
+    <string name="receive_location_notifications_permission_description">Allow this application to receive location
+    notifications from other applications</string>
     <string name="titleApiMap">API URL</string>
     <string name="summaryApiMap">URL of Root API for map location</string>
     <string name="titleCalculation">Salat Calculation</string>

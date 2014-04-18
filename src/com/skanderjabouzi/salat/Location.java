@@ -1,6 +1,8 @@
 package com.skanderjabouzi.salat;
 
-public class Location {
+import java.io.Serializable;
+
+public class Location implements Serializable{
 
 	private long id;
 	private float latitude;

@@ -21,7 +21,7 @@ public class AthanService extends Service{
     private MediaPlayer player;
     private String athan;
     private int mInitialCallState;
-    public int salat;
+    public int salat = 0;
     SalatApplication salatApp;
 
     @Override
@@ -50,11 +50,6 @@ public class AthanService extends Service{
     public void playAthan() {
         super.onCreate();
         SalatApplication.athanPlaying = true;
-        salat = SalatApplication.nextSalat;
-        if (salat == 0) salat = 7;
-        else if (salat == 2) salat = 0;
-        else if (salat == 5) salat = 3;
-        else salat = salat - 1;
         //SalatApplication salatApp = (SalatApplication) getApplication();
         if (SalatApplication.FAJR == salat)
         {
@@ -74,7 +69,11 @@ public class AthanService extends Service{
 
     private void startAthan() {
         Intent intent;
-
+		if (SalatApplication.nextSalat == 0) salat = 7;
+        else if (SalatApplication.nextSalat == 2) salat = 0;
+        else if (SalatApplication.nextSalat == 5) salat = 3;
+        else salat = SalatApplication.nextSalat - 1;
+        Log.i(TAG, "SALAT -> " + salat + " NEXT -> " + SalatApplication.nextSalat);
 		this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		this.notification = new Notification(R.drawable.makka_icon,"", 0);
 		String salatName = salatApp.salatNames[salat];

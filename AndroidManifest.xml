@@ -17,6 +17,18 @@
                 android:permissionGroup="android.permission-group.PERSONAL_INFO"
                 android:protectionLevel="normal" />
 
+    <permission android:name="com.skanderjabouzi.salat.SEND_LOCATION_NOTIFICATIONS"
+                android:label="@string/send_location_notifications_permission_label"
+                android:description="@string/send_location_notifications_permission_description"
+                android:permissionGroup="android.permission-group.PERSONAL_INFO"
+                android:protectionLevel="normal" />
+
+    <permission android:name="com.skanderjabouzi.salat.RECEIVE_LOCATION_NOTIFICATIONS"
+                android:label="@string/receive_location_notifications_permission_label"
+                android:description="@string/receive_location_notifications_permission_description"
+                android:permissionGroup="android.permission-group.PERSONAL_INFO"
+                android:protectionLevel="normal" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />

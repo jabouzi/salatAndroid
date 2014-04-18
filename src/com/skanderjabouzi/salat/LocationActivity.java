@@ -1,5 +1,6 @@
 package com.skanderjabouzi.salat;
 
+import android.content.BroadcastReceiver;
 import java.util.ArrayList;
 import java.util.List;
 import android.app.Activity;
@@ -13,11 +14,13 @@ import android.widget.Toast;
 import android.content.Context;
 import android.content.Intent;
 import android.app.PendingIntent;
+import android.content.IntentFilter;
 import android.app.AlarmManager;
 import android.util.Log;
 
 public class LocationActivity extends Activity{
 
+	static final String SEND_LOCATION_NOTIFICATIONS = "com.skanderjabouzi.salat.SEND_LOCATION_NOTIFICATIONS";
 	private EditText latitude, longitude, timezone, city, country;
 	private Button btnSaveLocation, btnDetectLocation;
 	private LocationDataSource datasource;
@@ -27,11 +30,15 @@ public class LocationActivity extends Activity{
 	private Intent athanIntent;
 	private Intent locationIntent;
 	private PendingIntent pendingIntent;
+    LocationReceiver receiver;
+    IntentFilter filter;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location);
+        receiver = new LocationReceiver();
+        filter = new IntentFilter( LocationService.LOCATION_INTENT );
         salatApp = new SalatApplication(this);
         athanIntent = new Intent(this, SalatReceiver.class);
         locationIntent = new Intent(this, LocationService.class);
@@ -46,6 +53,7 @@ public class LocationActivity extends Activity{
     @Override
     protected void onResume() {
         super.onResume();
+        super.registerReceiver(receiver, filter, SEND_LOCATION_NOTIFICATIONS, null);
     }
 
     @Override
@@ -124,5 +132,14 @@ public class LocationActivity extends Activity{
 		else
 			return String.valueOf(d);
 	}
+	
+	class LocationReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            location = (Location)intent.getSerializableExtra("LOCATION");
+            Log.i("LocationReceiver ", String.valueOf(location.getLatitude()));
+            setLocationTexts();
+        }
+    }
 
 }
