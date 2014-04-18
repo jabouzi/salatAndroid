@@ -57,7 +57,7 @@ public class LocationService extends Service implements LocationListener{
 			intent = new Intent(LOCATION_INTENT);
 			intent.putExtra(LOCATION, "NULL");
 			sendBroadcast(intent, RECEIVE_LOCATION_NOTIFICATIONS);
-			Log.i(TAG, "onHandleIntent #5 " + "LOCATION NULL");
+			Log.i(TAG, "LOCATION NULL");
 			//alert.setPositiveButton("OK", new DialogInterface.OnClickListener()
 			//{
 				//public void onClick(DialogInterface dialog, int which)
@@ -71,6 +71,7 @@ public class LocationService extends Service implements LocationListener{
 		}
 		else
 		{
+			Log.i(TAG, "LOCATION NOT NULL");
 			TimeZone tz = TimeZone.getDefault();
 			Geocoder gcd = new Geocoder(getApplicationContext());
 			try {
@@ -87,7 +88,7 @@ public class LocationService extends Service implements LocationListener{
 				sendBroadcast(intent, RECEIVE_LOCATION_NOTIFICATIONS);
 				Log.i(TAG, "onHandleIntent #5 " + "LOCATION" + myLocation.getLatitude());
 				
-			} catch (IOException e) {   }
+			} catch (IOException e) { Log.i(TAG, "EXCEPTION");  }
 			cleanLocation();
 			stopService();
 		}
