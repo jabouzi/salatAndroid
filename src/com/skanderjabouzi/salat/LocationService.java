@@ -7,15 +7,23 @@ import android.app.PendingIntent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
-import android.app.AlertDialog;
+//import android.app.Activity;
+//import android.app.AlertDialog;
 import android.os.Bundle;
-import android.content.DialogInterface;
+//import android.preference.PreferenceActivity;
+//import android.preference.PreferenceManager;
+//import android.preference.EditTextPreference;
+//import android.content.SharedPreferences;
+//import android.content.DialogInterface;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
-import android.widget.Toast;
+//import android.widget.Button;
+//import android.widget.Toast;
+//import android.view.View;
+//import android.view.View.OnKeyListener;
 import android.location.Geocoder;
 import android.location.Address;
 import java.util.TimeZone;
@@ -26,38 +34,35 @@ import java.util.List;
 
 public class LocationService extends Service implements LocationListener{
 
-    private static final String TAG = "LOCATIONSERVICE";
-    public static final String LOCATION_INTENT = "com.skanderjabouzi.salat.LOCATION_INTENT";
-    public static final String LOCATION = "LOCATION";
-    public static final String RECEIVE_LOCATION_NOTIFICATIONS = "com.skanderjabouzi.salat.RECEIVE_LOCATION_NOTIFICATIONS";
+	private static final String TAG = "LocationService";
     private LocationManager locationManager;
     private String bestProvider;
-    private com.skanderjabouzi.salat.Location myLocation;
-
-     @Override
-    public IBinder onBind(Intent arg0) {
+    private final Context context = LocationService.this;
+    
+    @Override
+     public IBinder onBind(Intent arg0) {
 		return null;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        myLocation = new com.skanderjabouzi.salat.Location();
-        final AlertDialog.Builder alert  = new AlertDialog.Builder(this);
-        alert.setCancelable(true);
-		locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        Log.i(TAG, "start" );
+		locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
+		List<String> providers = locationManager.getAllProviders();
+		//for (String provider : providers) {
+			//printProvider(provider);
+		//}
+		Log.i(TAG, "start" );
 		Criteria criteria = new Criteria();
 		bestProvider = locationManager.getBestProvider(criteria, false);
-		Log.i(TAG, "BEST Provider: " + bestProvider);
-		android.location.Location location = locationManager.getLastKnownLocation(bestProvider);
-		Log.i(TAG, "LATITUDE: " + location.getLatitude());
+		Log.i("BEST Provider: ", bestProvider);
+		Location location = locationManager.getLastKnownLocation(bestProvider);
+
+		//Toast.makeText( getApplicationContext(),Double.toString(location.getLatitude()),Toast.LENGTH_SHORT).show();
 		if (location == null)
 		{
-			Intent intent;
-			intent = new Intent(LOCATION_INTENT);
-			intent.putExtra(LOCATION, "NULL");
-			sendBroadcast(intent, RECEIVE_LOCATION_NOTIFICATIONS);
-			Log.i(TAG, "LOCATION NULL");
+			Log.i(TAG, "NULL" );
 			//alert.setPositiveButton("OK", new DialogInterface.OnClickListener()
 			//{
 				//public void onClick(DialogInterface dialog, int which)
@@ -71,36 +76,44 @@ public class LocationService extends Service implements LocationListener{
 		}
 		else
 		{
-			Log.i(TAG, "LOCATION NOT NULL");
+			Log.i("LocationService ", String.valueOf(location.getLatitude()));
+			//editor.putString("latitude", Double.toString(location.getLatitude()) );
+			//editor.putString("longitude", Double.toString(location.getLongitude()) );
+			//prefLatitude.setText( Double.toString(location.getLatitude()) );
+			//prefLongitude.setText( Double.toString(location.getLongitude()) );
+
 			TimeZone tz = TimeZone.getDefault();
+			//editor.putString("timezone", Integer.toString((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000) );
+			//prefTimezone.setText( Integer.toString((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000) );
+
+			//timezone.setText(Integer.toString(tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000));
 			Geocoder gcd = new Geocoder(getApplicationContext());
 			try {
 				List<Address> addresses = gcd.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-				myLocation.setLatitude((float)location.getLatitude());
-				myLocation.setLongitude((float)location.getLongitude());
-				myLocation.setTimezone(((float)tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000);
-				myLocation.setCity(addresses.get(0).getLocality());
-				myLocation.setCountry(addresses.get(0).getCountryName());
-				
-				Intent intent;
-				intent = new Intent(LOCATION_INTENT);
-				intent.putExtra(LOCATION, myLocation);
-				sendBroadcast(intent, RECEIVE_LOCATION_NOTIFICATIONS);
-				Log.i(TAG, "onHandleIntent #5 " + "LOCATION" + myLocation.getLatitude());
-				
-			} catch (IOException e) { Log.i(TAG, "EXCEPTION");  }
+				//Toast.makeText( getApplicationContext(), Double.toString(location.getLatitude()) + " " 
+				//+ Double.toString(location.getLongitude())  + " " 
+				//+ Double.toString((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000) + " " 
+				//+ addresses.get(0).getLocality()  + " " 
+				//+ addresses.get(0).getCountryName()   + " " 
+				//,Toast.LENGTH_SHORT).show();
+			} catch (IOException e) {   }
+			//editor.commit();
 			cleanLocation();
-			stopService();
 		}
+        //return null;
+        stopService();
     }
-
+    
     @Override
-    public void onDestroy() {
+    public void onDestroy() 
+    {
+		Log.i(TAG,"destroy");
         super.onDestroy();
     }
     
     private void stopService()
     {
+		Log.i(TAG,"stop");
         stopService(new Intent(this, LocationService.class));
     }
 
