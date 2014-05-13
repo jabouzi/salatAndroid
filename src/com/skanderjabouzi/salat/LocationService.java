@@ -48,21 +48,49 @@ public class LocationService extends Service implements LocationListener{
     public void onCreate() {
         super.onCreate();
         Log.i(TAG, "start" );
-		locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
+		locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
 		List<String> providers = locationManager.getAllProviders();
-		//for (String provider : providers) {
+		for (String provider : providers) {
 			//printProvider(provider);
-		//}
+			//String info = locationManager.getProvider(provider);
+			Log.i("Provider: ", provider);
+		}
 		Log.i(TAG, "start" );
-		Criteria criteria = new Criteria();
-		bestProvider = locationManager.getBestProvider(criteria, false);
-		Log.i("BEST Provider: ", bestProvider);
-		Location location = locationManager.getLastKnownLocation(bestProvider);
+		//Criteria criteria = new Criteria();
+		//bestProvider = locationManager.getBestProvider(criteria, false);
+		//Log.i("BEST Provider: ", bestProvider);
+		Location location = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
 
 		//Toast.makeText( getApplicationContext(),Double.toString(location.getLatitude()),Toast.LENGTH_SHORT).show();
 		if (location == null)
 		{
-			Log.i(TAG, "NULL" );
+			Log.i("PASSIVE_PROVIDER", "NULL" );
+		}
+		else
+		{
+			Log.i("PASSIVE_PROVIDER", String.valueOf(location.getLatitude()));
+			cleanLocation();
+		}
+		
+		location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+		//Toast.makeText( getApplicationContext(),Double.toString(location.getLatitude()),Toast.LENGTH_SHORT).show();
+		if (location == null)
+		{
+			Log.i("NETWORK_PROVIDER", "NULL" );
+		}
+		else
+		{
+			Log.i("NETWORK_PROVIDER", String.valueOf(location.getLatitude()));
+			cleanLocation();
+		}
+		
+		location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+		//Toast.makeText( getApplicationContext(),Double.toString(location.getLatitude()),Toast.LENGTH_SHORT).show();
+		if (location == null)
+		{
+			Log.i("GPS_PROVIDER", "NULL" );
 			//alert.setPositiveButton("OK", new DialogInterface.OnClickListener()
 			//{
 				//public void onClick(DialogInterface dialog, int which)
@@ -76,7 +104,7 @@ public class LocationService extends Service implements LocationListener{
 		}
 		else
 		{
-			Log.i("LocationService ", String.valueOf(location.getLatitude()));
+			Log.i("GPS_PROVIDER ", String.valueOf(location.getLatitude()));
 			//editor.putString("latitude", Double.toString(location.getLatitude()) );
 			//editor.putString("longitude", Double.toString(location.getLongitude()) );
 			//prefLatitude.setText( Double.toString(location.getLatitude()) );
@@ -118,19 +146,19 @@ public class LocationService extends Service implements LocationListener{
     }
 
     public void onLocationChanged(Location location) {
-
+		Log.i(TAG,"LocationChanged");
     }
 
     public void onProviderDisabled(String provider) {
-
+		Log.i(TAG,"ProviderDisabled");
     }
 
     public void onProviderEnabled(String provider) {
-
+		Log.i(TAG,"ProviderEnabled");
     }
 
     public void onStatusChanged(String provider, int status, Bundle extras) {
-
+		Log.i(TAG,"tatusChanged");
     }
 
     private void printProvider(String provider) {
