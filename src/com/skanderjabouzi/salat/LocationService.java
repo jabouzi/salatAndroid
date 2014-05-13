@@ -26,6 +26,7 @@ import android.location.LocationProvider;
 //import android.view.View.OnKeyListener;
 import android.location.Geocoder;
 import android.location.Address;
+import java.util.Locale;
 import java.util.TimeZone;
 import java.io.IOException;
 import android.app.Service;
@@ -35,9 +36,20 @@ import java.util.List;
 public class LocationService extends Service implements LocationListener{
 
 	private static final String TAG = "LocationService";
+	public static final String LOCATION_INTENT = "com.skanderjabouzi.salat.LOCATION_INTENT";
+    public static final String LOCATION = "LOCATION";
+    public static final String RECEIVE_LOCATION_NOTIFICATIONS = "com.skanderjabouzi.salat.RECEIVE_LOCATION_NOTIFICATIONS";
     private LocationManager locationManager;
     private String bestProvider;
     private final Context context = LocationService.this;
+    boolean isGPSEnabled = false;
+	boolean isNetworkEnabled = false;
+	boolean canGetLocation = false;
+	double latitude; 
+	double longitude; 
+	Location location;	
+	private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
+	private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
     
     @Override
      public IBinder onBind(Intent arg0) {
@@ -48,76 +60,92 @@ public class LocationService extends Service implements LocationListener{
     public void onCreate() {
         super.onCreate();
         Log.i(TAG, "start" );
-		locationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
-		List<String> providers = locationManager.getAllProviders();
-		for (String provider : providers) {
-			//printProvider(provider);
-			//String info = locationManager.getProvider(provider);
-			Log.i("Provider: ", provider);
-		}
-		Log.i(TAG, "start" );
-		//Criteria criteria = new Criteria();
-		//bestProvider = locationManager.getBestProvider(criteria, false);
-		//Log.i("BEST Provider: ", bestProvider);
-		Location location = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+		getLocation();
+		getGeoLocation();
+        cleanLocation();
+        stopService();
+    }
+    
+    public void getLocation() {
+		try {
+			locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
+			isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+			isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-		//Toast.makeText( getApplicationContext(),Double.toString(location.getLatitude()),Toast.LENGTH_SHORT).show();
+			if (!isGPSEnabled && !isNetworkEnabled) {
+				Log.i("PROVIDERS", "NULL" );
+				sendNotification("PROVIDERS_NULL");
+			} 
+			else 
+			{
+				this.canGetLocation = true;
+				if (isNetworkEnabled) {
+					locationManager.requestLocationUpdates(
+							LocationManager.NETWORK_PROVIDER,
+							MIN_TIME_BW_UPDATES,
+							MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+					Log.d("Network", "Network");
+					if (locationManager != null) {
+						location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+						if (location != null) {
+							latitude = location.getLatitude();
+							longitude = location.getLongitude();
+							Log.d("Location", String.valueOf(location.getLatitude()));
+						}
+						else
+						{
+							Log.d("NETWORK", "NULL");
+						}
+					}
+				}
+				// if GPS Enabled get lat/long using GPS Services
+				if (isGPSEnabled) {
+					if (location == null) {
+						locationManager.requestLocationUpdates(
+								LocationManager.GPS_PROVIDER,
+								MIN_TIME_BW_UPDATES,
+								MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+						Log.d("GPS Enabled", "GPS Enabled");
+						if (locationManager != null) {
+							location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+							if (location != null) {
+								latitude = location.getLatitude();
+								longitude = location.getLongitude();
+							}
+							else
+							{
+								Log.d("GPS", "NULL");
+							}
+
+						}
+					}
+				}
+			}
+		}		
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public void getGeoLocation() {
 		if (location == null)
 		{
-			Log.i("PASSIVE_PROVIDER", "NULL" );
+			sendNotification("LOCATION_NULL");
+			Log.d("LOCATION", "NULL");
 		}
 		else
 		{
-			Log.i("PASSIVE_PROVIDER", String.valueOf(location.getLatitude()));
-			cleanLocation();
-		}
-		
-		location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-
-		//Toast.makeText( getApplicationContext(),Double.toString(location.getLatitude()),Toast.LENGTH_SHORT).show();
-		if (location == null)
-		{
-			Log.i("NETWORK_PROVIDER", "NULL" );
-		}
-		else
-		{
-			Log.i("NETWORK_PROVIDER", String.valueOf(location.getLatitude()));
-			cleanLocation();
-		}
-		
-		location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-		//Toast.makeText( getApplicationContext(),Double.toString(location.getLatitude()),Toast.LENGTH_SHORT).show();
-		if (location == null)
-		{
-			Log.i("GPS_PROVIDER", "NULL" );
-			//alert.setPositiveButton("OK", new DialogInterface.OnClickListener()
-			//{
-				//public void onClick(DialogInterface dialog, int which)
-				//{
-					//dialog.cancel();
-				//}
-			//});
-			//alert.setTitle("Error");
-			//alert.setMessage("Please connect to the internet or set options manually or try again.");
-			//alert.show();
-		}
-		else
-		{
-			Log.i("GPS_PROVIDER ", String.valueOf(location.getLatitude()));
-			//editor.putString("latitude", Double.toString(location.getLatitude()) );
-			//editor.putString("longitude", Double.toString(location.getLongitude()) );
-			//prefLatitude.setText( Double.toString(location.getLatitude()) );
-			//prefLongitude.setText( Double.toString(location.getLongitude()) );
-
 			TimeZone tz = TimeZone.getDefault();
-			//editor.putString("timezone", Integer.toString((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000) );
-			//prefTimezone.setText( Integer.toString((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000) );
-
-			//timezone.setText(Integer.toString(tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000));
-			Geocoder gcd = new Geocoder(getApplicationContext());
+			String locationValues = String.valueOf(location.getLatitude());
+			locationValues += "|" + String.valueOf(location.getLongitude());
+			locationValues += "|" + String.valueOf((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000);
+			Geocoder gcd = new Geocoder(context, Locale.getDefault());
 			try {
 				List<Address> addresses = gcd.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+				locationValues += "|" + addresses.get(0).getLocality();
+				locationValues += "|" + addresses.get(0).getCountryName();
+				
 				//Toast.makeText( getApplicationContext(), Double.toString(location.getLatitude()) + " " 
 				//+ Double.toString(location.getLongitude())  + " " 
 				//+ Double.toString((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000) + " " 
@@ -125,12 +153,18 @@ public class LocationService extends Service implements LocationListener{
 				//+ addresses.get(0).getCountryName()   + " " 
 				//,Toast.LENGTH_SHORT).show();
 			} catch (IOException e) {   }
-			//editor.commit();
-			cleanLocation();
+			Log.d("LOCATIONVAL", locationValues);
+			sendNotification(locationValues);
 		}
-        //return null;
-        stopService();
-    }
+	}
+	
+	public void sendNotification(String extra)
+	{
+		Intent intent;
+		intent = new Intent(LOCATION_INTENT);
+		intent.putExtra(LOCATION, extra);
+		sendBroadcast(intent, RECEIVE_LOCATION_NOTIFICATIONS);
+	}
     
     @Override
     public void onDestroy() 
@@ -159,10 +193,6 @@ public class LocationService extends Service implements LocationListener{
 
     public void onStatusChanged(String provider, int status, Bundle extras) {
 		Log.i(TAG,"tatusChanged");
-    }
-
-    private void printProvider(String provider) {
-        LocationProvider info = locationManager.getProvider(provider);
     }
 
     private void cleanLocation() {

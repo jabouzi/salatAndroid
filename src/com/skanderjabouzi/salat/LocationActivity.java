@@ -30,15 +30,15 @@ public class LocationActivity extends Activity{
 	private Intent athanIntent;
 	private Intent locationIntent;
 	private PendingIntent pendingIntent;
-    //LocationReceiver receiver;
+    LocationReceiver receiver;
     IntentFilter filter;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location);
-        //receiver = new LocationReceiver();
-        //filter = new IntentFilter( LocationService.LOCATION_INTENT );
+        receiver = new LocationReceiver();
+        filter = new IntentFilter( LocationService.LOCATION_INTENT );
         salatApp = new SalatApplication(this);
         athanIntent = new Intent(this, SalatReceiver.class);
         locationIntent = new Intent(this, LocationService.class);
@@ -53,7 +53,7 @@ public class LocationActivity extends Activity{
     @Override
     protected void onResume() {
         super.onResume();
-        //super.registerReceiver(receiver, filter, SEND_LOCATION_NOTIFICATIONS, null);
+        super.registerReceiver(receiver, filter, SEND_LOCATION_NOTIFICATIONS, null);
     }
 
     @Override
@@ -135,13 +135,12 @@ public class LocationActivity extends Activity{
 			return String.valueOf(d);
 	}
 	
-	//class LocationReceiver extends BroadcastReceiver {
-        //@Override
-        //public void onReceive(Context context, Intent intent) {
-            //location = (Location)intent.getSerializableExtra("LOCATION");
-            //Log.i("LocationReceiver ", String.valueOf(location.getLatitude()));
+	class LocationReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String locationValues = intent.getStringExtra("LOCATION");
+            Log.i("LocationReceiver ", locationValues);
             //setLocationTexts();
-        //}
-    //}
-
+        }
+    }
 }
