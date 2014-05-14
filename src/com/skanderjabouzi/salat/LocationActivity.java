@@ -178,12 +178,12 @@ public class LocationActivity extends Activity{
         @Override
         public void onReceive(Context context, Intent intent) {
             String extraString = intent.getStringExtra("LOCATION");
-            if (extraString == "LOCATION_NULL")
+            if (extraString.equals("LOCATION_NULL"))
             {
 				showSettingsAlert();
 				Log.i("LocationReceiver1 ", extraString);
 			}
-			showSettingsAlert();
+			//showSettingsAlert();
             Log.i("LocationReceiver2 ", extraString);
             //setLocationTexts();
         }
