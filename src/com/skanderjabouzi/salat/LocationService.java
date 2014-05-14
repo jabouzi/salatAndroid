@@ -31,14 +31,15 @@ import java.util.TimeZone;
 import java.io.IOException;
 import android.app.Service;
 import java.util.List;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 //import org.json.simple.parser.JSONParser;
 //import org.json.simple.parser.ParseException;
 //import java.io.FileReader;
 //import java.io.FileNotFoundException;
-import java.net.URL;
-import java.io.InputStream;
+//import java.net.URL;
+//import java.io.InputStream;
 
 
 public class LocationService extends Service implements LocationListener{
@@ -159,11 +160,14 @@ public class LocationService extends Service implements LocationListener{
 				//JsonReader rdr = Json.createReader(is);
 				//JsonObject obj = rdr.readObject();
 				JSONParser jParser = new JSONParser();
+				//JSONArray json = jParser.getJSONFromUrl(url);
 				JSONArray json = jParser.getJSONFromUrl(url);
-				String city = json.getJSONObject("name");    
-				String country = json.getJSONObject("country");   
-				Log.d("city", city); 
-				Log.d("city", country); 
+				Log.d("LENGHT", json.length());
+				//JSONObject c = json.getJSONObject(0);
+				//String city = c.getString("name");    
+				//String country = c.getString("country");   
+				//Log.d("city", city); 
+				//Log.d("city", country); 
 
 					//}
 				//}
@@ -177,10 +181,11 @@ public class LocationService extends Service implements LocationListener{
 				//+ addresses.get(0).getLocality()  + " " 
 				//+ addresses.get(0).getCountryName()   + " " 
 				//,Toast.LENGTH_SHORT).show();
-			}
-			catch (IOException e) {
+			} catch (IOException e) {
 				e.printStackTrace();
-			} 
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
 			
 			Log.d("LOCATIONVAL", locationValues);
 			sendNotification(locationValues);
