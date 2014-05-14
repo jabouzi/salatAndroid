@@ -33,10 +33,12 @@ import android.app.Service;
 import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-import java.io.FileReader;
-import java.io.FileNotFoundException;
+//import org.json.simple.parser.JSONParser;
+//import org.json.simple.parser.ParseException;
+//import java.io.FileReader;
+//import java.io.FileNotFoundException;
+import java.net.URL;
+import java.io.InputStream;
 
 
 public class LocationService extends Service implements LocationListener{
@@ -56,7 +58,8 @@ public class LocationService extends Service implements LocationListener{
 	Location location;	
 	private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
 	private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
-	private JSONParser jsonParser = new JSONParser();
+	//private JSONParser jsonParser = new JSONParser();
+	private static String url = "http://skanderjabouzi.com/app/salat/maps/timezone.php?lat=36.8064948&lng=10.181531599999971";
 
     
     @Override
@@ -150,11 +153,15 @@ public class LocationService extends Service implements LocationListener{
 			locationValues += "|" + String.valueOf((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000);
 			Geocoder gcd = new Geocoder(context, Locale.getDefault());
 			try {
-				FileReader fileReader = new FileReader("http://skanderjabouzi.com/app/salat/maps/timezone.php?lat=36.8064948&lng=10.181531599999971");
-				JSONObject jsonObject = (JSONObject) jsonParser.parse(fileReader);
-				String siteName = (String) jsonObject.get("Site Name");				
-				String city = (String) jsonObject.get("name");    
-				String country = (String) jsonObject.get("country");   
+				//URL url = new URL("http://skanderjabouzi.com/app/salat/maps/timezone.php?lat=36.8064948&lng=10.181531599999971");
+				//
+				//InputStream is = url.openStream();
+				//JsonReader rdr = Json.createReader(is);
+				//JsonObject obj = rdr.readObject();
+				JSONParser jParser = new JSONParser();
+				JSONArray json = jParser.getJSONFromUrl(url);
+				String city = json.getJSONObject("name");    
+				String country = json.getJSONObject("country");   
 				Log.d("city", city); 
 				Log.d("city", country); 
 
@@ -171,13 +178,10 @@ public class LocationService extends Service implements LocationListener{
 				//+ addresses.get(0).getCountryName()   + " " 
 				//,Toast.LENGTH_SHORT).show();
 			}
-			catch (FileNotFoundException e) {
+			catch (IOException e) {
 				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+			} 
+			
 			Log.d("LOCATIONVAL", locationValues);
 			sendNotification(locationValues);
 		}
