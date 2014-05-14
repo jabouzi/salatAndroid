@@ -31,6 +31,12 @@ import java.util.TimeZone;
 import java.io.IOException;
 import android.app.Service;
 import java.util.List;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
 
 
 public class LocationService extends Service implements LocationListener{
@@ -50,6 +56,8 @@ public class LocationService extends Service implements LocationListener{
 	Location location;	
 	private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
 	private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
+	private JSONParser jsonParser = new JSONParser();
+
     
     @Override
      public IBinder onBind(Intent arg0) {
@@ -142,6 +150,16 @@ public class LocationService extends Service implements LocationListener{
 			locationValues += "|" + String.valueOf((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000);
 			Geocoder gcd = new Geocoder(context, Locale.getDefault());
 			try {
+				FileReader fileReader = new FileReader("http://skanderjabouzi.com/app/salat/maps/timezone.php?lat=36.8064948&lng=10.181531599999971");
+				JSONObject jsonObject = (JSONObject) jsonParser.parse(fileReader);
+				String siteName = (String) jsonObject.get("Site Name");				
+				String city = (String) jsonObject.get("name");    
+				String country = (String) jsonObject.get("country");   
+				Log.d("city", city); 
+				Log.d("city", country); 
+
+					//}
+				//}
 				List<Address> addresses = gcd.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
 				locationValues += "|" + addresses.get(0).getLocality();
 				locationValues += "|" + addresses.get(0).getCountryName();
@@ -152,7 +170,14 @@ public class LocationService extends Service implements LocationListener{
 				//+ addresses.get(0).getLocality()  + " " 
 				//+ addresses.get(0).getCountryName()   + " " 
 				//,Toast.LENGTH_SHORT).show();
-			} catch (IOException e) {   }
+			}
+			catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 			Log.d("LOCATIONVAL", locationValues);
 			sendNotification(locationValues);
 		}
