@@ -1,5 +1,7 @@
 package com.skanderjabouzi.salat;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.BroadcastReceiver;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,7 @@ import android.app.PendingIntent;
 import android.content.IntentFilter;
 import android.app.AlarmManager;
 import android.util.Log;
+import android.provider.Settings;
 
 public class LocationActivity extends Activity{
 
@@ -26,7 +29,7 @@ public class LocationActivity extends Activity{
 	private LocationDataSource datasource;
 	private Location location;
 	private SalatApplication salatApp;
-	private Context context;
+	private Context context = LocationActivity.this;
 	private Intent athanIntent;
 	private Intent locationIntent;
 	private PendingIntent pendingIntent;
@@ -120,11 +123,47 @@ public class LocationActivity extends Activity{
 				//context = getApplicationContext();
 				Log.i("LOCATV", "onclick");
 				//context.startService(locationIntent);
-				startService(new Intent(LocationActivity.this, LocationService.class));
+				startService(new Intent(context, LocationService.class));
 			}
 
 		});
 
+	}
+	
+	public void showSettingsAlert(){
+		
+		Log.i("DIALOG: ", "SHOW");
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+   	 
+        // Setting Dialog Title
+        alertDialog.setTitle("GPS is settings");
+ 
+        // Setting Dialog Message
+        alertDialog.setMessage("GPS is not enabled. Do you want to go to settings menu?");
+ 
+        // On pressing Settings button
+        alertDialog.setPositiveButton("GPS", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog,int which) {
+            	Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            	context.startActivity(intent);
+            }
+        });
+        alertDialog.setNeutralButton("Network", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog,int which) {
+            	Intent intent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
+            	context.startActivity(intent);
+            }
+        });
+ 
+        // on pressing cancel button
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            dialog.cancel();
+            }
+        });
+ 
+        // Showing Alert Message
+        alertDialog.show();
 	}
 	
 	public String fmt(float d)
@@ -138,8 +177,14 @@ public class LocationActivity extends Activity{
 	class LocationReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String locationValues = intent.getStringExtra("LOCATION");
-            Log.i("LocationReceiver ", locationValues);
+            String extraString = intent.getStringExtra("LOCATION");
+            if (extraString == "LOCATION_NULL")
+            {
+				showSettingsAlert();
+				Log.i("LocationReceiver1 ", extraString);
+			}
+			showSettingsAlert();
+            Log.i("LocationReceiver2 ", extraString);
             //setLocationTexts();
         }
     }
