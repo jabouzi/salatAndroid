@@ -31,15 +31,16 @@ import java.util.TimeZone;
 import java.io.IOException;
 import android.app.Service;
 import java.util.List;
+import java.io.IOException;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-//import org.json.simple.parser.JSONParser;
-//import org.json.simple.parser.ParseException;
-//import java.io.FileReader;
-//import java.io.FileNotFoundException;
-//import java.net.URL;
-//import java.io.InputStream;
 
 
 public class LocationService extends Service implements LocationListener{
@@ -59,9 +60,6 @@ public class LocationService extends Service implements LocationListener{
 	Location location;	
 	private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
 	private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
-	//private JSONParser jsonParser = new JSONParser();
-	private static String url = "http://skanderjabouzi.com/app/salat/maps/timezone.php?lat=36.8064948&lng=10.181531599999971";
-
     
     @Override
      public IBinder onBind(Intent arg0) {
@@ -148,29 +146,35 @@ public class LocationService extends Service implements LocationListener{
 		}
 		else
 		{
+			latitude = location.getLatitude();
+			longitude = location.getLongitude();
 			TimeZone tz = TimeZone.getDefault();
 			String locationValues = String.valueOf(location.getLatitude());
 			locationValues += "|" + String.valueOf(location.getLongitude());
 			locationValues += "|" + String.valueOf((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000);
 			Geocoder gcd = new Geocoder(context, Locale.getDefault());
-			try {
-				//URL url = new URL("http://skanderjabouzi.com/app/salat/maps/timezone.php?lat=36.8064948&lng=10.181531599999971");
-				//
-				//InputStream is = url.openStream();
-				//JsonReader rdr = Json.createReader(is);
-				//JsonObject obj = rdr.readObject();
-				JSONParser jParser = new JSONParser();
-				//JSONArray json = jParser.getJSONFromUrl(url);
-				JSONArray json = jParser.getJSONFromUrl(url);
-				Log.d("LENGHT", json.length());
-				//JSONObject c = json.getJSONObject(0);
-				//String city = c.getString("name");    
-				//String country = c.getString("country");   
-				//Log.d("city", city); 
-				//Log.d("city", country); 
-
-					//}
+			
+			JSONObject json = null;
+        String str = "";
+        HttpResponse response;
+        HttpClient myClient = new DefaultHttpClient();
+        HttpPost myConnection = new HttpPost("http://maps.google.com/maps/api/geocode/json?sensor=false&latlng=45.59472206,-73.59408");
+        try {
+            response = myClient.execute(myConnection);
+            str = EntityUtils.toString(response.getEntity(), "UTF-8");
+            Log.d("RESPONSE ", str);
+            json = new JSONObject(str);
+            Log.d("name", json.getString("status"));
+             
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch ( JSONException e) {
+            e.printStackTrace();                
+        }
 				//}
+		try {
 				List<Address> addresses = gcd.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
 				locationValues += "|" + addresses.get(0).getLocality();
 				locationValues += "|" + addresses.get(0).getCountryName();
@@ -183,9 +187,10 @@ public class LocationService extends Service implements LocationListener{
 				//,Toast.LENGTH_SHORT).show();
 			} catch (IOException e) {
 				e.printStackTrace();
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
+			} 
+			//catch (JSONException e) {
+				//e.printStackTrace();
+			//}
 			
 			Log.d("LOCATIONVAL", locationValues);
 			sendNotification(locationValues);
