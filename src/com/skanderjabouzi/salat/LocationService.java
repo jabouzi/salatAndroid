@@ -57,6 +57,7 @@ public class LocationService extends Service implements LocationListener{
 	boolean canGetLocation = false;
 	double latitude; 
 	double longitude; 
+	private String Address1 = "", Address2 = "", City = "", State = "", Country = "", County = "", PIN = "";
 	Location location;	
 	private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
 	private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
@@ -148,33 +149,70 @@ public class LocationService extends Service implements LocationListener{
 		{
 			latitude = location.getLatitude();
 			longitude = location.getLongitude();
-			TimeZone tz = TimeZone.getDefault();
-			String locationValues = String.valueOf(location.getLatitude());
-			locationValues += "|" + String.valueOf(location.getLongitude());
-			locationValues += "|" + String.valueOf((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000);
-			Geocoder gcd = new Geocoder(context, Locale.getDefault());
+			TimeZone tz = TimeZone.getDefault();			
+			//Geocoder gcd = new Geocoder(context, Locale.getDefault());
 			
-			JSONObject json = null;
-        String str = "";
-        HttpResponse response;
-        HttpClient myClient = new DefaultHttpClient();
-        HttpPost myConnection = new HttpPost("http://maps.google.com/maps/api/geocode/json?sensor=false&latlng=45.59472206,-73.59408");
-        try {
-            response = myClient.execute(myConnection);
-            str = EntityUtils.toString(response.getEntity(), "UTF-8");
-            Log.d("RESPONSE ", str);
-            json = new JSONObject(str);
-            Log.d("name", json.getString("status"));
-             
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch ( JSONException e) {
-            e.printStackTrace();                
-        }
-				//}
-		try {
+			JSONObject jsonObj = null;
+			String str = "";
+			HttpResponse response;
+			HttpClient myClient = new DefaultHttpClient();
+			HttpPost myConnection = new HttpPost("http://maps.google.com/maps/api/geocode/json?sensor=false&latlng="+latitude+","+longitude);
+			try {
+				response = myClient.execute(myConnection);
+				str = EntityUtils.toString(response.getEntity(), "UTF-8");
+				Log.d("RESPONSE ", str);
+				jsonObj = new JSONObject(str);
+				String Status = jsonObj.getString("status");
+				Log.d("RESPONSE ", Status);
+				if (Status.equalsIgnoreCase("OK")) {
+					JSONArray Results = jsonObj.getJSONArray("results");
+					JSONObject zero = Results.getJSONObject(0);
+					JSONArray address_components = zero.getJSONArray("address_components");
+
+					for (int i = 0; i < address_components.length(); i++) {
+						JSONObject zero2 = address_components.getJSONObject(i);
+						String long_name = zero2.getString("long_name");
+						JSONArray mtypes = zero2.getJSONArray("types");
+						String Type = mtypes.getString(0);                    
+						if (Type.equalsIgnoreCase("street_number")) {
+							Address1 = long_name + " ";
+						} else if (Type.equalsIgnoreCase("route")) {
+							Address1 = Address1 + long_name;
+						} else if (Type.equalsIgnoreCase("sublocality")) {
+							Address2 = long_name;
+						} else if (Type.equalsIgnoreCase("locality")) {
+							// Address2 = Address2 + long_name + ", ";
+							City = long_name;
+						} else if (Type.equalsIgnoreCase("administrative_area_level_2")) {
+							County = long_name;
+						} else if (Type.equalsIgnoreCase("administrative_area_level_1")) {
+							State = long_name;
+						} else if (Type.equalsIgnoreCase("country")) {
+							Country = long_name;
+						} else if (Type.equalsIgnoreCase("postal_code")) {
+							PIN = long_name;
+						}
+					}
+				}
+				
+				String locationValues = String.valueOf(location.getLatitude());
+				locationValues += "|" + String.valueOf(location.getLongitude());
+				locationValues += "|" + String.valueOf((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000);
+				locationValues += "|" + City;
+				locationValues += "|" + County;
+				sendNotification(locationValues);
+				 
+			} catch (ClientProtocolException e) {
+				sendNotification("LOCATION_NULL");
+			} catch (IOException e) {
+				sendNotification("LOCATION_NULL");
+			} catch ( JSONException e) {
+				e.printStackTrace();                
+			}
+			
+
+		}
+		/*try {
 				List<Address> addresses = gcd.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
 				locationValues += "|" + addresses.get(0).getLocality();
 				locationValues += "|" + addresses.get(0).getCountryName();
@@ -194,7 +232,7 @@ public class LocationService extends Service implements LocationListener{
 			
 			Log.d("LOCATIONVAL", locationValues);
 			sendNotification(locationValues);
-		}
+		}*/
 	}
 	
 	public void sendNotification(String extra)
