@@ -199,7 +199,7 @@ public class LocationService extends Service implements LocationListener{
 				locationValues += "|" + String.valueOf(location.getLongitude());
 				locationValues += "|" + String.valueOf((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000);
 				locationValues += "|" + City;
-				locationValues += "|" + County;
+				locationValues += "|" + Country;
 				sendNotification(locationValues);
 				 
 			} catch (ClientProtocolException e) {

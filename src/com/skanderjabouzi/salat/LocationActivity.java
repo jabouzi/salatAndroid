@@ -130,33 +130,30 @@ public class LocationActivity extends Activity{
 
 	}
 	
-	public void showSettingsAlert(){
+	public void showSettingsAlert(int type){
 		
 		Log.i("DIALOG: ", "SHOW");
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-   	 
-        // Setting Dialog Title
-        alertDialog.setTitle("GPS is settings");
- 
-        // Setting Dialog Message
-        alertDialog.setMessage("GPS is not enabled. Do you want to go to settings menu?");
+        alertDialog.setTitle("Localisation error");
+        alertDialog.setMessage("Please enable Internet and try again");
+        if (type == 1) alertDialog.setMessage("Please enable GPS or Internet and try again");
  
         // On pressing Settings button
-        alertDialog.setPositiveButton("GPS", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog,int which) {
-            	Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-            	context.startActivity(intent);
-            }
-        });
-        alertDialog.setNeutralButton("Network", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog,int which) {
-            	Intent intent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
-            	context.startActivity(intent);
-            }
-        });
+        //alertDialog.setPositiveButton("GPS", new DialogInterface.OnClickListener() {
+            //public void onClick(DialogInterface dialog,int which) {
+            	//Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            	//context.startActivity(intent);
+            //}
+        //});
+        //alertDialog.setNeutralButton("Network", new DialogInterface.OnClickListener() {
+            //public void onClick(DialogInterface dialog,int which) {
+            	//Intent intent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
+            	//context.startActivity(intent);
+            //}
+        //});
  
         // on pressing cancel button
-        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
             dialog.cancel();
             }
@@ -178,13 +175,22 @@ public class LocationActivity extends Activity{
         @Override
         public void onReceive(Context context, Intent intent) {
             String extraString = intent.getStringExtra("LOCATION");
-            if (extraString.equals("LOCATION_NULL"))
+            if (extraString.equals("GEO_NULL"))
             {
-				showSettingsAlert();
-				Log.i("LocationReceiver1 ", extraString);
+				showSettingsAlert(1);
+				//Log.i("LocationReceiver1 ", extraString);
+			}
+            else if (extraString.equals("LOCATION_NULL"))
+            {
+				showSettingsAlert(0);
+				//Log.i("LocationReceiver1 ", extraString);
+			}
+			else
+			{
+				String[] geolocation = extraString.split("|");
 			}
 			//showSettingsAlert();
-            Log.i("LocationReceiver2 ", extraString);
+            //Log.i("LocationReceiver2 ", extraString);
             //setLocationTexts();
         }
     }
