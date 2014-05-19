@@ -1,6 +1,5 @@
 package com.skanderjabouzi.salat;
 
-import android.view.MotionEvent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -23,7 +22,10 @@ public class SalatActivity extends Activity {
     SalatApplication salatApp;
     MidnightReceiver receiver;
     IntentFilter filter;
-	private SimpleGestureFilter detector;
+    //private OptionsDataSource optionsDataSource;
+    //private LocationDataSource locationDataSource;
+	//private Options salatOptions;
+	//private Location salatLocation;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,14 @@ public class SalatActivity extends Activity {
         salatApp = new SalatApplication(this);
         receiver = new MidnightReceiver();
         filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );
-        detector = new SimpleGestureFilter(this,this);
+        //optionsDataSource = new OptionsDataSource(this);
+		//optionsDataSource.open();
+		//salatOptions = optionsDataSource.getOptions(1);
+		//locationDataSource = new LocationDataSource(this);
+		//locationDataSource.open();
+		//salatLocation = locationDataSource.getLocation(1);
+		//salatApp.setOptions(salatOptions, salatLocation);
+		//setSalatTimes();
         Log.i("SalatActivity", "Created");
     }
 
@@ -69,6 +78,51 @@ public class SalatActivity extends Activity {
         super.onPause();
         unregisterReceiver(receiver);
     }
+    
+    public boolean onTouchEvent(MotionEvent touchevent) 
+	{
+				 switch (touchevent.getAction())
+				 {
+						// when user first touches the screen we get x and y coordinate
+						 case MotionEvent.ACTION_DOWN: 
+						 {
+							 x1 = touchevent.getX();
+							 y1 = touchevent.getY();
+							 break;
+						}
+						 case MotionEvent.ACTION_UP: 
+						 {
+							 x2 = touchevent.getX();
+							 y2 = touchevent.getY(); 
+
+							 //if left to right sweep event on screen
+							 if (x1 < x2) 
+							 {
+								 Toast.makeText(this, "Left to Right Swap Performed", Toast.LENGTH_LONG).show();
+							  }
+							
+							 // if right to left sweep event on screen
+							 if (x1 > x2)
+							 {
+								 Toast.makeText(this, "Right to Left Swap Performed", Toast.LENGTH_LONG).show();
+							 }
+							
+							 // if UP to Down sweep event on screen
+							 if (y1 < y2) 
+							 {
+								 Toast.makeText(this, "UP to Down Swap Performed", Toast.LENGTH_LONG).show();
+							 }
+							
+							 //if Down to UP sweep event on screen
+							 if (y1 > y2)
+							 {
+								 Toast.makeText(this, "Down to UP Swap Performed", Toast.LENGTH_LONG).show();
+							  }
+							 break;
+						 }
+				 }
+				 return false;
+	}
 
     private void setSalatTimes()
     {
@@ -125,30 +179,6 @@ public class SalatActivity extends Activity {
         menu.findItem(R.id.athan).setVisible(SalatApplication.athanPlaying);
         return true;
     }
-    
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent me){
-    	// Call onTouchEvent of SimpleGestureFilter class
-         this.detector.onTouchEvent(me);
-       return super.dispatchTouchEvent(me);
-    }
-    
-	@Override
-	public void onSwipe(int direction) {
-		String str = "";
-		switch (direction) {
-			case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right"; break;
-			case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left"; break;
-			case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down"; break;
-			case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up"; break;	 
-		}
-		Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
-	}
-	 
-	@Override
-	public void onDoubleTap() {
-	    Toast.makeText(this, "Double Tap", Toast.LENGTH_SHORT).show();
-	}
 
     public void printFajrTime()
     {
