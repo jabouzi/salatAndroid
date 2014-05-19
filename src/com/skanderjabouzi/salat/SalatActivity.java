@@ -1,5 +1,6 @@
 package com.skanderjabouzi.salat;
 
+import android.view.MotionEvent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -22,10 +23,7 @@ public class SalatActivity extends Activity {
     SalatApplication salatApp;
     MidnightReceiver receiver;
     IntentFilter filter;
-    //private OptionsDataSource optionsDataSource;
-    //private LocationDataSource locationDataSource;
-	//private Options salatOptions;
-	//private Location salatLocation;
+	private SimpleGestureFilter detector;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,14 +32,7 @@ public class SalatActivity extends Activity {
         salatApp = new SalatApplication(this);
         receiver = new MidnightReceiver();
         filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );
-        //optionsDataSource = new OptionsDataSource(this);
-		//optionsDataSource.open();
-		//salatOptions = optionsDataSource.getOptions(1);
-		//locationDataSource = new LocationDataSource(this);
-		//locationDataSource.open();
-		//salatLocation = locationDataSource.getLocation(1);
-		//salatApp.setOptions(salatOptions, salatLocation);
-		//setSalatTimes();
+        detector = new SimpleGestureFilter(this,this);
         Log.i("SalatActivity", "Created");
     }
 
@@ -134,6 +125,30 @@ public class SalatActivity extends Activity {
         menu.findItem(R.id.athan).setVisible(SalatApplication.athanPlaying);
         return true;
     }
+    
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent me){
+    	// Call onTouchEvent of SimpleGestureFilter class
+         this.detector.onTouchEvent(me);
+       return super.dispatchTouchEvent(me);
+    }
+    
+	@Override
+	public void onSwipe(int direction) {
+		String str = "";
+		switch (direction) {
+			case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right"; break;
+			case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left"; break;
+			case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down"; break;
+			case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up"; break;	 
+		}
+		Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+	}
+	 
+	@Override
+	public void onDoubleTap() {
+	    Toast.makeText(this, "Double Tap", Toast.LENGTH_SHORT).show();
+	}
 
     public void printFajrTime()
     {

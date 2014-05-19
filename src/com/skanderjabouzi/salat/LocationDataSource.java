@@ -61,29 +61,6 @@ public class LocationDataSource {
 		return location;
 	}
 
-	// Getting All Location
-	/*public List<Location> getAllLocation() {
-		List<Location> locationList = new ArrayList<Location>();
-		// Select All Query
-		String selectQuery = "SELECT  * FROM " + "location";
-		Cursor cursor = database.rawQuery(selectQuery, null);
-
-		// looping through all rows and adding to list
-		if (cursor.moveToFirst()) {
-			do {
-				Location location = new Location();
-				location.setID(Integer.parseInt(cursor.getString(0)));
-				location.setName(cursor.getString(1));
-				location.setPhoneNumber(cursor.getString(2));
-				// Adding location to list
-				locationList.add(location);
-			} while (cursor.moveToNext());
-		}
-
-		// return location list
-		return locationList;
-	}*/
-
 	// Updating single location
 	public int updateLocation(Location location) {
 		ContentValues values = new ContentValues();

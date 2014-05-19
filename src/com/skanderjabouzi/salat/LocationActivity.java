@@ -62,6 +62,7 @@ public class LocationActivity extends Activity{
     @Override
     protected void onPause() {
         super.onPause();
+        unregisterReceiver(receiver);
     }
 
     public void setLocationTexts() {
@@ -82,7 +83,7 @@ public class LocationActivity extends Activity{
 
 		btnSaveLocation = (Button) findViewById(R.id.saveLocation);
 		btnSaveLocation.setOnClickListener(new OnClickListener() {
-		// CALL LOCATION SERVICE
+
 			@Override
 			public void onClick(View v) {
 		
@@ -107,22 +108,16 @@ public class LocationActivity extends Activity{
 				long timeToSalat = salatApp.getTimeToSalat();
 				AlarmManager alarmManager = (AlarmManager) (AlarmManager)getSystemService(Context.ALARM_SERVICE);
 				alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
-
-				//Log.i("LocationActivity", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
-				
 				finish();
 			}
 
 		});
 		btnDetectLocation = (Button) findViewById(R.id.detectLocation);
 		btnDetectLocation.setOnClickListener(new OnClickListener() {
-		// CALL LOCATION SERVICE
+			
 			@Override
 			public void onClick(View v) {
 				
-				//context = getApplicationContext();
-				Log.i("LOCATV", "onclick");
-				//context.startService(locationIntent);
 				startService(new Intent(context, LocationService.class));
 			}
 
@@ -130,36 +125,19 @@ public class LocationActivity extends Activity{
 
 	}
 	
-	public void showSettingsAlert(int type){
+	public void showSettingsAlert(int type) {
 		
-		Log.i("DIALOG: ", "SHOW");
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
         alertDialog.setTitle("Localisation error");
         alertDialog.setMessage("Please enable Internet and try again");
         if (type == 1) alertDialog.setMessage("Please enable GPS or Internet and try again");
  
-        // On pressing Settings button
-        //alertDialog.setPositiveButton("GPS", new DialogInterface.OnClickListener() {
-            //public void onClick(DialogInterface dialog,int which) {
-            	//Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-            	//context.startActivity(intent);
-            //}
-        //});
-        //alertDialog.setNeutralButton("Network", new DialogInterface.OnClickListener() {
-            //public void onClick(DialogInterface dialog,int which) {
-            	//Intent intent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
-            	//context.startActivity(intent);
-            //}
-        //});
- 
-        // on pressing cancel button
         alertDialog.setNegativeButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
             dialog.cancel();
             }
         });
  
-        // Showing Alert Message
         alertDialog.show();
 	}
 	
@@ -178,20 +156,21 @@ public class LocationActivity extends Activity{
             if (extraString.equals("GEO_NULL"))
             {
 				showSettingsAlert(1);
-				//Log.i("LocationReceiver1 ", extraString);
 			}
             else if (extraString.equals("LOCATION_NULL"))
             {
 				showSettingsAlert(0);
-				//Log.i("LocationReceiver1 ", extraString);
 			}
 			else
 			{
-				String[] geolocation = extraString.split("|");
+				String[] geolocation = extraString.split("\\|");
+				location.setLatitude(Float.parseFloat(geolocation[0]));
+				location.setLongitude(Float.parseFloat(geolocation[1]));
+				location.setTimezone(Float.parseFloat(geolocation[2]));
+				location.setCity(geolocation[3]);
+				location.setCountry(geolocation[4]);
+				setLocationTexts();
 			}
-			//showSettingsAlert();
-            //Log.i("LocationReceiver2 ", extraString);
-            //setLocationTexts();
         }
     }
 }
