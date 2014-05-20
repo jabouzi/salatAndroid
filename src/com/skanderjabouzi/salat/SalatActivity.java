@@ -24,10 +24,9 @@ public class SalatActivity extends Activity {
     SalatApplication salatApp;
     MidnightReceiver receiver;
     IntentFilter filter;
-    float x1,x2;
-    float y1, y2;
     View salatView;
     OnSwipeTouchListener onSwipeTouchListener;
+    Intent intent = new Intent(this, NextActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,11 +40,11 @@ public class SalatActivity extends Activity {
 			}
 			public void onSwipeRight() {
 				Toast.makeText(SalatActivity.this, "right", Toast.LENGTH_SHORT).show();
-				startActivity(new Intent(this, NextActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+				startActivity(intent);
 			}
 			public void onSwipeLeft() {
 				Toast.makeText(SalatActivity.this, "left", Toast.LENGTH_SHORT).show();
-				startActivity(new Intent(this, NextActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+				startActivity(intent);
 			}
 			public void onSwipeBottom() {
 				//Toast.makeText(SalatActivity.this, "bottom", Toast.LENGTH_SHORT).show();
@@ -63,7 +62,7 @@ public class SalatActivity extends Activity {
         super.onResume();
         if (salatApp.checkOptions())
         {
-            setSalatTimes(0);
+            setSalatTimes();
         }
         else
         {
@@ -206,7 +205,7 @@ public class SalatActivity extends Activity {
 			//locationDataSource.open();
 			//salatLocation = locationDataSource.getLocation(1);
 			//salatApp.setOptions(salatOptions, salatLocation);
-            setSalatTimes(0);
+            setSalatTimes();
             String salatName = intent.getStringExtra("SALATTIME");
             Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();
             //String msg_for_me = intent.getStringExtra("NEW_STATUS_EXTRA_COUNT");

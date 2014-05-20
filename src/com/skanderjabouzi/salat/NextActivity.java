@@ -23,6 +23,7 @@ public class NextActivity extends Activity {
     SalatApplication salatApp;
     View salatView;
     OnSwipeTouchListener onSwipeTouchListener;
+    Intent intent = new Intent(this, SalatActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,11 +37,11 @@ public class NextActivity extends Activity {
 			}
 			public void onSwipeRight() {
 				Toast.makeText(NextActivity.this, "right", Toast.LENGTH_SHORT).show();
-				//startActivity(new Intent(this, SalatActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+				startActivity(intent);
 			}
 			public void onSwipeLeft() {
 				Toast.makeText(NextActivity.this, "left", Toast.LENGTH_SHORT).show();
-				//startActivity(new Intent(this, SalatActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+				startActivity(intent);
 			}
 			public void onSwipeBottom() {
 				//Toast.makeText(NextActivity.this, "bottom", Toast.LENGTH_SHORT).show();
@@ -54,14 +55,13 @@ public class NextActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        setSalatTimes(1);
+        setSalatTimes();
         Log.i("NextActivity", "Reseumed");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(receiver);
     }
     
     @Override
