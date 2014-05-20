@@ -227,7 +227,7 @@ public class SalatApplication{
     {
 		Calendar now = Calendar.getInstance();
 		initCalendar();
-		setSalatTimes();
+		setSalatTimes(0);
 		return this.getTimeLeft() + now.getTimeInMillis();
 	}
 

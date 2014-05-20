@@ -2,7 +2,10 @@ package com.skanderjabouzi.salat;
 
 import android.view.View;
 import android.view.MotionEvent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -33,11 +36,11 @@ public class NextActivity extends Activity {
 			}
 			public void onSwipeRight() {
 				Toast.makeText(NextActivity.this, "right", Toast.LENGTH_SHORT).show();
-				startActivity(new Intent(this, SalatActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+				//startActivity(new Intent(this, SalatActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
 			}
 			public void onSwipeLeft() {
 				Toast.makeText(NextActivity.this, "left", Toast.LENGTH_SHORT).show();
-				startActivity(new Intent(this, SalatActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+				//startActivity(new Intent(this, SalatActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
 			}
 			public void onSwipeBottom() {
 				//Toast.makeText(NextActivity.this, "bottom", Toast.LENGTH_SHORT).show();
