@@ -1,0 +1,16 @@
+http://stackoverflow.com/questions/16200716/android-layout-margins-with-percentage
+http://stackoverflow.com/questions/5996571/android-how-do-i-set-a-percentage-padding-margin-so-edittext-has-10-margin-on-e
+http://stackoverflow.com/questions/11256582/margin-padding-in-percentage-in-xml
+
+http://www.chess-ix.com/blog/the-use-of-layout_weight-with-android-layouts **
+
+http://developer.android.com/reference/android/app/AlarmManager.html#set(int, long, android.app.PendingIntent)
+
+http://www.mkyong.com/android/android-spinner-drop-down-list-example/
+
++-----------+
+| ANIMATION |
++-----------+
+
+http://www.mysamplecode.com/2013/02/android-animation-switching-activity.html
+http://stackoverflow.com/questions/6055984/display-page-from-bottom-to-top
