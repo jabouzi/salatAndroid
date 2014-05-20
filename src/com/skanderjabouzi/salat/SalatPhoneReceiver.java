@@ -21,12 +21,13 @@ public class SalatPhoneReceiver extends BroadcastReceiver {
         /*if (intent.getStringExtra(TelephonyManager.EXTRA_STATE).equals(TelephonyManager.CALL_STATE_IDLE))
         {
 			Toast.makeText(context, "Phone State is IDLE", Toast.LENGTH_LONG).show();
-        }
+        }*/
 
         if (intent.getStringExtra(TelephonyManager.EXTRA_STATE).equals(TelephonyManager.EXTRA_STATE_OFFHOOK))
         {
-            Toast.makeText(context, "Call State is OFFHOOK",Toast.LENGTH_LONG).show();
-        }*/
+            //Toast.makeText(context, "Call State is OFFHOOK",Toast.LENGTH_LONG).show();
+            context.stopService(new Intent(context, AthanService.class));
+        }
 
         if (intent.getStringExtra(TelephonyManager.EXTRA_STATE).equals(TelephonyManager.EXTRA_STATE_RINGING))
         {

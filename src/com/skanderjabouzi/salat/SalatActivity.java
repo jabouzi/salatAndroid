@@ -1,5 +1,7 @@
 package com.skanderjabouzi.salat;
 
+import android.view.View;
+import android.view.MotionEvent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -22,37 +24,41 @@ public class SalatActivity extends Activity {
     SalatApplication salatApp;
     MidnightReceiver receiver;
     IntentFilter filter;
-    //private OptionsDataSource optionsDataSource;
-    //private LocationDataSource locationDataSource;
-	//private Options salatOptions;
-	//private Location salatLocation;
+    float x1,x2;
+    float y1, y2;
+    View salatView;
+    OnSwipeTouchListener onSwipeTouchListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        salatView = findViewById(R.id.salatView);
+        
+        onSwipeTouchListener = new OnSwipeTouchListener(this) {
+			public void onSwipeTop() {
+				Toast.makeText(SalatActivity.this, "top", Toast.LENGTH_SHORT).show();
+			}
+			public void onSwipeRight() {
+				Toast.makeText(SalatActivity.this, "right", Toast.LENGTH_SHORT).show();
+			}
+			public void onSwipeLeft() {
+				Toast.makeText(SalatActivity.this, "left", Toast.LENGTH_SHORT).show();
+			}
+			public void onSwipeBottom() {
+				Toast.makeText(SalatActivity.this, "bottom", Toast.LENGTH_SHORT).show();
+			}
+		};	
+		salatView.setOnTouchListener(onSwipeTouchListener);
         salatApp = new SalatApplication(this);
         receiver = new MidnightReceiver();
         filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );
-        //optionsDataSource = new OptionsDataSource(this);
-		//optionsDataSource.open();
-		//salatOptions = optionsDataSource.getOptions(1);
-		//locationDataSource = new LocationDataSource(this);
-		//locationDataSource.open();
-		//salatLocation = locationDataSource.getLocation(1);
-		//salatApp.setOptions(salatOptions, salatLocation);
-		//setSalatTimes();
         Log.i("SalatActivity", "Created");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        //optionsDataSource.open();
-        //salatOptions = optionsDataSource.getOptions(1);
-        //locationDataSource.open();
-		//salatLocation = locationDataSource.getLocation(1);
-		//salatApp.setOptions(salatOptions, salatLocation);
         if (salatApp.checkOptions())
         {
             setSalatTimes();
@@ -79,6 +85,13 @@ public class SalatActivity extends Activity {
         unregisterReceiver(receiver);
     }
     
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev){
+        onSwipeTouchListener.getGestureDetector().onTouchEvent(ev); 
+            return super.dispatchTouchEvent(ev);   
+    }
+    
+    /*
     public boolean onTouchEvent(MotionEvent touchevent) 
 	{
 				 switch (touchevent.getAction())
@@ -89,7 +102,8 @@ public class SalatActivity extends Activity {
 							 x1 = touchevent.getX();
 							 y1 = touchevent.getY();
 							 break;
-						}
+						 }
+						 
 						 case MotionEvent.ACTION_UP: 
 						 {
 							 x2 = touchevent.getX();
@@ -98,31 +112,31 @@ public class SalatActivity extends Activity {
 							 //if left to right sweep event on screen
 							 if (x1 < x2) 
 							 {
-								 Toast.makeText(this, "Left to Right Swap Performed", Toast.LENGTH_LONG).show();
+								 Log.d("Left to Right Swap Performed ", String.valueOf(x1) + " " + String.valueOf(x2) + " " + String.valueOf(y1) + " " + String.valueOf(y2));
 							  }
 							
 							 // if right to left sweep event on screen
 							 if (x1 > x2)
 							 {
-								 Toast.makeText(this, "Right to Left Swap Performed", Toast.LENGTH_LONG).show();
+								 Log.d("Right to Left Swap Performed ", String.valueOf(x1) + " " + String.valueOf(x2) + " " + String.valueOf(y1) + " " + String.valueOf(y2));
 							 }
 							
 							 // if UP to Down sweep event on screen
-							 if (y1 < y2) 
-							 {
-								 Toast.makeText(this, "UP to Down Swap Performed", Toast.LENGTH_LONG).show();
-							 }
+							 //if (y1 < y2) 
+							 //{
+								 //Log.d("UP to Down Swap Performed ", String.valueOf(x1) + " " + String.valueOf(x2) + " " + String.valueOf(y1) + " " + String.valueOf(y2));
+							 //}
 							
 							 //if Down to UP sweep event on screen
-							 if (y1 > y2)
-							 {
-								 Toast.makeText(this, "Down to UP Swap Performed", Toast.LENGTH_LONG).show();
-							  }
+							 //if (y1 > y2)
+							 //{
+								 //Log.d("Down to UP Swap Performed", String.valueOf(x1) + " " + String.valueOf(x2) + " " + String.valueOf(y1) + " " + String.valueOf(y2));
+							  //}
 							 break;
 						 }
 				 }
 				 return false;
-	}
+	}*/
 
     private void setSalatTimes()
     {
