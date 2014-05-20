@@ -134,7 +134,7 @@ public class SalatApplication{
         this.day = cal.get(java.util.Calendar.DAY_OF_MONTH);
     }
 
-    public void setSalatTimes()
+    public void setSalatTimes(int nextDay)
     {
         setOptions();
         Salat prayers = new Salat();
@@ -143,7 +143,7 @@ public class SalatApplication{
         prayers.setDhuhrMinutes(0);
         prayers.setHighLatsMethod(this.highLatitude - 1);
 
-        this.salaTimes = prayers.getDatePrayerTimes(year, month+1, day, this.latitude, this.longitude, this.timezone);
+        this.salaTimes = prayers.getDatePrayerTimes(year, month+1, day+nextDay, this.latitude, this.longitude, this.timezone);
 
 
 /*

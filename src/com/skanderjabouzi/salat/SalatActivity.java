@@ -37,16 +37,18 @@ public class SalatActivity extends Activity {
         
         onSwipeTouchListener = new OnSwipeTouchListener(this) {
 			public void onSwipeTop() {
-				Toast.makeText(SalatActivity.this, "top", Toast.LENGTH_SHORT).show();
+				//Toast.makeText(SalatActivity.this, "top", Toast.LENGTH_SHORT).show();
 			}
 			public void onSwipeRight() {
 				Toast.makeText(SalatActivity.this, "right", Toast.LENGTH_SHORT).show();
+				startActivity(new Intent(this, NextActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
 			}
 			public void onSwipeLeft() {
 				Toast.makeText(SalatActivity.this, "left", Toast.LENGTH_SHORT).show();
+				startActivity(new Intent(this, NextActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
 			}
 			public void onSwipeBottom() {
-				Toast.makeText(SalatActivity.this, "bottom", Toast.LENGTH_SHORT).show();
+				//Toast.makeText(SalatActivity.this, "bottom", Toast.LENGTH_SHORT).show();
 			}
 		};	
 		salatView.setOnTouchListener(onSwipeTouchListener);
@@ -61,7 +63,7 @@ public class SalatActivity extends Activity {
         super.onResume();
         if (salatApp.checkOptions())
         {
-            setSalatTimes();
+            setSalatTimes(0);
         }
         else
         {
@@ -90,58 +92,11 @@ public class SalatActivity extends Activity {
         onSwipeTouchListener.getGestureDetector().onTouchEvent(ev); 
             return super.dispatchTouchEvent(ev);   
     }
-    
-    /*
-    public boolean onTouchEvent(MotionEvent touchevent) 
-	{
-				 switch (touchevent.getAction())
-				 {
-						// when user first touches the screen we get x and y coordinate
-						 case MotionEvent.ACTION_DOWN: 
-						 {
-							 x1 = touchevent.getX();
-							 y1 = touchevent.getY();
-							 break;
-						 }
-						 
-						 case MotionEvent.ACTION_UP: 
-						 {
-							 x2 = touchevent.getX();
-							 y2 = touchevent.getY(); 
-
-							 //if left to right sweep event on screen
-							 if (x1 < x2) 
-							 {
-								 Log.d("Left to Right Swap Performed ", String.valueOf(x1) + " " + String.valueOf(x2) + " " + String.valueOf(y1) + " " + String.valueOf(y2));
-							  }
-							
-							 // if right to left sweep event on screen
-							 if (x1 > x2)
-							 {
-								 Log.d("Right to Left Swap Performed ", String.valueOf(x1) + " " + String.valueOf(x2) + " " + String.valueOf(y1) + " " + String.valueOf(y2));
-							 }
-							
-							 // if UP to Down sweep event on screen
-							 //if (y1 < y2) 
-							 //{
-								 //Log.d("UP to Down Swap Performed ", String.valueOf(x1) + " " + String.valueOf(x2) + " " + String.valueOf(y1) + " " + String.valueOf(y2));
-							 //}
-							
-							 //if Down to UP sweep event on screen
-							 //if (y1 > y2)
-							 //{
-								 //Log.d("Down to UP Swap Performed", String.valueOf(x1) + " " + String.valueOf(x2) + " " + String.valueOf(y1) + " " + String.valueOf(y2));
-							  //}
-							 break;
-						 }
-				 }
-				 return false;
-	}*/
 
     private void setSalatTimes()
     {
         salatApp.initCalendar();
-        salatApp.setSalatTimes();
+        salatApp.setSalatTimes(0);
         salatApp.setHijriDate();
         sataTimes = salatApp.getSalatTimes();
         hijriDates = salatApp.getHijriDates();
@@ -251,7 +206,7 @@ public class SalatActivity extends Activity {
 			//locationDataSource.open();
 			//salatLocation = locationDataSource.getLocation(1);
 			//salatApp.setOptions(salatOptions, salatLocation);
-            setSalatTimes();
+            setSalatTimes(0);
             String salatName = intent.getStringExtra("SALATTIME");
             Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();
             //String msg_for_me = intent.getStringExtra("NEW_STATUS_EXTRA_COUNT");
