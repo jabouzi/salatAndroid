@@ -26,7 +26,6 @@ public class SalatActivity extends Activity {
     IntentFilter filter;
     View salatView;
     OnSwipeTouchListener onSwipeTouchListener;
-    Intent intent = new Intent(this, NextActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,11 +39,11 @@ public class SalatActivity extends Activity {
 			}
 			public void onSwipeRight() {
 				Toast.makeText(SalatActivity.this, "right", Toast.LENGTH_SHORT).show();
-				startActivity(intent);
+				startActivity(new Intent(SalatActivity.this, NextActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
 			}
 			public void onSwipeLeft() {
 				Toast.makeText(SalatActivity.this, "left", Toast.LENGTH_SHORT).show();
-				startActivity(intent);
+				startActivity(new Intent(SalatActivity.this, NextActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
 			}
 			public void onSwipeBottom() {
 				//Toast.makeText(SalatActivity.this, "bottom", Toast.LENGTH_SHORT).show();
