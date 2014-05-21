@@ -14,3 +14,10 @@ http://www.mkyong.com/android/android-spinner-drop-down-list-example/
 
 http://www.mysamplecode.com/2013/02/android-animation-switching-activity.html
 http://stackoverflow.com/questions/6055984/display-page-from-bottom-to-top
+
++-----------+
+|  PICKERS  |
++-----------+
+https://code.google.com/p/android-dateslider/
+https://github.com/bendemboski/DateSlider
+http://sunilsuthar02.blogspot.in/2013/04/date-picker-like-iphone-in-android.html
