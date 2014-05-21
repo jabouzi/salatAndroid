@@ -57,10 +57,10 @@
             </intent-filter>
         </activity>
 
-    <activity android:name=".LocationActivity" android:label="@string/titleCalculation" />
-    <activity android:name=".OptionsActivity" android:label="@string/titleCalculation" />
-    <activity android:name=".SalatLocation" android:label="@string/titleSalatLocation" />
+    <activity android:name=".LocationActivity" android:label="@string/titleLocation" />
+    <activity android:name=".OptionsActivity" android:label="@string/titleOptions" />
     <activity android:name=".SalatQibla" android:label="@string/titleSalatQibla" />
+    <activity android:name=".NextActivity" android:label="@string/titleNext" />
 
     <service android:name=".AthanService" />
     <service android:name=".MidnightService" />
