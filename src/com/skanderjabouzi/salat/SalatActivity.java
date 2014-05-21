@@ -41,11 +41,13 @@ public class SalatActivity extends Activity {
 				Toast.makeText(SalatActivity.this, "right", Toast.LENGTH_SHORT).show();
 				SalatActivity.this.startActivity(new Intent(SalatActivity.this, NextActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
 				SalatActivity.this.finish();
+				SalatActivity.this.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 			}
 			public void onSwipeLeft() {
 				Toast.makeText(SalatActivity.this, "left", Toast.LENGTH_SHORT).show();
 				SalatActivity.this.startActivity(new Intent(SalatActivity.this, NextActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
 				SalatActivity.this.finish();
+				SalatActivity.this.overridePendingTransition(R.anim.slide_in_rignt, R.anim.slide_out_left);
 			}
 			public void onSwipeBottom() {
 				//Toast.makeText(SalatActivity.this, "bottom", Toast.LENGTH_SHORT).show();
