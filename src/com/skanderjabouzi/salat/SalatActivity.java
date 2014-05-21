@@ -203,15 +203,9 @@ public class SalatActivity extends Activity {
     class MidnightReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-			//optionsDataSource.open();
-			//salatOptions = optionsDataSource.getOptions(1);
-			//locationDataSource.open();
-			//salatLocation = locationDataSource.getLocation(1);
-			//salatApp.setOptions(salatOptions, salatLocation);
             setSalatTimes();
             String salatName = intent.getStringExtra("SALATTIME");
             Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();
-            //String msg_for_me = intent.getStringExtra("NEW_STATUS_EXTRA_COUNT");
             Log.i("SalatReceiver", salatName);
         }
     }

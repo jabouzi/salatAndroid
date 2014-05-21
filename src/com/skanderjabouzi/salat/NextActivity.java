@@ -8,9 +8,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.widget.TextView;
 import android.view.Display;
 import android.util.Log;
@@ -18,16 +15,19 @@ import android.widget.Toast;
 
 public class NextActivity extends Activity {
 
+    static final String SEND_SALATTIME_NOTIFICATIONS = "com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS";
     String sataTimes[] = new String[7];
     String[] hijriDates = new String[4];
     SalatApplication salatApp;
+    MidnightReceiver receiver;
+    IntentFilter filter;
     View salatView;
     OnSwipeTouchListener onSwipeTouchListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.next);
+        setContentView(R.layout.main);
         salatView = findViewById(R.id.salatView);
         
         onSwipeTouchListener = new OnSwipeTouchListener(this) {
@@ -52,6 +52,8 @@ public class NextActivity extends Activity {
 		};	
 		salatView.setOnTouchListener(onSwipeTouchListener);
         salatApp = new SalatApplication(this);
+        receiver = new MidnightReceiver();
+        filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );
         Log.i("NextActivity", "Created");
     }
 
@@ -59,12 +61,14 @@ public class NextActivity extends Activity {
     protected void onResume() {
         super.onResume();
         setSalatTimes();
+        super.registerReceiver(receiver, filter, SEND_SALATTIME_NOTIFICATIONS, null);
         Log.i("NextActivity", "Reseumed");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        unregisterReceiver(receiver);
     }
     
     @Override
@@ -88,7 +92,7 @@ public class NextActivity extends Activity {
         printLocation();
         Log.i("NextActivity", "setSalatTimes");
     }
-
+    
     public void printFajrTime()
     {
         TextView fajrText =    (TextView)  findViewById(R.id.fajrText);
@@ -137,4 +141,14 @@ public class NextActivity extends Activity {
         locationText.setText(salatApp.getCity() + ", " + salatApp.getCountry());
     }
 
+
+    class MidnightReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            setSalatTimes();
+            String salatName = intent.getStringExtra("SALATTIME");
+            Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();
+            Log.i("SalatReceiver", salatName);
+        }
+    }
 }

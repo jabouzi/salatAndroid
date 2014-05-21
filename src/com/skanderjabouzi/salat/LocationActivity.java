@@ -30,9 +30,7 @@ public class LocationActivity extends Activity{
 	private Location location;
 	private SalatApplication salatApp;
 	private Context context = LocationActivity.this;
-	private Intent athanIntent;
 	private Intent locationIntent;
-	private PendingIntent pendingIntent;
     LocationReceiver receiver;
     IntentFilter filter;
 
@@ -43,9 +41,7 @@ public class LocationActivity extends Activity{
         receiver = new LocationReceiver();
         filter = new IntentFilter( LocationService.LOCATION_INTENT );
         salatApp = new SalatApplication(this);
-        athanIntent = new Intent(this, SalatReceiver.class);
         locationIntent = new Intent(this, LocationService.class);
-		pendingIntent = PendingIntent.getBroadcast(this, 0, athanIntent, 0);
         datasource = new LocationDataSource(this);
 		datasource.open();
 		location = datasource.getLocation(1);
@@ -106,12 +102,15 @@ public class LocationActivity extends Activity{
 				datasource.updateLocation(location);
 				
 				long timeToSalat = salatApp.getTimeToSalat();
-				AlarmManager alarmManager = (AlarmManager) (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+				Intent athanIntent = new Intent(context, SalatReceiver.class);
+				PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, 0);
+				AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 				alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
 				finish();
 			}
 
 		});
+		
 		btnDetectLocation = (Button) findViewById(R.id.detectLocation);
 		btnDetectLocation.setOnClickListener(new OnClickListener() {
 			
