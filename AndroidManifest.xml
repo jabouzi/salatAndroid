@@ -61,6 +61,7 @@
     <activity android:name=".OptionsActivity" android:label="@string/titleOptions" />
     <activity android:name=".SalatQibla" android:label="@string/titleSalatQibla" />
     <activity android:name=".NextActivity" android:label="@string/titleNext" />
+    <activity android:name=".HijriActivity" android:label="@string/titleHijri" />
 
     <service android:name=".AthanService" />
     <service android:name=".MidnightService" />
