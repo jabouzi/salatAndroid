@@ -1,2 +1,2 @@
-/root/Development/salatAndroid/wheel/bin/AndroidManifest.xml : \
-/root/Development/salatAndroid/wheel/AndroidManifest.xml \
+/home/skander/Development/Android/Salat/wheel/bin/AndroidManifest.xml : \
+/home/skander/Development/Android/Salat/wheel/AndroidManifest.xml \
