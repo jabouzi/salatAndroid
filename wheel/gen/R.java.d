@@ -1,4 +1,4 @@
-/home/skander/Development/Android/Salat/wheel/gen/kankan/wheel/R.java \
- : /home/skander/Development/Android/Salat/wheel/res/drawable/wheel_val.xml \
-/home/skander/Development/Android/Salat/wheel/res/drawable/wheel_bg.xml \
-/home/skander/Development/Android/Salat/wheel/bin/AndroidManifest.xml \
+/root/Development/salatAndroid/wheel/gen/kankan/wheel/R.java \
+ : /root/Development/salatAndroid/wheel/res/drawable/wheel_bg.xml \
+/root/Development/salatAndroid/wheel/res/drawable/wheel_val.xml \
+/root/Development/salatAndroid/wheel/bin/AndroidManifest.xml \
