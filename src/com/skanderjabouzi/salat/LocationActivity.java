@@ -64,14 +64,12 @@ public class LocationActivity extends Activity{
     @Override
     protected void onStop() {
         super.onPause();
-        unregisterReceiver(receiver);
         datasource.close();
     }
     
 	@Override
     protected void onDestroy() {
         super.onPause();
-        unregisterReceiver(receiver);
         datasource.close();
     }
 
