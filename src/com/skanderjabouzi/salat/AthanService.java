@@ -1,6 +1,6 @@
 package com.skanderjabouzi.salat;
 
-import android.media.MediaPlayer;
+//import android.media.MediaPlayer;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -54,15 +54,25 @@ public class AthanService extends Service{
         if (SalatApplication.FAJR == salat)
         {
 			Log.i(TAG, "play -> " + salat);
-            player = MediaPlayer.create(this, R.raw.fajr_athan);
-            play();
+			Intent intent = new Intent();
+			intent.setClass(context, Video.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			intent.putExtra("TYPE", "FAJR");
+			context.startActivity(intent);
+            //player = MediaPlayer.create(this, R.raw.fajr_athan);
+            //play();
             //player = MediaPlayer.create(this, R.raw.bismillah);
         }
         else if (SalatApplication.MIDNIGHT > salat)
         {
 			Log.i(TAG, "play -> " + salat);
-            player = MediaPlayer.create(this, R.raw.reg_athan);
-            play();
+			Intent intent = new Intent();
+			intent.setClass(context, Video.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			intent.putExtra("TYPE", "SALAT");
+			context.startActivity(intent);
+            //player = MediaPlayer.create(this, R.raw.reg_athan);
+            //play();
             //player = MediaPlayer.create(this, R.raw.bismillah);
         }
     }
