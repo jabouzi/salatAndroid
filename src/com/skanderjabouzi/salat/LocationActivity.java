@@ -60,6 +60,20 @@ public class LocationActivity extends Activity{
         super.onPause();
         unregisterReceiver(receiver);
     }
+    
+    @Override
+    protected void onStop() {
+        super.onPause();
+        unregisterReceiver(receiver);
+        datasource.close();
+    }
+    
+	@Override
+    protected void onDestroy() {
+        super.onPause();
+        unregisterReceiver(receiver);
+        datasource.close();
+    }
 
     public void setLocationTexts() {
 		

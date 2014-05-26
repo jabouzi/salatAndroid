@@ -136,7 +136,7 @@ public class SalatActivity extends Activity {
             .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
         break;
       case R.id.qibla:
-        startActivity(new Intent(this, SalatQibla.class)
+        startActivity(new Intent(this, Video.class)
             .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
         break;
       case R.id.athan:

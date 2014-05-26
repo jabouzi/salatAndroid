@@ -55,6 +55,20 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
         super.onPause();
         datasource.close();
     }
+    
+    @Override
+    protected void onStop() {
+        super.onPause();
+        unregisterReceiver(receiver);
+        datasource.close();
+    }
+    
+	@Override
+    protected void onDestroy() {
+        super.onPause();
+        unregisterReceiver(receiver);
+        datasource.close();
+    }
 
     public void setSpinnerItemSelection() {
 

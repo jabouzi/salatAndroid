@@ -97,6 +97,9 @@ public class SalatApplication{
 		this.timezone = salatLocation.getTimezone();
 		this.city = salatLocation.getCity();
 		this.country = salatLocation.getCountry();
+		this.locationDataSource.close();
+		this.optionsDataSource.close();
+		    
 		//Log.i("Salat app", "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
 		//Log.i("Salat app", "Location " + String.valueOf(longitude) + " " + String.valueOf(latitude) + " " + String.valueOf(timezone));
 	}
