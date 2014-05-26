@@ -28,6 +28,8 @@ public class HijriActivity extends Activity implements OnChangeAttemptListener, 
 	public static final int ISLAMIC = 1;
 	public static final int CHRISTIAN = 0;
 	public int switch_val = CHRISTIAN;
+	public int[] hijriDates = new int[3];
+	public int month, day, year;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,19 +52,51 @@ public class HijriActivity extends Activity implements OnChangeAttemptListener, 
         
         OnWheelChangedListener listener = new OnWheelChangedListener() {
             public void onChanged(WheelView wheel, int oldValue, int newValue) {
+				if (switch_val == CHRISTIAN)
+				{
+					month = month1.getCurrentItem();
+					day = day1.getCurrentItem();
+					year = year1.getCurrentItem() - 50;
+					hijriDates = hijri.islToChr(year, month, day, 0);
+					month2.setCurrentItem(hijriDates[1]);
+					day2.setCurrentItem(hijriDates[0] - 1);
+					year2.setCurrentItem(hijriDates[2] - 570);
+					Log.i("MONTH1 ", String.valueOf(month));
+					Log.i("DAY1 ", String.valueOf(day));
+					Log.i("YEAR1 ", String.valueOf(year));
+					Log.i("MONTH2 ", String.valueOf(hijriDates[1]));
+					Log.i("DAY2 ", String.valueOf(hijriDates[0]));
+					Log.i("YEAR2 ", String.valueOf(hijriDates[2]));
+				}
+				else
+				{
+					month = month2.getCurrentItem();
+					day = day2.getCurrentItem();
+					year = year2.getCurrentItem() + 570;
+					hijriDates = hijri.chrToIsl(year, month, day, 0);
+					month1.setCurrentItem(hijriDates[1]);
+					day1.setCurrentItem(hijriDates[0]);
+					year1.setCurrentItem(hijriDates[2] + 50);
+					Log.i("MONTH2 ", String.valueOf(month));
+					Log.i("DAY2 ", String.valueOf(day));
+					Log.i("YEAR2 ", String.valueOf(year));
+					Log.i("MONTH1 ", String.valueOf(hijriDates[1]));
+					Log.i("DAY1 ", String.valueOf(hijriDates[0]));
+					Log.i("YEAR1 ", String.valueOf(hijriDates[2]));
+				}
                 //updateDays(year, month, day);
-                int current = month1.getCurrentItem();
+                //current = month1.getCurrentItem();
                 //Log.i("MONTH1", String.valueOf(current));
                 //current = day1.getCurrentItem();
                 //Log.i("DAY1", String.valueOf(current));
-                current = year2.getCurrentItem();
-                Log.i("YEAR2", String.valueOf(current));
+                //current = year1.getCurrentItem();
+                //Log.i("YEAR1", String.valueOf(current));
 				
             }
         };
 		
 		Log.i("HIJRI : ", String.valueOf(calendar.get(Calendar.YEAR)) + " " +  String.valueOf(calendar.get(Calendar.MONTH)) + " " + String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)));
-		int[] hijriDates = hijri.chrToIsl(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), 0);
+		hijriDates = hijri.chrToIsl(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), 0);
         // month
         //int curMonth = calendar.get(Calendar.MONTH);
         String months1[] = {"Muharram","Safar","Rabii 1","Rabii 2","Jumada 1","Jumada 2","Rajab","Sha\'ban","Ramadhan","Shawwal","Dhul Qa\'dah","Dhul Hijjah"};
@@ -75,7 +109,7 @@ public class HijriActivity extends Activity implements OnChangeAttemptListener, 
         year1.setViewAdapter(new NumericWheelAdapter(this, -50, hijriDates[2]+20));
         //year1.setCurrentItem(1435);
         //year.setViewAdapter(new DateNumericAdapter(this, 0, 1435, 1435));
-        year1.setCurrentItem(hijriDates[2]+50);
+        year1.setCurrentItem(hijriDates[2] + 50);
         year1.addChangingListener(listener);
         
         day1.setViewAdapter(new NumericWheelAdapter(this, 1, 30));
