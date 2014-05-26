@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.MediaController;
 import android.net.Uri;
 import android.widget.VideoView;
+import android.content.Intent;
  
 public class Video extends Activity {
   

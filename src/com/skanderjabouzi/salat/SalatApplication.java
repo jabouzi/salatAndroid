@@ -222,6 +222,8 @@ public class SalatApplication{
 			//isSalat = false;
 			timeLeft = getMidNight();
 		}
+		
+		Log.d("Salat NEXT", String.valueOf(nextSalat));
 		//Toast.makeText( getApplicationContext(),"nextSalat : "+ this.nextSalat,Toast.LENGTH_SHORT).show();
 		return timeLeft;
 	}
