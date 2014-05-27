@@ -33,7 +33,7 @@ public class Video extends Activity {
 		{
 			fileName = "android.resource://com.skanderjabouzi.salat/raw/athan";
 		}
-		setContentView(R.layout.video);
+		setContentView(R.layout-land.video);
 		VideoView myVideoView = (VideoView)findViewById(R.id.myvideoview);
 		myVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 			@Override
