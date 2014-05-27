@@ -2,11 +2,14 @@ package com.skanderjabouzi.salat;
 
 import android.content.Context;
 import android.os.PowerManager;
+import android.app.KeyguardManager;
 import android.util.Log;
 
 public class WakeLock {
 
 	private static PowerManager.WakeLock WakeLock;
+	private static KeyguardManager km;
+	private static KeyguardManager.KeyguardLock kl;
 
     static void acquire(Context context) {
         Log.i("SalatWakeLock" , "Acquiring cpu wake lock");
@@ -17,12 +20,17 @@ public class WakeLock {
         PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
 
         WakeLock = pm.newWakeLock(
-                PowerManager.PARTIAL_WAKE_LOCK |
-                PowerManager.ACQUIRE_CAUSES_WAKEUP |
-                PowerManager.ON_AFTER_RELEASE, "Athan Alarm Wake Lock");
+                PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "Athan Alarm Wake Lock");
         WakeLock.acquire();
     }
-
+    
+    static void unlock(Context context)
+    {
+		km = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
+        kl = km.newKeyguardLock("SALAT");
+		kl.disableKeyguard();
+	}
+	
     static void release() {
         Log.i("SalatWakeLock" ,"Releasing cpu wake lock");
         if (WakeLock != null) {
@@ -30,4 +38,9 @@ public class WakeLock {
             WakeLock = null;
         }
     }
+    
+    static void lock()
+	{
+		kl.reenableKeyguard();
+	}
 }

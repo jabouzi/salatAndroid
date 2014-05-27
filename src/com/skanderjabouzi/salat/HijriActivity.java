@@ -58,9 +58,12 @@ public class HijriActivity extends Activity implements OnChangeAttemptListener, 
 					day = day1.getCurrentItem();
 					year = year1.getCurrentItem() - 50;
 					hijriDates = hijri.islToChr(year, month, day, 0);
-					month2.setCurrentItem(hijriDates[1]);
-					day2.setCurrentItem(hijriDates[0] - 1);
-					year2.setCurrentItem(hijriDates[2] - 570);
+					//month2.setCurrentItem(hijriDates[1]);
+					month2.scroll(hijriDates[1], 1000);
+					//day2.setCurrentItem(hijriDates[0] - 1);
+					day2.scroll(hijriDates[0], 1000);
+					//year2.setCurrentItem(hijriDates[2] - 570);
+					year2.scroll(hijriDates[2] - 570, 1000);
 					Log.i("MONTH1 ", String.valueOf(month));
 					Log.i("DAY1 ", String.valueOf(day));
 					Log.i("YEAR1 ", String.valueOf(year));

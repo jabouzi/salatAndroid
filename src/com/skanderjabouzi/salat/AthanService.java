@@ -11,6 +11,8 @@ import android.os.Vibrator;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.WindowManager;
+//import android.app.KeyguardManager;
 
 public class AthanService extends Service{
 
@@ -31,11 +33,11 @@ public class AthanService extends Service{
 
     @Override
     public void onCreate() {
-        super.onCreate();
+        super.onCreate();        
         WakeLock.acquire(this);
+        WakeLock.unlock(this);
         salatApp = new SalatApplication(this);
         startAthan();
-        stopService();
         Log.i(TAG, "start");
     }
 
@@ -58,6 +60,7 @@ public class AthanService extends Service{
 			Intent intent = new Intent();
 			intent.setClass(this, Video.class);
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			//intent.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED + WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD + WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON + WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 			intent.putExtra("TYPE", "FAJR");
 			startActivity(intent);
             //player = MediaPlayer.create(this, R.raw.fajr_athan);
@@ -70,16 +73,19 @@ public class AthanService extends Service{
 			Intent intent = new Intent();
 			intent.setClass(this, Video.class);
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			//intent.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED + WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD + WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON + WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 			intent.putExtra("TYPE", "SALAT");
 			startActivity(intent);
             //player = MediaPlayer.create(this, R.raw.reg_athan);
             //play();
             //player = MediaPlayer.create(this, R.raw.bismillah);
         }
+        stopService();
     }
 
     private void startAthan() {
         Intent intent;
+        salatApp.getTimeLeft();
 		if (SalatApplication.nextSalat == 0) salat = 7;
         else if (SalatApplication.nextSalat == 2) salat = 0;
         else if (SalatApplication.nextSalat == 5) salat = 3;
