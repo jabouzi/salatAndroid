@@ -26,6 +26,7 @@ public class WakeLock {
     
     static void unlock(Context context)
     {
+		Log.i("SalatWakeLock" ,"Disabling Keyguard");
 		km = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
         kl = km.newKeyguardLock("SALAT");
 		kl.disableKeyguard();
@@ -41,6 +42,7 @@ public class WakeLock {
     
     static void lock()
 	{
+		Log.i("SalatWakeLock" ,"Reenabling Keyguard");
 		kl.reenableKeyguard();
 	}
 }

@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.widget.VideoView;
 import android.content.Intent;
 import android.util.Log;
+import android.view.WindowManager;
 
 public class Video extends Activity {
   
@@ -16,6 +17,9 @@ public class Video extends Activity {
    @Override
    public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		//final KeyguardManager.KeyguardLock kl=km.newKeyguardLock("SALAT");
 		//kl.disableKeyguard();
 		Log.d("VIDEO", "START");
@@ -35,6 +39,7 @@ public class Video extends Activity {
 			@Override
 			public void onCompletion(MediaPlayer mediaPlayer) {
 				//AthanService.this.kl.reenableKeyguard();
+				WakeLock.release();
 				WakeLock.lock();
 			}
 		});
@@ -58,6 +63,7 @@ public class Video extends Activity {
     protected void onStop() {
         super.onPause();
         //AthanService.this.kl.reenableKeyguard();
+        WakeLock.release();
         WakeLock.lock();
     }
     
@@ -65,6 +71,7 @@ public class Video extends Activity {
     protected void onDestroy() {
         super.onPause();
         //AthanService.this.kl.reenableKeyguard();
+        WakeLock.release();
         WakeLock.lock();
     }
 }

@@ -11,7 +11,7 @@ import android.os.Vibrator;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
-import android.view.WindowManager;
+//import android.view.WindowManager;
 //import android.app.KeyguardManager;
 
 public class AthanService extends Service{
@@ -33,9 +33,9 @@ public class AthanService extends Service{
 
     @Override
     public void onCreate() {
-        super.onCreate();        
-        WakeLock.acquire(this);
+        super.onCreate(); 
         WakeLock.unlock(this);
+        WakeLock.acquire(this);
         salatApp = new SalatApplication(this);
         startAthan();
         Log.i(TAG, "start");
@@ -46,7 +46,6 @@ public class AthanService extends Service{
         super.onDestroy();
         //stop();
         SalatApplication.athanPlaying = false;
-        WakeLock.release();
         Log.i(TAG,"stop2");
     }
 
