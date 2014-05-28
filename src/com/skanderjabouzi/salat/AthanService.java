@@ -34,8 +34,8 @@ public class AthanService extends Service{
     @Override
     public void onCreate() {
         super.onCreate(); 
-        WakeLock.unlock(this);
-        WakeLock.acquire(this);
+        //WakeLock.unlock(this);
+        //WakeLock.acquire(this);
         salatApp = new SalatApplication(this);
         startAthan();
         Log.i(TAG, "start");

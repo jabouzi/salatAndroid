@@ -9,14 +9,24 @@ import android.widget.VideoView;
 import android.content.Intent;
 import android.util.Log;
 import android.view.WindowManager;
+import android.telephony.PhoneStateListener;  
+import android.telephony.TelephonyManager;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.content.Context;
 
 public class Video extends Activity {
   
 	String fileName;
-  
-   @Override
-   public void onCreate(Bundle savedInstanceState) {
+	static final String SEND_PHONE_NOTIFICATIONS = "com.skanderjabouzi.salat.SEND_PHONE_NOTIFICATIONS";
+	PhoneReceiver receiver;
+	IntentFilter filter;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		receiver = new PhoneReceiver();
+		filter = new IntentFilter( SalatPhoneReceiver.PHONE_INTENT );
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -39,10 +49,33 @@ public class Video extends Activity {
 			@Override
 			public void onCompletion(MediaPlayer mediaPlayer) {
 				//AthanService.this.kl.reenableKeyguard();
-				WakeLock.release();
-				WakeLock.lock();
+				Video.this.finish();
+				//WakeLock.release();
+				//WakeLock.lock();
 			}
 		});
+		
+		TelephonyManager telephonyManager =  (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);  
+         
+        PhoneStateListener callStateListener = new PhoneStateListener() {  
+        public void onCallStateChanged(int state, String incomingNumber)   
+        {  
+			if(state==TelephonyManager.CALL_STATE_RINGING){
+				Video.this.finish();
+				//Toast.makeText(getApplicationContext(),"Phone Is Riging", Toast.LENGTH_LONG).show();
+			}  
+                
+			if(state==TelephonyManager.CALL_STATE_OFFHOOK){
+				Video.this.finish();
+				 //Toast.makeText(getApplicationContext(),"Phone is Currently in A call", Toast.LENGTH_LONG).show();  
+			}  
+                                  
+			if(state==TelephonyManager.CALL_STATE_IDLE){
+				//Toast.makeText(getApplicationContext(),"phone is neither ringing nor in a call",  Toast.LENGTH_LONG).show();  
+			}  
+        }  
+        };  
+        telephonyManager.listen(callStateListener,PhoneStateListener.LISTEN_CALL_STATE);  
 		myVideoView.setVideoURI(Uri.parse(fileName));
 		myVideoView.setMediaController(new MediaController(this));
 		myVideoView.requestFocus();
@@ -52,26 +85,35 @@ public class Video extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        super.registerReceiver(receiver, filter, SEND_PHONE_NOTIFICATIONS, null);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        unregisterReceiver(receiver);
     }
     
     @Override
     protected void onStop() {
         super.onPause();
         //AthanService.this.kl.reenableKeyguard();
-        WakeLock.release();
-        WakeLock.lock();
+        //WakeLock.release();
+        //WakeLock.lock();
     }
     
 	@Override
     protected void onDestroy() {
         super.onPause();
         //AthanService.this.kl.reenableKeyguard();
-        WakeLock.release();
-        WakeLock.lock();
+        //WakeLock.release();
+        //WakeLock.lock();
+    }
+    
+    class PhoneReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+			Video.this.finish();
+        }
     }
 }

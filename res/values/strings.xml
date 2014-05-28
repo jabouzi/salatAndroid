@@ -26,6 +26,12 @@
     <string name="receive_location_notifications_permission_label">Receive location Notifications</string>
     <string name="receive_location_notifications_permission_description">Allow this application to receive location
     notifications from other applications</string>
+    <string name="send_phone_notifications_permission_label">Sends phone Notifications</string>
+    <string name="send_phone_notifications_permission_description">Allow this application to send phone
+    notifications to other applications</string>
+    <string name="receive_phone_notifications_permission_label">Receive phone Notifications</string>
+    <string name="receive_phone_notifications_permission_description">Allow this application to receive phone
+    notifications from other applications</string>
     <string name="titleApiMap">API URL</string>
     <string name="summaryApiMap">URL of Root API for map location</string>
     <string name="titleCalculation">Salat Calculation</string>
