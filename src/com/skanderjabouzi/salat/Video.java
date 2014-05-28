@@ -29,7 +29,7 @@ public class Video extends Activity {
 		filter = new IntentFilter( SalatPhoneReceiver.PHONE_INTENT );
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
-		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		//getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		//final KeyguardManager.KeyguardLock kl=km.newKeyguardLock("SALAT");
 		//kl.disableKeyguard();
 		Log.d("VIDEO", "START");
