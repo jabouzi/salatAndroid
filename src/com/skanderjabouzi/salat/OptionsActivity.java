@@ -82,12 +82,6 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 		if (pos < 0) pos = 0;
 		asr.setSelection(pos);
 
-		hijri = (Spinner) findViewById(R.id.hijri);
-		hijri.setOnItemSelectedListener(this);
-		pos = options.getHijri() - 1;
-		if (pos < 0) pos = 0;
-		hijri.setSelection(pos);
-
 		highLatitudes = (Spinner) findViewById(R.id.highLatitudes);
 		highLatitudes.setOnItemSelectedListener(this);
 		pos = options.getHigherLatitude() - 1;

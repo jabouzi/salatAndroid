@@ -50,7 +50,7 @@ public class Video extends Activity {
 			public void onCompletion(MediaPlayer mediaPlayer) {
 				//AthanService.this.kl.reenableKeyguard();
 				Video.this.finish();
-				//WakeLock.release();
+				WakeLock.release();
 				//WakeLock.lock();
 			}
 		});
@@ -98,7 +98,7 @@ public class Video extends Activity {
     protected void onStop() {
         super.onPause();
         //AthanService.this.kl.reenableKeyguard();
-        //WakeLock.release();
+        WakeLock.release();
         //WakeLock.lock();
     }
     
@@ -106,7 +106,7 @@ public class Video extends Activity {
     protected void onDestroy() {
         super.onPause();
         //AthanService.this.kl.reenableKeyguard();
-        //WakeLock.release();
+        WakeLock.release();
         //WakeLock.lock();
     }
     
