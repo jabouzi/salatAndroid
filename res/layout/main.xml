@@ -5,11 +5,19 @@
     android:layout_height="fill_parent"
     android:background="@drawable/salat"
     android:id="@+id/salatView">    
+<TextView android:layout_width="fill_parent"
+          android:layout_height="0dip" 
+		  android:layout_weight="20"
+		  android:layout_marginLeft="10dp"
+          android:textSize="20sp"
+          android:textColor="#fff" 
+          android:id="@+id/dummy1">
+</TextView>
 <TextView android:text="@string/date1" 
           android:layout_width="fill_parent"
           android:layout_height="0dip" 
-		  android:layout_weight="30"
-		  android:layout_marginLeft="150dp"
+		  android:layout_weight="20"
+		  android:layout_marginLeft="15dp"
           android:textSize="15sp"
           android:textColor="#fff" 
           android:id="@+id/date1Text">
@@ -18,8 +26,8 @@
           android:layout_width="fill_parent"
           android:layout_height="0dip" 
           android:layout_weight="13"
-          android:layout_marginLeft="150dp"
-          android:textSize="25sp"
+          android:layout_marginLeft="200dp"
+          android:textSize="35sp"
           android:textStyle="bold"
           android:textColor="#fff" 
           android:id="@+id/fajrText">
@@ -28,8 +36,8 @@
           android:layout_width="fill_parent"
           android:layout_height="0dip" 
           android:layout_weight="13"
-          android:layout_marginLeft="150dp"
-          android:textSize="25sp"
+          android:layout_marginLeft="200dp"
+          android:textSize="35sp"
           android:textStyle="bold"
           android:textColor="#fff"
           android:id="@+id/duhrText">
@@ -38,8 +46,8 @@
           android:layout_width="fill_parent"
           android:layout_height="0dip" 
           android:layout_weight="13"
-          android:layout_marginLeft="150dp"
-          android:textSize="25sp"
+          android:layout_marginLeft="200dp"
+          android:textSize="35sp"
           android:textStyle="bold"
           android:textColor="#fff"
           android:id="@+id/asrText">
@@ -48,8 +56,8 @@
           android:layout_width="fill_parent"
           android:layout_height="0dip" 
           android:layout_weight="13"
-          android:layout_marginLeft="150dp"
-          android:textSize="25sp"
+          android:layout_marginLeft="200dp"
+          android:textSize="35sp"
           android:textStyle="bold"
           android:textColor="#fff"
           android:id="@+id/maghribText">
@@ -58,28 +66,54 @@
           android:layout_width="fill_parent"
           android:layout_height="0dip" 
           android:layout_weight="13"
-          android:layout_marginLeft="150dp"
-          android:textSize="25sp"
+          android:layout_marginLeft="200dp"
+          android:textSize="35sp"
           android:textStyle="bold"
           android:textColor="#fff"
           android:id="@+id/ishaText">
 </TextView>
-<TextView android:text="@string/shourouk" 
-          android:layout_width="fill_parent"
-          android:layout_height="0dip" 
-          android:layout_weight="5"
-          android:layout_marginLeft="165dp"
-          android:textSize="15sp"
-          android:textColor="#fff"
-          android:id="@+id/shouroukText">
-</TextView>
-<TextView android:text="@string/cityCountry"
-		  android:layout_width="fill_parent"
-          android:layout_height="0dip" 
-          android:layout_weight="15"
-          android:textSize="10sp"
-          android:textColor="#fff"
-          android:gravity="center"
-          android:id="@+id/locationText">
-</TextView>
+<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="0dip" 
+			android:layout_weight="5"
+            android:orientation="horizontal" >
+    <TextView
+                android:id="@+id/shouroukText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/shourouk"
+                android:textSize="10sp" 
+                android:textColor="#fff"
+			    android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/locationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/cityCountry"
+                android:textSize="20sp" 
+                android:textColor="#fff"
+			    android:gravity="center"/>
+<!--
+	<TextView android:text="@string/shourouk" 
+			  android:layout_width="fill_parent"
+			  android:layout_height="0dip" 
+			  android:layout_weight="5"
+			  android:layout_marginLeft="20dp"
+			  android:textSize="10sp"
+			  android:textColor="#fff"
+			  android:id="@+id/shouroukText">
+	</TextView>
+	<TextView android:text="@string/cityCountry"
+			  android:layout_width="fill_parent"
+			  android:layout_height="0dip" 
+			  android:layout_weight="15"
+			  android:textSize="10sp"
+			  android:textColor="#fff"
+			  android:gravity="center"
+			  android:id="@+id/locationText">
+	</TextView>
+-->
+</LinearLayout>
 </LinearLayout>
