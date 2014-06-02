@@ -27,3 +27,8 @@ http://sunilsuthar02.blogspot.in/2013/04/date-picker-like-iphone-in-android.html
 +-----------+
 http://www.javacodegeeks.com/2013/09/android-compass-code-example.html
 http://www.vogella.com/tutorials/AndroidSensor/article.html
+
++------------+
+|  GRAPHICS  |
++------------+
+http://www.developer.com/ws/android/programming/Working-with-Images-in-Googles-Android-3748281.htm
