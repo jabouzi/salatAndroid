@@ -21,3 +21,9 @@ http://stackoverflow.com/questions/6055984/display-page-from-bottom-to-top
 https://code.google.com/p/android-dateslider/
 https://github.com/bendemboski/DateSlider
 http://sunilsuthar02.blogspot.in/2013/04/date-picker-like-iphone-in-android.html
+
++-----------+
+|  COMPASS  |
++-----------+
+http://www.javacodegeeks.com/2013/09/android-compass-code-example.html
+http://www.vogella.com/tutorials/AndroidSensor/article.html

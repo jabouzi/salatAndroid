@@ -7,16 +7,13 @@
     android:id="@+id/salatView">    
 <TextView android:layout_width="fill_parent"
           android:layout_height="0dip" 
-		  android:layout_weight="20"
-		  android:layout_marginLeft="10dp"
-          android:textSize="20sp"
-          android:textColor="#fff" 
+		  android:layout_weight="15"
           android:id="@+id/dummy1">
 </TextView>
 <TextView android:text="@string/date1" 
           android:layout_width="fill_parent"
           android:layout_height="0dip" 
-		  android:layout_weight="20"
+		  android:layout_weight="12"
 		  android:layout_marginLeft="15dp"
           android:textSize="15sp"
           android:textColor="#fff" 
@@ -25,7 +22,7 @@
 <TextView android:text="@string/fajr" 
           android:layout_width="fill_parent"
           android:layout_height="0dip" 
-          android:layout_weight="13"
+          android:layout_weight="9"
           android:layout_marginLeft="200dp"
           android:textSize="35sp"
           android:textStyle="bold"
@@ -35,7 +32,7 @@
 <TextView android:text="@string/duhr" 
           android:layout_width="fill_parent"
           android:layout_height="0dip" 
-          android:layout_weight="13"
+          android:layout_weight="10"
           android:layout_marginLeft="200dp"
           android:textSize="35sp"
           android:textStyle="bold"
@@ -45,7 +42,7 @@
 <TextView android:text="@string/asr" 
           android:layout_width="fill_parent"
           android:layout_height="0dip" 
-          android:layout_weight="13"
+          android:layout_weight="10"
           android:layout_marginLeft="200dp"
           android:textSize="35sp"
           android:textStyle="bold"
@@ -55,7 +52,7 @@
 <TextView android:text="@string/maghrib" 
           android:layout_width="fill_parent"
           android:layout_height="0dip" 
-          android:layout_weight="13"
+          android:layout_weight="10"
           android:layout_marginLeft="200dp"
           android:textSize="35sp"
           android:textStyle="bold"
@@ -65,36 +62,41 @@
 <TextView android:text="@string/isha" 
           android:layout_width="fill_parent"
           android:layout_height="0dip" 
-          android:layout_weight="13"
+          android:layout_weight="10"
           android:layout_marginLeft="200dp"
           android:textSize="35sp"
           android:textStyle="bold"
           android:textColor="#fff"
           android:id="@+id/ishaText">
 </TextView>
+<TextView android:layout_width="fill_parent"
+          android:layout_height="0dip" 
+		  android:layout_weight="1"
+          android:id="@+id/dummy2">
+</TextView>
 <LinearLayout
 			android:layout_width="fill_parent"
 			android:layout_height="0dip" 
-			android:layout_weight="5"
+			android:layout_weight="9"
             android:orientation="horizontal" >
     <TextView
                 android:id="@+id/shouroukText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/shourouk"
+                android:layout_marginLeft="80dp"
                 android:textSize="10sp" 
                 android:textColor="#fff"
 			    android:gravity="center"/>
 
             <TextView
                 android:id="@+id/locationText"
-                android:layout_width="wrap_content"
+                android:layout_width = "fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:text="@string/cityCountry"
                 android:textSize="20sp" 
                 android:textColor="#fff"
-			    android:gravity="center"/>
+			    android:gravity="right"/>
 <!--
 	<TextView android:text="@string/shourouk" 
 			  android:layout_width="fill_parent"
