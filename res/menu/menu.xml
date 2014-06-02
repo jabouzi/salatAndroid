@@ -3,6 +3,5 @@
     <item android:id="@+id/location" android:title="@string/location" android:icon="@drawable/world"></item>
     <item android:id="@+id/qibla" android:title="@string/qibla" android:icon="@drawable/qibla"></item>
     <item android:id="@+id/hijri" android:title="@string/hijriConversion" android:icon="@drawable/hijri"></item>
-    <item android:id="@+id/play" android:title="@string/adhanOptions" android:icon="@android:drawable/ic_media_play"></item>
-    <item android:id="@+id/athan" android:title="@string/stopAthan" android:icon="@android:drawable/ic_media_pause"></item>
+    <item android:id="@+id/about" android:title="@string/about" android:icon="@android:drawable/ic_media_play"></item>
 </menu>

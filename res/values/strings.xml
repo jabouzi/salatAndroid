@@ -64,6 +64,7 @@
     <string name="hijriConversion">Hijri Conversion</string>
     <string name="adhanOptions">Adhan Options</string>
     <string name="stopAthan">Stop Athan</string>
+    <string name="about">About</string>
 
     <string-array name="calculation">
         <item>Ithna Ashari</item>

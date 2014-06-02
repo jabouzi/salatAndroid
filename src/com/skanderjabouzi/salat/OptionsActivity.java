@@ -102,7 +102,6 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 
 		method = (Spinner) findViewById(R.id.calculation);
 		asr = (Spinner) findViewById(R.id.asr);
-		hijri = (Spinner) findViewById(R.id.hijri);
 		highLatitudes = (Spinner) findViewById(R.id.highLatitudes);
 
 		btnSaveOptions = (Button) findViewById(R.id.saveOptions);
@@ -119,8 +118,7 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
 				pos = asr.getSelectedItemPosition() + 1;
 				options.setAsr(pos);
 
-				pos = hijri.getSelectedItemPosition() + 1;
-				options.setHijri(pos);
+				options.setHijri(0);
 
 				pos = highLatitudes.getSelectedItemPosition() + 1;
 				options.setHigherLatitude(pos);

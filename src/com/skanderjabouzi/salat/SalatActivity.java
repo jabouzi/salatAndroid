@@ -139,21 +139,19 @@ public class SalatActivity extends Activity {
         startActivity(new Intent(this, SalatQibla.class)
             .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
         break;
-      case R.id.athan:
-        stopService(new Intent(this, AthanService.class));
-        break;
-      case R.id.play:
-        startService(new Intent(this, AthanService.class));
-        break;
+      case R.id.about:
+		AboutDialog about = new AboutDialog(this);
+		about.setTitle("about this app");
+		about.show();
+		break;
       }
       return true;
     }
 
-    @Override
-    public boolean onMenuOpened(int featureId, Menu menu) {
-        menu.findItem(R.id.athan).setVisible(SalatApplication.athanPlaying);
-        return true;
-    }
+    //@Override
+    //public boolean onMenuOpened(int featureId, Menu menu) {
+        //return true;
+    //}
 
     public void printFajrTime()
     {

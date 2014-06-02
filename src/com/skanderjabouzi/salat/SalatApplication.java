@@ -175,7 +175,7 @@ public class SalatApplication{
 		hijriAdjustement[3] = -1;
 		hijriAdjustement[4] = -2;
 		Hijri hijri = new Hijri();
-		this.hijriDates = hijri.isToString(year,month+1,day,hijriAdjustement[this.hijriDays - 1]);
+		this.hijriDates = hijri.isToString(year,month+1,day,hijriAdjustement[this.hijriDays]);
 	}
 
 	public String[] getHijriDates()
