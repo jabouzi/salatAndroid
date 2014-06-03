@@ -32,3 +32,8 @@ http://www.vogella.com/tutorials/AndroidSensor/article.html
 |  GRAPHICS  |
 +------------+
 http://www.developer.com/ws/android/programming/Working-with-Images-in-Googles-Android-3748281.htm
+
+http://graphicriver.net/item/compass/5125725?WT.ac=search_item&WT.z_author=Vectorlart
+http://graphicriver.net/item/old-compass/4819718?WT.ac=search_item&WT.z_author=Antonio-BanderAS
+http://graphicriver.net/item/modern-compasses/5776874?WT.ac=search_item&WT.z_author=massmandesign
+http://graphicriver.net/item/digital-chronometer-and-compass-displays/2598114?WT.ac=search_item&WT.z_author=kaludov
