@@ -27,6 +27,7 @@ http://sunilsuthar02.blogspot.in/2013/04/date-picker-like-iphone-in-android.html
 +-----------+
 http://www.javacodegeeks.com/2013/09/android-compass-code-example.html
 http://www.vogella.com/tutorials/AndroidSensor/article.html
+http://developer.android.com/guide/topics/sensors/sensors_motion.html
 
 +------------+
 |  GRAPHICS  |
@@ -38,3 +39,5 @@ http://graphicriver.net/item/old-compass/4819718?WT.ac=search_item&WT.z_author=A
 http://graphicriver.net/item/modern-compasses/5776874?WT.ac=search_item&WT.z_author=massmandesign
 http://graphicriver.net/item/digital-chronometer-and-compass-displays/2598114?WT.ac=search_item&WT.z_author=kaludov
 http://grapehic.com/digital-compass/photoshop/psd
+http://alicia.mobile9.com/download/as/ios/03/81/381771103/screen0.jpg
+http://www.androidfreeware.net/img2/compass_android_1.png
