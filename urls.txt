@@ -28,6 +28,7 @@ http://sunilsuthar02.blogspot.in/2013/04/date-picker-like-iphone-in-android.html
 http://www.javacodegeeks.com/2013/09/android-compass-code-example.html
 http://www.vogella.com/tutorials/AndroidSensor/article.html
 http://developer.android.com/guide/topics/sensors/sensors_motion.html
+http://stackoverflow.com/questions/10095388/accurate-azimuth-compass-direction-android-3-2-tablet?lq=1
 
 +------------+
 |  GRAPHICS  |
