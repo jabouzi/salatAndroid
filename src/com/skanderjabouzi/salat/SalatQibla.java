@@ -10,12 +10,14 @@ import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.util.Log;
 
 public class SalatQibla extends Activity implements SensorEventListener {
 
 	// define the display assembly compass picture
 	private ImageView image;
 	private ImageView image2;
+	private int sensorAccuracy;
 
 	// record the compass picture angle turned
 	private float currentDegree = 0f;
@@ -89,6 +91,8 @@ public class SalatQibla extends Activity implements SensorEventListener {
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 		// not in use
+		sensorAccuracy = accuracy;
+		Log.d("SENSOR : ", String.valueOf(sensorAccuracy));
 	}
 	
 	private void rotate(ImageView imgview, float degree) {

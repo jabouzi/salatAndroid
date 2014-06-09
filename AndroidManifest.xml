@@ -64,19 +64,26 @@
         <activity android:name=".SalatActivity"
                   android:label="@string/app_name"
                   android:screenOrientation="nosensor"
-                  android:launchMode="singleTop">
+                  android:launchMode="singleTop"
+                  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-    <activity android:name=".LocationActivity" android:label="@string/titleLocation" />
-    <activity android:name=".OptionsActivity" android:label="@string/titleOptions" />
-    <activity android:name=".SalatQibla" android:label="@string/titleSalatQibla" />
-    <activity android:name=".Video" android:screenOrientation="landscape" />
-    <activity android:name=".NextActivity" android:label="@string/titleNext" />
-    <activity android:name=".HijriActivity" android:label="@string/titleHijri" />
+    <activity android:name=".LocationActivity" android:label="@string/titleLocation" 
+			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:screenOrientation="nosensor"/>
+    <activity android:name=".OptionsActivity" android:label="@string/titleOptions" 
+			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:screenOrientation="nosensor"/>
+    <activity android:name=".SalatQibla" android:label="@string/titleSalatQibla" 
+			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:screenOrientation="nosensor"/>
+    <activity android:name=".Video" android:screenOrientation="landscape" 
+		android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:screenOrientation="nosensor"/>
+    <activity android:name=".NextActivity" android:label="@string/titleNext" 
+		android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:screenOrientation="nosensor"/>
+    <activity android:name=".HijriActivity" android:label="@string/titleHijri" 
+		android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:screenOrientation="nosensor"/>
 
     <service android:name=".AthanService" />
     <service android:name=".MidnightService" />
