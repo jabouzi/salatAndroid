@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-	<item android:id="@+id/options" android:title="@string/options" android:icon="@drawable/makka"></item>
-    <item android:id="@+id/location" android:title="@string/location" android:icon="@drawable/world"></item>
+	<item android:id="@+id/options" android:title="@string/options" android:icon="@drawable/settings"></item>
+    <item android:id="@+id/location" android:title="@string/location" android:icon="@drawable/location"></item>
     <item android:id="@+id/qibla" android:title="@string/qibla" android:icon="@drawable/qibla"></item>
     <item android:id="@+id/hijri" android:title="@string/hijriConversion" android:icon="@drawable/hijri"></item>
-    <item android:id="@+id/about" android:title="@string/about" android:icon="@android:drawable/ic_media_play"></item>
+    <item android:id="@+id/about" android:title="@string/about" android:icon="@drawable/about"></item>
 </menu>

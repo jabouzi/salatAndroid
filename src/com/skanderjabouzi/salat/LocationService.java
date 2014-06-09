@@ -139,7 +139,6 @@ public class LocationService extends Service implements LocationListener{
 					for (int i = 0; i < address_components.length(); i++) {
 						JSONObject zero2 = address_components.getJSONObject(i);
 						String long_name = zero2.getString("long_name");
-						String short_name = zero2.getString("short_name");
 						JSONArray mtypes = zero2.getJSONArray("types");
 						String Type = mtypes.getString(0);                    
 						if (Type.equalsIgnoreCase("street_number")) {
@@ -155,7 +154,7 @@ public class LocationService extends Service implements LocationListener{
 						} else if (Type.equalsIgnoreCase("administrative_area_level_1")) {
 							State = long_name;
 						} else if (Type.equalsIgnoreCase("country")) {
-							Country = short_name;
+							Country = long_name;
 						} else if (Type.equalsIgnoreCase("postal_code")) {
 							PIN = long_name;
 						}

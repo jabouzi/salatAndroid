@@ -73,17 +73,17 @@
         </activity>
 
     <activity android:name=".LocationActivity" android:label="@string/titleLocation" 
-			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:screenOrientation="nosensor"/>
+			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
     <activity android:name=".OptionsActivity" android:label="@string/titleOptions" 
-			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:screenOrientation="nosensor"/>
+			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
     <activity android:name=".SalatQibla" android:label="@string/titleSalatQibla" 
-			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:screenOrientation="nosensor"/>
+			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
     <activity android:name=".Video" android:screenOrientation="landscape" 
-		android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:screenOrientation="nosensor"/>
+		android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
     <activity android:name=".NextActivity" android:label="@string/titleNext" 
-		android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:screenOrientation="nosensor"/>
+		android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
     <activity android:name=".HijriActivity" android:label="@string/titleHijri" 
-		android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:screenOrientation="nosensor"/>
+		android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
 
     <service android:name=".AthanService" />
     <service android:name=".MidnightService" />
