@@ -32,6 +32,8 @@ http://stackoverflow.com/questions/10095388/accurate-azimuth-compass-direction-a
 http://stackoverflow.com/questions/5499862/android-orientation-sensor-for-rotation-the-3d-cube *
 http://techoutbreak.com/2011/android-ar-tutorial-part-1-device-orientation/ *
 
+http://stackoverflow.com/questions/1638864/filtering-accelerometer-data-noise ***
+
 +------------+
 |  GRAPHICS  |
 +------------+
