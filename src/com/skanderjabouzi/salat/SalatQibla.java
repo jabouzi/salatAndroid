@@ -33,14 +33,14 @@ public class SalatQibla extends Activity implements SensorEventListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.qibla);
 		image2 = (ImageView) findViewById(R.id.compass2);
-		//rotate(image2, 58.64f);
+		rotate(image2, 178f);
 		// our compass image
 		image = (ImageView) findViewById(R.id.compass3);
 
 		// TextView that will tell the user what degree is he heading
 		compassDegree = (TextView) findViewById(R.id.degree);
 		qiblaDegree = (TextView) findViewById(R.id.qibla_degree);
-		qiblaDegree.setText(Float.toString(58.64f));
+		//qiblaDegree.setText(Float.toString(58.64f));
 
 		// initialize your android device sensor capabilities
 		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -69,8 +69,8 @@ public class SalatQibla extends Activity implements SensorEventListener {
 		// get the angle around the z-axis rotated
 		float degree = Math.round(event.values[0]);
 		compassDegree.setText(Float.toString(degree));
-
-		
+		degree = degree - 178f;
+		qiblaDegree.setText(Float.toString(degree));
 
 		// create a rotation animation (reverse turn degree degrees)
 		RotateAnimation ra = new RotateAnimation(
@@ -87,7 +87,7 @@ public class SalatQibla extends Activity implements SensorEventListener {
 		ra.setFillAfter(true);
 
 		// Start the animation
-		image2.startAnimation(ra);
+		image.startAnimation(ra);
 		currentDegree = -degree;
 
 	}
