@@ -23,8 +23,8 @@ public class DBHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase database) {
 		database.execSQL(OPTIONS_CREATE);
 		database.execSQL(LOCATION_CREATE);
-		database.execSQL(" INSERT INTO options VALUES ('1','0','0','0','0'); ");
-		database.execSQL(" INSERT INTO location VALUES ('1','0','0','0','0','0'); ");
+		database.execSQL(" INSERT INTO options VALUES ('1','1','1','1','1'); ");
+		database.execSQL(" INSERT INTO location VALUES ('1','1','1','1','1','1'); ");
 		Log.i("DBHelper", "DB Created");
 	}
 
