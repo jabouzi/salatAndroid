@@ -2,23 +2,34 @@
  android:layout_width="fill_parent"
  android:layout_height="fill_parent" 
  android:background="@drawable/bg2" >
+
 	<LinearLayout android:id="@+id/widget428" 
 		android:layout_width="match_parent" 
 		android:layout_height="wrap_content" 
 		android:layout_alignParentBottom="true" >
-		<TextView android:layout_width="wrap_content"
-          android:layout_height="wrap_content" 
-		  android:textSize="30sp"
-		  android:layout_weight="0.5"
-		  android:layout_alignParentLeft="true" 
+		<TextView android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1" 
+		  android:textSize="40sp"
+		  android:textStyle="bold"
+		  android:padding="2dp"
+		  android:shadowColor="#7F7F7F"
+		  android:textColor="#353535" 
+		  android:shadowDx="1"
+		  android:shadowDy="1"
+		  android:shadowRadius="0.6"  
           android:id="@+id/degree">
 		</TextView>
 		<TextView android:layout_width="wrap_content"
-          android:layout_height="wrap_content" 
-		  android:textSize="30sp"
-		  android:text="00.00"
-		  android:layout_weight="0.5"
-		  android:layout_alignParentRight="true" 
+          android:layout_height="wrap_content"
+		  android:textSize="40sp"
+		  android:textStyle="bold"
+		  android:padding="2dp"
+		  android:shadowColor="#7F7F7F"
+		  android:textColor="#353535" 
+		  android:shadowDx="1"
+		  android:shadowDy="1"
+		  android:shadowRadius="0.6"  
           android:id="@+id/qibla_degree">
        </TextView>
     </LinearLayout>

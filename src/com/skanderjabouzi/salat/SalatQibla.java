@@ -33,7 +33,7 @@ public class SalatQibla extends Activity implements SensorEventListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.qibla);
 		image2 = (ImageView) findViewById(R.id.compass2);
-		rotate(image2, 178f);
+		//rotate(image2, 178f);
 		// our compass image
 		image = (ImageView) findViewById(R.id.compass3);
 
@@ -52,7 +52,7 @@ public class SalatQibla extends Activity implements SensorEventListener {
 		
 		// for the system's orientation sensor registered listeners
 		mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
-				SensorManager.SENSOR_DELAY_GAME);
+				SensorManager.SENSOR_DELAY_NORMAL);
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class SalatQibla extends Activity implements SensorEventListener {
 		// get the angle around the z-axis rotated
 		float degree = Math.round(event.values[0]);
 		compassDegree.setText(Float.toString(degree));
-		degree = degree - 178f;
+		//degree = degree - 178f;
 		qiblaDegree.setText(Float.toString(degree));
 
 		// create a rotation animation (reverse turn degree degrees)
@@ -81,7 +81,7 @@ public class SalatQibla extends Activity implements SensorEventListener {
 				0.5f);
 
 		// how long the animation will take place
-		ra.setDuration(210);
+		ra.setDuration(300);
 
 		// set the animation after the end of the reservation status
 		ra.setFillAfter(true);
