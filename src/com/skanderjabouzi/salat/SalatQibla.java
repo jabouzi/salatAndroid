@@ -32,11 +32,12 @@ public class SalatQibla extends Activity implements SensorEventListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.qibla);
-		image2 = (ImageView) findViewById(R.id.compass2);
-		//rotate(image2, 178f);
-		// our compass image
-		image = (ImageView) findViewById(R.id.compass3);
+		image = (ImageView) findViewById(R.id.compass);
 
+		// our compass image
+		image2 = (ImageView) findViewById(R.id.compass2);
+		rotate(image2, 178f);
+		
 		// TextView that will tell the user what degree is he heading
 		compassDegree = (TextView) findViewById(R.id.degree);
 		qiblaDegree = (TextView) findViewById(R.id.qibla_degree);
@@ -88,6 +89,7 @@ public class SalatQibla extends Activity implements SensorEventListener {
 
 		// Start the animation
 		image.startAnimation(ra);
+		//image2.startAnimation(ra);
 		currentDegree = -degree;
 
 	}
