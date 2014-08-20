@@ -36,7 +36,7 @@ public class SalatQibla extends Activity implements SensorEventListener {
 
 		// our compass image
 		image2 = (ImageView) findViewById(R.id.compass2);
-		rotate(image2, 178f);
+		//rotate(image2, 0, 178f, 0);
 		
 		// TextView that will tell the user what degree is he heading
 		compassDegree = (TextView) findViewById(R.id.degree);
@@ -74,21 +74,25 @@ public class SalatQibla extends Activity implements SensorEventListener {
 		qiblaDegree.setText(Float.toString(degree));
 
 		// create a rotation animation (reverse turn degree degrees)
-		RotateAnimation ra = new RotateAnimation(
-				currentDegree, 
-				-degree,
-				Animation.RELATIVE_TO_SELF, 0.5f, 
-				Animation.RELATIVE_TO_SELF,
-				0.5f);
+		//RotateAnimation ra = new RotateAnimation(
+				//currentDegree, 
+				//-degree,
+				//Animation.RELATIVE_TO_SELF, 0.5f, 
+				//Animation.RELATIVE_TO_SELF,
+				//0.5f);
 
 		// how long the animation will take place
-		ra.setDuration(300);
+		//ra.setDuration(300);
 
 		// set the animation after the end of the reservation status
-		ra.setFillAfter(true);
+		//ra.setFillAfter(true);
 
 		// Start the animation
-		image.startAnimation(ra);
+		//image.startAnimation(ra);
+		//float degree2 = degree + 178f;
+		rotate(image, currentDegree, degree, 300);
+		rotate(image2, currentDegree, degree, 300);
+		
 		//image2.startAnimation(ra);
 		currentDegree = -degree;
 
@@ -101,12 +105,12 @@ public class SalatQibla extends Activity implements SensorEventListener {
 		Log.d("SENSOR : ", String.valueOf(sensorAccuracy));
 	}
 	
-	private void rotate(ImageView imgview, float degree) {
-		RotateAnimation rotateAnim = new RotateAnimation(0.0f, -degree,
+	private void rotate(ImageView imgview, float currentDegree, float degree, int duration) {
+		RotateAnimation rotateAnim = new RotateAnimation(currentDegree, -degree,
 				RotateAnimation.RELATIVE_TO_SELF, 0.5f,
 				RotateAnimation.RELATIVE_TO_SELF, 0.5f);
 
-		rotateAnim.setDuration(0);
+		rotateAnim.setDuration(duration);
 		rotateAnim.setFillAfter(true);
 		imgview.startAnimation(rotateAnim);
 	}
