@@ -100,8 +100,8 @@ public class SalatApplication{
 		this.locationDataSource.close();
 		this.optionsDataSource.close();
 		    
-		//Log.i("Salat app", "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
-		//Log.i("Salat app", "Location " + String.valueOf(longitude) + " " + String.valueOf(latitude) + " " + String.valueOf(timezone));
+		Log.i("Salat app", "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
+		Log.i("Salat app", "Location " + String.valueOf(longitude) + " " + String.valueOf(latitude) + " " + String.valueOf(timezone));
 	}
 
 	public boolean checkOptions()
@@ -109,23 +109,10 @@ public class SalatApplication{
 		if (this.calcMethod == 0)
 		{
 			this.prefType = 0;
+			Log.i("Salat app", "CHECK CALC 0");
 			return false;
 		}
-		else if (this.longitude == 0)
-		{
-			this.prefType = 1;
-			return false;
-		}
-		else if (this.latitude == 0)
-		{
-			this.prefType = 1;
-			return false;
-		}
-		else if (this.timezone == 0)
-		{
-			this.prefType = 1;
-			return false;
-		}
+		
 		return true;
 	}
 

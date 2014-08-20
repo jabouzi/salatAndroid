@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Salat</string>
-    <string name="date1">00 Jumada al-Thani 0000</string>
-    <string name="date2">00  جمادى الآخرة  0000</string>
+    <string name="date1">00 00 0000</string>
+    <string name="date2">00 00 0000</string>
     <string name="fajr">00:00</string>
     <string name="duhr">00:00</string>
     <string name="asr">00:00</string>
     <string name="maghrib">00:00</string>
     <string name="isha">00:00</string>
     <string name="shourouk">00:00</string>
-    <string name="cityCountry">City, Country</string>
+    <string name="cityCountry">Please set your options and location</string>
     <string name="titleNext">Tomorrow\'s Salat Times</string>
     <string name="titleOptions">Salat Times Options</string>
     <string name="titleLocation">Salat Location Options</string>

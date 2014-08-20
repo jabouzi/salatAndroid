@@ -132,7 +132,7 @@ public class NextActivity extends Activity {
     public void printHijriDate()
     {
         TextView date1Text =    (TextView)  findViewById(R.id.date1Text);
-        date1Text.setText("Tomorrow's Salat Times");
+        date1Text.setText(this.getString(R.string.titleNext));
     }
 
     public void printLocation()

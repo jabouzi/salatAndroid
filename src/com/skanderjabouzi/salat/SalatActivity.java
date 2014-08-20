@@ -18,22 +18,22 @@ import android.widget.Toast;
 
 public class SalatActivity extends Activity {
 
-    static final String SEND_SALATTIME_NOTIFICATIONS = "com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS";
-    String sataTimes[] = new String[7];
-    String[] hijriDates = new String[4];
-    SalatApplication salatApp;
-    MidnightReceiver receiver;
-    IntentFilter filter;
-    View salatView;
-    OnSwipeTouchListener onSwipeTouchListener;
+	static final String SEND_SALATTIME_NOTIFICATIONS = "com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS";
+	String sataTimes[] = new String[7];
+	String[] hijriDates = new String[4];
+	SalatApplication salatApp;
+	MidnightReceiver receiver;
+	IntentFilter filter;
+	View salatView;
+	OnSwipeTouchListener onSwipeTouchListener;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        salatView = findViewById(R.id.salatView);
-        
-        onSwipeTouchListener = new OnSwipeTouchListener(this) {
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		salatView = findViewById(R.id.salatView);
+
+		onSwipeTouchListener = new OnSwipeTouchListener(this) {
 			public void onSwipeTop() {
 				//Toast.makeText(SalatActivity.this, "top", Toast.LENGTH_SHORT).show();
 			}
@@ -52,163 +52,152 @@ public class SalatActivity extends Activity {
 			public void onSwipeBottom() {
 				//Toast.makeText(SalatActivity.this, "bottom", Toast.LENGTH_SHORT).show();
 			}
-		};	
+		};
 		salatView.setOnTouchListener(onSwipeTouchListener);
-        salatApp = new SalatApplication(this);
-        receiver = new MidnightReceiver();
-        filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );
-        Log.i("SalatActivity", "Created");
-    }
+		salatApp = new SalatApplication(this);
+		receiver = new MidnightReceiver();
+		filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );
+		Log.i("SalatActivity", "Created");
+	}
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (salatApp.checkOptions())
-        {
-            setSalatTimes();
-        }
-        else
-        {
-            if (salatApp.prefType == 0)
-            {
-                startActivity(new Intent(this, OptionsActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-            }
-            else if(salatApp.prefType == 1)
-            {
-                startActivity(new Intent(this, LocationActivity.class).addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-            }
-        }
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if (salatApp.checkOptions())
+		{
+			setSalatTimes();
+		}
 
-        super.registerReceiver(receiver, filter, SEND_SALATTIME_NOTIFICATIONS, null);
-        Log.i("SalatActivity", "Reseumed");
-    }
+		super.registerReceiver(receiver, filter, SEND_SALATTIME_NOTIFICATIONS, null);
+		Log.i("SalatActivity", "Reseumed");
+	}
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        unregisterReceiver(receiver);
-    }
-    
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev){
-        onSwipeTouchListener.getGestureDetector().onTouchEvent(ev); 
-            return super.dispatchTouchEvent(ev);   
-    }
+	@Override
+	protected void onPause() {
+		super.onPause();
+		unregisterReceiver(receiver);
+	}
 
-    private void setSalatTimes()
-    {
-        salatApp.initCalendar();
-        salatApp.setSalatTimes(0);
-        salatApp.setHijriDate();
-        sataTimes = salatApp.getSalatTimes();
-        hijriDates = salatApp.getHijriDates();
-        printFajrTime();
-        printDuhrTime();
-        printAsrTime();
-        printMaghribTime();
-        printIshaTime();
-        printShouroukTime();
-        printHijriDate();
-        printLocation();
-        Log.i("SalatActivity", "setSalatTimes");
-    }
+	@Override
+	public boolean dispatchTouchEvent(MotionEvent ev){
+		onSwipeTouchListener.getGestureDetector().onTouchEvent(ev);
+			return super.dispatchTouchEvent(ev);
+	}
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-      getMenuInflater().inflate(R.menu.menu, menu);
-      return true;
-    }
+	private void setSalatTimes()
+	{
+		salatApp.initCalendar();
+		salatApp.setSalatTimes(0);
+		salatApp.setHijriDate();
+		sataTimes = salatApp.getSalatTimes();
+		hijriDates = salatApp.getHijriDates();
+		printFajrTime();
+		printDuhrTime();
+		printAsrTime();
+		printMaghribTime();
+		printIshaTime();
+		printShouroukTime();
+		printHijriDate();
+		printLocation();
+		Log.i("SalatActivity", "setSalatTimes");
+	}
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	  getMenuInflater().inflate(R.menu.menu, menu);
+	  return true;
+	}
 
-      switch (item.getItemId()) {
-      case R.id.hijri:
-        startActivity(new Intent(this, HijriActivity.class)
-            .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-        break;
-      case R.id.options:
-        startActivity(new Intent(this, OptionsActivity.class)
-            .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-        break;
-      case R.id.location:
-        startActivity(new Intent(this, LocationActivity.class)
-            .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-        break;
-      case R.id.qibla:
-        startActivity(new Intent(this, SalatQibla.class)
-            .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-        break;
-      case R.id.about:
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+	  switch (item.getItemId()) {
+	  case R.id.hijri:
+		startActivity(new Intent(this, HijriActivity.class)
+			.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+		break;
+	  case R.id.options:
+		startActivity(new Intent(this, OptionsActivity.class)
+			.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+		break;
+	  case R.id.location:
+		startActivity(new Intent(this, LocationActivity.class)
+			.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+		break;
+	  case R.id.qibla:
+		startActivity(new Intent(this, SalatQibla.class)
+			.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
+		break;
+	  case R.id.about:
 		AboutDialog about = new AboutDialog(this);
 		about.setTitle("about this app");
 		about.show();
 		break;
-      }
-      return true;
-    }
+	  }
+	  return true;
+	}
 
-    //@Override
-    //public boolean onMenuOpened(int featureId, Menu menu) {
-        //return true;
-    //}
+	//@Override
+	//public boolean onMenuOpened(int featureId, Menu menu) {
+		//return true;
+	//}
 
-    public void printFajrTime()
-    {
-        TextView fajrText =    (TextView)  findViewById(R.id.fajrText);
-        fajrText.setText(sataTimes[0]);
-    }
+	public void printFajrTime()
+	{
+		TextView fajrText =    (TextView)  findViewById(R.id.fajrText);
+		fajrText.setText(sataTimes[0]);
+	}
 
-    public void printDuhrTime()
-    {
-        TextView duhrText =    (TextView)  findViewById(R.id.duhrText);
-        duhrText.setText(sataTimes[2]);
-    }
+	public void printDuhrTime()
+	{
+		TextView duhrText =    (TextView)  findViewById(R.id.duhrText);
+		duhrText.setText(sataTimes[2]);
+	}
 
-    public void printAsrTime()
-    {
-        TextView asrText =    (TextView)  findViewById(R.id.asrText);
-        asrText.setText(sataTimes[3]);
-    }
+	public void printAsrTime()
+	{
+		TextView asrText =    (TextView)  findViewById(R.id.asrText);
+		asrText.setText(sataTimes[3]);
+	}
 
-    public void printMaghribTime()
-    {
-        TextView maghribText =    (TextView)  findViewById(R.id.maghribText);
-        maghribText.setText(sataTimes[5]);
-    }
+	public void printMaghribTime()
+	{
+		TextView maghribText =    (TextView)  findViewById(R.id.maghribText);
+		maghribText.setText(sataTimes[5]);
+	}
 
-    public void printIshaTime()
-    {
-        TextView ishaText =    (TextView)  findViewById(R.id.ishaText);
-        ishaText.setText(sataTimes[6]);
-    }
+	public void printIshaTime()
+	{
+		TextView ishaText =    (TextView)  findViewById(R.id.ishaText);
+		ishaText.setText(sataTimes[6]);
+	}
 
-    public void printShouroukTime()
-    {
-        TextView shouroukText =    (TextView)  findViewById(R.id.shouroukText);
-        shouroukText.setText(sataTimes[1]);
-    }
+	public void printShouroukTime()
+	{
+		TextView shouroukText =    (TextView)  findViewById(R.id.shouroukText);
+		shouroukText.setText(sataTimes[1]);
+	}
 
-    public void printHijriDate()
-    {
-        TextView date1Text =    (TextView)  findViewById(R.id.date1Text);
-        date1Text.setText(hijriDates[0] + " " + hijriDates[1] + " " + hijriDates[3]);
-    }
+	public void printHijriDate()
+	{
+		TextView date1Text =    (TextView)  findViewById(R.id.date1Text);
+		date1Text.setText(hijriDates[0] + " " + hijriDates[1] + " " + hijriDates[3]);
+	}
 
-    public void printLocation()
-    {
-        TextView locationText =    (TextView)  findViewById(R.id.locationText);
-        locationText.setText(salatApp.getCity());
-    }
+	public void printLocation()
+	{
+		TextView locationText =    (TextView)  findViewById(R.id.locationText);
+		locationText.setText(salatApp.getCity());
+	}
 
 
-    class MidnightReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            setSalatTimes();
-            String salatName = intent.getStringExtra("SALATTIME");
-            Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();
-            Log.i("SalatReceiver", salatName);
-        }
-    }
+	class MidnightReceiver extends BroadcastReceiver {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			setSalatTimes();
+			String salatName = intent.getStringExtra("SALATTIME");
+			Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();
+			Log.i("SalatReceiver", salatName);
+		}
+	}
 }
