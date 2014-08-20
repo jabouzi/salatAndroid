@@ -21,6 +21,7 @@ public class SalatQibla extends Activity implements SensorEventListener {
 
 	// record the compass picture angle turned
 	private float currentDegree = 0f;
+	private float currentDegree2 = 178f;
 
 	// device sensor manager
 	private SensorManager mSensorManager;
@@ -89,12 +90,14 @@ public class SalatQibla extends Activity implements SensorEventListener {
 
 		// Start the animation
 		//image.startAnimation(ra);
-		//float degree2 = degree + 178f;
+		float degree2 = degree - 178f;
+
 		rotate(image, currentDegree, degree, 300);
-		rotate(image2, currentDegree, degree, 300);
+		//rotate(image2, currentDegree2, degree2, 300);
 		
 		//image2.startAnimation(ra);
 		currentDegree = -degree;
+		//currentDegree2 = -degree;
 
 	}
 
