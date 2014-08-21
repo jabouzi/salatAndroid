@@ -181,7 +181,8 @@ public class SalatActivity extends Activity {
 	public void printHijriDate()
 	{
 		TextView date1Text =    (TextView)  findViewById(R.id.date1Text);
-		date1Text.setText(hijriDates[0] + " " + hijriDates[1] + " " + hijriDates[3]);
+		date1Text.setText(hijriDates[0] + " " + hijriDates[1] + " " + hijriDates[3]
+		 + "\n" + hijriDates[0] + " " + hijriDates[2] + " " + hijriDates[3]);
 	}
 
 	public void printLocation()

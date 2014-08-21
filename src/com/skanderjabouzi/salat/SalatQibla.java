@@ -14,54 +14,43 @@ import android.util.Log;
 
 public class SalatQibla extends Activity implements SensorEventListener {
 
-	// define the display assembly compass picture
 	private ImageView image;
 	private ImageView image2;
 	private int sensorAccuracy;
-
-	// record the compass picture angle turned
 	private float currentDegree = 0f;
-	private float currentDegree2 = 178f;
-
-	// device sensor manager
+	//private float currentDegree2 = 178f;
 	private SensorManager mSensorManager;
-
 	TextView compassDegree;
-	TextView qiblaDegree;
+	TextView qiblaDegree;	
+	private LocationDataSource datasource;
+	private Location location;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.qibla);
 		image = (ImageView) findViewById(R.id.compass);
-
-		// our compass image
 		image2 = (ImageView) findViewById(R.id.compass2);
 		//rotate(image2, 0, 178f, 0);
-		
-		// TextView that will tell the user what degree is he heading
 		compassDegree = (TextView) findViewById(R.id.degree);
 		qiblaDegree = (TextView) findViewById(R.id.qibla_degree);
 		//qiblaDegree.setText(Float.toString(58.64f));
-
-		// initialize your android device sensor capabilities
-		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);		
+		datasource = new LocationDataSource(this);
+		datasource.open();
+		location = datasource.getLocation(1);
+		qiblaDegree.setText(String.format("%d",(int)getQibla()));
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
-		// for the system's orientation sensor registered listeners
-		mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
-				SensorManager.SENSOR_DELAY_NORMAL);
+		mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_NORMAL);
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		
-		// to stop the listener and save battery
 		mSensorManager.unregisterListener(this);
 	}
 
@@ -70,9 +59,9 @@ public class SalatQibla extends Activity implements SensorEventListener {
 
 		// get the angle around the z-axis rotated
 		float degree = Math.round(event.values[0]);
-		compassDegree.setText(Float.toString(degree));
+		compassDegree.setText(String.format("%d",(int)degree));
 		//degree = degree - 178f;
-		qiblaDegree.setText(Float.toString(degree));
+		//qiblaDegree.setText(Float.toString(degree));
 
 		// create a rotation animation (reverse turn degree degrees)
 		//RotateAnimation ra = new RotateAnimation(
@@ -90,7 +79,7 @@ public class SalatQibla extends Activity implements SensorEventListener {
 
 		// Start the animation
 		//image.startAnimation(ra);
-		float degree2 = degree - 178f;
+		//float degree2 = degree - 178f;
 
 		rotate(image, currentDegree, degree, 300);
 		//rotate(image2, currentDegree2, degree2, 300);
@@ -103,7 +92,6 @@ public class SalatQibla extends Activity implements SensorEventListener {
 
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
-		// not in use
 		sensorAccuracy = accuracy;
 		Log.d("SENSOR : ", String.valueOf(sensorAccuracy));
 	}
@@ -116,5 +104,24 @@ public class SalatQibla extends Activity implements SensorEventListener {
 		rotateAnim.setDuration(duration);
 		rotateAnim.setFillAfter(true);
 		imgview.startAnimation(rotateAnim);
+	}
+	
+	private float getQibla()
+	{    
+		final float MLONG = 39.823333f;
+		final float MLAT = 21.42333f;    
+		//final float Math.PI = 4.0f*Math.atan(1.0f);
+		
+		float x1 = (float)Math.sin((-location.getLongitude()+MLONG)*Math.PI/180f);
+		float y1 = (float)Math.cos(location.getLatitude()*Math.PI/180f) * (float)Math.tan(MLAT*Math.PI/180f);
+		float y2 = (float)Math.sin(location.getLatitude()*Math.PI/180f) * (float)Math.cos((-location.getLongitude()+MLONG)*Math.PI/180f);
+		float qibla_angle = (float)Math.atan(x1/(y1-y2))*180f/(float)Math.PI;
+		if (qibla_angle < 0) qibla_angle = 360.0f + qibla_angle;
+		
+		if ((location.getLongitude() < MLONG) && (location.getLongitude() > MLONG-180f)) {
+			if (qibla_angle > 180f) qibla_angle = qibla_angle - 180f;
+		}
+		if (qibla_angle > 360f) qibla_angle = qibla_angle - 360f;    
+		return qibla_angle;        
 	}
 }
