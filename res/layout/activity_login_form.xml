@@ -1,0 +1,63 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >   
+    <LinearLayout 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" >
+    <TextView 
+        android:id="@+id/sign_msg"
+        android:text = "Sign In"           
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:typeface="serif"
+        android:textSize="25dip" 
+        android:textStyle="bold" 
+        android:padding="10dip"
+        android:layout_centerHorizontal="true"/>
+    <TextView 
+        android:id="@+id/user_msg"
+        android:text = "User ID:"  
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:layout_below="@+id/sign_msg" />   
+    <EditText 
+        android:id="@+id/user_ID"
+        android:layout_height="wrap_content"
+        android:layout_width="250dip"
+        android:layout_below="@+id/sign_msg"
+        android:layout_toRightOf="@+id/user_msg"
+        android:singleLine="true" />
+    <TextView 
+        android:id="@+id/password_msg"
+        android:text = "Password:"  
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_msg"
+        android:layout_margin="10dip"
+        android:paddingTop="10dip"/> 
+    <EditText 
+        android:id="@+id/password"
+        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:singleLine="true" 
+        android:layout_below="@+id/user_ID"
+        android:layout_toRightOf="@+id/password_msg"
+        android:password="true" />
+    <Button 
+        android:id="@+id/login_button"
+        android:text="Sign In"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dip"
+        android:layout_below="@+id/password_msg"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/response"
+        android:layout_below="@+id/login_button"/>
+    </LinearLayout>
+</RelativeLayout>
