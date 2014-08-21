@@ -69,7 +69,7 @@ public class SalatQibla extends Activity implements SensorEventListener {
 	public void onSensorChanged(SensorEvent event) {
 		float degree = Math.round(event.values[0]);
 		
-		if (degree == Math.round(getQibla()))
+		if ((int)degree == (int)getQibla())
 		{
 			background_changed = true;
 			qiblaLayout.setBackgroundResource(R.drawable.bg2);
