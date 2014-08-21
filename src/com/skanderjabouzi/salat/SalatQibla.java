@@ -22,7 +22,9 @@ public class SalatQibla extends Activity implements SensorEventListener {
 	//private float currentDegree2 = 178f;
 	private SensorManager mSensorManager;
 	TextView compassDegree;
+	TextView compassDegreeTitle;
 	TextView qiblaDegree;	
+	TextView qiblaDegreeTitle;	
 	private LocationDataSource datasource;
 	private Location location;
 
@@ -34,14 +36,17 @@ public class SalatQibla extends Activity implements SensorEventListener {
 		image2 = (ImageView) findViewById(R.id.compass2);
 		//rotate(image2, 0, 178f, 0);
 		compassDegree = (TextView) findViewById(R.id.degree);
+		compassDegreeTitle = (TextView) findViewById(R.id.degree_title);
 		qiblaDegree = (TextView) findViewById(R.id.qibla_degree);
+		qiblaDegreeTitle = (TextView) findViewById(R.id.qibla_degree_title);
 		//qiblaDegree.setText(Float.toString(58.64f));
 		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);		
 		datasource = new LocationDataSource(this);
 		datasource.open();
 		location = datasource.getLocation(1);
-		qiblaDegree.setText(Html.fromHtml("<small>Qibla direction</small>" +  "<br />" + 
-            "<big>" + String.format("%d",(int)getQibla()) + "</big>"));
+		compassDegreeTitle.setText(this.getString(R.string.titleDegree));
+		qiblaDegreeTitle.setText(this.getString(R.string.titleQiblaDegree));
+		qiblaDegree.setText(String.format("%d",(int)getQibla()));
 	}
 
 	@Override
