@@ -10,11 +10,13 @@ import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.view.View;
 import android.text.Html;
 import android.util.Log;
 
 public class SalatQibla extends Activity implements SensorEventListener {
 
+	private View qiblaLayout;
 	private ImageView image;
 	private ImageView image2;
 	private int sensorAccuracy;
@@ -27,11 +29,13 @@ public class SalatQibla extends Activity implements SensorEventListener {
 	TextView qiblaDegreeTitle;	
 	private LocationDataSource datasource;
 	private Location location;
+	private boolean background_changed = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.qibla);
+		qiblaLayout = findViewById(R.id.qibla_bg);
 		image = (ImageView) findViewById(R.id.compass);
 		image2 = (ImageView) findViewById(R.id.compass2);
 		//rotate(image2, 0, 178f, 0);
@@ -63,38 +67,25 @@ public class SalatQibla extends Activity implements SensorEventListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-
-		// get the angle around the z-axis rotated
 		float degree = Math.round(event.values[0]);
-		compassDegree.setText(String.format("%d",(int)degree));
-		//degree = degree - 178f;
-		//qiblaDegree.setText(Float.toString(degree));
-
-		// create a rotation animation (reverse turn degree degrees)
-		//RotateAnimation ra = new RotateAnimation(
-				//currentDegree, 
-				//-degree,
-				//Animation.RELATIVE_TO_SELF, 0.5f, 
-				//Animation.RELATIVE_TO_SELF,
-				//0.5f);
-
-		// how long the animation will take place
-		//ra.setDuration(300);
-
-		// set the animation after the end of the reservation status
-		//ra.setFillAfter(true);
-
-		// Start the animation
-		//image.startAnimation(ra);
-		//float degree2 = degree - 178f;
-
-		rotate(image, currentDegree, degree, 300);
-		//rotate(image2, currentDegree2, degree2, 300);
 		
-		//image2.startAnimation(ra);
+		if (degree == Math.round(getQibla()))
+		{
+			background_changed = true;
+			qiblaLayout.setBackgroundResource(R.drawable.bg2);
+		}
+		else
+		{
+			if (background_changed)
+			{
+				background_changed = false;
+				qiblaLayout.setBackgroundResource(R.drawable.bg1);
+			}
+		}
+		
+		compassDegree.setText(String.format("%d",(int)degree));
+		rotate(image, currentDegree, degree, 300);
 		currentDegree = -degree;
-		//currentDegree2 = -degree;
-
 	}
 
 	@Override
