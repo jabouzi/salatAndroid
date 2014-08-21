@@ -10,6 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.text.Html;
 import android.util.Log;
 
 public class SalatQibla extends Activity implements SensorEventListener {
@@ -39,7 +40,8 @@ public class SalatQibla extends Activity implements SensorEventListener {
 		datasource = new LocationDataSource(this);
 		datasource.open();
 		location = datasource.getLocation(1);
-		qiblaDegree.setText(String.format("%d",(int)getQibla()));
+		qiblaDegree.setText(Html.fromHtml("<small>Qibla direction</small>" +  "<br />" + 
+            "<big>" + String.format("%d",(int)getQibla()) + "</big>"));
 	}
 
 	@Override
