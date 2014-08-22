@@ -4,17 +4,13 @@
 	xmlns:mySwitch="http://schemas.android.com/apk/res-auto"
     android:layout_height="fill_parent"
     android:layout_width="fill_parent"
-    android:layout_marginTop="12dp"
     android:orientation="vertical"
     android:background="@drawable/bg">
     
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="20dp">
+        android:layout_gravity="center_horizontal" >
       
         <kankan.wheel.widget.WheelView android:id="@+id/day1"
             android:layout_height="wrap_content"
@@ -26,35 +22,12 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"/>            
     </LinearLayout>
-        
-           <com.skanderjabouzi.salat.MySwitch
-                    style="@style/mySwitchStyle"
-                    android:id="@+id/pickup3"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="14dp"
-                    android:gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    mySwitch:pushStyle="true"
-                    mySwitch:textOnThumb="false"
-                    mySwitch:thumbExtraMovement="23dp"
-                    mySwitch:trackTextPadding="2dp"
-                    mySwitch:thumb="@drawable/stoggle_copy"
-                    mySwitch:track="@drawable/sgroove_copy"
-                    mySwitch:textOn="To Islamic"
-                    mySwitch:textOff="To Christian" 
-                    mySwitch:leftBackground="@drawable/sleft_background_copy"
-                    mySwitch:rightBackground="@drawable/sright_background_copy"
-                    mySwitch:backgroundMask="@drawable/smask_background_copy"
-                    /> 
     
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="4dp">
+        android:layout_alignParentBottom="true">
       
         <kankan.wheel.widget.WheelView android:id="@+id/day2"
             android:layout_height="wrap_content"
