@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.view.Display;
 import android.util.Log;
 import android.widget.Toast;
+import java.util.Locale;
 
 public class SalatActivity extends Activity {
 
@@ -58,6 +59,8 @@ public class SalatActivity extends Activity {
 		receiver = new MidnightReceiver();
 		filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );
 		Log.i("SalatActivity", "Created");
+		Log.i("LANGUAGE", Locale.getDefault().getDisplayLanguage());
+		Log.i("ISO", Locale.getDefault().getLanguage());
 	}
 
 	@Override
@@ -130,7 +133,7 @@ public class SalatActivity extends Activity {
 		break;
 	  case R.id.about:
 		AboutDialog about = new AboutDialog(this);
-		about.setTitle("about this app");
+		about.setTitle(this.getString(R.string.about));
 		about.show();
 		break;
 	  }

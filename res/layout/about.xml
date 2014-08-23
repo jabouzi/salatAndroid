@@ -22,10 +22,10 @@
 			android:id="@+id/legal_text"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
-			android:textSize="10dip"
+			android:textSize="9dip"
 			android:textStyle="italic"
 			android:layout_span="2"
-			android:layout_margin="8dip"
+			android:layout_margin="6dip"
 			android:textColor="#cccccc" />
 	</TableRow>
 </TableLayout>
