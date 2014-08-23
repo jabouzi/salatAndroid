@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.util.Linkify;
 import android.widget.TextView;
-import java.util.Locale;
 
 public class AboutDialog extends Dialog{
 
@@ -27,14 +26,11 @@ public class AboutDialog extends Dialog{
      */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		String locale = Locale.getDefault().getLanguage();
-		String raw_extra = "";
-		if (locale == "fr" || locale == "es" || locale == "ar") raw_extra = locale;
 		setContentView(R.layout.about);
 		TextView tv = (TextView)findViewById(R.id.legal_text);
-		tv.setText(readRawTextFile(R.raw.legal+"_"+locale));
+		tv.setText(readRawTextFile(R.raw.legal));
 		tv = (TextView)findViewById(R.id.info_text);
-		tv.setText(Html.fromHtml(readRawTextFile(R.raw.info+"_"+locale)));
+		tv.setText(Html.fromHtml(readRawTextFile(R.raw.info)));
 		tv.setLinkTextColor(Color.WHITE);
 		Linkify.addLinks(tv, Linkify.ALL);
 	}
