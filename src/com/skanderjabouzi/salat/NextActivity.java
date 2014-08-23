@@ -138,7 +138,7 @@ public class NextActivity extends Activity {
     public void printLocation()
     {
         TextView locationText =    (TextView)  findViewById(R.id.locationText);
-        locationText.setText(salatApp.getCity() + ", " + salatApp.getCountry());
+        locationText.setText(salatApp.getCity());
     }
 
 
