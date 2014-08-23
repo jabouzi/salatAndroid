@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Salat</string>
+    <string name="date1">00 00 0000</string>
+    <string name="date2">00 00 0000</string>
+    <string name="fajr">00:00</string>
+    <string name="duhr">00:00</string>
+    <string name="asr">00:00</string>
+    <string name="maghrib">00:00</string>
+    <string name="isha">00:00</string>
+    <string name="shourouk">00:00</string>
+    <string name="cityCountry">Please set your options and location</string>
+    <string name="titleNext">Tomorrow\'s Salat Times</string>
+    <string name="titleOptions">Salat Times Options</string>
+    <string name="titleLocation">Salat Location Options</string>
+    <string name="titleSalatQibla">Salat Qibla Direction</string>
+    <string name="titleDegree">Current direction</string>
+    <string name="titleQiblaDegree">Qibla Direction</string>
+    <string name="send_salat_notifications_permission_label">Sends salat Notifications</string>
+    <string name="send_salat_notifications_permission_description">Allow this application to send salat
+    notifications to other applications</string>
+    <string name="receive_salat_notifications_permission_label">Receive salat Notifications</string>
+    <string name="receive_salat_notifications_permission_description">Allow this application to receive salat
+    notifications from other applications</string>
+    <string name="send_location_notifications_permission_label">Sends location Notifications</string>
+    <string name="send_location_notifications_permission_description">Allow this application to send location
+    notifications to other applications</string>
+    <string name="receive_location_notifications_permission_label">Receive location Notifications</string>
+    <string name="receive_location_notifications_permission_description">Allow this application to receive location
+    notifications from other applications</string>
+    <string name="send_phone_notifications_permission_label">Sends phone Notifications</string>
+    <string name="send_phone_notifications_permission_description">Allow this application to send phone
+    notifications to other applications</string>
+    <string name="receive_phone_notifications_permission_label">Receive phone Notifications</string>
+    <string name="receive_phone_notifications_permission_description">Allow this application to receive phone
+    notifications from other applications</string>
+    <string name="titleApiMap">API URL</string>
+    <string name="summaryApiMap">URL of Root API for map location</string>
+    <string name="titleCalculation">Salat Calculation</string>
+    <string name="summaryCalculation">Salat Calculation options</string>
+    <string name="titleHijri">Hijri Adjustement</string>
+    <string name="summaryHijri">Hijri Date Adjustemt Options</string>
+    <string name="titleAsr">Asr Options</string>
+    <string name="summaryAsr">Asr Calculation Options</string>
+    <string name="titleHighLatitudes">High Latitudes</string>
+    <string name="summaryHighLatitudes">High Latitudes Calculation options</string>
+    <string name="msgSetupPrefs">Please Setup Salat Calculation options</string>
+    <string name="msgNotificationTitle">It\'s Salat Time</string>
+    <string name="msgNotificationMessage">It\'s time time for salat %s </string>
+    <string name="titleLongitude">Longitude</string>
+    <string name="summaryLongitude">Location Longitude</string>
+    <string name="titleLatitude">Latitude</string>
+    <string name="summaryLatitude">Location Latitude</string>
+    <string name="titleTimezone">Timezone</string>
+    <string name="summaryTimezone">Location Timezone</string>
+    <string name="titleCity">City</string>
+    <string name="summaryCity">City Name</string>
+    <string name="titleCountry">Country</string>
+    <string name="summaryCountry">Country Name</string>
+    <string name="detectLocation">Detect location</string>
+    <string name="saveLocation">Save location</string>
+    <string name="saveOptions">Save options</string>
+    <string name="options">Options</string>
+    <string name="location">Location</string>
+    <string name="qibla">Qibla</string>
+    <string name="hijriConversion">Hijri Conversion</string>
+    <string name="adhanOptions">Adhan Options</string>
+    <string name="stopAthan">Stop Athan</string>
+    <string name="about">About</string>
+
+    <string-array name="calculation">
+        <item>Ithna Ashari</item>
+        <item>University of Islamic Sciences, Karachi</item>
+        <item>Islamic Society of North America (ISNA)</item>
+        <item>Muslim World League (MWL)</item>
+        <item>Umm al-Qura, Makkah</item>
+        <item>Egyptian General Authority of Survey</item>
+        <item>Institute of Geophysics, University of Tehran</item>
+        <item>Custom Setting</item>
+    </string-array>
+
+    <string-array name="calculationValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <string-array name="asr">
+        <item>Shafii</item>
+        <item>Hanafi</item>
+    </string-array>
+
+    <string-array name="asrValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="hijri">
+        <item>+ 0 day</item>
+        <item>+ 1 day</item>
+        <item>+ 2 days</item>
+        <item>- 1 day</item>
+        <item>- 2 days</item>
+    </string-array>
+
+    <string-array name="hijriValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="highLatitudes">
+        <item>No adjustment</item>
+        <item>middle of night</item>
+        <item>1/7th of night</item>
+        <item>angle/60th of night</item>
+    </string-array>
+
+    <string-array name="highLatitudesValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+</resources>
