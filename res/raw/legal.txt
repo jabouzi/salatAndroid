@@ -1,4 +1,4 @@
 This is a free software sistributed under the terms of 
 the GNU General Public License version 3 
 (http://www.gnu.org/licenses/gpl-3.0.html) 
-Thanks : Alexandre Geoffrion, Alexandre Michel, Marc Deguire
+Thanks : Alexandre Geoffrion, Alexandre Michel, Marc-André Deguire
