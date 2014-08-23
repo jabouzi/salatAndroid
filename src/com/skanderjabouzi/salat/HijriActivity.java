@@ -3,6 +3,8 @@ package com.skanderjabouzi.salat;
 import java.util.Calendar;
 import java.util.Arrays;
 import android.util.Log;
+import android.view.View.OnTouchListener;
+import android.view.MotionEvent;
 
 import kankan.wheel.R;
 import kankan.wheel.widget.OnWheelChangedListener;
@@ -27,6 +29,7 @@ public class HijriActivity extends Activity{
 	public int switch_val = CHRISTIAN;
 	public int[] hijriDates = new int[3];
 	public int month, day, year;
+	public int currentView = 0;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -43,21 +46,64 @@ public class HijriActivity extends Activity{
 		final WheelView month2 = (WheelView) findViewById(com.skanderjabouzi.salat.R.id.month2);
 		final WheelView year2 = (WheelView) findViewById(com.skanderjabouzi.salat.R.id.year2);
 		final WheelView day2 = (WheelView) findViewById(com.skanderjabouzi.salat.R.id.day2);
+		
+		month1.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {			
+				currentView = 1;
+				return false;
+			}   
+		});
+		month2.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {			
+				currentView = 2;
+				return false;
+			}   
+		});
+		year1.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {			
+				currentView = 1;
+				return false;
+			}   
+		});
+		year2.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {			
+				currentView = 2;
+				return false;
+			}   
+		});
+		day1.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {			
+				currentView = 1;
+				return false;
+			}   
+		});
+		day2.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {			
+				currentView = 2;
+				return false;
+			}   
+		});
 
 
 		OnWheelChangedListener listener = new OnWheelChangedListener() {
 			public void onChanged(WheelView wheel, int oldValue, int newValue) {
-				if (wheel.getId() ==  month1.getId() || wheel.getId() ==  year1.getId() || wheel.getId() ==  day1.getId())
+				if (currentView == 1)
 				{
 					month = month1.getCurrentItem();
 					day = day1.getCurrentItem();
 					year = year1.getCurrentItem() - 50;
 					hijriDates = hijri.islToChr(year, month, day, 0);
-					//month2.setCurrentItem(hijriDates[1]);
+					month2.setCurrentItem(hijriDates[1]);
 					//month2.scroll(hijriDates[1], 1000);
-					//day2.setCurrentItem(hijriDates[0] - 1);
+					day2.setCurrentItem(hijriDates[0] - 1);
 					//day2.scroll(hijriDates[0], 1000);
-					//year2.setCurrentItem(hijriDates[2] - 570);
+					year2.setCurrentItem(hijriDates[2] - 570);
 					//year2.scroll(hijriDates[2] - 570, 1000);
 					//Log.i("MONTH1 ", String.valueOf(month));
 					//Log.i("DAY1 ", String.valueOf(day));
@@ -65,7 +111,7 @@ public class HijriActivity extends Activity{
 					//Log.i("MONTH2 ", String.valueOf(hijriDates[1]));
 					//Log.i("DAY2 ", String.valueOf(hijriDates[0]));
 					//Log.i("YEAR2 ", String.valueOf(hijriDates[2]));
-					Log.i("ID1 ", String.valueOf(wheel.getId()));
+					//Log.i("ID1 ", String.valueOf(currentView));
 				}
 				else
 				{
@@ -73,25 +119,19 @@ public class HijriActivity extends Activity{
 					day = day2.getCurrentItem();
 					year = year2.getCurrentItem() + 570;
 					hijriDates = hijri.chrToIsl(year, month, day, 0);
-					//month1.setCurrentItem(hijriDates[1]);
-					//day1.setCurrentItem(hijriDates[0]);
-					//year1.setCurrentItem(hijriDates[2] + 50);
+					month1.setCurrentItem(hijriDates[1]);
+					day1.setCurrentItem(hijriDates[0]);
+					year1.setCurrentItem(hijriDates[2] + 50);
 					//Log.i("MONTH2 ", String.valueOf(month));
 					//Log.i("DAY2 ", String.valueOf(day));
 					//Log.i("YEAR2 ", String.valueOf(year));
 					//Log.i("MONTH1 ", String.valueOf(hijriDates[1]));
 					//Log.i("DAY1 ", String.valueOf(hijriDates[0]));
 					//Log.i("YEAR1 ", String.valueOf(hijriDates[2]));
-					Log.i("ID2 ", String.valueOf(wheel.getId()));
+					//Log.i("ID2 ", String.valueOf(currentView));
 				}
 			}
 		};
-		
-		OnWheelClickedListener click = new OnWheelClickedListener() {
-            public void onItemClicked(WheelView wheel, int itemIndex) {
-                Log.i("CLICKED ", String.valueOf(wheel.getId()));
-            }
-        };
 
 		Log.i("HIJRI : ", String.valueOf(calendar.get(Calendar.YEAR)) + " " +  String.valueOf(calendar.get(Calendar.MONTH)) + " " + String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)));
 		hijriDates = hijri.chrToIsl(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), 0);
