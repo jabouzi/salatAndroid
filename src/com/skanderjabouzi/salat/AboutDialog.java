@@ -29,7 +29,7 @@ public class AboutDialog extends Dialog{
 	public void onCreate(Bundle savedInstanceState) {
 		String locale = Locale.getDefault().getLanguage();
 		String raw_extra = "";
-		if (locale == "fr" || locale == "es" || locale == "ar") String raw_extra = locale;
+		if (locale == "fr" || locale == "es" || locale == "ar") raw_extra = locale;
 		setContentView(R.layout.about);
 		TextView tv = (TextView)findViewById(R.id.legal_text);
 		tv.setText(readRawTextFile(R.raw.legal+"_"+locale));

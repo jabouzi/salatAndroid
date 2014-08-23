@@ -58,7 +58,6 @@ public class SalatActivity extends Activity {
 		receiver = new MidnightReceiver();
 		filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );
 		Log.i("SalatActivity", "Created");
-		Log.i("LANGUAGE", Locale.getDefault().getDisplayLanguage());
 	}
 
 	@Override
