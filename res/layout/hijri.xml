@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:mySwitch="http://schemas.android.com/apk/res-auto"
     android:layout_height="fill_parent"
     android:layout_width="fill_parent"
     android:orientation="vertical"
+    android:gravity="center" 
     android:background="@drawable/bg">
-    
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal" >
-      
+        android:layout_weight="10"
+        android:layout_gravity="center_horizontal" >   
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal" >        
+
         <kankan.wheel.widget.WheelView android:id="@+id/day1"
             android:layout_height="wrap_content"
             android:layout_width="50dp"/>
@@ -26,7 +33,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="bottom|center_horizontal"
         android:layout_alignParentBottom="true">
       
         <kankan.wheel.widget.WheelView android:id="@+id/day2"
@@ -50,4 +57,4 @@
 		android:text="   Convert  "/>
 -->
 		
-</LinearLayout>
+</RelativeLayout>
