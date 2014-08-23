@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.view.Display;
 import android.util.Log;
 import android.widget.Toast;
-import java.util.Locale;
 
 public class SalatActivity extends Activity {
 
@@ -60,7 +59,6 @@ public class SalatActivity extends Activity {
 		filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );
 		Log.i("SalatActivity", "Created");
 		Log.i("LANGUAGE", Locale.getDefault().getDisplayLanguage());
-		Log.i("ISO", Locale.getDefault().getLanguage());
 	}
 
 	@Override
