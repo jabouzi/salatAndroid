@@ -19,8 +19,7 @@ public class WakeLock {
 
         PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
 
-        WakeLock = pm.newWakeLock(
-                PowerManager.PARTIAL_WAKE_LOCK, "Athan Alarm Wake Lock");
+        WakeLock = pm.newWakeLock((PowerManager.FULL_WAKE_LOCK | PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP), "Athan Alarm Wake Lock");
         WakeLock.acquire();
     }
     
@@ -32,8 +31,8 @@ public class WakeLock {
 		kl.disableKeyguard();
 	}
 	
-    static void release() {
-        Log.i("SalatWakeLock" ,"Releasing cpu wake lock");
+    static void release(String flag) {
+        Log.i("SalatWakeLock" ,"Releasing cpu wake lock " + flag);
         if (WakeLock != null) {
             WakeLock.release();
             WakeLock = null;

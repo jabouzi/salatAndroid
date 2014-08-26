@@ -25,6 +25,7 @@ public class Video extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		WakeLock.acquire(this);
 		receiver = new PhoneReceiver();
 		filter = new IntentFilter( SalatPhoneReceiver.PHONE_INTENT );
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
@@ -50,7 +51,7 @@ public class Video extends Activity {
 			public void onCompletion(MediaPlayer mediaPlayer) {
 				//AthanService.this.kl.reenableKeyguard();
 				Video.this.finish();
-				WakeLock.release();
+				WakeLock.release("onComplete");
 				//WakeLock.lock();
 			}
 		});
@@ -86,6 +87,7 @@ public class Video extends Activity {
     protected void onResume() {
         super.onResume();
         super.registerReceiver(receiver, filter, SEND_PHONE_NOTIFICATIONS, null);
+        WakeLock.acquire(this);
     }
 
     @Override
@@ -98,7 +100,7 @@ public class Video extends Activity {
     protected void onStop() {
         super.onPause();
         //AthanService.this.kl.reenableKeyguard();
-        WakeLock.release();
+        WakeLock.release("onStop");
         //WakeLock.lock();
     }
     
@@ -106,7 +108,7 @@ public class Video extends Activity {
     protected void onDestroy() {
         super.onPause();
         //AthanService.this.kl.reenableKeyguard();
-        WakeLock.release();
+        WakeLock.release("onDestroy");
         //WakeLock.lock();
     }
     

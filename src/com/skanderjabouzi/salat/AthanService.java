@@ -35,7 +35,7 @@ public class AthanService extends Service{
     public void onCreate() {
         super.onCreate(); 
         //WakeLock.unlock(this);
-        WakeLock.acquire(this);
+        //WakeLock.acquire(this);
         salatApp = new SalatApplication(this);
         startAthan();
         Log.i(TAG, "start");
