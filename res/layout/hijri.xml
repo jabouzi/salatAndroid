@@ -10,11 +10,16 @@
 		<TextView
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="10dp"
 		android:layout_gravity="center_horizontal"
-		android:textSize="20sp"
+		android:textSize="25sp"
 		android:textStyle="bold"
+		android:paddingLeft="10px"
+		android:paddingBottom="10px"
 		android:textColor="#FFFFFF"
+		android:shadowColor="#000000"
+		android:shadowDx="1"
+		android:shadowDy="1"
+		android:shadowRadius="1"
 		android:text="@string/hijriCalendar"/>
 
 
@@ -41,9 +46,15 @@
 		android:layout_height="wrap_content"
 		android:layout_marginTop="10dp"
 		android:layout_gravity="center_horizontal"
-		android:textSize="20sp"
+		android:textSize="25sp"
 		android:textStyle="bold"
+		android:paddingLeft="10px"
+		android:paddingBottom="10px"
 		android:textColor="#FFFFFF"
+		android:shadowColor="#000000"
+		android:shadowDx="1"
+		android:shadowDy="1"
+		android:shadowRadius="1"
 		android:text="@string/ChristianCalendar"/>
     
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -63,15 +74,5 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"/>            
     </LinearLayout>
-    
-<!--
-    	<Button android:id="@+id/btn_mix"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_gravity="center_horizontal"
-		android:layout_marginTop="4dp"
-		android:textSize="12sp"
-		android:text="   Convert  "/>
--->
 		
 </LinearLayout>
