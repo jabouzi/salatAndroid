@@ -11,8 +11,8 @@
     <string name="shourouk">00:00</string>
     <string name="cityCountry">Please set your options and location</string>
     <string name="titleNext">Tomorrow\'s Salat Times</string>
-    <string name="titleOptions">Salat Times Options</string>
-    <string name="titleLocation">Salat Location Options</string>
+    <string name="titleOptions">Salat Options</string>
+    <string name="titleLocation">Salat Options</string>
     <string name="titleSettings">Salat Settings</string>
     <string name="titleSalatQibla">Salat Qibla Direction</string>
     <string name="titleDegree">Current direction</string>
@@ -59,9 +59,10 @@
     <string name="summaryCity">City Name</string>
     <string name="titleCountry">Country</string>
     <string name="summaryCountry">Country Name</string>
-    <string name="detectLocation">Detect location</string>
-    <string name="saveLocation">Save location</string>
-    <string name="saveOptions">Save options</string>
+    <string name="detectLocation">Detect Location</string>
+    <string name="saveLocation">Save Location</string>
+    <string name="saveOptions">Save Options</string>
+    <string name="saveSettings">Save Settings</string>
     <string name="options">Options</string>
     <string name="location">Location</string>
     <string name="settings">Settings</string>

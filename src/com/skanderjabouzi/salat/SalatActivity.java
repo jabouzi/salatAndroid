@@ -116,12 +116,8 @@ public class SalatActivity extends Activity {
 		startActivity(new Intent(this, HijriActivity.class)
 			.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
 		break;
-	  case R.id.options:
-		startActivity(new Intent(this, OptionsActivity.class)
-			.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-		break;
-	  case R.id.location:
-		startActivity(new Intent(this, LocationActivity.class)
+	  case R.id.settings:
+		startActivity(new Intent(this, SettingsActivity.class)
 			.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
 		break;
 	  case R.id.qibla:

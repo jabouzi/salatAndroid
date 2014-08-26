@@ -21,15 +21,15 @@ import android.app.AlarmManager;
 import android.util.Log;
 import android.provider.Settings;
 
-public class LocationActivity extends Activity{
+public class SettingsActivity extends Activity{
 
 	static final String SEND_LOCATION_NOTIFICATIONS = "com.skanderjabouzi.salat.SEND_LOCATION_NOTIFICATIONS";
 	private EditText latitude, longitude, timezone, city, country;
-	private Button btnSaveLocation, btnDetectLocation;
+	private Button btnsaveSettings, btnDetectLocation;
 	private LocationDataSource datasource;
 	private Location location;
 	private SalatApplication salatApp;
-	private Context context = LocationActivity.this;
+	private Context context = SettingsActivity.this;
 	private Intent locationIntent;
     LocationReceiver receiver;
     IntentFilter filter;
@@ -37,7 +37,7 @@ public class LocationActivity extends Activity{
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.location);
+        setContentView(R.layout.settings);
         receiver = new LocationReceiver();
         filter = new IntentFilter( LocationService.LOCATION_INTENT );
         salatApp = new SalatApplication(this);
@@ -89,8 +89,8 @@ public class LocationActivity extends Activity{
 
     public void addListenerOnButton() {
 
-		btnSaveLocation = (Button) findViewById(R.id.saveLocation);
-		btnSaveLocation.setOnClickListener(new OnClickListener() {
+		btnsaveSettings = (Button) findViewById(R.id.saveSettings);
+		btnsaveSettings.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
