@@ -13,8 +13,10 @@
     <string name="titleNext">Tomorrow\'s Salat Times</string>
     <string name="titleOptions">Salat Times Options</string>
     <string name="titleLocation">Salat Location Options</string>
+    <string name="titleSettings">Salat Settings</string>
     <string name="titleSalatQibla">Salat Qibla Direction</string>
     <string name="titleDegree">Current direction</string>
+    <string name="titleQiblaDegree">Qibla Direction</string>
     <string name="titleQiblaDegree">Qibla Direction</string>
     <string name="send_salat_notifications_permission_label">Sends salat Notifications</string>
     <string name="send_salat_notifications_permission_description">Allow this application to send salat
@@ -62,11 +64,12 @@
     <string name="saveOptions">Save options</string>
     <string name="options">Options</string>
     <string name="location">Location</string>
+    <string name="settings">Settings</string>
     <string name="qibla">Qibla</string>
     <string name="hijriConversion">Hijri Conversion</string>
     <string name="adhanOptions">Adhan Options</string>
     <string name="stopAthan">Stop Athan</string>
-    <string name="about">About</string>
+    <string name="about">About this app</string>
 
     <string-array name="calculation">
         <item>Ithna Ashari</item>
