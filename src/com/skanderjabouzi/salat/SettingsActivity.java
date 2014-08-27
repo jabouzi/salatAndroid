@@ -18,15 +18,22 @@ import android.content.Intent;
 import android.app.PendingIntent;
 import android.content.IntentFilter;
 import android.app.AlarmManager;
+import android.widget.Spinner;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.util.Log;
 import android.provider.Settings;
 
-public class SettingsActivity extends Activity{
+public class SettingsActivity extends Activity implements OnItemSelectedListener{
 
 	static final String SEND_LOCATION_NOTIFICATIONS = "com.skanderjabouzi.salat.SEND_LOCATION_NOTIFICATIONS";
+	private Spinner method, asr, hijri, highLatitudes;
 	private EditText latitude, longitude, timezone, city, country;
 	private Button btnsaveSettings, btnDetectLocation;
-	private LocationDataSource datasource;
+	private OptionsDataSource odatasource;
+	private Options options;
+	private int pos = 0;
+	private LocationDataSource ldatasource;
 	private Location location;
 	private SalatApplication salatApp;
 	private Context context = SettingsActivity.this;
@@ -42,9 +49,13 @@ public class SettingsActivity extends Activity{
         filter = new IntentFilter( LocationService.LOCATION_INTENT );
         salatApp = new SalatApplication(this);
         locationIntent = new Intent(this, LocationService.class);
-        datasource = new LocationDataSource(this);
-		datasource.open();
-		location = datasource.getLocation(1);
+        odatasource = new OptionsDataSource(this);
+		odatasource.open();
+		options = odatasource.getOptions(1);
+		setSpinnerItemSelection();
+        ldatasource = new LocationDataSource(this);
+		ldatasource.open();
+		location = ldatasource.getLocation(1);
 		setLocationTexts();
 		addListenerOnButton();
     }
@@ -53,25 +64,61 @@ public class SettingsActivity extends Activity{
     protected void onResume() {
         super.onResume();
         super.registerReceiver(receiver, filter, SEND_LOCATION_NOTIFICATIONS, null);
+        odatasource.open();
+        ldatasource.open();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         unregisterReceiver(receiver);
+        ldatasource.close();
+        odatasource.close();
     }
     
     @Override
     protected void onStop() {
         super.onPause();
-        datasource.close();
+        ldatasource.close();
+        odatasource.close();
     }
     
 	@Override
     protected void onDestroy() {
         super.onPause();
-        datasource.close();
+        ldatasource.close();
+        odatasource.close();
     }
+    
+    public void setSpinnerItemSelection() {
+
+		method = (Spinner) findViewById(R.id.calculation);
+		method.setOnItemSelectedListener(this);
+		pos = options.getMethod() - 1;
+		if (pos < 0) pos = 0;
+		method.setSelection(pos);
+
+		asr = (Spinner) findViewById(R.id.asr);
+		asr.setOnItemSelectedListener(this);
+		pos = options.getAsr() - 1;
+		if (pos < 0) pos = 0;
+		asr.setSelection(pos);
+
+		highLatitudes = (Spinner) findViewById(R.id.highLatitudes);
+		highLatitudes.setOnItemSelectedListener(this);
+		pos = options.getHigherLatitude() - 1;
+		if (pos < 0) pos = 0;
+		highLatitudes.setSelection(pos);
+	}
+
+	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> arg0) {
+
+	}
 
     public void setLocationTexts() {
 		
@@ -95,6 +142,25 @@ public class SettingsActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 		
+				method = (Spinner) findViewById(R.id.calculation);
+				asr = (Spinner) findViewById(R.id.asr);
+				highLatitudes = (Spinner) findViewById(R.id.highLatitudes);
+				
+				options.setId(1);
+				
+				pos = method.getSelectedItemPosition() + 1;
+				options.setMethod(pos);
+
+				pos = asr.getSelectedItemPosition() + 1;
+				options.setAsr(pos);
+				
+				options.setHijri(0);
+
+				pos = highLatitudes.getSelectedItemPosition() + 1;
+				options.setHigherLatitude(pos);
+
+				odatasource.updateOptions(options);
+		
 				location.setId(1);
 				latitude = (EditText) findViewById(R.id.latitude);
 				location.setLatitude(Float.parseFloat(String.valueOf(latitude.getText())));
@@ -111,7 +177,7 @@ public class SettingsActivity extends Activity{
 				country = (EditText) findViewById(R.id.country);
 				location.setCountry(String.valueOf(country.getText()));
 
-				datasource.updateLocation(location);
+				ldatasource.updateLocation(location);
 				
 				long timeToSalat = salatApp.getTimeToSalat();
 				Intent athanIntent = new Intent(context, SalatReceiver.class);

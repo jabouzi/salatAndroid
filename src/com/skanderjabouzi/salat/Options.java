@@ -28,7 +28,7 @@ public class Options {
 		return asr;
 	}
 
-	public void setAsr(int method) {
+	public void setAsr(int asr) {
 		this.asr = asr;
 	}
 
