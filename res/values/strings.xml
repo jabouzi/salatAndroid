@@ -12,7 +12,7 @@
     <string name="cityCountry">Please set your options and location</string>
     <string name="titleNext">Tomorrow\'s Salat Times</string>
     <string name="titleOptions">Salat Options</string>
-    <string name="titleLocation">Salat Options</string>
+    <string name="titleLocation">Salat Location</string>
     <string name="titleSettings">Salat Settings</string>
     <string name="titleSalatQibla">Salat Qibla Direction</string>
     <string name="titleDegree">Current direction</string>
