@@ -98,7 +98,7 @@ public class HijriActivity extends Activity{
 					month = month1.getCurrentItem();
 					day = day1.getCurrentItem();
 					year = year1.getCurrentItem() - 50;
-					hijriDates = hijri.islToChr(year, month, day, 0);
+					hijriDates = hijri.islToChr(year, month, (day - 1), 0);
 					month2.setCurrentItem(hijriDates[1]);
 					//month2.scroll(hijriDates[1], 1000);
 					day2.setCurrentItem(hijriDates[0] - 1);
@@ -118,7 +118,7 @@ public class HijriActivity extends Activity{
 					month = month2.getCurrentItem();
 					day = day2.getCurrentItem();
 					year = year2.getCurrentItem() + 570;
-					hijriDates = hijri.chrToIsl(year, month, day, 0);
+					hijriDates = hijri.chrToIsl(year, month, (day + 1), 0);
 					month1.setCurrentItem(hijriDates[1]);
 					day1.setCurrentItem((hijriDates[0]+1));
 					year1.setCurrentItem(hijriDates[2] + 50);
