@@ -19,7 +19,7 @@ public class WakeLock {
 
         PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
 
-        WakeLock = pm.newWakeLock((PowerManager.FULL_WAKE_LOCK | PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP), "Athan Alarm Wake Lock");
+        WakeLock = pm.newWakeLock((PowerManager.FULL_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE | PowerManager.ACQUIRE_CAUSES_WAKEUP), "Athan Alarm Wake Lock");
         WakeLock.acquire();
     }
     
