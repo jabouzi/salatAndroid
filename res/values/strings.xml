@@ -14,7 +14,7 @@
     <string name="titleOptions">Salat Options</string>
     <string name="titleLocation">Salat Location</string>
     <string name="titleSettings">Salat Settings</string>
-    <string name="titleSalatQibla">Salat Qibla Direction</string>
+    <string name="titleSalatQibla">Qibla Direction</string>
     <string name="titleDegree">Current direction</string>
     <string name="titleQiblaDegree">Qibla Direction</string>
     <string name="titleQiblaDegree">Qibla Direction</string>
@@ -36,8 +36,6 @@
     <string name="receive_phone_notifications_permission_label">Receive phone Notifications</string>
     <string name="receive_phone_notifications_permission_description">Allow this application to receive phone
     notifications from other applications</string>
-    <string name="titleApiMap">API URL</string>
-    <string name="summaryApiMap">URL of Root API for map location</string>
     <string name="titleCalculation">Salat Calculation</string>
     <string name="summaryCalculation">Salat Calculation options</string>
     <string name="titleHijri">Hijri Adjustement</string>
@@ -46,7 +44,6 @@
     <string name="summaryAsr">Asr Calculation Options</string>
     <string name="titleHighLatitudes">High Latitudes</string>
     <string name="summaryHighLatitudes">High Latitudes Calculation options</string>
-    <string name="msgSetupPrefs">Please Setup Salat Calculation options</string>
     <string name="msgNotificationTitle">It\'s Salat Time</string>
     <string name="msgNotificationMessage">It\'s time time for salat %s </string>
     <string name="titleLongitude">Longitude</string>

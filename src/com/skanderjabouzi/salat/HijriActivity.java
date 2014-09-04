@@ -101,7 +101,7 @@ public class HijriActivity extends Activity{
 					hijriDates = hijri.islToChr(year, month, day, 0);
 					month2.setCurrentItem(hijriDates[1]);
 					//month2.scroll(hijriDates[1], 1000);
-					day2.setCurrentItem(hijriDates[0] - 1);
+					day2.setCurrentItem(hijriDates[0]);
 					//day2.scroll(hijriDates[0], 1000);
 					year2.setCurrentItem(hijriDates[2] - 570);
 					//year2.scroll(hijriDates[2] - 570, 1000);
@@ -120,7 +120,7 @@ public class HijriActivity extends Activity{
 					year = year2.getCurrentItem() + 570;
 					hijriDates = hijri.chrToIsl(year, month, day, 0);
 					month1.setCurrentItem(hijriDates[1]);
-					day1.setCurrentItem(hijriDates[0]);
+					day1.setCurrentItem((hijriDates[0]+1));
 					year1.setCurrentItem(hijriDates[2] + 50);
 					//Log.i("MONTH2 ", String.valueOf(month));
 					//Log.i("DAY2 ", String.valueOf(day));
@@ -144,7 +144,7 @@ public class HijriActivity extends Activity{
 		year1.setCurrentItem(hijriDates[2] + 50);
 		year1.addChangingListener(listener);
 		day1.setViewAdapter(new NumericWheelAdapter(this, 1, 30));
-		day1.setCurrentItem(hijriDates[0]);
+		day1.setCurrentItem((hijriDates[0]+1));
 		day1.addChangingListener(listener);
 
 		int curMonth = calendar.get(Calendar.MONTH);
@@ -157,7 +157,7 @@ public class HijriActivity extends Activity{
 		year2.setCurrentItem(curYear - 570);
 		year2.addChangingListener(listener);
 		day2.setViewAdapter(new NumericWheelAdapter(this, 1, 31));
-		day2.setCurrentItem(calendar.get(Calendar.DAY_OF_MONTH) - 1);
+		day2.setCurrentItem(calendar.get(Calendar.DAY_OF_MONTH));
 		day2.addChangingListener(listener);
 	}
 
