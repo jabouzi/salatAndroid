@@ -17,7 +17,6 @@
     <string name="titleSalatQibla">إتجاه القبلة</string>
     <string name="titleDegree">الاتجاه الحالي</string>
     <string name="titleQiblaDegree">إتجاه القبلة</string>
-    <string name="titleQiblaDegree">إتجاه القبلة</string>
     <string name="send_salat_notifications_permission_label">إرسال إشعارات الصلاة</string>
     <string name="send_salat_notifications_permission_description">يسمح لهذا التطبيق إرسال إشعارات الصلاة </string>
     <string name="receive_salat_notifications_permission_label">تلقي إشعارات الصلاة</string>

@@ -17,7 +17,6 @@
     <string name="titleSalatQibla">Qibla Direction</string>
     <string name="titleDegree">Current direction</string>
     <string name="titleQiblaDegree">Qibla Direction</string>
-    <string name="titleQiblaDegree">Qibla Direction</string>
     <string name="send_salat_notifications_permission_label">Sends salat Notifications</string>
     <string name="send_salat_notifications_permission_description">Allow this application to send salat
     notifications to other applications</string>
