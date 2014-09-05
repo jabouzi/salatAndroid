@@ -15,7 +15,7 @@
     <string name="titleLocation">Emplacment de la Salat</string>
     <string name="titleSettings">Paramètres de la Salat</string>
     <string name="titleSalatQibla">Direction de la Qibla</string>
-    <string name="titleDegree">direction actuelle</string>
+    <string name="titleDegree">Direction actuelle</string>
     <string name="titleQiblaDegree">Direction de la Qibla</string>
     <string name="send_salat_notifications_permission_label">Envoie des notifications de salat</string>
     <string name="send_salat_notifications_permission_description">Permettre à cette application d\'envoyer des notifications de salat</string>
@@ -33,23 +33,23 @@
     <string name="summaryCalculation">Options de calcul de la salat</string>
     <string name="titleHijri">Ajustement du hijri</string>
     <string name="summaryHijri">Options d\'ajustement du hijri</string>
-    <string name="titleAsr">options du Asr</string>
+    <string name="titleAsr">Options du Asr</string>
     <string name="summaryAsr">Options de calcul du asr</string>
-    <string name="titleHighLatitudes">hautes latitudes</string>
+    <string name="titleHighLatitudes">Hautes latitudes</string>
     <string name="summaryHighLatitudes">Options de calcul des hautes latitudes</string>
-    <string name="msgNotificationTitle">C'est le temps de salat</string>
-    <string name="msgNotificationMessage">C'est le temps de salat %s </string>
+    <string name="msgNotificationTitle">C\'est le temps de salat</string>
+    <string name="msgNotificationMessage">C\'est le temps de salat %s </string>
     <string name="titleLongitude">Longitude</string>
     <string name="summaryLongitude">Longitude de l\'emplacement</string>
     <string name="titleLatitude">Latitude</string>
     <string name="summaryLatitude">Latitude de l\'emplacement</string>
-    <string name="titleTimezone">Timezone</string>
-    <string name="summaryTimezone">Location Timezone</string>
+    <string name="titleTimezone">Fuseau horaire</string>
+    <string name="summaryTimezone">Fuseau horaire de l\'emplacement</string>
     <string name="titleCity">Ville</string>
     <string name="summaryCity">Nom de la ville</string>
     <string name="titleCountry">Pays</string>
     <string name="summaryCountry">Nom du pays</string>
-    <string name="detectLocation">détecter l\'emplacement</string>
+    <string name="detectLocation">Détecter l\'emplacement</string>
     <string name="saveLocation">Enregistrer l\'emplacement</string>
     <string name="saveOptions">Enregistrer les options</string>
     <string name="saveSettings">Enregistrer les paramètres</string>
@@ -62,17 +62,17 @@
     <string name="ChristianCalendar">Calendrier chrétien</string>
     <string name="hijriDates">Conversion du hijri</string>
     <string name="adhanOptions">Options du adhan</string>
-    <string name="stopAthan">Stopper le athan</string>
-    <string name="about">À propos de l'application</string>
+    <string name="stopAthan">Stopper l\'athan</string>
+    <string name="about">À propos de l\'application</string>
 
     <string-array name="calculation">
         <item>Ithna Ashari</item>
         <item>Université des sciences islamiques, Karachi</item>
-        <item>Société islamique d'Amérique du Nord (ISNA)</item>
+        <item>Société islamique d\'Amérique du Nord (ISNA)</item>
         <item>Ligue islamique mondiale</item>
         <item>Umm al-Qura, La Mecque</item>
         <item>Autorité égyptienne général</item>
-        <item>Institut de géophysique de l'Université de Téhéran</item>
+        <item>Institut de géophysique de l\'Université de Téhéran</item>
         <item>Réglage personnalisé</item>
     </string-array>
 
@@ -117,7 +117,7 @@
         <item>Aucun ajustement</item>
         <item>Milieu de la nuit</item>
         <item>1/7 de la nui</item>
-        <item>angle / 60e de la nuit</item>
+        <item>Angle / 60e de la nuit</item>
     </string-array>
 
     <string-array name="highLatitudesValues">
