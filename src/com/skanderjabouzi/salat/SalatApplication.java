@@ -4,13 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Arrays;
 
-//import android.app.Application;
-//import android.content.ContentValues;
-//import android.content.SharedPreferences;
-//import android.preference.PreferenceManager;
-//import android.text.TextUtils;
 import android.util.Log;
-//import android.widget.Toast;
 import android.content.Context;
 import android.content.Intent;
 import android.app.PendingIntent;
@@ -43,8 +37,6 @@ public class SalatApplication{
 	private String city;
 	private String country;
 
-	//private boolean isSalat;
-	//protected Toast mToast;
 	public static int nextSalat;
 	public static boolean athanPlaying = false;
 	public static int prefType;
@@ -56,8 +48,6 @@ public class SalatApplication{
 
 
 	public SalatApplication(Context context) {
-		//super.onCreate();
-		//salatOptions = PreferenceManager.getDefaultSharedPreferences(this);
 		salatNames[0] = "Fajr";
 		salatNames[2] = "Duhr";
 		salatNames[3] = "Asr";
@@ -68,19 +58,6 @@ public class SalatApplication{
 		setOptions();
 		Log.i("Salat app", "Constructor");
 	  }
-
-	  //@Override
-	  //public void onTerminate() {
-		//super.onTerminate();
-		//Log.i("Salat app", "onTerminated");
-	  //}
-
-	//@Override
-	//public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-		//
-		//this.stopAlarm(this);
-		//this.startAlarm(this);
-	//}
 
 	public void setOptions()
 	{
@@ -135,15 +112,11 @@ public class SalatApplication{
 
 		this.salaTimes = prayers.getDatePrayerTimes(year, month+1, day+nextDay, this.latitude, this.longitude, this.timezone);
 
-
-/*
-		this.salaTimes[0] = "00:01";
-		this.salaTimes[2] = "00:02";
-		this.salaTimes[3] = "00:03";
-		this.salaTimes[5] = "23:58";
-		this.salaTimes[6] = "23:59";
-*/
-
+		this.salaTimes[0] = "05:10";
+		this.salaTimes[2] = "05:13";
+		this.salaTimes[3] = "05:16";
+		this.salaTimes[5] = "05:19";
+		this.salaTimes[6] = "05:22";
 
 		Log.i("Salat app", "Sataltimes : "+java.util.Arrays.asList(salaTimes).toString());
 	}
@@ -222,30 +195,6 @@ public class SalatApplication{
 		setSalatTimes(0);
 		return this.getTimeLeft() + now.getTimeInMillis();
 	}
-
-	//public void startAlarm(Context context)
-	//{
-		//Calendar now = Calendar.getInstance();
-		//initCalendar();
-		//setSalatTimes();
-		//long timeToSalat = this.getTimeLeft() + now.getTimeInMillis();
-		//Intent intent = new Intent(context, SalatReceiver.class);
-		//PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-		//AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-		//alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
-		//Log.i("Salat app", "Next salat is " + nextSalat  + " in " + timeToSalat);
-//
-	//}
-
-	//public void stopAlarm(Context context)
-	//{
-		//Intent intent = new Intent(context, SalatReceiver.class);
-		//PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-		//
-		//AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-		//alarmManager.cancel(pendingIntent);
-		//Log.i("Salat app", "Alarm Stopped");
-	//}
 
 	public String getCity()
 	{
