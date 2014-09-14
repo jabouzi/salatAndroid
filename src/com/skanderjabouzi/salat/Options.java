@@ -7,6 +7,7 @@ public class Options {
 	private int asr;
 	private int hijri;
 	private int higherLatitude;
+	private int adhan;
 
 	public long getId() {
 		return id;
@@ -46,6 +47,14 @@ public class Options {
 
 	public void setHigherLatitude(int higherLatitude) {
 		this.higherLatitude = higherLatitude;
+	}
+
+	public int getAdhan() {
+		return adhan;
+	}
+
+	public void setAdhan(int adhan) {
+		this.adhan = adhan;
 	}
 
 }

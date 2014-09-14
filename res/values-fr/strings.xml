@@ -62,7 +62,7 @@
     <string name="ChristianCalendar">Calendrier chrétien</string>
     <string name="hijriDates">Conversion du hijri</string>
     <string name="adhanOptions">Options du adhan</string>
-    <string name="stopAthan">Stopper l\'athan</string>
+    <string name="stopadhan">Stopper l\'adhan</string>
     <string name="about">À propos de l\'application</string>
 
     <string-array name="calculation">
@@ -121,6 +121,20 @@
     </string-array>
 
     <string-array name="highLatitudesValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="adhanOptions">
+        <item>Play video only</item>
+        <item>Vibrate only</item>
+        <item>Play video and vibrate</item>
+        <item>No adhan</item>
+    </string-array>
+
+    <string-array name="adhanOptionsValues">
         <item>1</item>
         <item>2</item>
         <item>3</item>

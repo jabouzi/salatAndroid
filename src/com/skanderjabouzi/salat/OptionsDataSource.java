@@ -36,6 +36,7 @@ public class OptionsDataSource {
 		values.put("asr", options.getAsr());
 		values.put("hijri", options.getHijri());
 		values.put("higherLatitude", options.getHigherLatitude());
+		values.put("adhan", options.getAdhan());
 
 		database.insert("options", null, values);
 		database.close();
@@ -43,11 +44,12 @@ public class OptionsDataSource {
 
 	// Getting single options
 	Options getOptions(int id) {
-		Cursor cursor = database.query("options", new String[] { "id",
-				"method", "asr", "hijri", "higherLatitude"}," id = ?",
-				new String[] { String.valueOf(id) }, null, null, null, null);
-		if (cursor != null)
-			cursor.moveToFirst();
+		//Cursor cursor = database.query("options", new String[] { "id", "method", "asr", "hijri", "higherLatitude", "adhan"}," id = ?",
+				//new String[] { String.valueOf(id) }, null, null, null, null, null);
+				Cursor cursor = database.query("options", new String[] { "id",
+				"method", "asr", "hijri", "higherLatitude", "adhan"}," id = ?",
+				new String[] { String.valueOf(id) }, null, null, null, null, null);
+		if (cursor != null) cursor.moveToFirst();
 
 		Options options = new Options();
 		options.setId(cursor.getLong(0));
@@ -55,6 +57,7 @@ public class OptionsDataSource {
 		options.setAsr(cursor.getInt(2));
 		options.setHijri(cursor.getInt(3));
 		options.setHigherLatitude(cursor.getInt(4));
+		options.setAdhan(cursor.getInt(5));
 		cursor.close();
 		
 		// return options
@@ -91,6 +94,7 @@ public class OptionsDataSource {
 		values.put("asr", options.getAsr());
 		values.put("hijri", options.getHijri());
 		values.put("higherLatitude", options.getHigherLatitude());
+		values.put("adhan", options.getAdhan());
 
 		// updating row
 		return database.update("options", values," id = ?",

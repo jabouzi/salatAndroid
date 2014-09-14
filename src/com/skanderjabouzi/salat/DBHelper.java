@@ -11,7 +11,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	private static final int DATABASE_VERSION = 1;
 
 	private static final String OPTIONS_CREATE =
-	" CREATE TABLE options (id integer, method integer, asr integer, hijri integer, higherLatitude integer); ";
+	" CREATE TABLE options (id integer, method integer, asr integer, hijri integer, higherLatitude integer, adhan integer); ";
 	private static final String LOCATION_CREATE =	
 	" CREATE TABLE location (id integer, latitude float, longitude float, country string, city string, timezone float); ";
 	Context dBcontext;
@@ -26,7 +26,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		String setApp = dBcontext.getString(R.string.cityCountry).replaceAll("'","''");
 		database.execSQL(OPTIONS_CREATE);
 		database.execSQL(LOCATION_CREATE);
-		database.execSQL(" INSERT INTO options VALUES ('1','1','1','1','1'); ");
+		database.execSQL(" INSERT INTO options VALUES ('1','1','1','1','1','1'); ");
 		database.execSQL(" INSERT INTO location VALUES ('1','0','0','"+setApp+"','"+setApp+"','0'); ");
 		Log.i("DBHelper", "DB Created");
 	}
@@ -36,7 +36,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		Log.w(DBHelper.class.getName(),
 				"Upgrading database from version " + oldVersion + " to "
 						+ newVersion + ", which will destroy all old data");
-		db.execSQL("DROP TABLE IF EXISTS options; DROP TABLE IF EXISTS options;");
+		db.execSQL("DROP TABLE IF EXISTS options; DROP TABLE IF EXISTS location;");
 		onCreate(db);
 	}
 }

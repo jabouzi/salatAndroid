@@ -27,7 +27,7 @@ import android.provider.Settings;
 public class SettingsActivity extends Activity implements OnItemSelectedListener{
 
 	static final String SEND_LOCATION_NOTIFICATIONS = "com.skanderjabouzi.salat.SEND_LOCATION_NOTIFICATIONS";
-	private Spinner method, asr, hijri, highLatitudes;
+	private Spinner method, asr, hijri, highLatitudes, adhan;
 	private EditText latitude, longitude, timezone, city, country;
 	private Button btnsaveSettings, btnDetectLocation;
 	private OptionsDataSource odatasource;
@@ -109,6 +109,12 @@ public class SettingsActivity extends Activity implements OnItemSelectedListener
 		pos = options.getHigherLatitude() - 1;
 		if (pos < 0) pos = 0;
 		highLatitudes.setSelection(pos);
+		
+		adhan = (Spinner) findViewById(R.id.adhan);
+		adhan.setOnItemSelectedListener(this);
+		pos = options.getAdhan() - 1;
+		if (pos < 0) pos = 0;
+		adhan.setSelection(pos);
 	}
 
 	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -158,6 +164,9 @@ public class SettingsActivity extends Activity implements OnItemSelectedListener
 
 				pos = highLatitudes.getSelectedItemPosition() + 1;
 				options.setHigherLatitude(pos);
+				
+				pos = adhan.getSelectedItemPosition() + 1;
+				options.setAdhan(pos);
 
 				odatasource.updateOptions(options);
 		
