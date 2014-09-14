@@ -1,6 +1,7 @@
 package com.skanderjabouzi.salat;
 
 //import android.media.MediaPlayer;
+import android.app.AlarmManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +18,9 @@ import android.util.Log;
 public class AthanService extends Service{
 
     private static final String TAG = "ATHANSERVICE";
+    public static final String MIDNIGHT_INTENT = "com.skanderjabouzi.salat.MIDNIGHT_INTENT";
+    public static final String SALATTIME = "SALATTIME";
+    public static final String RECEIVE_SALATTIME_NOTIFICATIONS = "com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS";
 
     private NotificationManager notificationManager;
     private Notification notification;
@@ -37,7 +41,27 @@ public class AthanService extends Service{
         //WakeLock.unlock(this);
         //WakeLock.acquire(this);
         salatApp = new SalatApplication(this);
-        startAthan();
+		if (salatApp.isValidSalatTime())
+		{
+			if (SalatApplication.nextSalat == SalatApplication.MIDNIGHT)
+			{
+				changeDay();
+				Log.i(TAG, "changeDay");
+			}
+			else
+			{
+				startAthan();
+				Log.i(TAG, "startAthan");
+			}
+			Log.i("VALIDTIME", "TRUE");
+		}
+		else
+		{
+			Log.i("VALIDTIME", "FALSE");
+		}
+
+		SalatBootReceiver.setAlarm(this);
+        startAthan(); 
         Log.i(TAG, "start");
     }
 
@@ -49,7 +73,7 @@ public class AthanService extends Service{
         Log.i(TAG,"stop2");
     }
 
-    public void playAthan() {
+    private void playAthan() {
         super.onCreate();
         SalatApplication.athanPlaying = true;
         //SalatApplication salatApp = (SalatApplication) getApplication();
@@ -80,6 +104,17 @@ public class AthanService extends Service{
             //player = MediaPlayer.create(this, R.raw.bismillah);
         }
         stopService();
+    }
+    
+    private void changeDay() {
+        Intent intent;
+
+        intent = new Intent(MIDNIGHT_INTENT);
+        intent.putExtra(SALATTIME, "Midnight");
+        sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
+        Log.i(TAG, "onHandleIntent #4 " + "Midnight");
+        stopService();
+        //salatApp.startAlarm(getApplicationContext());
     }
 
     private void startAthan() {

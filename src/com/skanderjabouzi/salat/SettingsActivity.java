@@ -179,11 +179,7 @@ public class SettingsActivity extends Activity implements OnItemSelectedListener
 
 				ldatasource.updateLocation(location);
 				
-				long timeToSalat = salatApp.getTimeToSalat();
-				Intent athanIntent = new Intent(context, SalatReceiver.class);
-				PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-				AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-				alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
+				SalatBootReceiver.setAlarm(context);
 				finish();
 			}
 

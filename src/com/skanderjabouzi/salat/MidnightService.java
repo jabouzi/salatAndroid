@@ -34,7 +34,7 @@ public class MidnightService extends Service{
     @Override
     public void onDestroy() {
         super.onDestroy();
-        WakeLock.release("midnight");
+        //WakeLock.release("midnight");
         SalatApplication.athanPlaying = false;
         Log.i(TAG,"stop2");
     }

@@ -17,13 +17,7 @@ public class SalatTimeReciever extends BroadcastReceiver {
 		Log.i("ACTION2", action);
 		if (action.equals("android.intent.action.TIME_SET") || action.equals("android.intent.action.TIMEZONE_CHANGED"))
 		{
-			SalatApplication salatApp = new SalatApplication(context);
-			long timeToSalat = salatApp.getTimeToSalat();
-			Intent athanIntent = new Intent(context, SalatReceiver.class);
-			PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-			AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-			alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
-			Log.i("SalatTimeReciever", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
+			SalatBootReceiver.setAlarm(context);
 		}
 
 		Log.d("SalatTimeReceiver", "DATE CHANGED");
