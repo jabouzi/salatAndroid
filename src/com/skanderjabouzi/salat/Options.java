@@ -8,6 +8,7 @@ public class Options {
 	private int hijri;
 	private int higherLatitude;
 	private int adhan;
+	private int autoLocation;
 
 	public long getId() {
 		return id;
@@ -55,6 +56,14 @@ public class Options {
 
 	public void setAdhan(int adhan) {
 		this.adhan = adhan;
+	}
+	
+	public int getAutoLocation() {
+		return autoLocation;
+	}
+
+	public void setAutoLocation(int autoLocation) {
+		this.autoLocation = autoLocation;
 	}
 
 }

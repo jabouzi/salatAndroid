@@ -31,6 +31,8 @@ public class SalatApplication{
 	private int asrMethod;
 	private int hijriDays;
 	private int highLatitude;
+	private int adhan;
+	private int autoLocation;
 	private float latitude;
 	private float longitude;
 	private float timezone;
@@ -38,7 +40,7 @@ public class SalatApplication{
 	private String country;
 
 	public static int nextSalat;
-	public static boolean athanPlaying = false;
+	public static boolean adhanPlaying = false;
 	public static int prefType;
 
 	private OptionsDataSource optionsDataSource;
@@ -69,6 +71,8 @@ public class SalatApplication{
 		this.asrMethod = salatOptions.getAsr();
 		this.hijriDays = salatOptions.getHijri();
 		this.highLatitude = salatOptions.getHigherLatitude();
+		this.adhan = salatOptions.getAdhan();
+		this.autoLocation = salatOptions.getAutoLocation();
 		this.latitude = salatLocation.getLatitude();
 		this.longitude = salatLocation.getLongitude();
 		this.timezone = salatLocation.getTimezone();
@@ -77,7 +81,7 @@ public class SalatApplication{
 		this.locationDataSource.close();
 		this.optionsDataSource.close();
 		    
-		Log.i("Salat app", "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude);
+		Log.i("Salat app", "Calculation " + calcMethod + " " + asrMethod + " " + hijriDays + " " + highLatitude + " " + adhan + " " + autoLocation);
 		Log.i("Salat app", "Location " + String.valueOf(longitude) + " " + String.valueOf(latitude) + " " + String.valueOf(timezone));
 	}
 
@@ -204,6 +208,16 @@ public class SalatApplication{
 	public String getCountry()
 	{
 		return this.country;
+	}
+	
+	public int getAdhan()
+	{
+		return this.adhan;
+	}
+	
+	public int getAutoLocation()
+	{
+		return this.autoLocation;
 	}
 
 	public boolean isValidSalatTime()

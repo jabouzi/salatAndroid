@@ -64,6 +64,7 @@
     <string name="adhanOptions">Adhan Options</string>
     <string name="stopadhan">Stop adhan</string>
     <string name="about">About this app</string>
+    <string name="autoDetectLocation">Auto Detect Location</string>
 
     <string-array name="calculation">
         <item>Ithna Ashari</item>
@@ -139,6 +140,16 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+    </string-array>
+    
+    <string-array name="autoLocation">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="autoLocationValues">
+        <item>1</item>
+        <item>0</item>
     </string-array>
 
 </resources>

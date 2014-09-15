@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.view.View;
 import android.text.Html;
 import android.util.Log;
+import android.content.Context;
+import android.content.Intent;
 
 public class SalatQibla extends Activity implements SensorEventListener {
 
@@ -30,10 +32,12 @@ public class SalatQibla extends Activity implements SensorEventListener {
 	private LocationDataSource datasource;
 	private Location location;
 	private boolean background_changed = false;
+	private Context context = SalatQibla.this;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		startService(new Intent(context, LocationService.class));
 		setContentView(R.layout.qibla);
 		qiblaLayout = findViewById(R.id.qibla_bg);
 		image = (ImageView) findViewById(R.id.compass);

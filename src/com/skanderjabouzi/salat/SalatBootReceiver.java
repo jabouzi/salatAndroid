@@ -25,8 +25,8 @@ public class SalatBootReceiver extends BroadcastReceiver {
   public static void setAlarm(Context context) {
 		SalatApplication salatApp = new SalatApplication(context);
 		long timeToSalat = salatApp.getTimeToSalat();
-		Intent athanIntent = new Intent(context, AthanService.class);
-		PendingIntent pendingIntent = PendingIntent.getService(context, 0, athanIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+		Intent adhanIntent = new Intent(context, AdhanService.class);
+		PendingIntent pendingIntent = PendingIntent.getService(context, 0, adhanIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 		alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
 		Log.i("SalatBootReceiver", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);

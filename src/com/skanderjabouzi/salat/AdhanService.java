@@ -12,10 +12,8 @@ import android.os.Vibrator;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
-//import android.view.WindowManager;
-//import android.app.KeyguardManager;
 
-public class AthanService extends Service{
+public class AdhanService extends Service{
 
     private static final String TAG = "ATHANSERVICE";
     public static final String MIDNIGHT_INTENT = "com.skanderjabouzi.salat.MIDNIGHT_INTENT";
@@ -25,7 +23,7 @@ public class AthanService extends Service{
     private NotificationManager notificationManager;
     private Notification notification;
     //private MediaPlayer player;
-    private String athan;
+    private String adhan;
     private int mInitialCallState;
     public int salat = 0;
     SalatApplication salatApp;
@@ -38,8 +36,6 @@ public class AthanService extends Service{
     @Override
     public void onCreate() {
         super.onCreate(); 
-        //WakeLock.unlock(this);
-        //WakeLock.acquire(this);
         salatApp = new SalatApplication(this);
 		if (salatApp.isValidSalatTime())
 		{
@@ -50,8 +46,8 @@ public class AthanService extends Service{
 			}
 			else
 			{
-				startAthan();
-				Log.i(TAG, "startAthan");
+				startAdhan();
+				Log.i(TAG, "startAdhan");
 			}
 			Log.i("VALIDTIME", "TRUE");
 		}
@@ -61,7 +57,7 @@ public class AthanService extends Service{
 		}
 
 		SalatBootReceiver.setAlarm(this);
-        startAthan(); 
+        startAdhan(); 
         Log.i(TAG, "start");
     }
 
@@ -69,24 +65,22 @@ public class AthanService extends Service{
     public void onDestroy() {
         super.onDestroy();
         //stop();
-        SalatApplication.athanPlaying = false;
+        SalatApplication.adhanPlaying = false;
         Log.i(TAG,"stop2");
     }
 
-    private void playAthan() {
+    private void playAdhan() {
         super.onCreate();
-        SalatApplication.athanPlaying = true;
-        //SalatApplication salatApp = (SalatApplication) getApplication();
+        SalatApplication.adhanPlaying = true;
         if (SalatApplication.FAJR == salat)
         {
 			Log.i(TAG, "play -> " + salat);
 			Intent intent = new Intent();
 			intent.setClass(this, Video.class);
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			//intent.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED + WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD + WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON + WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 			intent.putExtra("TYPE", "FAJR");
 			startActivity(intent);
-            //player = MediaPlayer.create(this, R.raw.fajr_athan);
+            //player = MediaPlayer.create(this, R.raw.fajr_adhan);
             //play();
             //player = MediaPlayer.create(this, R.raw.bismillah);
         }
@@ -99,7 +93,7 @@ public class AthanService extends Service{
 			//intent.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED + WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD + WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON + WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 			intent.putExtra("TYPE", "SALAT");
 			startActivity(intent);
-            //player = MediaPlayer.create(this, R.raw.reg_athan);
+            //player = MediaPlayer.create(this, R.raw.reg_adhan);
             //play();
             //player = MediaPlayer.create(this, R.raw.bismillah);
         }
@@ -114,10 +108,9 @@ public class AthanService extends Service{
         sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
         Log.i(TAG, "onHandleIntent #4 " + "Midnight");
         stopService();
-        //salatApp.startAlarm(getApplicationContext());
     }
 
-    private void startAthan() {
+    private void startAdhan() {
         Intent intent;
         salatApp.getTimeLeft();
 		if (SalatApplication.nextSalat == 0) salat = 7;
@@ -129,8 +122,14 @@ public class AthanService extends Service{
 		this.notification = new Notification(R.drawable.makka_icon,"", 0);
 		String salatName = "";
 		if (salat < 7)	salatName = salatApp.salatNames[salat];
-		sendTimelineNotification(salatName);
-		playAthan();
+		if (salatApp.getAdhan() == 2 || salatApp.getAdhan() == 3)
+		{
+			sendTimelineNotification(salatName);
+		}		
+		if (salatApp.getAdhan() == 1 || salatApp.getAdhan() == 3)
+		{
+			playAdhan();
+		}
 		Log.i(TAG, "onHandleIntent #3 " + salat + " : " + salatName);
     }
 
@@ -149,7 +148,6 @@ public class AthanService extends Service{
         CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, salatName);
         this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent);
         this.notificationManager.notify(0, this.notification);
-        //startService(new Intent(this, AthanService.class));
 
         Log.i(TAG, "sendTimelineNotificatione -> " + salatName);
     }
@@ -161,20 +159,20 @@ public class AthanService extends Service{
             public void onCompletion(MediaPlayer player) {
                 stopService();
                 //WakeLock.release();
-                //AthanService.isPlaying = false;
+                //AdhanService.isPlaying = false;
                 Log.i(TAG,"stop1");
             }
         });
 
         //player.start();
         //player.setLooping(false);
-        //AthanService.isPlaying = true;
+        //AdhanService.isPlaying = true;
         Log.i(TAG, "start " + salat);*/
 	}
 
     private void stopService()
     {
-        stopService(new Intent(this, AthanService.class));
+        stopService(new Intent(this, AdhanService.class));
     }
 
     private void stop()

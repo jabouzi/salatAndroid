@@ -35,7 +35,7 @@ public class SalatReceiver extends BroadcastReceiver {
 			}
 			else
 			{
-				context.startService(new Intent(context, AthanService.class));
+				context.startService(new Intent(context, AdhanService.class));
 				Log.i("SalatReceiver", "onReceived 2");
 			}
 			Log.i("VALIDTIME", "TRUE");
@@ -46,8 +46,8 @@ public class SalatReceiver extends BroadcastReceiver {
 		}
 		//salatApp.setOptions(salatOptions, salatLocation);
 		long timeToSalat = salatApp.getTimeToSalat();
-		Intent athanIntent = new Intent(context, SalatReceiver.class);
-		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, athanIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+		Intent adhanIntent = new Intent(context, SalatReceiver.class);
+		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, adhanIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 		alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
 		Log.i("SalatReceiver", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);

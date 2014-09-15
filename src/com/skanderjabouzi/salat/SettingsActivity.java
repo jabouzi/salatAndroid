@@ -27,7 +27,7 @@ import android.provider.Settings;
 public class SettingsActivity extends Activity implements OnItemSelectedListener{
 
 	static final String SEND_LOCATION_NOTIFICATIONS = "com.skanderjabouzi.salat.SEND_LOCATION_NOTIFICATIONS";
-	private Spinner method, asr, hijri, highLatitudes, adhan;
+	private Spinner method, asr, hijri, autoLocation, adhan;
 	private EditText latitude, longitude, timezone, city, country;
 	private Button btnsaveSettings, btnDetectLocation;
 	private OptionsDataSource odatasource;
@@ -104,11 +104,11 @@ public class SettingsActivity extends Activity implements OnItemSelectedListener
 		if (pos < 0) pos = 0;
 		asr.setSelection(pos);
 
-		highLatitudes = (Spinner) findViewById(R.id.highLatitudes);
-		highLatitudes.setOnItemSelectedListener(this);
-		pos = options.getHigherLatitude() - 1;
+		autoLocation = (Spinner) findViewById(R.id.autoLocation);
+		autoLocation.setOnItemSelectedListener(this);
+		pos = options.getAutoLocation() - 1;
 		if (pos < 0) pos = 0;
-		highLatitudes.setSelection(pos);
+		autoLocation.setSelection(pos);
 		
 		adhan = (Spinner) findViewById(R.id.adhan);
 		adhan.setOnItemSelectedListener(this);
@@ -150,7 +150,7 @@ public class SettingsActivity extends Activity implements OnItemSelectedListener
 		
 				method = (Spinner) findViewById(R.id.calculation);
 				asr = (Spinner) findViewById(R.id.asr);
-				highLatitudes = (Spinner) findViewById(R.id.highLatitudes);
+				autoLocation = (Spinner) findViewById(R.id.autoLocation);
 				
 				options.setId(1);
 				
@@ -162,8 +162,8 @@ public class SettingsActivity extends Activity implements OnItemSelectedListener
 				
 				options.setHijri(0);
 
-				pos = highLatitudes.getSelectedItemPosition() + 1;
-				options.setHigherLatitude(pos);
+				pos = autoLocation.getSelectedItemPosition() + 1;
+				options.setAutoLocation(pos);
 				
 				pos = adhan.getSelectedItemPosition() + 1;
 				options.setAdhan(pos);

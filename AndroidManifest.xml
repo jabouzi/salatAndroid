@@ -92,7 +92,7 @@
 			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
 			android:screenOrientation="portrait" />
 
-    <service android:name="com.skanderjabouzi.salat.AthanService" android:enabled="true"/>
+    <service android:name="com.skanderjabouzi.salat.AdhanService" android:enabled="true"/>
     <service android:name="com.skanderjabouzi.salat.LocationService" android:enabled="true"/>
 
     <receiver android:name="com.skanderjabouzi.salat.SalatBootReceiver">
@@ -109,13 +109,13 @@
     
     <receiver android:name="com.skanderjabouzi.salat.SalatTimeReciever">
         <intent-filter>
-			<action android:name="android.intent.action.TIMEZONE_CHANGED" />
 			<action android:name="android.intent.action.TIME_SET" />
         </intent-filter>
     </receiver>
     
     <receiver android:name="com.skanderjabouzi.salat.NetworkReceiver">
 		<intent-filter>
+			<action android:name="android.intent.action.TIMEZONE_CHANGED" />
 			<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
 		</intent-filter>
     </receiver>

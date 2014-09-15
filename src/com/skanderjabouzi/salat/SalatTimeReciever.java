@@ -15,7 +15,7 @@ public class SalatTimeReciever extends BroadcastReceiver {
 		final String action = intent.getAction();
 		
 		Log.i("ACTION2", action);
-		if (action.equals("android.intent.action.TIME_SET") || action.equals("android.intent.action.TIMEZONE_CHANGED"))
+		if (action.equals("android.intent.action.TIME_SET"))
 		{
 			SalatBootReceiver.setAlarm(context);
 		}

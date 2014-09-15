@@ -64,6 +64,7 @@
     <string name="adhanOptions">خيارات الأذان</string>
     <string name="stopadhan">إيقاف الأذان</string>
     <string name="about">حول هذا التطبيق</string>
+    <string name="autoDetectLocation">Auto Detect Location</string>
 
     <string-array name="calculation">
         <item>الاثني عشرية</item>
@@ -140,5 +141,15 @@
         <item>3</item>
         <item>4</item>
     </string-array>
+    
+    <string-array name="autoLocation">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
 
+    <string-array name="autoLocationValues">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+    
 </resources>
