@@ -11,18 +11,18 @@ import android.util.Log;
 
 public class SalatBootReceiver extends BroadcastReceiver {
 
-  @Override
-  public void onReceive(Context context, Intent intent) {
+	@Override
+	public void onReceive(Context context, Intent intent) {
 		final String action = intent.getAction();
-		
+
 		Log.i("ACTION2", action);
 		if (action.equals("android.intent.action.BOOT_COMPLETED"))
 		{
 			setAlarm(context);
 		}
-  }
-  
-  public static void setAlarm(Context context) {
+	}
+
+	public static void setAlarm(Context context) {
 		SalatApplication salatApp = new SalatApplication(context);
 		long timeToSalat = salatApp.getTimeToSalat();
 		Intent adhanIntent = new Intent(context, AdhanService.class);

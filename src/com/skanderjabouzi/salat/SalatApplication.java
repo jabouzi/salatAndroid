@@ -222,13 +222,13 @@ public class SalatApplication{
 
 	public boolean isValidSalatTime()
 	{
-		getTimeToSalat();
+		//getTimeToSalat();
 		String[] timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()).split(":");
-		Log.i("Salat app", "VALIDATE : "+ nextSalat);
-		Log.i("Salat app", "Sataltimes : "+java.util.Arrays.asList(salaTimes).toString());
 		if (nextSalat < 7)
 		{
 			String[] times = salaTimes[nextSalat].split(":");
+			Log.i("Salat app", "times : "+java.util.Arrays.asList(times).toString());
+			Log.i("Salat app", "timeStamp : "+java.util.Arrays.asList(timeStamp).toString());
 			return (Integer.parseInt(timeStamp[0]) == Integer.parseInt(times[0]) && Integer.parseInt(timeStamp[1]) == Integer.parseInt(times[1]));
 		}
 		else

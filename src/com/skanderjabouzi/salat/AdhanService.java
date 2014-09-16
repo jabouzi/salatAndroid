@@ -37,6 +37,7 @@ public class AdhanService extends Service{
     public void onCreate() {
         super.onCreate(); 
         salatApp = new SalatApplication(this);
+        Log.i(TAG, "SalatApplication.nextSalat" + SalatApplication.nextSalat);
 		if (salatApp.isValidSalatTime())
 		{
 			if (SalatApplication.nextSalat == SalatApplication.MIDNIGHT)
@@ -55,9 +56,9 @@ public class AdhanService extends Service{
 		{
 			Log.i("VALIDTIME", "FALSE");
 		}
-
+		Log.i(TAG, "getAdhan" + salatApp.getAdhan());
 		SalatBootReceiver.setAlarm(this);
-        startAdhan(); 
+        //stopService();
         Log.i(TAG, "start");
     }
 
@@ -97,7 +98,6 @@ public class AdhanService extends Service{
             //play();
             //player = MediaPlayer.create(this, R.raw.bismillah);
         }
-        stopService();
     }
     
     private void changeDay() {
@@ -107,7 +107,7 @@ public class AdhanService extends Service{
         intent.putExtra(SALATTIME, "Midnight");
         sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
         Log.i(TAG, "onHandleIntent #4 " + "Midnight");
-        stopService();
+        //stopService();
     }
 
     private void startAdhan() {
@@ -173,6 +173,7 @@ public class AdhanService extends Service{
     private void stopService()
     {
         stopService(new Intent(this, AdhanService.class));
+        Log.i(TAG, "stopService");
     }
 
     private void stop()
