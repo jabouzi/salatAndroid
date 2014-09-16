@@ -15,7 +15,7 @@ import android.util.Log;
 
 public class AdhanService extends Service{
 
-    private static final String TAG = "ATHANSERVICE";
+    private static final String TAG = "ADHANSERVICE";
     public static final String MIDNIGHT_INTENT = "com.skanderjabouzi.salat.MIDNIGHT_INTENT";
     public static final String SALATTIME = "SALATTIME";
     public static final String RECEIVE_SALATTIME_NOTIFICATIONS = "com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS";
