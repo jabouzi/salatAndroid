@@ -15,13 +15,13 @@ public class SalatBootReceiver extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		final String action = intent.getAction();
 
-		Log.i("ACTION2", action);
 		if (action.equals("android.intent.action.BOOT_COMPLETED"))
 		{
-			SalatApplication salatApp = new SalatApplication(context);
-			salatApp.initCalendar();
-			salatApp.setSalatTimes(0);
-			salatApp.setAlarm(context);
+			Log.i("ACTION2", action);
+			SalatApplication salatApp = SalatApplication.getInstance(context);
+			//salatApp.initCalendar();
+			//salatApp.setSalatTimes(0);
+			salatApp.setAlarm(context, "Boot");
 		}
 	}
 }

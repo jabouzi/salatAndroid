@@ -51,7 +51,7 @@ public class NextActivity extends Activity {
 			}
 		};	
 		salatView.setOnTouchListener(onSwipeTouchListener);
-        salatApp = new SalatApplication(this);
+        salatApp = SalatApplication.getInstance(this);
         receiver = new MidnightReceiver();
         filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );
         Log.i("NextActivity", "Created");

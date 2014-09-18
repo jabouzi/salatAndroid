@@ -27,6 +27,7 @@ public class AdhanService extends Service{
     private int mInitialCallState;
     public int salat = 0;
     SalatApplication salatApp;
+    public int nextSalat;
 
     @Override
     public IBinder onBind(Intent arg0) {
@@ -36,11 +37,12 @@ public class AdhanService extends Service{
     @Override
     public void onCreate() {
         super.onCreate(); 
-        salatApp = new SalatApplication(this);
-        Log.i(TAG, "SalatApplication.nextSalat" + SalatApplication.nextSalat);
+        salatApp = SalatApplication.getInstance(this);
+        nextSalat = SalatApplication.nextSalat;
+        Log.i(TAG, "SalatApplication.nextSalat" + nextSalat);
 		if (salatApp.isValidSalatTime())
 		{
-			if (SalatApplication.nextSalat == SalatApplication.MIDNIGHT)
+			if (nextSalat == SalatApplication.MIDNIGHT)
 			{
 				changeDay();
 				Log.i(TAG, "changeDay");
@@ -57,7 +59,7 @@ public class AdhanService extends Service{
 			Log.i("VALIDTIME", "FALSE");
 		}
 		Log.i(TAG, "getAdhan" + salatApp.getAdhan());
-		salatApp.setAlarm(this);
+		salatApp.setAlarm(this, "Adhan");
         stopService();
         Log.i(TAG, "start");
     }
@@ -113,11 +115,11 @@ public class AdhanService extends Service{
     private void startAdhan() {
         Intent intent;
         salatApp.getTimeLeft();
-		if (SalatApplication.nextSalat == 0) salat = 7;
-        else if (SalatApplication.nextSalat == 2) salat = 0;
-        else if (SalatApplication.nextSalat == 5) salat = 3;
-        else salat = SalatApplication.nextSalat - 1;
-        Log.i(TAG, "SALAT -> " + salat + " NEXT -> " + SalatApplication.nextSalat);
+		if (nextSalat == 0) salat = 7;
+        else if (nextSalat == 2) salat = 0;
+        else if (nextSalat == 5) salat = 3;
+        else salat = nextSalat - 1;
+        Log.i(TAG, "SALAT -> " + salat + " NEXT -> " + nextSalat);
 		this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		this.notification = new Notification(R.drawable.makka_icon,"", 0);
 		String salatName = "";

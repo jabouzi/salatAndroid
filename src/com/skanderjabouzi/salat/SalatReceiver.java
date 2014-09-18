@@ -25,7 +25,7 @@ public class SalatReceiver extends BroadcastReceiver {
 		//locationDataSource = new LocationDataSource(context);
 		//locationDataSource.open();
 		//salatLocation = locationDataSource.getLocation(1);
-		SalatApplication salatApp = new SalatApplication(context);
+		SalatApplication salatApp = SalatApplication.getInstance(context);
 		if (salatApp.isValidSalatTime())
 		{
 			if (SalatApplication.nextSalat == SalatApplication.MIDNIGHT)

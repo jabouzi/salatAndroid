@@ -47,9 +47,11 @@ public class SalatApplication{
 	private LocationDataSource locationDataSource;
 	private Options salatOptions;
 	private Location salatLocation;
+	
+	private static SalatApplication instance = null;
 
 
-	public SalatApplication(Context context) {
+	protected SalatApplication(Context context) {
 		salatNames[0] = "Fajr";
 		salatNames[2] = "Duhr";
 		salatNames[3] = "Asr";
@@ -59,7 +61,15 @@ public class SalatApplication{
 		locationDataSource = new LocationDataSource(context);
 		setOptions();
 		Log.i("Salat app", "Constructor");
-	  }
+	}
+	
+
+	public static SalatApplication getInstance(Context context) {
+		if(instance == null) {
+			instance = new SalatApplication(context);
+		}
+		return instance;
+	}
 
 	public void setOptions()
 	{
@@ -89,7 +99,7 @@ public class SalatApplication{
 	{
 		if (this.calcMethod == 0)
 		{
-			this.prefType = 0;
+			//this.prefType = 0;
 			Log.i("Salat app", "CHECK CALC 0");
 			return false;
 		}
@@ -116,13 +126,13 @@ public class SalatApplication{
 
 		this.salaTimes = prayers.getDatePrayerTimes(year, month+1, day+nextDay, this.latitude, this.longitude, this.timezone);
 
-		this.salaTimes[0] = "06:20";
-		this.salaTimes[2] = "06:21";
-		this.salaTimes[3] = "06:22";
-		this.salaTimes[5] = "06:23";
-		this.salaTimes[6] = "06:24";
+		this.salaTimes[0] = "09:30";
+		this.salaTimes[2] = "09:31";
+		this.salaTimes[3] = "09:32";
+		this.salaTimes[5] = "09:33";
+		this.salaTimes[6] = "09:34";
 
-		Log.i("Salat app", "Sataltimes : "+java.util.Arrays.asList(salaTimes).toString());
+		Log.i("Salat app", "setSalatTimes : "+java.util.Arrays.asList(salaTimes).toString());
 	}
 
 	public String[] getSalatTimes()
@@ -245,7 +255,7 @@ public class SalatApplication{
 
 	private long getFajr()
 	{
-		Log.i("getFajr", "salaTimes : "+java.util.Arrays.asList(salaTimes).toString());
+		//Log.i("getFajr", "salaTimes : "+java.util.Arrays.asList(salaTimes).toString());
 		String[] times = this.salaTimes[0].split(":");
 		Calendar time = Calendar.getInstance();
 		time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
@@ -322,13 +332,14 @@ public class SalatApplication{
 		return hour*3600*1000+min*60*1000+sec*1000;
 	}
 	
-	public static void setAlarm(Context context) {
-		SalatApplication salatApp = new SalatApplication(context);
+	public static void setAlarm(Context context, String source) {
+		SalatApplication salatApp = SalatApplication.getInstance(context);
 		long timeToSalat = salatApp.getTimeToSalat();
 		Intent adhanIntent = new Intent(context, AdhanService.class);
 		PendingIntent pendingIntent = PendingIntent.getService(context, 0, adhanIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 		alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
 		Log.i("SalatApplication", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
+		Log.i("SalatApplication", "setAlarm - Source " + source);
 	}
 }

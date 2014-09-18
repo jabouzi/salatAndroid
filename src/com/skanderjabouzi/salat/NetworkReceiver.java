@@ -16,7 +16,7 @@ public class NetworkReceiver extends BroadcastReceiver {
 		if (action.equals("android.net.conn.CONNECTIVITY_CHANGE")  || action.equals("android.intent.action.TIMEZONE_CHANGED"))
 		{
 			
-			//SalatApplication salatApp = new SalatApplication(context);
+			//SalatApplication salatApp = SalatApplication.getInstance(context);
 			//salatApp.setAlarm(context);
 			
 			boolean isNetworkDown = intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false);    

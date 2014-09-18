@@ -40,7 +40,7 @@ public class LocationActivity extends Activity{
         setContentView(R.layout.location);
         receiver = new LocationReceiver();
         filter = new IntentFilter( LocationService.LOCATION_INTENT );
-        salatApp = new SalatApplication(this);
+        salatApp = SalatApplication.getInstance(this);
         locationIntent = new Intent(this, LocationService.class);
         datasource = new LocationDataSource(this);
 		datasource.open();

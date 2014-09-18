@@ -34,7 +34,7 @@ public class OptionsActivity extends Activity implements OnItemSelectedListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.options);
-        salatApp = new SalatApplication(this);
+        salatApp = SalatApplication.getInstance(this);
         athanIntent = new Intent(this, SalatReceiver.class);
 		pendingIntent = PendingIntent.getBroadcast(this, 0, athanIntent, 0);
 		datasource = new OptionsDataSource(this);

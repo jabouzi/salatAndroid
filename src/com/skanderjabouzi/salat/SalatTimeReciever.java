@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 public class SalatTimeReciever extends BroadcastReceiver {
 		
+	SalatApplication salatApp;
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		final String action = intent.getAction();
@@ -17,8 +18,8 @@ public class SalatTimeReciever extends BroadcastReceiver {
 		Log.i("ACTION2", action);
 		if (action.equals("android.intent.action.TIME_SET"))
 		{
-			SalatApplication salatApp = new SalatApplication(context);
-			salatApp.setAlarm(context);
+			salatApp = SalatApplication.getInstance(context);
+			salatApp.setAlarm(context, "TIME");
 		}
 
 		Log.d("SalatTimeReceiver", "DATE CHANGED");
