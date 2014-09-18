@@ -17,7 +17,8 @@ public class SalatTimeReciever extends BroadcastReceiver {
 		Log.i("ACTION2", action);
 		if (action.equals("android.intent.action.TIME_SET"))
 		{
-			SalatBootReceiver.setAlarm(context);
+			SalatApplication salatApp = new SalatApplication(context);
+			salatApp.setAlarm(context);
 		}
 
 		Log.d("SalatTimeReceiver", "DATE CHANGED");

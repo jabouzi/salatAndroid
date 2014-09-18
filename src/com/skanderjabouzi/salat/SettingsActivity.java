@@ -188,7 +188,7 @@ public class SettingsActivity extends Activity implements OnItemSelectedListener
 
 				ldatasource.updateLocation(location);
 				
-				SalatBootReceiver.setAlarm(context);
+				salatApp.setAlarm(context);
 				finish();
 			}
 

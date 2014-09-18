@@ -18,18 +18,10 @@ public class SalatBootReceiver extends BroadcastReceiver {
 		Log.i("ACTION2", action);
 		if (action.equals("android.intent.action.BOOT_COMPLETED"))
 		{
-			setAlarm(context);
+			SalatApplication salatApp = new SalatApplication(context);
+			salatApp.initCalendar();
+			salatApp.setSalatTimes(0);
+			salatApp.setAlarm(context);
 		}
-	}
-
-	public static void setAlarm(Context context) {
-		SalatApplication salatApp = new SalatApplication(context);
-		long timeToSalat = salatApp.getTimeToSalat();
-		Intent adhanIntent = new Intent(context, AdhanService.class);
-		PendingIntent pendingIntent = PendingIntent.getService(context, 0, adhanIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-		alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
-		Log.i("SalatBootReceiver", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
-		Log.i("SalatBootReceiver", "SalatOnReceived");
 	}
 }

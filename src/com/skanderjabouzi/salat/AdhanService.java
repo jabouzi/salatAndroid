@@ -57,8 +57,8 @@ public class AdhanService extends Service{
 			Log.i("VALIDTIME", "FALSE");
 		}
 		Log.i(TAG, "getAdhan" + salatApp.getAdhan());
-		SalatBootReceiver.setAlarm(this);
-        //stopService();
+		salatApp.setAlarm(this);
+        stopService();
         Log.i(TAG, "start");
     }
 
@@ -130,6 +130,7 @@ public class AdhanService extends Service{
 		{
 			playAdhan();
 		}
+
 		Log.i(TAG, "onHandleIntent #3 " + salat + " : " + salatName);
     }
 

@@ -116,11 +116,11 @@ public class SalatApplication{
 
 		this.salaTimes = prayers.getDatePrayerTimes(year, month+1, day+nextDay, this.latitude, this.longitude, this.timezone);
 
-		//this.salaTimes[0] = "07:58";
-		//this.salaTimes[2] = "08:00";
-		//this.salaTimes[3] = "08:02";
-		//this.salaTimes[5] = "08:04";
-		//this.salaTimes[6] = "08:06";
+		this.salaTimes[0] = "06:20";
+		this.salaTimes[2] = "06:21";
+		this.salaTimes[3] = "06:22";
+		this.salaTimes[5] = "06:23";
+		this.salaTimes[6] = "06:24";
 
 		Log.i("Salat app", "Sataltimes : "+java.util.Arrays.asList(salaTimes).toString());
 	}
@@ -197,6 +197,7 @@ public class SalatApplication{
 		Calendar now = Calendar.getInstance();
 		initCalendar();
 		setSalatTimes(0);
+		//Log.d("Salat TIME LEFT", getTimeLeft());
 		return this.getTimeLeft() + now.getTimeInMillis();
 	}
 
@@ -223,22 +224,28 @@ public class SalatApplication{
 	public boolean isValidSalatTime()
 	{
 		//getTimeToSalat();
-		String[] timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()).split(":");
-		if (nextSalat < 7)
-		{
-			String[] times = salaTimes[nextSalat].split(":");
-			Log.i("Salat app", "times : "+java.util.Arrays.asList(times).toString());
-			Log.i("Salat app", "timeStamp : "+java.util.Arrays.asList(timeStamp).toString());
-			return (Integer.parseInt(timeStamp[0]) == Integer.parseInt(times[0]) && Integer.parseInt(timeStamp[1]) == Integer.parseInt(times[1]));
-		}
-		else
-		{
-			return (Integer.parseInt(timeStamp[0]) == 0 && Integer.parseInt(timeStamp[1]) == 0);
-		}
+		//String[] timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()).split(":");
+		//Log.i("Salat app", "salaTimes : "+java.util.Arrays.asList(salaTimes).toString());
+		//Log.i("Salat app", "timeStamp : "+java.util.Arrays.asList(timeStamp).toString());
+		//Log.i("Salat app", "nextSalat : "+nextSalat);
+		//if (nextSalat < 7)
+		//{
+			//String[] times = salaTimes[nextSalat].split(":");
+			//Log.i("Salat app", "times : "+java.util.Arrays.asList(times).toString());
+			//Log.i("Salat app", "timeStamp : "+java.util.Arrays.asList(timeStamp).toString());
+			//return (Integer.parseInt(timeStamp[0]) == Integer.parseInt(times[0]) && Integer.parseInt(timeStamp[1]) == Integer.parseInt(times[1]));
+		//}
+		//else
+		//{
+			//return (Integer.parseInt(timeStamp[0]) == 0 && Integer.parseInt(timeStamp[1]) == 0);
+		//}
+		
+		return true;
 	}
 
 	private long getFajr()
 	{
+		Log.i("getFajr", "salaTimes : "+java.util.Arrays.asList(salaTimes).toString());
 		String[] times = this.salaTimes[0].split(":");
 		Calendar time = Calendar.getInstance();
 		time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
@@ -313,5 +320,15 @@ public class SalatApplication{
 	private long getTimeInMS(long hour, long min, long sec)
 	{
 		return hour*3600*1000+min*60*1000+sec*1000;
+	}
+	
+	public static void setAlarm(Context context) {
+		SalatApplication salatApp = new SalatApplication(context);
+		long timeToSalat = salatApp.getTimeToSalat();
+		Intent adhanIntent = new Intent(context, AdhanService.class);
+		PendingIntent pendingIntent = PendingIntent.getService(context, 0, adhanIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+		alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
+		Log.i("SalatApplication", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
 	}
 }
