@@ -39,7 +39,7 @@ public class AdhanService extends Service{
         super.onCreate(); 
         salatApp = SalatApplication.getInstance(this);
         nextSalat = SalatApplication.nextSalat;
-        Log.i(TAG, "SalatApplication.nextSalat" + nextSalat);
+        Log.i(TAG, "SalatApplication.nextSalat : " + nextSalat);
 		if (salatApp.isValidSalatTime())
 		{
 			if (nextSalat == SalatApplication.MIDNIGHT)
@@ -60,7 +60,7 @@ public class AdhanService extends Service{
 		}
 		Log.i(TAG, "getAdhan" + salatApp.getAdhan());
 		salatApp.setAlarm(this, "Adhan");
-        stopService();
+        //stopService();
         Log.i(TAG, "start");
     }
 
@@ -100,6 +100,7 @@ public class AdhanService extends Service{
             //play();
             //player = MediaPlayer.create(this, R.raw.bismillah);
         }
+        stopService();
     }
     
     private void changeDay() {
@@ -114,43 +115,51 @@ public class AdhanService extends Service{
 
     private void startAdhan() {
         Intent intent;
-        salatApp.getTimeLeft();
-		if (nextSalat == 0) salat = 7;
-        else if (nextSalat == 2) salat = 0;
-        else if (nextSalat == 5) salat = 3;
-        else salat = nextSalat - 1;
-        Log.i(TAG, "SALAT -> " + salat + " NEXT -> " + nextSalat);
+		//if (nextSalat == 0) salat = 7;
+        //else if (nextSalat == 2) salat = 0;
+        //else if (nextSalat == 5) salat = 3;
+        //else salat = nextSalat - 1;
+        Log.i(TAG, " SALAT -> " + nextSalat);
 		this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		this.notification = new Notification(R.drawable.makka_icon,"", 0);
 		String salatName = "";
-		if (salat < 7)	salatName = salatApp.salatNames[salat];
-		if (salatApp.getAdhan() == 2 || salatApp.getAdhan() == 3)
-		{
-			sendTimelineNotification(salatName);
-		}		
+		if (nextSalat < 7)	salatName = salatApp.salatNames[nextSalat];
+		sendTimelineNotification(salatName);
 		if (salatApp.getAdhan() == 1 || salatApp.getAdhan() == 3)
 		{
 			playAdhan();
 		}
+		else
+		{
+			stopService();
+		}
 
-		Log.i(TAG, "onHandleIntent #3 " + salat + " : " + salatName);
+		Log.i(TAG, "onHandleIntent #3 " + nextSalat + " : " + salatName);
     }
 
     private void sendTimelineNotification(String salatName) {
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, -1, new Intent(this, SalatActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
-        this.notification.when = System.currentTimeMillis();
-        this.notification.defaults |= Notification.DEFAULT_VIBRATE;
-        this.notification.flags |= Notification.FLAG_AUTO_CANCEL ;
-        this.notification.flags |= Notification.FLAG_SHOW_LIGHTS;
-        this.notification.ledARGB = 0xff00ff00;
-        this.notification.ledOnMS = 300;
-        this.notification.ledOffMS = 1000;
-        this.notification.vibrate = new long[]{0,100,200,300};
+        if (salatApp.getAdhan() == 2 || salatApp.getAdhan() == 3)
+		{
+			this.notification.when = System.currentTimeMillis();
+			this.notification.defaults |= Notification.DEFAULT_VIBRATE;
+			this.notification.flags |= Notification.FLAG_AUTO_CANCEL ;
+			this.notification.flags |= Notification.FLAG_SHOW_LIGHTS;
+			this.notification.ledARGB = 0xff00ff00;
+			this.notification.ledOnMS = 300;
+			this.notification.ledOffMS = 1000;
+			this.notification.vibrate = new long[]{0,100,200,300};
+		}
         CharSequence notificationTitle = this.getText(R.string.msgNotificationTitle);
         CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, salatName);
         this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent);
         this.notificationManager.notify(0, this.notification);
+        
+        if (salatApp.getAdhan() == 2)
+        {
+			stopService();
+		}
 
         Log.i(TAG, "sendTimelineNotificatione -> " + salatName);
     }
