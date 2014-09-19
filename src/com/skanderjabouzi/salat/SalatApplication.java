@@ -126,11 +126,11 @@ public class SalatApplication{
 
 		this.salaTimes = prayers.getDatePrayerTimes(year, month+1, day+nextDay, this.latitude, this.longitude, this.timezone);
 
-		//this.salaTimes[0] = "09:44";
-		//this.salaTimes[2] = "09:45";
-		//this.salaTimes[3] = "09:46";
-		//this.salaTimes[5] = "09:47";
-		//this.salaTimes[6] = "09:48";
+		//this.salaTimes[0] = "22:50";
+		//this.salaTimes[2] = "22:51";
+		//this.salaTimes[3] = "22:52";
+		//this.salaTimes[5] = "22:53";
+		//this.salaTimes[6] = "22:54";
 
 		Log.i("Salat app", "setSalatTimes : "+java.util.Arrays.asList(salaTimes).toString());
 	}
@@ -233,9 +233,7 @@ public class SalatApplication{
 
 	public boolean isValidSalatTime()
 	{
-		getTimeToSalat();
 		String[] timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()).split(":");
-		Log.i("Salat app", "salaTimes : "+java.util.Arrays.asList(salaTimes).toString());
 		Log.i("Salat app", "timeStamp : "+java.util.Arrays.asList(timeStamp).toString());
 		Log.i("Salat app", "nextSalat : "+nextSalat);
 		if (nextSalat < 7)

@@ -57,6 +57,8 @@ public class LocationDataSource {
 		location.setCity(cursor.getString(3));
 		location.setCountry(cursor.getString(4));
 		location.setTimezone(cursor.getFloat(5));
+		cursor.close();
+		
 		// return location
 		return location;
 	}
