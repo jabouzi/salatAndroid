@@ -233,22 +233,22 @@ public class SalatApplication{
 
 	public boolean isValidSalatTime()
 	{
-		String[] timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()).split(":");
-		Log.i("Salat app", "timeStamp : "+java.util.Arrays.asList(timeStamp).toString());
-		Log.i("Salat app", "nextSalat : "+nextSalat);
-		if (nextSalat < 7)
-		{
-			String[] times = salaTimes[nextSalat].split(":");
-			Log.i("Salat app", "times : "+java.util.Arrays.asList(times).toString());
-			Log.i("Salat app", "timeStamp : "+java.util.Arrays.asList(timeStamp).toString());
-			return (Integer.parseInt(timeStamp[0]) == Integer.parseInt(times[0]) && Integer.parseInt(timeStamp[1]) == Integer.parseInt(times[1]));
-		}
-		else
-		{
-			return (Integer.parseInt(timeStamp[0]) == 0 && Integer.parseInt(timeStamp[1]) == 0);
-		}
+		//String[] timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()).split(":");
+		//Log.i("Salat app", "timeStamp : "+java.util.Arrays.asList(timeStamp).toString());
+		//Log.i("Salat app", "nextSalat : "+nextSalat);
+		//if (nextSalat < 7)
+		//{
+			//String[] times = salaTimes[nextSalat].split(":");
+			//Log.i("Salat app", "times : "+java.util.Arrays.asList(times).toString());
+			//Log.i("Salat app", "timeStamp : "+java.util.Arrays.asList(timeStamp).toString());
+			//return (Integer.parseInt(timeStamp[0]) == Integer.parseInt(times[0]) && Integer.parseInt(timeStamp[1]) == Integer.parseInt(times[1]));
+		//}
+		//else
+		//{
+			//return (Integer.parseInt(timeStamp[0]) == 0 && Integer.parseInt(timeStamp[1]) == 0);
+		//}
 		
-		//return true;
+		return true;
 	}
 
 	private long getFajr()
