@@ -332,12 +332,26 @@ public class SalatApplication{
 	
 	public static void setAlarm(Context context, String source) {
 		SalatApplication salatApp = SalatApplication.getInstance(context);
+		salatApp.cancelAlarm(context, source);
 		long timeToSalat = salatApp.getTimeToSalat();
 		Intent adhanIntent = new Intent(context, AdhanService.class);
-		PendingIntent pendingIntent = PendingIntent.getService(context, 0, adhanIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+		Log.i("SalatApplication", "Next salat is " + salatApp.nextSalat  + " / " + SalatApplication.nextSalat);
+		if (SalatApplication.nextSalat == 7) adhanIntent.putExtra("TIME", "00:00");
+		else adhanIntent.putExtra("TIME", salaTimes[SalatApplication.nextSalat]);
+		PendingIntent pendingIntent = PendingIntent.getService(context, 0, adhanIntent, 0);
 		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 		alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
 		Log.i("SalatApplication", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
 		Log.i("SalatApplication", "setAlarm - Source " + source);
+	}
+	
+	public static void cancelAlarm(Context context, String source) {
+		Intent adhanIntent = new Intent(context, AdhanService.class);
+		PendingIntent pendingIntent = PendingIntent.getService(context, 0, adhanIntent, 0);
+		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+		alarmManager.cancel(pendingIntent);
+		pendingIntent.cancel();
+		//Log.i("SalatApplication", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
+		Log.i("SalatApplication", "cancelAlarm - Source " + source);
 	}
 }

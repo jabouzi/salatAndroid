@@ -12,6 +12,8 @@ import android.os.Vibrator;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
 public class AdhanService extends Service{
 
@@ -26,42 +28,49 @@ public class AdhanService extends Service{
     private String adhan;
     private int mInitialCallState;
     SalatApplication salatApp;
-    public int nextSalat = 0;
+    public int nextSalat = -1;
 
     @Override
     public IBinder onBind(Intent arg0) {
         return null;
     }
-
+    
     @Override
-    public void onCreate() {
-        super.onCreate(); 
-        salatApp = SalatApplication.getInstance(this);
-        nextSalat = SalatApplication.nextSalat;
-        Log.i(TAG, "SalatApplication.nextSalat : " + nextSalat);
-		//if (salatApp.isValidSalatTime())
-		//{
-			if (nextSalat == SalatApplication.MIDNIGHT)
-			{
-				changeDay();
-				Log.i(TAG, "changeDay");
-			}
-			else
-			{
-				startAdhan();
-				Log.i(TAG, "startAdhan");
-			}
-			//Log.i("VALIDTIME", "TRUE");
-		//}
-		//else
-		//{
-			//Log.i("VALIDTIME", "FALSE");
-		//}
-		Log.i(TAG, "getAdhan" + salatApp.getAdhan());
-		salatApp.setAlarm(this, "Adhan");
-        //stopService();
-        Log.i(TAG, "start");
-    }
+	public int onStartCommand(Intent intent, int flags, int startId) {
+		String timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
+		String extraString = intent.getStringExtra("TIME");
+		Log.i(TAG, "onStartCommand : extraString : " + extraString);
+		Log.i(TAG, "onStartCommand : timeStamp : " + timeStamp);
+		if (extraString.equals(timeStamp))
+		{
+			salatApp = SalatApplication.getInstance(this);
+			nextSalat = SalatApplication.nextSalat;
+			Log.i(TAG, "onCreate : nextSalat : " + nextSalat);
+			//if (salatApp.isValidSalatTime())
+			//{
+				if (nextSalat == SalatApplication.MIDNIGHT)
+				{
+					changeDay();
+					Log.i(TAG, "changeDay");
+				}
+				else
+				{
+					startAdhan();
+					Log.i(TAG, "startAdhan");
+				}
+				//Log.i("VALIDTIME", "TRUE");
+			//}
+			//else
+			//{
+				//Log.i("VALIDTIME", "FALSE");
+			//}
+			Log.i(TAG, "getAdhan" + salatApp.getAdhan());
+			salatApp.setAlarm(this, "Adhan");
+			//stopService();
+			Log.i(TAG, "start");
+		}
+		return super.onStartCommand(intent, flags, startId);
+	}
 
     @Override
     public void onDestroy() {
