@@ -25,9 +25,8 @@ public class AdhanService extends Service{
     //private MediaPlayer player;
     private String adhan;
     private int mInitialCallState;
-    public int salat = 0;
     SalatApplication salatApp;
-    public int nextSalat;
+    public int nextSalat = 0;
 
     @Override
     public IBinder onBind(Intent arg0) {
@@ -40,8 +39,8 @@ public class AdhanService extends Service{
         salatApp = SalatApplication.getInstance(this);
         nextSalat = SalatApplication.nextSalat;
         Log.i(TAG, "SalatApplication.nextSalat : " + nextSalat);
-		if (salatApp.isValidSalatTime())
-		{
+		//if (salatApp.isValidSalatTime())
+		//{
 			if (nextSalat == SalatApplication.MIDNIGHT)
 			{
 				changeDay();
@@ -52,12 +51,12 @@ public class AdhanService extends Service{
 				startAdhan();
 				Log.i(TAG, "startAdhan");
 			}
-			Log.i("VALIDTIME", "TRUE");
-		}
-		else
-		{
-			Log.i("VALIDTIME", "FALSE");
-		}
+			//Log.i("VALIDTIME", "TRUE");
+		//}
+		//else
+		//{
+			//Log.i("VALIDTIME", "FALSE");
+		//}
 		Log.i(TAG, "getAdhan" + salatApp.getAdhan());
 		salatApp.setAlarm(this, "Adhan");
         //stopService();
@@ -75,9 +74,9 @@ public class AdhanService extends Service{
     private void playAdhan() {
         super.onCreate();
         SalatApplication.adhanPlaying = true;
-        if (SalatApplication.FAJR == salat)
+        if (SalatApplication.FAJR == nextSalat)
         {
-			Log.i(TAG, "play -> " + salat);
+			Log.i(TAG, "play -> " + nextSalat);
 			Intent intent = new Intent();
 			intent.setClass(this, Video.class);
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -87,9 +86,9 @@ public class AdhanService extends Service{
             //play();
             //player = MediaPlayer.create(this, R.raw.bismillah);
         }
-        else if (SalatApplication.MIDNIGHT > salat)
+        else /*if (SalatApplication.MIDNIGHT > nextSalat)*/
         {
-			Log.i(TAG, "play -> " + salat);
+			Log.i(TAG, "play -> " + nextSalat);
 			Intent intent = new Intent();
 			intent.setClass(this, Video.class);
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -105,12 +104,11 @@ public class AdhanService extends Service{
     
     private void changeDay() {
         Intent intent;
-
         intent = new Intent(MIDNIGHT_INTENT);
         intent.putExtra(SALATTIME, "Midnight");
         sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
         Log.i(TAG, "onHandleIntent #4 " + "Midnight");
-        //stopService();
+        stopService();
     }
 
     private void startAdhan() {
@@ -119,11 +117,12 @@ public class AdhanService extends Service{
         //else if (nextSalat == 2) salat = 0;
         //else if (nextSalat == 5) salat = 3;
         //else salat = nextSalat - 1;
-        Log.i(TAG, " SALAT -> " + nextSalat);
+        Log.i(TAG, " STARTADHAN -> " + nextSalat);
 		this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		this.notification = new Notification(R.drawable.makka_icon,"", 0);
 		String salatName = "";
-		if (nextSalat < 7)	salatName = salatApp.salatNames[nextSalat];
+		//if (nextSalat < 7)	
+		salatName = salatApp.salatNames[nextSalat];
 		sendTimelineNotification(salatName);
 		if (salatApp.getAdhan() == 1 || salatApp.getAdhan() == 3)
 		{
@@ -142,7 +141,6 @@ public class AdhanService extends Service{
         PendingIntent pendingIntent = PendingIntent.getActivity(this, -1, new Intent(this, SalatActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
 		this.notification.when = System.currentTimeMillis();
-		this.notification.defaults |= Notification.DEFAULT_VIBRATE;
 		this.notification.flags |= Notification.FLAG_AUTO_CANCEL ;
 		this.notification.flags |= Notification.FLAG_SHOW_LIGHTS;
 		this.notification.ledARGB = 0xff00ff00;
@@ -150,6 +148,7 @@ public class AdhanService extends Service{
 		this.notification.ledOffMS = 1000;
 		if (salatApp.getAdhan() == 2 || salatApp.getAdhan() == 3)
 		{
+			this.notification.defaults |= Notification.DEFAULT_VIBRATE;
 			this.notification.vibrate = new long[]{0,100,200,300};
 		}
         CharSequence notificationTitle = this.getText(R.string.msgNotificationTitle);
