@@ -140,15 +140,16 @@ public class AdhanService extends Service{
     private void sendTimelineNotification(String salatName) {
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, -1, new Intent(this, SalatActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
-        if (salatApp.getAdhan() == 2 || salatApp.getAdhan() == 3)
+
+		this.notification.when = System.currentTimeMillis();
+		this.notification.defaults |= Notification.DEFAULT_VIBRATE;
+		this.notification.flags |= Notification.FLAG_AUTO_CANCEL ;
+		this.notification.flags |= Notification.FLAG_SHOW_LIGHTS;
+		this.notification.ledARGB = 0xff00ff00;
+		this.notification.ledOnMS = 300;
+		this.notification.ledOffMS = 1000;
+		if (salatApp.getAdhan() == 2 || salatApp.getAdhan() == 3)
 		{
-			this.notification.when = System.currentTimeMillis();
-			this.notification.defaults |= Notification.DEFAULT_VIBRATE;
-			this.notification.flags |= Notification.FLAG_AUTO_CANCEL ;
-			this.notification.flags |= Notification.FLAG_SHOW_LIGHTS;
-			this.notification.ledARGB = 0xff00ff00;
-			this.notification.ledOnMS = 300;
-			this.notification.ledOffMS = 1000;
 			this.notification.vibrate = new long[]{0,100,200,300};
 		}
         CharSequence notificationTitle = this.getText(R.string.msgNotificationTitle);
