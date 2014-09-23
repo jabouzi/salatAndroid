@@ -27,6 +27,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import android.os.Handler;
 
 
 public class LocationService extends Service implements LocationListener{
@@ -40,26 +41,39 @@ public class LocationService extends Service implements LocationListener{
     boolean isGPSEnabled = false;
 	boolean isNetworkEnabled = false;
 	boolean canGetLocation = false;
+	boolean runService = true;
 	double latitude; 
 	double longitude; 
 	private String Address1 = "", Address2 = "", City = "", State = "", Country = "", County = "", PIN = "";
 	Location location;	
 	private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
 	private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
+	private int mInterval = 5000;
+	private final Handler mHandler = new Handler();
+	private Runnable mUpdateTimeTask;
+	SalatApplication salatApp;
     
     @Override
      public IBinder onBind(Intent arg0) {
 		return null;
     }
-
+    
     @Override
-    public void onCreate() {
-        super.onCreate();
-		getLocation();
-		getGeoLocation();
-        cleanLocation();
-        stopService();
-    }
+	public int onStartCommand(Intent intent, int flags, int startId) {
+		salatApp = SalatApplication.getInstance(context);
+			mUpdateTimeTask = new Runnable() {
+				public void run() {
+					Log.i(TAG,"runService : " + runService);
+					getLocation();
+					if (runService)	mHandler.postDelayed (mUpdateTimeTask, mInterval);
+				}
+			};
+			mHandler.removeCallbacks(mUpdateTimeTask);
+			if (runService)	mHandler.postDelayed(mUpdateTimeTask, 100);
+		
+
+		return super.onStartCommand(intent, flags, startId);
+	}
     
     public void getLocation() {
 		try {
@@ -68,7 +82,8 @@ public class LocationService extends Service implements LocationListener{
 			isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
 			if (!isGPSEnabled && !isNetworkEnabled) {
-				sendNotification("GEO_NULL");
+				//sendNotification("GEO_NULL");
+				//stopService();
 			} 
 			else 
 			{
@@ -108,12 +123,14 @@ public class LocationService extends Service implements LocationListener{
 		{
 			e.printStackTrace();
 		}
+		getGeoLocation();
 	}
 	
 	public void getGeoLocation() {
 		if (location == null)
 		{
-			sendNotification("GEO_NULL");
+			//sendNotification("GEO_NULL");
+			//stopService();
 		}
 		else
 		{
@@ -176,12 +193,14 @@ public class LocationService extends Service implements LocationListener{
 				e.printStackTrace();                
 			}
 			
-
+			stopHandler();
+			cleanLocation();
 		}
 	}
 	
 	public void sendNotification(String extra)
 	{
+		runService = false;
 		Intent intent;
 		intent = new Intent(LOCATION_INTENT);
 		intent.putExtra(LOCATION, extra);
@@ -198,6 +217,7 @@ public class LocationService extends Service implements LocationListener{
     private void stopService()
     {
 		Log.i(TAG,"stop");
+		stopHandler();
         stopService(new Intent(this, LocationService.class));
     }
 
@@ -218,6 +238,13 @@ public class LocationService extends Service implements LocationListener{
     }
 
     private void cleanLocation() {
+		Log.i(TAG,"cleanLocation");
         locationManager.removeUpdates(this);
+        stopService();
+    }
+    
+    public void stopHandler() {
+		Log.i(TAG,"stopHandler");
+        mHandler.removeCallbacks(mUpdateTimeTask);
     }
 }
