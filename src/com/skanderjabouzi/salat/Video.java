@@ -30,9 +30,6 @@ public class Video extends Activity {
 		filter = new IntentFilter( SalatPhoneReceiver.PHONE_INTENT );
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
-		//getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		//final KeyguardManager.KeyguardLock kl=km.newKeyguardLock("SALAT");
-		//kl.disableKeyguard();
 		Log.d("VIDEO", "START");
 		Intent intent = getIntent();
 		String type = intent.getStringExtra("TYPE");
@@ -49,10 +46,8 @@ public class Video extends Activity {
 		myVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 			@Override
 			public void onCompletion(MediaPlayer mediaPlayer) {
-				//AthanService.this.kl.reenableKeyguard();
 				Video.this.finish();
 				WakeLock.release("onComplete");
-				//WakeLock.lock();
 			}
 		});
 		
@@ -63,22 +58,19 @@ public class Video extends Activity {
         {  
 			if(state==TelephonyManager.CALL_STATE_RINGING){
 				Video.this.finish();
-				//Toast.makeText(getApplicationContext(),"Phone Is Riging", Toast.LENGTH_LONG).show();
 			}  
                 
 			if(state==TelephonyManager.CALL_STATE_OFFHOOK){
 				Video.this.finish();
-				 //Toast.makeText(getApplicationContext(),"Phone is Currently in A call", Toast.LENGTH_LONG).show();  
 			}  
                                   
 			if(state==TelephonyManager.CALL_STATE_IDLE){
-				//Toast.makeText(getApplicationContext(),"phone is neither ringing nor in a call",  Toast.LENGTH_LONG).show();  
 			}  
         }  
         };  
         telephonyManager.listen(callStateListener,PhoneStateListener.LISTEN_CALL_STATE);  
 		myVideoView.setVideoURI(Uri.parse(fileName));
-		myVideoView.setMediaController(new MediaController(this));
+		//myVideoView.setMediaController(new MediaController(this));
 		myVideoView.requestFocus();
 		myVideoView.start();
    }
@@ -99,17 +91,13 @@ public class Video extends Activity {
     @Override
     protected void onStop() {
         super.onPause();
-        //AthanService.this.kl.reenableKeyguard();
         WakeLock.release("onStop");
-        //WakeLock.lock();
     }
     
 	@Override
     protected void onDestroy() {
         super.onPause();
-        //AthanService.this.kl.reenableKeyguard();
         WakeLock.release("onDestroy");
-        //WakeLock.lock();
     }
     
     class PhoneReceiver extends BroadcastReceiver {

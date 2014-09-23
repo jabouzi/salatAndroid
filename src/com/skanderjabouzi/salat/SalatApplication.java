@@ -40,7 +40,6 @@ public class SalatApplication{
 	private String country;
 
 	public static int nextSalat;
-	public static boolean adhanPlaying = false;
 	public static int prefType;
 
 	private OptionsDataSource optionsDataSource;
@@ -99,7 +98,6 @@ public class SalatApplication{
 	{
 		if (this.calcMethod == 0)
 		{
-			//this.prefType = 0;
 			Log.i("Salat app", "CHECK CALC 0");
 			return false;
 		}
@@ -163,42 +161,35 @@ public class SalatApplication{
 		if (getFajr() > 0)
 		{
 			this.nextSalat = FAJR;
-			//isSalat = true;
 			timeLeft = getFajr();
 		}
 		else if (getDuhr() > 0)
 		{
 			this.nextSalat = DUHR;
-			//isSalat = true;
 			timeLeft = getDuhr();
 		}
 		else if (getAsr() > 0)
 		{
 			this.nextSalat = ASR;
-			//isSalat = true;
 			timeLeft = getAsr();
 		}
 		else if (getMaghrib() > 0)
 		{
 			this.nextSalat = MAGHRIB;
-			//isSalat = true;
 			timeLeft = getMaghrib();
 		}
 		else if (getIsha() > 0)
 		{
 			this.nextSalat = ISHA;
-			//isSalat = true;
 			timeLeft = getIsha();
 		}
 		else if (getMidNight() > 0)
 		{
 			this.nextSalat = MIDNIGHT;
-			//isSalat = false;
 			timeLeft = getMidNight();
 		}
 		
 		Log.d("Salat NEXT", String.valueOf(nextSalat));
-		//Toast.makeText( getApplicationContext(),"nextSalat : "+ this.nextSalat,Toast.LENGTH_SHORT).show();
 		return timeLeft;
 	}
 
@@ -207,7 +198,6 @@ public class SalatApplication{
 		Calendar now = Calendar.getInstance();
 		initCalendar();
 		setSalatTimes(0);
-		//Log.d("Salat TIME LEFT", getTimeLeft());
 		return this.getTimeLeft() + now.getTimeInMillis();
 	}
 
@@ -231,29 +221,8 @@ public class SalatApplication{
 		return this.autoLocation;
 	}
 
-	public boolean isValidSalatTime()
-	{
-		//String[] timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()).split(":");
-		//Log.i("Salat app", "timeStamp : "+java.util.Arrays.asList(timeStamp).toString());
-		//Log.i("Salat app", "nextSalat : "+nextSalat);
-		//if (nextSalat < 7)
-		//{
-			//String[] times = salaTimes[nextSalat].split(":");
-			//Log.i("Salat app", "times : "+java.util.Arrays.asList(times).toString());
-			//Log.i("Salat app", "timeStamp : "+java.util.Arrays.asList(timeStamp).toString());
-			//return (Integer.parseInt(timeStamp[0]) == Integer.parseInt(times[0]) && Integer.parseInt(timeStamp[1]) == Integer.parseInt(times[1]));
-		//}
-		//else
-		//{
-			//return (Integer.parseInt(timeStamp[0]) == 0 && Integer.parseInt(timeStamp[1]) == 0);
-		//}
-		
-		return true;
-	}
-
 	private long getFajr()
 	{
-		//Log.i("getFajr", "salaTimes : "+java.util.Arrays.asList(salaTimes).toString());
 		String[] times = this.salaTimes[0].split(":");
 		Calendar time = Calendar.getInstance();
 		time.set(year, month, day, Integer.parseInt(times[0]), Integer.parseInt(times[1]),0);
@@ -351,7 +320,6 @@ public class SalatApplication{
 		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 		alarmManager.cancel(pendingIntent);
 		pendingIntent.cancel();
-		//Log.i("SalatApplication", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
 		Log.i("SalatApplication", "cancelAlarm - Source " + source);
 	}
 }

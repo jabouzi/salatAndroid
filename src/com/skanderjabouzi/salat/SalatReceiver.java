@@ -18,15 +18,8 @@ public class SalatReceiver extends BroadcastReceiver {
   @Override
   public void onReceive(Context context, Intent intent) {
 		
-		//WakeLock.acquire(context);
-		//optionsDataSource = new OptionsDataSource(context);
-		//optionsDataSource.open();
-		//salatOptions = optionsDataSource.getOptions(1);		
-		//locationDataSource = new LocationDataSource(context);
-		//locationDataSource.open();
-		//salatLocation = locationDataSource.getLocation(1);
 		SalatApplication salatApp = SalatApplication.getInstance(context);
-		if (salatApp.isValidSalatTime())
+		/*if (salatApp.isValidSalatTime())
 		{
 			if (SalatApplication.nextSalat == SalatApplication.MIDNIGHT)
 			{
@@ -51,6 +44,7 @@ public class SalatReceiver extends BroadcastReceiver {
 		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 		alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
 		Log.i("SalatReceiver", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
+		*/
 	//}
   }
 }

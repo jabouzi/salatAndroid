@@ -1,6 +1,5 @@
 package com.skanderjabouzi.salat;
 
-//import android.media.MediaPlayer;
 import android.app.AlarmManager;
 import android.app.Service;
 import android.content.Context;
@@ -24,7 +23,6 @@ public class AdhanService extends Service{
 
     private NotificationManager notificationManager;
     private Notification notification;
-    //private MediaPlayer player;
     private String adhan;
     private int mInitialCallState;
     SalatApplication salatApp;
@@ -46,27 +44,18 @@ public class AdhanService extends Service{
 			salatApp = SalatApplication.getInstance(this);
 			nextSalat = SalatApplication.nextSalat;
 			Log.i(TAG, "onCreate : nextSalat : " + nextSalat);
-			//if (salatApp.isValidSalatTime())
-			//{
-				if (nextSalat == SalatApplication.MIDNIGHT)
-				{
-					changeDay();
-					Log.i(TAG, "changeDay");
-				}
-				else
-				{
-					startAdhan();
-					Log.i(TAG, "startAdhan");
-				}
-				//Log.i("VALIDTIME", "TRUE");
-			//}
-			//else
-			//{
-				//Log.i("VALIDTIME", "FALSE");
-			//}
+			if (nextSalat == SalatApplication.MIDNIGHT)
+			{
+				changeDay();
+				Log.i(TAG, "changeDay");
+			}
+			else
+			{
+				startAdhan();
+				Log.i(TAG, "startAdhan");
+			}
 			Log.i(TAG, "getAdhan" + salatApp.getAdhan());
 			salatApp.setAlarm(this, "Adhan");
-			//stopService();
 			Log.i(TAG, "start");
 		}
 		return super.onStartCommand(intent, flags, startId);
@@ -75,14 +64,11 @@ public class AdhanService extends Service{
     @Override
     public void onDestroy() {
         super.onDestroy();
-        //stop();
-        SalatApplication.adhanPlaying = false;
         Log.i(TAG,"stop2");
     }
 
     private void playAdhan() {
         super.onCreate();
-        SalatApplication.adhanPlaying = true;
         if (SalatApplication.FAJR == nextSalat)
         {
 			Log.i(TAG, "play -> " + nextSalat);
@@ -91,22 +77,15 @@ public class AdhanService extends Service{
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			intent.putExtra("TYPE", "FAJR");
 			startActivity(intent);
-            //player = MediaPlayer.create(this, R.raw.fajr_adhan);
-            //play();
-            //player = MediaPlayer.create(this, R.raw.bismillah);
         }
-        else /*if (SalatApplication.MIDNIGHT > nextSalat)*/
+        else
         {
 			Log.i(TAG, "play -> " + nextSalat);
 			Intent intent = new Intent();
 			intent.setClass(this, Video.class);
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			//intent.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED + WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD + WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON + WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 			intent.putExtra("TYPE", "SALAT");
 			startActivity(intent);
-            //player = MediaPlayer.create(this, R.raw.reg_adhan);
-            //play();
-            //player = MediaPlayer.create(this, R.raw.bismillah);
         }
         stopService();
     }
@@ -122,15 +101,10 @@ public class AdhanService extends Service{
 
     private void startAdhan() {
         Intent intent;
-		//if (nextSalat == 0) salat = 7;
-        //else if (nextSalat == 2) salat = 0;
-        //else if (nextSalat == 5) salat = 3;
-        //else salat = nextSalat - 1;
         Log.i(TAG, " STARTADHAN -> " + nextSalat);
 		this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		this.notification = new Notification(R.drawable.makka_icon,"", 0);
 		String salatName = "";
-		//if (nextSalat < 7)	
 		salatName = salatApp.salatNames[nextSalat];
 		sendTimelineNotification(salatName);
 		if (salatApp.getAdhan() == 1 || salatApp.getAdhan() == 3)
@@ -173,39 +147,9 @@ public class AdhanService extends Service{
         Log.i(TAG, "sendTimelineNotificatione -> " + salatName);
     }
 
-    private void play()
-    {
-		/*player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer player) {
-                stopService();
-                //WakeLock.release();
-                //AdhanService.isPlaying = false;
-                Log.i(TAG,"stop1");
-            }
-        });
-
-        //player.start();
-        //player.setLooping(false);
-        //AdhanService.isPlaying = true;
-        Log.i(TAG, "start " + salat);*/
-	}
-
     private void stopService()
     {
         stopService(new Intent(this, AdhanService.class));
         Log.i(TAG, "stopService");
-    }
-
-    private void stop()
-    {
-        //if (player != null) {
-            //try {
-                //player.stop();
-                //player.release();
-            //} finally {
-                //player = null;
-            //}
-        //}
     }
 }

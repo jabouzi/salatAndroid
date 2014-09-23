@@ -34,8 +34,6 @@ public class MidnightService extends Service{
     @Override
     public void onDestroy() {
         super.onDestroy();
-        //WakeLock.release("midnight");
-        SalatApplication.adhanPlaying = false;
         Log.i(TAG,"stop2");
     }
 
@@ -47,7 +45,6 @@ public class MidnightService extends Service{
         sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
         Log.i(TAG, "onHandleIntent #4 " + "Midnight");
         stopService();
-        //salatApp.startAlarm(getApplicationContext());
     }
 
     private void stopService()
