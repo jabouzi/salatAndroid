@@ -62,12 +62,27 @@ public class SalatQibla extends Activity implements SensorEventListener {
 		super.onResume();
 		mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_NORMAL);
 	}
-
+	
 	@Override
-	protected void onPause() {
-		super.onPause();
-		mSensorManager.unregisterListener(this);
-	}
+    protected void onPause() {
+        super.onPause();
+        //finish();
+        mSensorManager.unregisterListener(this);
+    }
+    
+    @Override
+    protected void onStop() {
+        super.onStop();
+        //finish();
+        //mSensorManager.unregisterListener(this);
+    }
+    
+	@Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //finish();
+        //mSensorManager.unregisterListener(this);
+    }
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {

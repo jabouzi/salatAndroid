@@ -58,18 +58,24 @@ public class LocationActivity extends Activity{
     @Override
     protected void onPause() {
         super.onPause();
+        LocationActivity.this.finish();
         unregisterReceiver(receiver);
+        datasource.close();
     }
     
     @Override
     protected void onStop() {
-        super.onPause();
+        super.onStop();
+		LocationActivity.this.finish();
+        //unregisterReceiver(receiver);
         datasource.close();
     }
     
 	@Override
     protected void onDestroy() {
-        super.onPause();
+        super.onDestroy();
+        LocationActivity.this.finish();
+        //unregisterReceiver(receiver);
         datasource.close();
     }
 

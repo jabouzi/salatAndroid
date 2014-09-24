@@ -68,8 +68,23 @@ public class NextActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
+        //finish();
         unregisterReceiver(receiver);
     }
+    
+     @Override
+    protected void onStop() {
+        super.onStop();
+        //finish();
+        //unregisterReceiver(receiver);
+    }
+    
+	@Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //finish();
+        //unregisterReceiver(receiver);
+	}
     
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev){

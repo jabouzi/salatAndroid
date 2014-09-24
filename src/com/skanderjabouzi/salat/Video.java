@@ -85,19 +85,30 @@ public class Video extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
+        //finish();
+        //myVideoView.dismiss();
+        //Video.this.finish();
         unregisterReceiver(receiver);
     }
     
     @Override
     protected void onStop() {
-        super.onPause();
+        super.onStop();
+        //finish();
+        //myVideoView.dismiss();
+        //Video.this.finish();
         WakeLock.release("onStop");
+        //unregisterReceiver(receiver);
     }
     
 	@Override
     protected void onDestroy() {
-        super.onPause();
+        super.onDestroy();
+        //finish();
+        //myVideoView.dismiss();
+        //Video.this.finish();
         WakeLock.release("onDestroy");
+        //unregisterReceiver(receiver);
     }
     
     class PhoneReceiver extends BroadcastReceiver {

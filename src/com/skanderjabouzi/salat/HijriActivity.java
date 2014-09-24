@@ -194,4 +194,27 @@ public class HijriActivity extends Activity{
 			return super.getItem(index, cachedView, parent);
 		}
 	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+	
+	@Override
+    protected void onPause() {
+        super.onPause();
+        //finish();
+    }
+    
+    @Override
+    protected void onStop() {
+        super.onStop();
+        //finish();
+    }
+    
+	@Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //finish();
+    }
 }

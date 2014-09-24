@@ -43,7 +43,7 @@ public class AdhanService extends Service{
 		{
 			salatApp = SalatApplication.getInstance(this);
 			nextSalat = SalatApplication.nextSalat;
-			Log.i(TAG, "onCreate : nextSalat : " + nextSalat);
+			Log.i(TAG, "onStartCommand : nextSalat : " + nextSalat);
 			if (nextSalat == SalatApplication.MIDNIGHT)
 			{
 				changeDay();
@@ -51,12 +51,16 @@ public class AdhanService extends Service{
 			}
 			else
 			{
+				Log.i(TAG, "getAdhan" + salatApp.getAdhan());
 				startAdhan();
 				Log.i(TAG, "startAdhan");
-			}
-			Log.i(TAG, "getAdhan" + salatApp.getAdhan());
+			}			
 			salatApp.setAlarm(this, "Adhan");
 			Log.i(TAG, "start");
+		}
+		else
+		{
+			stopService();
 		}
 		return super.onStartCommand(intent, flags, startId);
 	}
@@ -68,7 +72,6 @@ public class AdhanService extends Service{
     }
 
     private void playAdhan() {
-        super.onCreate();
         if (SalatApplication.FAJR == nextSalat)
         {
 			Log.i(TAG, "play -> " + nextSalat);
