@@ -35,7 +35,7 @@ public class AdhanService extends Service{
     
     @Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		String timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
+		String timeStamp = new SimpleDateFormat("HH:mm:ss.SSS").format(Calendar.getInstance().getTime());
 		String extraString = intent.getStringExtra("TIME");
 		Log.i(TAG, "onStartCommand : extraString : " + extraString);
 		Log.i(TAG, "onStartCommand : timeStamp : " + timeStamp);
