@@ -69,21 +69,30 @@ public class NextActivity extends Activity {
     protected void onPause() {
         super.onPause();
         //finish();
-        unregisterReceiver(receiver);
+        if (receiver != null) {
+			unregisterReceiver(receiver);
+			receiver = null;
+		}
     }
     
      @Override
     protected void onStop() {
         super.onStop();
         //finish();
-        //unregisterReceiver(receiver);
+		if (receiver != null) {
+			unregisterReceiver(receiver);
+			receiver = null;
+		}
     }
     
 	@Override
     protected void onDestroy() {
         super.onDestroy();
         //finish();
-        //unregisterReceiver(receiver);
+		if (receiver != null) {
+			unregisterReceiver(receiver);
+			receiver = null;
+		}
 	}
     
     @Override

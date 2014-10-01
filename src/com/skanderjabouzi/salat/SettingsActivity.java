@@ -71,7 +71,10 @@ public class SettingsActivity extends Activity implements OnItemSelectedListener
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(receiver);
+		if (receiver != null) {
+			unregisterReceiver(receiver);
+			receiver = null;
+		}
         ldatasource.close();
         odatasource.close();
     }
@@ -79,6 +82,10 @@ public class SettingsActivity extends Activity implements OnItemSelectedListener
     @Override
     protected void onStop() {
         super.onPause();
+		if (receiver != null) {
+			unregisterReceiver(receiver);
+			receiver = null;
+		}
         ldatasource.close();
         odatasource.close();
     }
@@ -86,6 +93,10 @@ public class SettingsActivity extends Activity implements OnItemSelectedListener
 	@Override
     protected void onDestroy() {
         super.onPause();
+		if (receiver != null) {
+			unregisterReceiver(receiver);
+			receiver = null;
+		}
         ldatasource.close();
         odatasource.close();
     }

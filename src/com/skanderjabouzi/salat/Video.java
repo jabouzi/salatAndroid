@@ -88,7 +88,11 @@ public class Video extends Activity {
         //finish();
         //myVideoView.dismiss();
         //Video.this.finish();
-        unregisterReceiver(receiver);
+		if (receiver != null) {
+			unregisterReceiver(receiver);
+			receiver = null;
+		}
+		Log.d("VIDEO", "onPause");
     }
     
     @Override
@@ -98,7 +102,12 @@ public class Video extends Activity {
         //myVideoView.dismiss();
         //Video.this.finish();
         WakeLock.release("onStop");
-        //unregisterReceiver(receiver);
+        //Video.this.finish();
+		//if (receiver != null) {
+			//unregisterReceiver(receiver);
+			//receiver = null;
+		//}
+		Log.d("VIDEO", "onStop");
     }
     
 	@Override
@@ -108,7 +117,12 @@ public class Video extends Activity {
         //myVideoView.dismiss();
         //Video.this.finish();
         WakeLock.release("onDestroy");
-        //unregisterReceiver(receiver);
+        //Video.this.finish();
+		//if (receiver != null) {
+			//unregisterReceiver(receiver);
+			//receiver = null;
+		//}
+		Log.d("VIDEO", "onDestroy");
     }
     
     class PhoneReceiver extends BroadcastReceiver {

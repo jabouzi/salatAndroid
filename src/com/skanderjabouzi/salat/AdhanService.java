@@ -35,11 +35,16 @@ public class AdhanService extends Service{
     
     @Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		String timeStamp = new SimpleDateFormat("HH:mm:ss.SSS").format(Calendar.getInstance().getTime());
+		long timeMS = Calendar.getInstance().getTimeInMillis();
+		String timeStamp1 = new SimpleDateFormat("HH:mm").format(timeMS);
+		String timeStamp2 = new SimpleDateFormat("HH:mm").format(timeMS + 60000);
+		String timeStamp3 = new SimpleDateFormat("HH:mm").format(timeMS - 60000);
 		String extraString = intent.getStringExtra("TIME");
 		Log.i(TAG, "onStartCommand : extraString : " + extraString);
-		Log.i(TAG, "onStartCommand : timeStamp : " + timeStamp);
-		if (extraString.equals(timeStamp))
+		Log.i(TAG, "onStartCommand : timeStamp1 : " + timeStamp1);
+		Log.i(TAG, "onStartCommand : timeStamp2 : " + timeStamp2);
+		Log.i(TAG, "onStartCommand : timeStamp3 : " + timeStamp3);
+		if (extraString.equals(timeStamp1) || extraString.equals(timeStamp2) || extraString.equals(timeStamp3))
 		{
 			salatApp = SalatApplication.getInstance(this);
 			nextSalat = SalatApplication.nextSalat;
