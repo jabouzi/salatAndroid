@@ -21,6 +21,7 @@ public class Video extends Activity {
 	static final String SEND_PHONE_NOTIFICATIONS = "com.skanderjabouzi.salat.SEND_PHONE_NOTIFICATIONS";
 	PhoneReceiver receiver;
 	IntentFilter filter;
+	boolean finished = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,8 +47,9 @@ public class Video extends Activity {
 		myVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 			@Override
 			public void onCompletion(MediaPlayer mediaPlayer) {
-				Video.this.finish();
+				finished = true;
 				WakeLock.release("onComplete");
+				Video.this.finish();
 			}
 		});
 		
@@ -85,9 +87,7 @@ public class Video extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        //finish();
-        //myVideoView.dismiss();
-        //Video.this.finish();
+        if (finished) Video.this.finish();
 		if (receiver != null) {
 			unregisterReceiver(receiver);
 			receiver = null;
@@ -98,30 +98,24 @@ public class Video extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-        //finish();
-        //myVideoView.dismiss();
-        //Video.this.finish();
         WakeLock.release("onStop");
-        //Video.this.finish();
-		//if (receiver != null) {
-			//unregisterReceiver(receiver);
-			//receiver = null;
-		//}
+        if (finished) Video.this.finish();
+		if (receiver != null) {
+			unregisterReceiver(receiver);
+			receiver = null;
+		}
 		Log.d("VIDEO", "onStop");
     }
     
 	@Override
     protected void onDestroy() {
         super.onDestroy();
-        //finish();
-        //myVideoView.dismiss();
-        //Video.this.finish();
         WakeLock.release("onDestroy");
-        //Video.this.finish();
-		//if (receiver != null) {
-			//unregisterReceiver(receiver);
-			//receiver = null;
-		//}
+        if (finished) Video.this.finish();
+		if (receiver != null) {
+			unregisterReceiver(receiver);
+			receiver = null;
+		}
 		Log.d("VIDEO", "onDestroy");
     }
     
