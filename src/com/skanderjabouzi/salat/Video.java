@@ -87,7 +87,10 @@ public class Video extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (finished) Video.this.finish();
+        if (finished)
+        {
+			Video.this.finish();
+		}
 		if (receiver != null) {
 			unregisterReceiver(receiver);
 			receiver = null;
@@ -98,8 +101,11 @@ public class Video extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-        WakeLock.release("onStop");
-        if (finished) Video.this.finish();
+        if (finished)
+        {
+			WakeLock.release("onStop");
+			Video.this.finish();
+		}
 		if (receiver != null) {
 			unregisterReceiver(receiver);
 			receiver = null;
@@ -110,8 +116,11 @@ public class Video extends Activity {
 	@Override
     protected void onDestroy() {
         super.onDestroy();
-        WakeLock.release("onDestroy");
-        if (finished) Video.this.finish();
+        if (finished)
+        {
+			WakeLock.release("onDestroy");
+			Video.this.finish();
+		}
 		if (receiver != null) {
 			unregisterReceiver(receiver);
 			receiver = null;
