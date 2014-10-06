@@ -124,11 +124,11 @@ public class SalatApplication{
 
 		this.salaTimes = prayers.getDatePrayerTimes(year, month+1, day+nextDay, this.latitude, this.longitude, this.timezone);
 
-		this.salaTimes[0] = "00:05";
-		this.salaTimes[2] = "23:40";
-		this.salaTimes[3] = "23:45";
-		this.salaTimes[5] = "23:50";
-		this.salaTimes[6] = "23:55";
+		//this.salaTimes[0] = "00:05";
+		//this.salaTimes[2] = "23:40";
+		//this.salaTimes[3] = "23:45";
+		//this.salaTimes[5] = "23:50";
+		//this.salaTimes[6] = "23:55";
 
 		Log.i("Salat app", "setSalatTimes : "+java.util.Arrays.asList(salaTimes).toString());
 	}
