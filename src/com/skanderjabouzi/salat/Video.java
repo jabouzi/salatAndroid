@@ -103,7 +103,7 @@ public class Video extends Activity {
         super.onStop();
         if (finished)
         {
-			WakeLock.release("onStop");
+			WakeLock.release("onComplete");
 			Video.this.finish();
 		}
 		if (receiver != null) {
@@ -118,7 +118,7 @@ public class Video extends Activity {
         super.onDestroy();
         if (finished)
         {
-			WakeLock.release("onDestroy");
+			WakeLock.release("onComplete");
 			Video.this.finish();
 		}
 		if (receiver != null) {

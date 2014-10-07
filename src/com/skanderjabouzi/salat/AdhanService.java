@@ -88,6 +88,7 @@ public class AdhanService extends Service{
         }
         else
         {
+			WakeLock.acquire(this);
 			Log.i(TAG, "play -> " + nextSalat);
 			Intent intent = new Intent();
 			intent.setClass(this, Video.class);
@@ -122,6 +123,7 @@ public class AdhanService extends Service{
 		else
 		{
 			stopService();
+			WakeLock.release("startAdhan");
 		}
 
 		Log.i(TAG, "onHandleIntent #3 " + nextSalat + " : " + salatName);
