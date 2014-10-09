@@ -10,6 +10,13 @@ import android.content.Intent;
 import android.app.PendingIntent;
 import android.app.AlarmManager;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import android.os.Environment;
+
 public class SalatApplication{
 
 	private static final String TAG = "SALATAPPLICATION";
@@ -321,5 +328,20 @@ public class SalatApplication{
 		alarmManager.cancel(pendingIntent);
 		pendingIntent.cancel();
 		Log.i("SalatApplication", "cancelAlarm - Source " + source);
+	}
+	
+	public static void write2sd(String data)
+	{
+		File sdCard = Environment.getExternalStorageDirectory();
+		File directory = new File (sdCard.getAbsolutePath() + "/Salat");
+		directory.mkdirs();
+
+		//Now create the file in the above directory and write the contents into it
+		File file = new File(directory, "salat.log");
+		FileOutputStream fOut = new FileOutputStream(file);
+		OutputStreamWriter osw = new OutputStreamWriter(fOut);
+		osw.write(data);
+		osw.flush();
+		osw.close();
 	}
 }
