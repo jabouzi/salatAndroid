@@ -35,6 +35,9 @@ public class AdhanService extends Service{
     
     @Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
+		
+		WakeLock.acquire(this);
+		
 		long timeMS = Calendar.getInstance().getTimeInMillis();
 		String timeStamp1 = new SimpleDateFormat("HH:mm").format(timeMS);
 		String timeStamp2 = new SimpleDateFormat("HH:mm").format(timeMS + 60000);
@@ -44,10 +47,15 @@ public class AdhanService extends Service{
 		Log.i(TAG, "onStartCommand : timeStamp1 : " + timeStamp1);
 		Log.i(TAG, "onStartCommand : timeStamp2 : " + timeStamp2);
 		Log.i(TAG, "onStartCommand : timeStamp3 : " + timeStamp3);
+		
+		String now = new SimpleDateFormat("HH:mm:ss").format(timeMS);
+		SalatApplication.write2sd(now);
+		SalatApplication.write2sd(extraString + " " + timeStamp1 + " " + timeStamp2 + " " + timeStamp3);
 		if (extraString.equals(timeStamp1) || extraString.equals(timeStamp2) || extraString.equals(timeStamp3))
 		{
 			salatApp = SalatApplication.getInstance(this);
 			nextSalat = SalatApplication.nextSalat;
+			SalatApplication.write2sd(String.valueOf(SalatApplication.nextSalat));
 			Log.i(TAG, "onStartCommand : nextSalat : " + nextSalat);
 			if (nextSalat == SalatApplication.MIDNIGHT)
 			{
@@ -77,25 +85,20 @@ public class AdhanService extends Service{
     }
 
     private void playAdhan() {
+		Intent intent = new Intent();
+		Log.i(TAG, "play -> " + nextSalat);
         if (SalatApplication.FAJR == nextSalat)
         {
-			Log.i(TAG, "play -> " + nextSalat);
-			Intent intent = new Intent();
-			intent.setClass(this, Video.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			intent.putExtra("TYPE", "FAJR");
-			startActivity(intent);
+			
         }
         else
         {
-			WakeLock.acquire(this);
-			Log.i(TAG, "play -> " + nextSalat);
-			Intent intent = new Intent();
-			intent.setClass(this, Video.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			intent.putExtra("TYPE", "SALAT");
-			startActivity(intent);
         }
+        intent.setClass(this, Video.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(intent);
         stopService();
     }
     
@@ -148,11 +151,6 @@ public class AdhanService extends Service{
         CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, salatName);
         this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent);
         this.notificationManager.notify(0, this.notification);
-        
-        if (salatApp.getAdhan() == 2)
-        {
-			stopService();
-		}
 
         Log.i(TAG, "sendTimelineNotificatione -> " + salatName);
     }

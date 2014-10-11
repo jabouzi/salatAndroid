@@ -332,16 +332,17 @@ public class SalatApplication{
 	
 	public static void write2sd(String data)
 	{
-		File sdCard = Environment.getExternalStorageDirectory();
-		File directory = new File (sdCard.getAbsolutePath() + "/Salat");
-		directory.mkdirs();
-
-		//Now create the file in the above directory and write the contents into it
-		File file = new File(directory, "salat.log");
-		FileOutputStream fOut = new FileOutputStream(file);
-		OutputStreamWriter osw = new OutputStreamWriter(fOut);
-		osw.write(data);
-		osw.flush();
-		osw.close();
+		try {
+			File myFile = new File("/sdcard/mysdfile.txt");
+			myFile.createNewFile();
+			FileOutputStream fOut = new FileOutputStream(myFile);
+			OutputStreamWriter myOutWriter = 
+									new OutputStreamWriter(fOut);
+			myOutWriter.append(data);
+			myOutWriter.close();
+			fOut.close();
+		} catch (Exception e) {
+			Log.i("SalatApplication", e.getMessage());
+		}
 	}
 }
