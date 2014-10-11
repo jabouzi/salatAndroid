@@ -49,13 +49,13 @@ public class AdhanService extends Service{
 		Log.i(TAG, "onStartCommand : timeStamp3 : " + timeStamp3);
 		
 		String now = new SimpleDateFormat("HH:mm:ss").format(timeMS);
-		SalatApplication.write2sd(now);
-		SalatApplication.write2sd(extraString + " " + timeStamp1 + " " + timeStamp2 + " " + timeStamp3);
+		SalatApplication.write2sd(this, "NOW : " + now);
+		SalatApplication.write2sd(this, "EXTRA STRING : " + extraString + " " + timeStamp1 + " " + timeStamp2 + " " + timeStamp3);
 		if (extraString.equals(timeStamp1) || extraString.equals(timeStamp2) || extraString.equals(timeStamp3))
 		{
 			salatApp = SalatApplication.getInstance(this);
 			nextSalat = SalatApplication.nextSalat;
-			SalatApplication.write2sd(String.valueOf(SalatApplication.nextSalat));
+			SalatApplication.write2sd(this, "NEXT SATAT : " + String.valueOf(SalatApplication.nextSalat));
 			Log.i(TAG, "onStartCommand : nextSalat : " + nextSalat);
 			if (nextSalat == SalatApplication.MIDNIGHT)
 			{

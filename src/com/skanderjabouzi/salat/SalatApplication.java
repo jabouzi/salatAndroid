@@ -11,11 +11,13 @@ import android.app.PendingIntent;
 import android.app.AlarmManager;
 
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.BufferedWriter;
+//import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+//import java.io.InputStreamReader;
+//import java.io.OutputStreamWriter;
 import android.os.Environment;
+import java.io.FileWriter;
 
 public class SalatApplication{
 
@@ -330,19 +332,51 @@ public class SalatApplication{
 		Log.i("SalatApplication", "cancelAlarm - Source " + source);
 	}
 	
-	public static void write2sd(String data)
+	public static void write2sd(Context context, String data)
 	{
-		try {
-			File myFile = new File("/sdcard/mysdfile.txt");
-			myFile.createNewFile();
-			FileOutputStream fOut = new FileOutputStream(myFile);
-			OutputStreamWriter myOutWriter = 
-									new OutputStreamWriter(fOut);
-			myOutWriter.append(data);
-			myOutWriter.close();
-			fOut.close();
-		} catch (Exception e) {
-			Log.i("SalatApplication", e.getMessage());
-		}
+		//try {
+			//File file = new File("/sdcard/salat.txt");
+			//if(!file.exists())     
+			//{
+				//file.createNewFile();
+			//}
+			
+			try
+			{
+				File root = new File(Environment.getExternalStorageDirectory(), "Salat");
+
+				if (!root.exists()) {
+					root.mkdirs();
+
+				}
+
+				File gpxfile = new File(root, "salat.txt");
+
+				BufferedWriter bW;
+
+				bW = new BufferedWriter(new FileWriter(gpxfile, true));
+				bW.write(data);
+				bW.newLine();
+				bW.flush();
+				bW.close();
+				//Toast.makeText(mContext, "Tus datos han sido guardados", Toast.LENGTH_SHORT).show();
+			}
+			catch(IOException e)
+			{
+				 
+				 Log.i("SalatApplication", e.getMessage());
+			  //   importError = e.getMessage();
+				// iError();
+			}
+			
+			//FileOutputStream fOut = new FileOutputStream(file);
+			//OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
+			//myOutWriter.append(data + "\n");
+			//myOutWriter.close();
+			//fOut.close();
+			
+		//} catch (Exception e) {
+			//Log.i("SalatApplication", e.getMessage());
+		//}
 	}
 }

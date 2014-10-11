@@ -58,6 +58,7 @@ public class SalatActivity extends Activity {
 		receiver = new MidnightReceiver();
 		filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );
 		Log.i("SalatActivity", "Created");
+		SalatApplication.write2sd(this, "SALAT : " + "Created");
 	}
 
 	@Override
@@ -70,6 +71,7 @@ public class SalatActivity extends Activity {
 
 		super.registerReceiver(receiver, filter, SEND_SALATTIME_NOTIFICATIONS, null);
 		Log.i("SalatActivity", "Reseumed");
+		SalatApplication.write2sd(this, "SALAT : " + "Reseumed");
 	}
 
 	@Override
