@@ -25,8 +25,10 @@ public class AdhanService extends Service{
     private Notification notification;
     private String adhan;
     private int mInitialCallState;
-    SalatApplication salatApp;
+    //SalatApplication salatApp;
     public int nextSalat = -1;
+    public int athanType = -1;
+    String salatName = "";
 
     @Override
     public IBinder onBind(Intent arg0) {
@@ -38,37 +40,53 @@ public class AdhanService extends Service{
 		
 		WakeLock.acquire(this);
 		
+		//salatApp = SalatApplication.getInstance(this);
+		//nextSalat = SalatApplication.nextSalat;
+		//Log.i(TAG, "onStartCommand : nextSalat : " + nextSalat);
+		//SalatApplication.write2sd(TAG, "NEXT SATAT : " + String.valueOf(SalatApplication.nextSalat));
+		
 		long timeMS = Calendar.getInstance().getTimeInMillis();
 		String timeStamp1 = new SimpleDateFormat("HH:mm").format(timeMS);
 		String timeStamp2 = new SimpleDateFormat("HH:mm").format(timeMS + 60000);
 		String timeStamp3 = new SimpleDateFormat("HH:mm").format(timeMS - 60000);
 		String extraString = intent.getStringExtra("TIME");
-		Log.i(TAG, "onStartCommand : extraString : " + extraString);
+		nextSalat = Integer.parseInt(intent.getStringExtra("NEXT"));
+		athanType = Integer.parseInt(intent.getStringExtra("ADHAN"));
+		salatName = intent.getStringExtra("NAME");
+		Log.i(TAG, "onStartCommand : TIME : " + extraString);
+		SalatApplication.write2sd(TAG, "onStartCommand : TIME : " + extraString);
+		
 		Log.i(TAG, "onStartCommand : timeStamp1 : " + timeStamp1);
 		Log.i(TAG, "onStartCommand : timeStamp2 : " + timeStamp2);
 		Log.i(TAG, "onStartCommand : timeStamp3 : " + timeStamp3);
+		SalatApplication.write2sd(TAG, "timeStamp : " + extraString + " " + timeStamp1 + " " + timeStamp2 + " " + timeStamp3);
 		
-		String now = new SimpleDateFormat("HH:mm:ss").format(timeMS);
-		SalatApplication.write2sd(this, "NOW : " + now);
-		SalatApplication.write2sd(this, "EXTRA STRING : " + extraString + " " + timeStamp1 + " " + timeStamp2 + " " + timeStamp3);
+		Log.i(TAG, "onStartCommand : NEXT SATAT : " + String.valueOf(nextSalat));
+		SalatApplication.write2sd(TAG, "onStartCommand : NEXT SATAT : " + String.valueOf(nextSalat));
+		
+		Log.i(TAG, "onStartCommand : ADHAN TYPE : " + String.valueOf(athanType));
+		SalatApplication.write2sd(TAG, "onStartCommand : ADHAN TYPE : " + String.valueOf(athanType));
+		
+		Log.i(TAG, "onStartCommand : SATAT NAME : " + salatName);
+		SalatApplication.write2sd(TAG, "onStartCommand : SATAT NAME : " + salatName);
+		
 		if (extraString.equals(timeStamp1) || extraString.equals(timeStamp2) || extraString.equals(timeStamp3))
 		{
-			salatApp = SalatApplication.getInstance(this);
-			nextSalat = SalatApplication.nextSalat;
-			SalatApplication.write2sd(this, "NEXT SATAT : " + String.valueOf(SalatApplication.nextSalat));
-			Log.i(TAG, "onStartCommand : nextSalat : " + nextSalat);
 			if (nextSalat == SalatApplication.MIDNIGHT)
 			{
 				changeDay();
 				Log.i(TAG, "changeDay");
+				SalatApplication.write2sd(TAG, "changeDay");
 			}
 			else
 			{
-				Log.i(TAG, "getAdhan" + salatApp.getAdhan());
+				//Log.i(TAG, "getAdhan" + );
+				//SalatApplication.write2sd(TAG, "getAdhan " + String.valueOf(athanType));
 				startAdhan();
 				Log.i(TAG, "startAdhan");
+				SalatApplication.write2sd(TAG, "startAdhan");
 			}			
-			salatApp.setAlarm(this, "Adhan");
+			SalatApplication.setAlarm(this, "Adhan");
 			Log.i(TAG, "start");
 		}
 		else
@@ -108,6 +126,7 @@ public class AdhanService extends Service{
         intent.putExtra(SALATTIME, "Midnight");
         sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
         Log.i(TAG, "onHandleIntent #4 " + "Midnight");
+        WakeLock.release("changeDay");
         stopService();
     }
 
@@ -116,10 +135,9 @@ public class AdhanService extends Service{
         Log.i(TAG, " STARTADHAN -> " + nextSalat);
 		this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		this.notification = new Notification(R.drawable.makka_icon,"", 0);
-		String salatName = "";
-		salatName = salatApp.salatNames[nextSalat];
+		//salatName = salatApp.salatNames[nextSalat];
 		sendTimelineNotification(salatName);
-		if (salatApp.getAdhan() == 1 || salatApp.getAdhan() == 3)
+		if (athanType == 1 || athanType == 3)
 		{
 			playAdhan();
 		}
@@ -142,7 +160,7 @@ public class AdhanService extends Service{
 		this.notification.ledARGB = 0xff00ff00;
 		this.notification.ledOnMS = 300;
 		this.notification.ledOffMS = 1000;
-		if (salatApp.getAdhan() == 2 || salatApp.getAdhan() == 3)
+		if (athanType == 2 || athanType == 3)
 		{
 			this.notification.defaults |= Notification.DEFAULT_VIBRATE;
 			this.notification.vibrate = new long[]{0,100,200,300};

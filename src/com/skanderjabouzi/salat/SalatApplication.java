@@ -199,6 +199,7 @@ public class SalatApplication{
 		}
 		
 		Log.d("Salat NEXT", String.valueOf(nextSalat));
+		SalatApplication.write2sd("Salat NEXT", String.valueOf(nextSalat));
 		return timeLeft;
 	}
 
@@ -316,10 +317,13 @@ public class SalatApplication{
 		Log.i("SalatApplication", "Next salat is " + salatApp.nextSalat  + " / " + SalatApplication.nextSalat);
 		if (SalatApplication.nextSalat == 7) adhanIntent.putExtra("TIME", "00:00");
 		else adhanIntent.putExtra("TIME", salaTimes[SalatApplication.nextSalat]);
+		adhanIntent.putExtra("NEXT", String.valueOf(SalatApplication.nextSalat));
+		adhanIntent.putExtra("NAME", salatApp.salatNames[SalatApplication.nextSalat]);
+		adhanIntent.putExtra("ADHAN", String.valueOf(salatApp.getAdhan()));
 		PendingIntent pendingIntent = PendingIntent.getService(context, 0, adhanIntent, 0);
 		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 		alarmManager.set(AlarmManager.RTC_WAKEUP, timeToSalat, pendingIntent);
-		Log.i("SalatApplication", "Next salat is " + salatApp.nextSalat  + " in " + timeToSalat);
+		Log.i("SalatApplication", "Next salat is " + SalatApplication.nextSalat  + " in " + timeToSalat);
 		Log.i("SalatApplication", "setAlarm - Source " + source);
 	}
 	
@@ -332,51 +336,32 @@ public class SalatApplication{
 		Log.i("SalatApplication", "cancelAlarm - Source " + source);
 	}
 	
-	public static void write2sd(Context context, String data)
+	public static void write2sd(String tag, String data)
 	{
-		//try {
-			//File file = new File("/sdcard/salat.txt");
-			//if(!file.exists())     
-			//{
-				//file.createNewFile();
-			//}
-			
-			try
-			{
-				File root = new File(Environment.getExternalStorageDirectory(), "Salat");
+		try
+		{
+			long timeMS = Calendar.getInstance().getTimeInMillis();
+			String currentTime = new SimpleDateFormat("MM-dd HH:mm:ss").format(timeMS);
+			File root = new File(Environment.getExternalStorageDirectory(), "Salat");
 
-				if (!root.exists()) {
-					root.mkdirs();
+			if (!root.exists()) {
+				root.mkdirs();
 
-				}
-
-				File gpxfile = new File(root, "salat.txt");
-
-				BufferedWriter bW;
-
-				bW = new BufferedWriter(new FileWriter(gpxfile, true));
-				bW.write(data);
-				bW.newLine();
-				bW.flush();
-				bW.close();
-				//Toast.makeText(mContext, "Tus datos han sido guardados", Toast.LENGTH_SHORT).show();
 			}
-			catch(IOException e)
-			{
-				 
-				 Log.i("SalatApplication", e.getMessage());
-			  //   importError = e.getMessage();
-				// iError();
-			}
-			
-			//FileOutputStream fOut = new FileOutputStream(file);
-			//OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
-			//myOutWriter.append(data + "\n");
-			//myOutWriter.close();
-			//fOut.close();
-			
-		//} catch (Exception e) {
-			//Log.i("SalatApplication", e.getMessage());
-		//}
+
+			File gpxfile = new File(root, "salat.txt");
+
+			BufferedWriter bW;
+
+			bW = new BufferedWriter(new FileWriter(gpxfile, true));
+			bW.write(currentTime + " - " + tag + " - " + data);
+			bW.newLine();
+			bW.flush();
+			bW.close();
+		}
+		catch(IOException e)
+		{
+			Log.i("SalatApplication", e.getMessage());
+		}
 	}
 }

@@ -58,7 +58,7 @@ public class SalatActivity extends Activity {
 		receiver = new MidnightReceiver();
 		filter = new IntentFilter( MidnightService.MIDNIGHT_INTENT );
 		Log.i("SalatActivity", "Created");
-		SalatApplication.write2sd(this, "SALAT : " + "Created");
+		SalatApplication.write2sd("SalatActivity", "Created");
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class SalatActivity extends Activity {
 
 		super.registerReceiver(receiver, filter, SEND_SALATTIME_NOTIFICATIONS, null);
 		Log.i("SalatActivity", "Reseumed");
-		SalatApplication.write2sd(this, "SALAT : " + "Reseumed");
+		SalatApplication.write2sd("SalatActivity", "Reseumed");
 	}
 
 	@Override
@@ -126,6 +126,7 @@ public class SalatActivity extends Activity {
 		printHijriDate();
 		printLocation();
 		Log.i("SalatActivity", "setSalatTimes");
+		SalatApplication.write2sd("SalatActivity", "setSalatTimes");
 	}
 
 	@Override
@@ -221,6 +222,7 @@ public class SalatActivity extends Activity {
 			String salatName = intent.getStringExtra("SALATTIME");
 			Toast.makeText(context, "It's Salat " + salatName + "time ", Toast.LENGTH_LONG).show();
 			Log.i("SalatReceiver", salatName);
+			SalatApplication.write2sd("SalatReceiver", salatName);
 		}
 	}
 }

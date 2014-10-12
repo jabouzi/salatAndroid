@@ -21,7 +21,7 @@ public class Video extends Activity {
 	static final String SEND_PHONE_NOTIFICATIONS = "com.skanderjabouzi.salat.SEND_PHONE_NOTIFICATIONS";
 	PhoneReceiver receiver;
 	IntentFilter filter;
-	boolean finished = false;
+	VideoView myVideoView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,11 +43,10 @@ public class Video extends Activity {
 			fileName = "android.resource://com.skanderjabouzi.salat/raw/athan";
 		}
 		setContentView(R.layout.video);
-		VideoView myVideoView = (VideoView)findViewById(R.id.myvideoview);
+		myVideoView = (VideoView)findViewById(R.id.myvideoview);
 		myVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 			@Override
 			public void onCompletion(MediaPlayer mediaPlayer) {
-				finished = true;
 				WakeLock.release("onComplete");
 				Video.this.finish();
 			}
@@ -87,10 +86,7 @@ public class Video extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (finished)
-        {
-			Video.this.finish();
-		}
+
 		if (receiver != null) {
 			unregisterReceiver(receiver);
 			receiver = null;
@@ -101,30 +97,36 @@ public class Video extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-        if (finished)
-        {
-			WakeLock.release("onComplete");
-			Video.this.finish();
-		}
+
 		if (receiver != null) {
 			unregisterReceiver(receiver);
 			receiver = null;
 		}
+		
+		if (!myVideoView.isPlaying())
+		{
+			Video.this.finish();
+		}
+		
+		WakeLock.release("onStop");
 		Log.d("VIDEO", "onStop");
     }
     
 	@Override
     protected void onDestroy() {
         super.onDestroy();
-        if (finished)
-        {
-			WakeLock.release("onComplete");
-			Video.this.finish();
-		}
+
 		if (receiver != null) {
 			unregisterReceiver(receiver);
 			receiver = null;
 		}
+
+		if (!myVideoView.isPlaying())
+		{
+			Video.this.finish();
+		}
+		
+		WakeLock.release("onDestroy");
 		Log.d("VIDEO", "onDestroy");
     }
     
@@ -132,6 +134,7 @@ public class Video extends Activity {
         @Override
         public void onReceive(Context context, Intent intent) {
 			Video.this.finish();
+			WakeLock.release("PhoneReceiver");
         }
     }
 }
