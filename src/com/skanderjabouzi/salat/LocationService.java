@@ -45,13 +45,17 @@ public class LocationService extends Service implements LocationListener{
 	double latitude; 
 	double longitude; 
 	private String Address1 = "", Address2 = "", City = "", State = "", Country = "", County = "", PIN = "";
-	Location location;	
+	Location location;
+	TimeZone tz;
 	private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
 	private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
 	private int mInterval = 5000;
 	private final Handler mHandler = new Handler();
 	private Runnable mUpdateTimeTask;
 	SalatApplication salatApp;
+	private LocationDataSource ldatasource;
+	private com.skanderjabouzi.salat.Location salatLocation;
+	int saveLocation = 0;
     
     @Override
      public IBinder onBind(Intent arg0) {
@@ -60,6 +64,7 @@ public class LocationService extends Service implements LocationListener{
     
     @Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
+		saveLocation = Integer.parseInt(intent.getStringExtra("SAVE"));
 		salatApp = SalatApplication.getInstance(context);
 			mUpdateTimeTask = new Runnable() {
 				public void run() {
@@ -129,14 +134,13 @@ public class LocationService extends Service implements LocationListener{
 	public void getGeoLocation() {
 		if (location == null)
 		{
-			//sendNotification("GEO_NULL");
-			//stopService();
+			ldatasource.updateTimeZoneLocation(getTimeZone());
+			Log.i(TAG,"SAVE_TIMEZONE_LOCATION");
 		}
 		else
 		{
 			latitude = location.getLatitude();
 			longitude = location.getLongitude();
-			TimeZone tz = TimeZone.getDefault();
 			
 			JSONObject jsonObj = null;
 			String str = "";
@@ -180,10 +184,29 @@ public class LocationService extends Service implements LocationListener{
 				
 				String locationValues = String.valueOf(location.getLatitude());
 				locationValues += "|" + String.valueOf(location.getLongitude());
-				locationValues += "|" + String.valueOf((tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000);
+				locationValues += "|" + String.valueOf(getTimeZone());
 				locationValues += "|" + City;
 				locationValues += "|" + Country;
-				sendNotification(locationValues);
+				if (saveLocation == 0) 
+				{
+					sendNotification(locationValues);
+				}
+				else
+				{
+					if (salatApp.getAutoLocation() == 1)
+					{
+						salatLocation = new com.skanderjabouzi.salat.Location();
+						salatLocation.setId(1);
+						salatLocation.setLatitude((float)location.getLatitude());
+						salatLocation.setLongitude((float)location.getLongitude());
+						salatLocation.setTimezone(getTimeZone());
+						salatLocation.setCity(City);
+						salatLocation.setCountry(Country);
+						ldatasource.updateLocation(salatLocation);
+						SalatApplication.setAlarm(this, "Location");
+						Log.i(TAG,"SAVE_LOCATION");
+					}
+				}
 				 
 			} catch (ClientProtocolException e) {
 				sendNotification("LOCATION_NULL");
@@ -196,6 +219,12 @@ public class LocationService extends Service implements LocationListener{
 			stopHandler();
 			cleanLocation();
 		}
+	}
+	
+	public float getTimeZone()
+	{
+		tz = TimeZone.getDefault();
+		return (tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000;
 	}
 	
 	public void sendNotification(String extra)

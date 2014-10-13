@@ -211,7 +211,7 @@ public class SettingsActivity extends Activity implements OnItemSelectedListener
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(context, LocationService.class);
-				intent.putExtra("SAVE", "NO");
+				intent.putExtra("SAVE", "0");
 				startService(intent);
 			}
 

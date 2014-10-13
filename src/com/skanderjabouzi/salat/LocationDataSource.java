@@ -76,6 +76,21 @@ public class LocationDataSource {
 		return database.update("location", values," id = ?",
 				new String[] { String.valueOf(location.getId()) });
 	}
+	
+	public int updateTimeZoneLocation(float timezone) {
+		Location location = new Location();
+		location = getLocation(1);
+		ContentValues values = new ContentValues();
+		values.put("latitude", location.getLatitude());
+		values.put("longitude", location.getLongitude());
+		values.put("city", location.getCity());
+		values.put("country", location.getCountry());
+		values.put("timezone", timezone);
+
+		// updating row
+		return database.update("location", values," id = ?",
+				new String[] { String.valueOf(location.getId()) });
+	}
 
 	// Deleting single location
 	public void deleteLocation(Location location) {

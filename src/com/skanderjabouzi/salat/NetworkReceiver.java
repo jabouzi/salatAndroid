@@ -29,6 +29,9 @@ public class NetworkReceiver extends BroadcastReceiver {
 				//Log.d(TAG, "onReceive: connected, check hijri date");
 				//Log.i(TAG, "onReceive : connected : " + SalatApplication.isConnected);
 				Log.d(TAG, "onReceive : connected, check location");
+				intent = new Intent(context, LocationService.class);
+				intent.putExtra("SAVE", "1");
+				context.startService(intent);
 			}
 		}
 	}

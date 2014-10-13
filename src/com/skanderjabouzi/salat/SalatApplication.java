@@ -318,7 +318,8 @@ public class SalatApplication{
 		if (SalatApplication.nextSalat == 7) adhanIntent.putExtra("TIME", "00:00");
 		else adhanIntent.putExtra("TIME", salaTimes[SalatApplication.nextSalat]);
 		adhanIntent.putExtra("NEXT", String.valueOf(SalatApplication.nextSalat));
-		adhanIntent.putExtra("NAME", salatApp.salatNames[SalatApplication.nextSalat]);
+		if (SalatApplication.nextSalat < 7) adhanIntent.putExtra("NAME", salatApp.salatNames[SalatApplication.nextSalat]);
+		else adhanIntent.putExtra("NAME", "");
 		adhanIntent.putExtra("ADHAN", String.valueOf(salatApp.getAdhan()));
 		PendingIntent pendingIntent = PendingIntent.getService(context, 0, adhanIntent, 0);
 		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
