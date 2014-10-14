@@ -187,11 +187,7 @@ public class LocationService extends Service implements LocationListener{
 				locationValues += "|" + String.valueOf(getTimeZone());
 				locationValues += "|" + City;
 				locationValues += "|" + Country;
-				if (saveLocation == 0) 
-				{
-					sendNotification(locationValues);
-				}
-				else
+				if (saveLocation == 1) 
 				{
 					if (salatApp.getAutoLocation() == 1)
 					{
@@ -206,6 +202,7 @@ public class LocationService extends Service implements LocationListener{
 						SalatApplication.setAlarm(this, "Location");
 						Log.i(TAG,"SAVE_LOCATION");
 					}
+					sendNotification(locationValues);
 				}
 				 
 			} catch (ClientProtocolException e) {
