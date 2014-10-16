@@ -106,9 +106,9 @@ public class Video extends Activity {
 		if (!myVideoView.isPlaying())
 		{
 			Video.this.finish();
+			WakeLock.release("onStop");
 		}
 		
-		WakeLock.release("onStop");
 		Log.d("VIDEO", "onStop");
     }
     
@@ -124,9 +124,9 @@ public class Video extends Activity {
 		if (!myVideoView.isPlaying())
 		{
 			Video.this.finish();
+			WakeLock.release("onDestroy");
 		}
 		
-		WakeLock.release("onDestroy");
 		Log.d("VIDEO", "onDestroy");
     }
     
