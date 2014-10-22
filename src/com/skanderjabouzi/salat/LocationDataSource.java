@@ -24,6 +24,11 @@ public class LocationDataSource {
 		database = dbHelper.getWritableDatabase();
 		Log.i("LocationDataSource", "open");
 	}
+	
+	public boolean isOpen()
+	{
+		return database.isOpen();
+	} 
 
 	public void close() {
 		dbHelper.close();

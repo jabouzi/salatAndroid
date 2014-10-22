@@ -56,6 +56,7 @@ public class LocationService extends Service implements LocationListener{
 	private LocationDataSource ldatasource;
 	private com.skanderjabouzi.salat.Location salatLocation;
 	int saveLocation = 0;
+	String receiverSource = "";
     
     @Override
      public IBinder onBind(Intent arg0) {
@@ -64,7 +65,11 @@ public class LocationService extends Service implements LocationListener{
     
     @Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
+		ldatasource = new LocationDataSource(this);
+		ldatasource.open();
 		saveLocation = Integer.parseInt(intent.getStringExtra("SAVE"));
+		receiverSource = intent.getStringExtra("SAVE");
+		Log.d(TAG, String.valueOf(getTimeZone()));
 		salatApp = SalatApplication.getInstance(context);
 			mUpdateTimeTask = new Runnable() {
 				public void run() {
@@ -81,14 +86,20 @@ public class LocationService extends Service implements LocationListener{
 	}
     
     public void getLocation() {
+		ldatasource.updateTimeZoneLocation(getTimeZone());
+		Log.i(TAG,"SAVE_TIMEZONE_LOCATION");
+		if (saveLocation == 1 && receiverSource == "TIMEZONE")
+		{
+			SalatApplication.setAlarm(this, "Location");
+		}
+
 		try {
 			locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
 			isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 			isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
 			if (!isGPSEnabled && !isNetworkEnabled) {
-				//sendNotification("GEO_NULL");
-				//stopService();
+	
 			} 
 			else 
 			{
@@ -134,8 +145,7 @@ public class LocationService extends Service implements LocationListener{
 	public void getGeoLocation() {
 		if (location == null)
 		{
-			ldatasource.updateTimeZoneLocation(getTimeZone());
-			Log.i(TAG,"SAVE_TIMEZONE_LOCATION");
+
 		}
 		else
 		{
@@ -187,7 +197,7 @@ public class LocationService extends Service implements LocationListener{
 				locationValues += "|" + String.valueOf(getTimeZone());
 				locationValues += "|" + City;
 				locationValues += "|" + Country;
-				if (saveLocation == 1) 
+				if (saveLocation == 1 && receiverSource == "NETWORK") 
 				{
 					if (salatApp.getAutoLocation() == 1)
 					{
@@ -237,6 +247,7 @@ public class LocationService extends Service implements LocationListener{
     public void onDestroy() 
     {
 		Log.i(TAG,"destroy");
+		if (ldatasource.isOpen()) ldatasource.close();
         super.onDestroy();
     }
     
@@ -244,6 +255,7 @@ public class LocationService extends Service implements LocationListener{
     {
 		Log.i(TAG,"stop");
 		stopHandler();
+		if (ldatasource.isOpen()) ldatasource.close();
         stopService(new Intent(this, LocationService.class));
     }
 
