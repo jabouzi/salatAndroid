@@ -247,7 +247,7 @@ public class LocationService extends Service implements LocationListener{
     public void onDestroy() 
     {
 		Log.i(TAG,"destroy");
-		if (ldatasource.isOpen()) ldatasource.close();
+		//if (ldatasource.isOpen()) ldatasource.close();
         super.onDestroy();
     }
     
