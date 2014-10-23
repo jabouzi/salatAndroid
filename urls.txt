@@ -46,3 +46,8 @@ http://graphicriver.net/item/digital-chronometer-and-compass-displays/2598114?WT
 http://grapehic.com/digital-compass/photoshop/psd
 http://alicia.mobile9.com/download/as/ios/03/81/381771103/screen0.jpg
 http://www.androidfreeware.net/img2/compass_android_1.png
+
++------------+
+|   VIDEOS   |
++------------+
+https://software.intel.com/en-us/android/articles/android-mediaplayer-sample-code-walkthrough-on-intel-architecture

@@ -47,7 +47,7 @@ public class Video extends Activity {
 		myVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 			@Override
 			public void onCompletion(MediaPlayer mediaPlayer) {
-				WakeLock.release("onComplete");
+				WakeLock.release("onCompletion");
 				Video.this.finish();
 			}
 		});
