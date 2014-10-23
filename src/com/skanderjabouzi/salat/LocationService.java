@@ -68,7 +68,8 @@ public class LocationService extends Service implements LocationListener{
 		ldatasource = new LocationDataSource(this);
 		ldatasource.open();
 		saveLocation = Integer.parseInt(intent.getStringExtra("SAVE"));
-		receiverSource = intent.getStringExtra("SAVE");
+		receiverSource = intent.getStringExtra("SOURCE");
+		Log.i(TAG,"SOURCE : " + receiverSource);
 		Log.d(TAG, String.valueOf(getTimeZone()));
 		salatApp = SalatApplication.getInstance(context);
 			mUpdateTimeTask = new Runnable() {
@@ -86,10 +87,11 @@ public class LocationService extends Service implements LocationListener{
 	}
     
     public void getLocation() {
-		ldatasource.updateTimeZoneLocation(getTimeZone());
-		Log.i(TAG,"SAVE_TIMEZONE_LOCATION");
+
 		if (saveLocation == 1 && receiverSource == "TIMEZONE")
 		{
+			ldatasource.updateTimeZoneLocation(getTimeZone());
+			Log.i(TAG,"SAVE_TIMEZONE_LOCATION 1");
 			SalatApplication.setAlarm(this, "Location");
 		}
 
@@ -145,7 +147,7 @@ public class LocationService extends Service implements LocationListener{
 	public void getGeoLocation() {
 		if (location == null)
 		{
-
+			Log.i(TAG,"LOCATION == NULL");
 		}
 		else
 		{
@@ -199,21 +201,18 @@ public class LocationService extends Service implements LocationListener{
 				locationValues += "|" + Country;
 				if (saveLocation == 1 && receiverSource == "NETWORK") 
 				{
-					if (salatApp.getAutoLocation() == 1)
-					{
-						salatLocation = new com.skanderjabouzi.salat.Location();
-						salatLocation.setId(1);
-						salatLocation.setLatitude((float)location.getLatitude());
-						salatLocation.setLongitude((float)location.getLongitude());
-						salatLocation.setTimezone(getTimeZone());
-						salatLocation.setCity(City);
-						salatLocation.setCountry(Country);
-						ldatasource.updateLocation(salatLocation);
-						SalatApplication.setAlarm(this, "Location");
-						Log.i(TAG,"SAVE_LOCATION");
-					}
-					sendNotification(locationValues);
+					salatLocation = new com.skanderjabouzi.salat.Location();
+					salatLocation.setId(1);
+					salatLocation.setLatitude((float)location.getLatitude());
+					salatLocation.setLongitude((float)location.getLongitude());
+					salatLocation.setTimezone(getTimeZone());
+					salatLocation.setCity(City);
+					salatLocation.setCountry(Country);
+					ldatasource.updateLocation(salatLocation);
+					SalatApplication.setAlarm(this, "Location");
+					Log.i(TAG,"SAVE_LOCATION");
 				}
+				sendNotification(locationValues);
 				 
 			} catch (ClientProtocolException e) {
 				sendNotification("LOCATION_NULL");

@@ -21,9 +21,12 @@ public class NetworkReceiver extends BroadcastReceiver {
 		
 		if (action.equals("android.intent.action.TIMEZONE_CHANGED")) 
 		{
-			intent.putExtra("SOURCE", "TIMEZONE");
-			Log.d(TAG, "onReceive: NOT connected");
-			context.startService(intent);
+			if (!isNetworkAvailable(context))
+			{
+				intent.putExtra("SOURCE", "TIMEZONE");
+				Log.d(TAG, "onReceive: NOT connected");
+				context.startService(intent);
+			}
 		} 
 		else if (action.equals("android.net.conn.CONNECTIVITY_CHANGE"))
 		{

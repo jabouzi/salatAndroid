@@ -114,12 +114,6 @@ public class SettingsActivity extends Activity implements OnItemSelectedListener
 		pos = options.getAsr() - 1;
 		if (pos < 0) pos = 0;
 		asr.setSelection(pos);
-
-		autoLocation = (Spinner) findViewById(R.id.autoLocation);
-		autoLocation.setOnItemSelectedListener(this);
-		pos = options.getAutoLocation() - 1;
-		if (pos < 0) pos = 0;
-		autoLocation.setSelection(pos);
 		
 		adhan = (Spinner) findViewById(R.id.adhan);
 		adhan.setOnItemSelectedListener(this);
@@ -161,7 +155,6 @@ public class SettingsActivity extends Activity implements OnItemSelectedListener
 		
 				method = (Spinner) findViewById(R.id.calculation);
 				asr = (Spinner) findViewById(R.id.asr);
-				autoLocation = (Spinner) findViewById(R.id.autoLocation);
 				
 				options.setId(1);
 				
@@ -173,8 +166,7 @@ public class SettingsActivity extends Activity implements OnItemSelectedListener
 				
 				options.setHijri(0);
 
-				pos = autoLocation.getSelectedItemPosition() + 1;
-				options.setAutoLocation(pos);
+				options.setAutoLocation(0);
 				
 				pos = adhan.getSelectedItemPosition() + 1;
 				options.setAdhan(pos);
