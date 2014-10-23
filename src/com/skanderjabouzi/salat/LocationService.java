@@ -88,7 +88,7 @@ public class LocationService extends Service implements LocationListener{
     
     public void getLocation() {
 
-		if (saveLocation == 1 && receiverSource == "TIMEZONE")
+		if (saveLocation == 1 && receiverSource.equals("TIMEZONE"))
 		{
 			ldatasource.updateTimeZoneLocation(getTimeZone());
 			Log.i(TAG,"SAVE_TIMEZONE_LOCATION 1");
@@ -199,7 +199,7 @@ public class LocationService extends Service implements LocationListener{
 				locationValues += "|" + String.valueOf(getTimeZone());
 				locationValues += "|" + City;
 				locationValues += "|" + Country;
-				if (saveLocation == 1 && receiverSource == "NETWORK") 
+				if (saveLocation == 1 && receiverSource.equals("NETWORK") )
 				{
 					salatLocation = new com.skanderjabouzi.salat.Location();
 					salatLocation.setId(1);
@@ -240,6 +240,7 @@ public class LocationService extends Service implements LocationListener{
 		intent = new Intent(LOCATION_INTENT);
 		intent.putExtra(LOCATION, extra);
 		sendBroadcast(intent, RECEIVE_LOCATION_NOTIFICATIONS);
+		Log.i(TAG,"SEND NOTIFICATION");
 	}
     
     @Override
