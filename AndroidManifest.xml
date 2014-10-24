@@ -52,6 +52,7 @@
     <uses-permission android:name="android.permission.SET_TIME_ZONE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 
     <uses-permission android:name="com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS" />
     <uses-permission android:name="com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS" />
@@ -81,6 +82,8 @@
     <activity android:name="com.skanderjabouzi.salat.SalatQibla" android:label="@string/titleSalatQibla" 
 			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
 			android:screenOrientation="portrait" />
+    <activity android:name="com.skanderjabouzi.salat.MediaPlayerVideo" android:screenOrientation="landscape" 
+			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
     <activity android:name="com.skanderjabouzi.salat.Video" android:screenOrientation="landscape" 
 			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
     <activity android:name="com.skanderjabouzi.salat.NextActivity" android:label="@string/titleNext" 
