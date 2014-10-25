@@ -14,6 +14,7 @@ import android.telephony.TelephonyManager;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.content.Context;
+import android.view.MotionEvent;
 
 public class Video extends Activity {
   
@@ -22,11 +23,12 @@ public class Video extends Activity {
 	PhoneReceiver receiver;
 	IntentFilter filter;
 	VideoView myVideoView;
+	boolean started = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		WakeLock.acquire(this);
+		WakeLock.acquire(this, "onCreate");
 		receiver = new PhoneReceiver();
 		filter = new IntentFilter( SalatPhoneReceiver.PHONE_INTENT );
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
@@ -73,14 +75,24 @@ public class Video extends Activity {
 		myVideoView.setVideoURI(Uri.parse(fileName));
 		//myVideoView.setMediaController(new MediaController(this));
 		myVideoView.requestFocus();
+		if (myVideoView.isPlaying()) Log.i("VIDEO", "IS PLAYING");
+		else Log.i("VIDEO", "IS NOT PLAYING");
 		myVideoView.start();
+		if (myVideoView.isPlaying()) Log.i("VIDEO", "IS PLAYING");
+		else Log.i("VIDEO", "IS NOT PLAYING");
+   }
+   
+   public boolean onTouchEvent (MotionEvent ev)
+   {
+	   Log.i("VIDEO", "POSITION : " + String.valueOf(myVideoView.getCurrentPosition()));
+	   return true;
    }
    
     @Override
     protected void onResume() {
         super.onResume();
         super.registerReceiver(receiver, filter, SEND_PHONE_NOTIFICATIONS, null);
-        WakeLock.acquire(this);
+        WakeLock.acquire(this, "onResume");
     }
 
     @Override
@@ -97,18 +109,22 @@ public class Video extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
+        
+        if (myVideoView.isPlaying()) Log.i("VIDEO", "IS PLAYING 1");
+		else Log.i("VIDEO", "IS NOT PLAYING 1");
 
 		if (receiver != null) {
 			unregisterReceiver(receiver);
 			receiver = null;
 		}
 		
-		if (!myVideoView.isPlaying())
-		{
+		//if (!myVideoView.isPlaying())
+		//{
 			Video.this.finish();
-			WakeLock.release("onStop");
-		}
+		//}
+		WakeLock.release("onStop");
 		
+		Log.i("VIDEO", "POSITION : " + String.valueOf(myVideoView.getCurrentPosition()));		
 		Log.d("VIDEO", "onStop");
     }
     
@@ -116,17 +132,21 @@ public class Video extends Activity {
     protected void onDestroy() {
         super.onDestroy();
 
+		if (myVideoView.isPlaying()) Log.i("VIDEO", "IS PLAYING 2");
+		else Log.i("VIDEO", "IS NOT PLAYING 2");
+		
 		if (receiver != null) {
 			unregisterReceiver(receiver);
 			receiver = null;
 		}
 
-		if (!myVideoView.isPlaying())
-		{
+		//if (!myVideoView.isPlaying())
+		//{
 			Video.this.finish();
-			WakeLock.release("onDestroy");
-		}
+		//}
+		WakeLock.release("onDestroy");
 		
+		Log.i("VIDEO", "POSITION : " + String.valueOf(myVideoView.getCurrentPosition()));		
 		Log.d("VIDEO", "onDestroy");
     }
     

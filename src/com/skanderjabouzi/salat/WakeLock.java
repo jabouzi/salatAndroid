@@ -11,15 +11,15 @@ public class WakeLock {
 	private static KeyguardManager km;
 	private static KeyguardManager.KeyguardLock kl;
 
-    static void acquire(Context context) {
-        Log.i("SalatWakeLock" , "Acquiring cpu wake lock");
+    static void acquire(Context context, String flag) {
+        Log.i("SalatWakeLock" , "Acquiring cpu wake lock" + flag);
         if (WakeLock != null) {
             return;
         }
 
         PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
 
-        WakeLock = pm.newWakeLock((PowerManager.FULL_WAKE_LOCK | PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP), "Athan Alarm Wake Lock");
+        WakeLock = pm.newWakeLock((PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP), "Athan Alarm Wake Lock");
         WakeLock.acquire();
     }
     

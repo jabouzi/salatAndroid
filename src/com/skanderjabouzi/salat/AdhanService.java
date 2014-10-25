@@ -38,7 +38,7 @@ public class AdhanService extends Service{
     @Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		
-		WakeLock.acquire(this);
+		WakeLock.acquire(this, "AdhanService");
 		
 		//salatApp = SalatApplication.getInstance(this);
 		//nextSalat = SalatApplication.nextSalat;
