@@ -37,7 +37,7 @@ public class SalatQibla extends Activity implements SensorEventListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		startService(new Intent(context, LocationService.class));
+		//startService(new Intent(context, LocationService.class));
 		setContentView(R.layout.qibla);
 		qiblaLayout = findViewById(R.id.qibla_bg);
 		image = (ImageView) findViewById(R.id.compass);
@@ -73,6 +73,7 @@ public class SalatQibla extends Activity implements SensorEventListener {
     @Override
     protected void onStop() {
         super.onStop();
+        if (datasource.isOpen()) datasource.close();
         //finish();
         //mSensorManager.unregisterListener(this);
     }
@@ -80,6 +81,7 @@ public class SalatQibla extends Activity implements SensorEventListener {
 	@Override
     protected void onDestroy() {
         super.onDestroy();
+        if (datasource.isOpen()) datasource.close();
         //finish();
         //mSensorManager.unregisterListener(this);
     }

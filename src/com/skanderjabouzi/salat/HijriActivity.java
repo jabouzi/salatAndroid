@@ -99,12 +99,17 @@ public class HijriActivity extends Activity{
 					day = day1.getCurrentItem();
 					year = year1.getCurrentItem() - 50;
 					hijriDates = hijri.islToChr(year, month, (day - 1), 0);
+					Log.i("HIJRI", "DATE1 : ["+day+", "+month+", "+year+"]");
+					Log.i("HIJRI", "IS2CHR : ["+hijriDates[0]+", "+hijriDates[1]+", "+hijriDates[2]+"]");
+					if (hijriDates[0] == 30) hijriDates[0] = 0;
+					if (hijriDates[1] == 12) hijriDates[1] = 0;
 					month2.setCurrentItem(hijriDates[1]);
 					//month2.scroll(hijriDates[1], 1000);
 					day2.setCurrentItem(hijriDates[0] - 1);
 					//day2.scroll(hijriDates[0], 1000);
 					year2.setCurrentItem(hijriDates[2] - 570);
 					//year2.scroll(hijriDates[2] - 570, 1000);
+
 					//Log.i("MONTH1 ", String.valueOf(month));
 					//Log.i("DAY1 ", String.valueOf(day));
 					//Log.i("YEAR1 ", String.valueOf(year));
@@ -119,9 +124,14 @@ public class HijriActivity extends Activity{
 					day = day2.getCurrentItem();
 					year = year2.getCurrentItem() + 570;
 					hijriDates = hijri.chrToIsl(year, month, (day + 1), 0);
+					Log.i("HIJRI", "DATE2 : ["+day+", "+month+", "+year+"]");
+					Log.i("HIJRI", "CHR2IS : ["+hijriDates[0]+", "+hijriDates[1]+", "+hijriDates[2]+"]");
+					if (hijriDates[0] == 31) hijriDates[0] = 0;
+					if (hijriDates[1] == 12) hijriDates[1] = 0;
 					month1.setCurrentItem(hijriDates[1]);
-					day1.setCurrentItem((hijriDates[0]+1));
+					day1.setCurrentItem((hijriDates[0]-1));
 					year1.setCurrentItem(hijriDates[2] + 50);
+					
 					//Log.i("MONTH2 ", String.valueOf(month));
 					//Log.i("DAY2 ", String.valueOf(day));
 					//Log.i("YEAR2 ", String.valueOf(year));
@@ -134,8 +144,8 @@ public class HijriActivity extends Activity{
 		};
 
 		Log.i("HIJRI : ", String.valueOf(calendar.get(Calendar.YEAR)) + " " +  String.valueOf(calendar.get(Calendar.MONTH)) + " " + String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)));
-		hijriDates = hijri.chrToIsl(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), 0);
-
+		hijriDates = hijri.chrToIsl(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DAY_OF_MONTH), 0);
+		Log.i("HIJRI", "CHR2IS : ["+hijriDates[0]+", "+hijriDates[1]+", "+hijriDates[2]+"]");
 		String months1[] = {"Muharram","Safar","Rabii 1","Rabii 2","Jumada 1","Jumada 2","Rajab","Sha\'ban","Ramadhan","Shawwal","Dhul Qa\'dah","Dhul Hijjah"};
 		month1.setViewAdapter(new DateArrayAdapter(this, months1, 0));
 		month1.setCurrentItem(hijriDates[1]);
@@ -176,16 +186,11 @@ public class HijriActivity extends Activity{
 		public DateArrayAdapter(Context context, String[] items, int current) {
 			super(context, items);
 			this.currentValue = current;
-			//setTextSize(16);
 		}
 
 		@Override
 		protected void configureTextView(TextView view) {
 			super.configureTextView(view);
-			//if (currentItem == currentValue) {
-				//view.setTextColor(0xFF0000F0);
-			//}
-			//view.setTypeface(Typeface.SANS_SERIF);
 		}
 
 		@Override
@@ -209,12 +214,10 @@ public class HijriActivity extends Activity{
     @Override
     protected void onStop() {
         super.onStop();
-        //finish();
     }
     
 	@Override
     protected void onDestroy() {
         super.onDestroy();
-        //finish();
     }
 }
