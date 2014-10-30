@@ -157,12 +157,12 @@ public class SalatApplication{
 		hijriAdjustement[4] = -2;
 		Hijri hijri = new Hijri();
 		this.hijriDates = hijri.isToString(year,month+1,day,hijriAdjustement[this.hijriDays]);
-		int[] hijris = new int[3];
-		hijris = hijri.chrToIsl(year,month+1,day,hijriAdjustement[this.hijriDays]);
-		Log.i("Salat app", "CH2IS : ["+hijris[0]+", "+hijris[1]+", "+hijris[2]+"]");
-		hijris = hijri.islToChr(+hijris[2],+hijris[1],+hijris[0],hijriAdjustement[this.hijriDays]);
-		Log.i("Salat app", "IS2CH : ["+hijris[0]+", "+hijris[1]+", "+hijris[2]+"]");
-		Log.i("Salat app", "setHijriDate : "+java.util.Arrays.asList(hijriDates).toString());
+		//int[] hijris = new int[3];
+		//hijris = hijri.chrToIsl(year,month+1,day,hijriAdjustement[this.hijriDays]);
+		//Log.i("Salat app", "CH2IS : ["+hijris[0]+", "+hijris[1]+", "+hijris[2]+"]");
+		//hijris = hijri.islToChr(+hijris[2],+hijris[1],+hijris[0],hijriAdjustement[this.hijriDays]);
+		//Log.i("Salat app", "IS2CH : ["+hijris[0]+", "+hijris[1]+", "+hijris[2]+"]");
+		//Log.i("Salat app", "setHijriDate : "+java.util.Arrays.asList(hijriDates).toString());
 	}
 
 	public String[] getHijriDates()

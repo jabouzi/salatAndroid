@@ -98,12 +98,12 @@ public class HijriActivity extends Activity{
 					month = month1.getCurrentItem();
 					day = day1.getCurrentItem();
 					year = year1.getCurrentItem() - 50;
-					hijriDates = hijri.islToChr(year, month, (day - 1), 0);
-					Log.i("HIJRI", "DATE1 : ["+day+", "+month+", "+year+"]");
-					Log.i("HIJRI", "IS2CHR : ["+hijriDates[0]+", "+hijriDates[1]+", "+hijriDates[2]+"]");
-					if (hijriDates[0] == 30) hijriDates[0] = 0;
-					if (hijriDates[1] == 12) hijriDates[1] = 0;
-					month2.setCurrentItem(hijriDates[1]);
+					hijriDates = hijri.islToChr(year, (month + 1), (day + 1), 0);
+					//Log.i("HIJRI", "DATE1 : ["+day+", "+month+", "+year+"]");
+					//Log.i("HIJRI", "IS2CHR : ["+hijriDates[0]+", "+hijriDates[1]+", "+hijriDates[2]+"]");
+					//if (hijriDates[0] == 31) hijriDates[0] = 0;
+					//if (hijriDates[1] == 12) hijriDates[1] = 0;
+					month2.setCurrentItem(hijriDates[1] - 1);
 					//month2.scroll(hijriDates[1], 1000);
 					day2.setCurrentItem(hijriDates[0] - 1);
 					//day2.scroll(hijriDates[0], 1000);
@@ -123,13 +123,13 @@ public class HijriActivity extends Activity{
 					month = month2.getCurrentItem();
 					day = day2.getCurrentItem();
 					year = year2.getCurrentItem() + 570;
-					hijriDates = hijri.chrToIsl(year, month, (day + 1), 0);
-					Log.i("HIJRI", "DATE2 : ["+day+", "+month+", "+year+"]");
-					Log.i("HIJRI", "CHR2IS : ["+hijriDates[0]+", "+hijriDates[1]+", "+hijriDates[2]+"]");
-					if (hijriDates[0] == 31) hijriDates[0] = 0;
-					if (hijriDates[1] == 12) hijriDates[1] = 0;
-					month1.setCurrentItem(hijriDates[1]);
-					day1.setCurrentItem((hijriDates[0]-1));
+					hijriDates = hijri.chrToIsl(year, (month + 1), (day + 1), 0);
+					//Log.i("HIJRI", "DATE2 : ["+day+", "+month+", "+year+"]");
+					//Log.i("HIJRI", "CHR2IS : ["+hijriDates[0]+", "+hijriDates[1]+", "+hijriDates[2]+"]");
+					//if (hijriDates[0] == 31) hijriDates[0] = 0;
+					//if (hijriDates[1] == 12) hijriDates[1] = 0;
+					month1.setCurrentItem(hijriDates[1] - 1);
+					day1.setCurrentItem(hijriDates[0] - 1);
 					year1.setCurrentItem(hijriDates[2] + 50);
 					
 					//Log.i("MONTH2 ", String.valueOf(month));
@@ -148,13 +148,13 @@ public class HijriActivity extends Activity{
 		Log.i("HIJRI", "CHR2IS : ["+hijriDates[0]+", "+hijriDates[1]+", "+hijriDates[2]+"]");
 		String months1[] = {"Muharram","Safar","Rabii 1","Rabii 2","Jumada 1","Jumada 2","Rajab","Sha\'ban","Ramadhan","Shawwal","Dhul Qa\'dah","Dhul Hijjah"};
 		month1.setViewAdapter(new DateArrayAdapter(this, months1, 0));
-		month1.setCurrentItem(hijriDates[1]);
+		month1.setCurrentItem(hijriDates[1] - 1);
 		month1.addChangingListener(listener);
 		year1.setViewAdapter(new NumericWheelAdapter(this, -50, hijriDates[2]+20));
 		year1.setCurrentItem(hijriDates[2] + 50);
 		year1.addChangingListener(listener);
 		day1.setViewAdapter(new NumericWheelAdapter(this, 1, 30));
-		day1.setCurrentItem((hijriDates[0]+1));
+		day1.setCurrentItem((hijriDates[0] - 1));
 		day1.addChangingListener(listener);
 
 		int curMonth = calendar.get(Calendar.MONTH);
