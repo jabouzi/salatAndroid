@@ -101,35 +101,19 @@ public class AdhanService extends Service{
         super.onDestroy();
         Log.i(TAG,"stop2");
     }
-
-    private void playAdhan() {
-		Intent intent = new Intent();
-		Log.i(TAG, "play -> " + nextSalat);
-        if (SalatApplication.FAJR == nextSalat)
-        {
-			intent.putExtra("TYPE", "FAJR");
-			
-        }
-        else
-        {
-			intent.putExtra("TYPE", "SALAT");
-        }
-        intent.setClass(this, Video.class);
-		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		startActivity(intent);
-        stopService();
-    }
     
     private void changeDay() {
         Intent intent;
         intent = new Intent(MIDNIGHT_INTENT);
         intent.putExtra(SALATTIME, "Midnight");
         sendBroadcast(intent, RECEIVE_SALATTIME_NOTIFICATIONS);
+        this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+		this.notificationManager.cancel(0);
         Log.i(TAG, "onHandleIntent #4 " + "Midnight");
         WakeLock.release("changeDay");
         stopService();
     }
-
+    
     private void startAdhan() {
         Intent intent;
         Log.i(TAG, " STARTADHAN -> " + nextSalat);
@@ -148,6 +132,24 @@ public class AdhanService extends Service{
 		}
 
 		Log.i(TAG, "onHandleIntent #3 " + nextSalat + " : " + salatName);
+    }
+
+    private void playAdhan() {
+		Intent intent = new Intent();
+		Log.i(TAG, "play -> " + nextSalat);
+        if (SalatApplication.FAJR == nextSalat)
+        {
+			intent.putExtra("TYPE", "FAJR");
+			
+        }
+        else
+        {
+			intent.putExtra("TYPE", "SALAT");
+        }
+        intent.setClass(this, Video.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(intent);
+        stopService();
     }
 
     private void sendTimelineNotification(String salatName) {
@@ -171,6 +173,7 @@ public class AdhanService extends Service{
         this.notificationManager.notify(0, this.notification);
 
         Log.i(TAG, "sendTimelineNotificatione -> " + salatName);
+        SalatApplication.write2sd(TAG, "sendTimelineNotification : SATAT NAME : " + salatName);
     }
 
     private void stopService()
