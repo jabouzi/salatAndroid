@@ -92,6 +92,8 @@ public class AdhanService extends Service{
 		else
 		{
 			stopService();
+			WakeLock.release("changeDay");
+			SalatApplication.setAlarm(this, "Adhan");
 		}
 		return super.onStartCommand(intent, flags, startId);
 	}
