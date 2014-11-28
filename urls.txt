@@ -8,6 +8,13 @@ http://developer.android.com/reference/android/app/AlarmManager.html#set(int, lo
 
 http://www.mkyong.com/android/android-spinner-drop-down-list-example/
 
++----------+
+|  ALARMS  |
++----------+
+
+http://stackoverflow.com/questions/21811882/android-alarmmanager-fires-off-for-past-time
+http://stackoverflow.com/questions/8451708/android-alarmmanager-firing-at-wrong-times?rq=1
+
 +-----------+
 | ANIMATION |
 +-----------+
