@@ -1,13 +1,13 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 23
     buildToolsVersion "24.0.2"
 
     defaultConfig {
-        applicationId "kankan.wheel"
         minSdkVersion 5
         targetSdkVersion 7
+        project.archivesBaseName = "whell"
     }
 
     buildTypes {

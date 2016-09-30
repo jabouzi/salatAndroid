@@ -32,12 +32,12 @@
         "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/location.png"
     },
     {
-        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/bg.png",
-        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/bg.png"
-    },
-    {
         "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/settings.png",
         "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/settings.png"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/bg.png",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/bg.png"
     },
     {
         "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/makka_icon_about.png",

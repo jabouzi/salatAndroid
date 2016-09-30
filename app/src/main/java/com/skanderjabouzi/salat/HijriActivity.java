@@ -6,12 +6,12 @@ import android.util.Log;
 import android.view.View.OnTouchListener;
 import android.view.MotionEvent;
 
-import kankan.wheel.R;
-import kankan.wheel.widget.OnWheelChangedListener;
-import kankan.wheel.widget.OnWheelClickedListener;
-import kankan.wheel.widget.WheelView;
-import kankan.wheel.widget.adapters.ArrayWheelAdapter;
-import kankan.wheel.widget.adapters.NumericWheelAdapter;
+import kankan.wheel.*;
+//import kankan.wheel.widget.OnWheelChangedListener;
+//import kankan.wheel.widget.OnWheelClickedListener;
+//import kankan.wheel.widget.WheelView;
+//import kankan.wheel.widget.adapters.ArrayWheelAdapter;
+//import kankan.wheel.widget.adapters.NumericWheelAdapter;
 
 import android.app.Activity;
 import android.content.Context;

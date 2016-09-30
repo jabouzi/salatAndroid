@@ -345,7 +345,7 @@ public class SalatApplication{
 	
 	public static void write2sd(String tag, String data)
 	{
-		try
+		/*try
 		{
 			long timeMS = Calendar.getInstance().getTimeInMillis();
 			String currentTime = new SimpleDateFormat("MM-dd HH:mm:ss").format(timeMS);
@@ -369,6 +369,6 @@ public class SalatApplication{
 		catch(IOException e)
 		{
 			Log.i("SalatApplication", e.getMessage());
-		}
+		}*/
 	}
 }
