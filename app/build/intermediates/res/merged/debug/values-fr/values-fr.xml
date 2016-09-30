@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="adhanOptions">
+        <item>Play video only</item>
+        <item>Vibrate only</item>
+        <item>Play video and vibrate</item>
+        <item>No adhan</item>
+    </string-array>
+    <string-array name="adhanOptionsValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="asr">
+        <item>Shafii</item>
+        <item>Hanafi</item>
+    </string-array>
+    <string-array name="asrValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="autoLocation">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+    <string-array name="autoLocationValues">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="calculation">
+        <item>Ithna Ashari</item>
+        <item>Université des sciences islamiques, Karachi</item>
+        <item>Société islamique d\'Amérique du Nord (ISNA)</item>
+        <item>Ligue islamique mondiale</item>
+        <item>Umm al-Qura, La Mecque</item>
+        <item>Autorité égyptienne général</item>
+        <item>Institut de géophysique de l\'Université de Téhéran</item>
+        <item>Réglage personnalisé</item>
+    </string-array>
+    <string-array name="calculationValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    <string-array name="highLatitudes">
+        <item>Aucun ajustement</item>
+        <item>Milieu de la nuit</item>
+        <item>1/7 de la nui</item>
+        <item>Angle / 60e de la nuit</item>
+    </string-array>
+    <string-array name="highLatitudesValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="hijri">
+        <item>+ 0 jour</item>
+        <item>+ 1 jour</item>
+        <item>+ 2 jours</item>
+        <item>- 1 jour</item>
+        <item>- 2 jours</item>
+    </string-array>
+    <string-array name="hijriValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string name="ChristianCalendar">Calendrier chrétien</string>
+    <string name="about">À propos de l\'application</string>
+    <string name="adhanOptions">Options du adhan</string>
+    <string name="app_name">Salat</string>
+    <string name="asr">00:00</string>
+    <string name="autoDetectLocation">Auto Detect Location</string>
+    <string name="cityCountry">S\'il vous plaît définir vos options votre emplacement</string>
+    <string name="date1">00 00 0000</string>
+    <string name="date2">00 00 0000</string>
+    <string name="detectLocation">Détecter l\'emplacement</string>
+    <string name="duhr">00:00</string>
+    <string name="fajr">00:00</string>
+    <string name="hijriCalendar">Calendar du hijri</string>
+    <string name="hijriConversion">Conversion du hijri</string>
+    <string name="hijriDates">Conversion du hijri</string>
+    <string name="isha">00:00</string>
+    <string name="location">Emplacement</string>
+    <string name="maghrib">00:00</string>
+    <string name="msgNotificationMessage">C\'est le temps de salat %s </string>
+    <string name="msgNotificationTitle">C\'est le temps de salat</string>
+    <string name="options">Options</string>
+    <string name="qibla">Qibla</string>
+    <string name="receive_location_notifications_permission_description">Permettre que cette application de recevoir des notifications d\'emplacement</string>
+    <string name="receive_location_notifications_permission_label">Recevoir les notifications d\'emplacement</string>
+    <string name="receive_phone_notifications_permission_description">Permettre à cette application de recevoir des notifications du téléphone</string>
+    <string name="receive_phone_notifications_permission_label">Recevoir les notifications du téléphone</string>
+    <string name="receive_salat_notifications_permission_description">Permettre que cette application de recevoir des notifications de salat</string>
+    <string name="receive_salat_notifications_permission_label">Recevoir les notifications de salat</string>
+    <string name="saveLocation">Enregistrer l\'emplacement</string>
+    <string name="saveOptions">Enregistrer les options</string>
+    <string name="saveSettings">Enregistrer les paramètres</string>
+    <string name="send_location_notifications_permission_description">>Permettre que cette application d\'envoyer des notifications d\'emplacement</string>
+    <string name="send_location_notifications_permission_label">Envoie des notifications d\'emplacement</string>
+    <string name="send_phone_notifications_permission_description">Permettre à cette application d\'envoyer des notifications du téléphone</string>
+    <string name="send_phone_notifications_permission_label">Envoie des notifications du téléphon</string>
+    <string name="send_salat_notifications_permission_description">Permettre à cette application d\'envoyer des notifications de salat</string>
+    <string name="send_salat_notifications_permission_label">Envoie des notifications de salat</string>
+    <string name="settings">Paramètres</string>
+    <string name="shourouk">00:00</string>
+    <string name="stopadhan">Stopper l\'adhan</string>
+    <string name="summaryAsr">Options de calcul du asr</string>
+    <string name="summaryCalculation">Options de calcul de la salat</string>
+    <string name="summaryCity">Nom de la ville</string>
+    <string name="summaryCountry">Nom du pays</string>
+    <string name="summaryHighLatitudes">Options de calcul des hautes latitudes</string>
+    <string name="summaryHijri">Options d\'ajustement du hijri</string>
+    <string name="summaryLatitude">Latitude de l\'emplacement</string>
+    <string name="summaryLongitude">Longitude de l\'emplacement</string>
+    <string name="summaryTimezone">Fuseau horaire de l\'emplacement</string>
+    <string name="titleAsr">Options du Asr</string>
+    <string name="titleCalculation">Calcul de la salat</string>
+    <string name="titleCity">Ville</string>
+    <string name="titleCountry">Pays</string>
+    <string name="titleDegree">Direction actuelle</string>
+    <string name="titleHighLatitudes">Hautes latitudes</string>
+    <string name="titleHijri">Ajustement du hijri</string>
+    <string name="titleLatitude">Latitude</string>
+    <string name="titleLocation">Emplacment de la Salat</string>
+    <string name="titleLongitude">Longitude</string>
+    <string name="titleNext">Les Salats de demain</string>
+    <string name="titleOptions">Options de la Salat</string>
+    <string name="titleQiblaDegree">Direction de la Qibla</string>
+    <string name="titleSalatQibla">Direction de la Qibla</string>
+    <string name="titleSettings">Paramètres de la Salat</string>
+    <string name="titleTimezone">Fuseau horaire</string>
+</resources>

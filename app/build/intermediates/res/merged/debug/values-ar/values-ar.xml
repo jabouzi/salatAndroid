@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="adhanOptions">
+        <item>Play video only</item>
+        <item>Vibrate only</item>
+        <item>Play video and vibrate</item>
+        <item>No adhan</item>
+    </string-array>
+    <string-array name="adhanOptionsValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="asr">
+        <item>شافعي</item>
+        <item>حنفي</item>
+    </string-array>
+    <string-array name="asrValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="autoLocation">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+    <string-array name="autoLocationValues">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="calculation">
+        <item>الاثني عشرية</item>
+        <item>جامعة العلوم الإسلامية كراتشي</item>
+        <item>الجمعية الإسلامية لأمريكا الشمالية</item>
+        <item>رابطة العالم الإسلامي</item>
+        <item>أم القرى، مكة المكرمة</item>
+        <item>الهيئة العامة المصرية</item>
+        <item>معهد الجيوفيزياء بجامعة طهران</item>
+        <item>إعداد مخصص</item>
+    </string-array>
+    <string-array name="calculationValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    <string-array name="highLatitudes">
+        <item>لا تعديل</item>
+        <item>منتصف الليل</item>
+        <item>1/7 ليلة</item>
+        <item>زاوية / 60 ليلة</item>
+    </string-array>
+    <string-array name="highLatitudesValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="hijri">
+        <item>+ 0 يوم</item>
+        <item>+ 1 يوم</item>
+        <item>+ 2 يوم</item>
+        <item>- 1 يوم</item>
+        <item>- 2 يوم</item>
+    </string-array>
+    <string-array name="hijriValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string name="ChristianCalendar">التقويم المسيحي</string>
+    <string name="about">حول هذا التطبيق</string>
+    <string name="adhanOptions">خيارات الأذان</string>
+    <string name="app_name">الصلاة</string>
+    <string name="asr">00:00</string>
+    <string name="autoDetectLocation">Auto Detect Location</string>
+    <string name="cityCountry">يرجى تحديد خياراتك، والمكان</string>
+    <string name="date1">00 00 0000</string>
+    <string name="date2">00 00 0000</string>
+    <string name="detectLocation">كشف الموقع</string>
+    <string name="duhr">00:00</string>
+    <string name="fajr">00:00</string>
+    <string name="hijriCalendar">التقويم الهجري</string>
+    <string name="hijriConversion">التحويل الهجري</string>
+    <string name="hijriDates">التحويل الهجري</string>
+    <string name="isha">00:00</string>
+    <string name="location">الموقع</string>
+    <string name="maghrib">00:00</string>
+    <string name="msgNotificationMessage">حان الوقت وقت صلاة %s </string>
+    <string name="msgNotificationTitle">حان الوقت وقت الصلاة</string>
+    <string name="options">الخيارات</string>
+    <string name="qibla">القبلة</string>
+    <string name="receive_location_notifications_permission_description">يسمح لهذا التطبيقل تلقي إشعارات الموقع</string>
+    <string name="receive_location_notifications_permission_label">تلقي إشعارات الموقع</string>
+    <string name="receive_phone_notifications_permission_description">يسمحل هذا التطبيق تلقي إشعارات الهاتف</string>
+    <string name="receive_phone_notifications_permission_label">تلقي إشعارات الهاتف</string>
+    <string name="receive_salat_notifications_permission_description">يسمح لهذا التطبيق تلقي إشعارات الصلاة</string>
+    <string name="receive_salat_notifications_permission_label">تلقي إشعارات الصلاة</string>
+    <string name="saveLocation">حفظ الموقع</string>
+    <string name="saveOptions">حفظ الإعدادات</string>
+    <string name="saveSettings">حفظ الإعدادات</string>
+    <string name="send_location_notifications_permission_description">يسمح لهذا التطبيق إرسال إشعارات الموقع</string>
+    <string name="send_location_notifications_permission_label">يرسل إشعارات الموقع</string>
+    <string name="send_phone_notifications_permission_description">يسمح لهذا التطبيق إرسال إشعارات الهاتف</string>
+    <string name="send_phone_notifications_permission_label">يرسل إشعارات الهاتف</string>
+    <string name="send_salat_notifications_permission_description">يسمح لهذا التطبيق إرسال إشعارات الصلاة </string>
+    <string name="send_salat_notifications_permission_label">إرسال إشعارات الصلاة</string>
+    <string name="settings">الإعدادات</string>
+    <string name="shourouk">00:00</string>
+    <string name="stopadhan">إيقاف الأذان</string>
+    <string name="summaryAsr">خيارات حساب العصر</string>
+    <string name="summaryCalculation">خيارات حساب أوقات صلاة</string>
+    <string name="summaryCity">اسم المدينة</string>
+    <string name="summaryCountry">إسم البلد</string>
+    <string name="summaryHighLatitudes">خيارات حساب خطوط العرض العالية</string>
+    <string name="summaryHijri">خيارات تعديل التاريخ الهجري</string>
+    <string name="summaryLatitude">خط عرض الموقع</string>
+    <string name="summaryLongitude">خط طول الموقع</string>
+    <string name="summaryTimezone">المنطقة الزمنية للموقع</string>
+    <string name="titleAsr">خيارات العصر</string>
+    <string name="titleCalculation">حساب أوقات صلاة</string>
+    <string name="titleCity">المدينة</string>
+    <string name="titleCountry">البلد</string>
+    <string name="titleDegree">الاتجاه الحالي</string>
+    <string name="titleHighLatitudes">خطوط العرض العالية</string>
+    <string name="titleHijri">تعديل التاريخ الهجري</string>
+    <string name="titleLatitude">خط العرض</string>
+    <string name="titleLocation">خيارات المكان</string>
+    <string name="titleLongitude">خط الطول</string>
+    <string name="titleNext">أوقات صلاة الغد</string>
+    <string name="titleOptions">خيارات الصلاة</string>
+    <string name="titleQiblaDegree">إتجاه القبلة</string>
+    <string name="titleSalatQibla">إتجاه القبلة</string>
+    <string name="titleSettings">إعدادات الصلاة</string>
+    <string name="titleTimezone">المنطقة الزمنية</string>
+</resources>

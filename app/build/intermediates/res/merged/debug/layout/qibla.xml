@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/bg1"
+    android:id="@+id/qibla_bg" >
+    
+   <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+        <ImageView
+        android:id="@+id/compass"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:src="@drawable/cadran" />
+        <ImageView
+        android:id="@+id/compass2"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:src="@drawable/arrow" />
+	</FrameLayout>
+
+    <LinearLayout  android:gravity="bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/linear"
+        android:orientation="vertical" >
+
+
+        <LinearLayout
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView android:layout_width="0dp"
+			  android:layout_height="wrap_content"
+			  android:layout_weight="1"
+			  android:id="@+id/degree_title">
+			</TextView>
+			<TextView android:layout_width="wrap_content"
+			  android:layout_height="wrap_content"
+			  android:id="@+id/qibla_degree_title">
+		   </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <TextView android:layout_width="0dp"
+			  android:layout_height="wrap_content"
+			  android:layout_weight="1"
+			  android:textSize="40sp"
+			  android:textStyle="bold"
+			  android:paddingLeft="8px"
+			  android:paddingBottom="8px"
+			  android:textColor="#fff"
+			  android:shadowColor="#000000"
+			  android:shadowDx="1"
+			  android:shadowDy="1"
+			  android:shadowRadius="1"
+			  android:id="@+id/degree">
+			</TextView>
+			<TextView android:layout_width="wrap_content"
+			  android:layout_height="wrap_content"
+			  android:textSize="40sp"
+			  android:textStyle="bold"
+			  android:paddingLeft="8px"
+			  android:paddingBottom="8px"
+			  android:textColor="#7F7F7F"
+			  android:shadowColor="#000000"
+			  android:shadowDx="1"
+			  android:shadowDy="1"
+			  android:shadowRadius="1"
+			  android:id="@+id/qibla_degree">
+		   </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

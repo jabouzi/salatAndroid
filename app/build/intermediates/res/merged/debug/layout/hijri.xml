@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+    android:gravity="center" 
+	android:background="@drawable/bg"
+	android:layout_width="fill_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">                    
+        
+		<kankan.wheel.widget.WheelView android:id="@+id/day1"
+			android:layout_height="wrap_content"
+			android:layout_width="50dp"/>
+		<kankan.wheel.widget.WheelView android:id="@+id/month1"
+			android:layout_height="wrap_content"
+			android:layout_width="150dp"/>
+		<kankan.wheel.widget.WheelView android:id="@+id/year1"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"/>            
+    </LinearLayout>
+    
+    	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:layout_gravity="center_horizontal"
+		android:textSize="25sp"
+		android:textStyle="bold"
+		android:paddingLeft="10px"
+		android:paddingBottom="10px"
+		android:textColor="#FFFFFF"
+		android:shadowColor="#000000"
+		android:shadowDx="1"
+		android:shadowDy="1"
+		android:shadowRadius="1"
+		/>
+    
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">
+      
+        <kankan.wheel.widget.WheelView android:id="@+id/day2"
+            android:layout_height="wrap_content"
+            android:layout_width="50dp"/>
+        <kankan.wheel.widget.WheelView android:id="@+id/month2"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"/>
+        <kankan.wheel.widget.WheelView android:id="@+id/year2"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>            
+    </LinearLayout>
+		
+</LinearLayout>

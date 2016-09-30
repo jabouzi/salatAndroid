@@ -1,0 +1,6 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/settings" android:title="@string/settings" android:icon="@drawable/settings"></item>
+    <item android:id="@+id/qibla" android:title="@string/qibla" android:icon="@drawable/qibla"></item>
+    <item android:id="@+id/hijri" android:title="@string/hijriConversion" android:icon="@drawable/hijri"></item>
+    <item android:id="@+id/about" android:title="@string/about" android:icon="@drawable/about"></item>
+</menu>

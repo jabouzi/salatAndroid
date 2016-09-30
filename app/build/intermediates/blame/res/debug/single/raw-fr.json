@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/raw-fr/legal.txt",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/raw-fr/legal.txt"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/raw-fr/info.txt",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/raw-fr/info.txt"
+    }
+]

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/salat"
+    android:id="@+id/salatView">    
+<TextView android:text="@string/date1" 
+          android:layout_width="fill_parent"
+          android:layout_height="0dip" 
+		  android:layout_weight="30"
+		  android:layout_marginLeft="150dp"
+          android:textSize="15sp"
+          android:textColor="#fff" 
+          android:id="@+id/date1Text">
+</TextView>
+<TextView android:text="@string/fajr" 
+          android:layout_width="fill_parent"
+          android:layout_height="0dip" 
+          android:layout_weight="13"
+          android:layout_marginLeft="150dp"
+          android:textSize="25sp"
+          android:textStyle="bold"
+          android:textColor="#fff" 
+          android:id="@+id/fajrText">
+</TextView>
+<TextView android:text="@string/duhr" 
+          android:layout_width="fill_parent"
+          android:layout_height="0dip" 
+          android:layout_weight="13"
+          android:layout_marginLeft="150dp"
+          android:textSize="25sp"
+          android:textStyle="bold"
+          android:textColor="#fff"
+          android:id="@+id/duhrText">
+</TextView>
+<TextView android:text="@string/asr" 
+          android:layout_width="fill_parent"
+          android:layout_height="0dip" 
+          android:layout_weight="13"
+          android:layout_marginLeft="150dp"
+          android:textSize="25sp"
+          android:textStyle="bold"
+          android:textColor="#fff"
+          android:id="@+id/asrText">
+</TextView>
+<TextView android:text="@string/maghrib" 
+          android:layout_width="fill_parent"
+          android:layout_height="0dip" 
+          android:layout_weight="13"
+          android:layout_marginLeft="150dp"
+          android:textSize="25sp"
+          android:textStyle="bold"
+          android:textColor="#fff"
+          android:id="@+id/maghribText">
+</TextView>
+<TextView android:text="@string/isha" 
+          android:layout_width="fill_parent"
+          android:layout_height="0dip" 
+          android:layout_weight="13"
+          android:layout_marginLeft="150dp"
+          android:textSize="25sp"
+          android:textStyle="bold"
+          android:textColor="#fff"
+          android:id="@+id/ishaText">
+</TextView>
+<TextView android:text="@string/shourouk" 
+          android:layout_width="fill_parent"
+          android:layout_height="0dip" 
+          android:layout_weight="5"
+          android:layout_marginLeft="165dp"
+          android:textSize="15sp"
+          android:textColor="#fff"
+          android:id="@+id/shouroukText">
+</TextView>
+<TextView android:text="@string/cityCountry"
+		  android:layout_width="fill_parent"
+          android:layout_height="0dip" 
+          android:layout_weight="15"
+          android:textSize="10sp"
+          android:textColor="#fff"
+          android:gravity="center"
+          android:id="@+id/locationText">
+</TextView>
+</LinearLayout>

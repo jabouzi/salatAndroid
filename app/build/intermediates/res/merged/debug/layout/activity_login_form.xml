@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/bg2" >
+    
+   <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+        <ImageView
+        android:id="@+id/compass"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:src="@drawable/cadran" />
+        <ImageView
+        android:id="@+id/compass2"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:src="@drawable/aiguille" />
+	</FrameLayout>
+
+    <LinearLayout  android:gravity="bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/linear"
+        android:orientation="vertical" >
+
+
+        <LinearLayout
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView android:layout_width="0dp"
+			  android:layout_height="wrap_content"
+			  android:layout_weight="1"
+			  android:text="TEXT1"
+			  android:id="@+id/degree">
+			</TextView>
+			<TextView android:layout_width="wrap_content"
+			  android:layout_height="wrap_content"
+			  android:text="TEXT2"
+			  android:id="@+id/qibla_degree">
+		   </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <TextView android:layout_width="0dp"
+			  android:layout_height="wrap_content"
+			  android:layout_weight="1"
+			  android:text="TEXT3"
+			  android:id="@+id/degree">
+			</TextView>
+			<TextView android:layout_width="wrap_content"
+			  android:layout_height="wrap_content"
+			  android:text="TEXT4"
+			  android:id="@+id/qibla_degree">
+		   </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,1494 @@
+[
+    {
+        "outputFile": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-es/values-es.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 7,
+                    "endColumn": 19,
+                    "endOffset": 254
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 130,
+                        "startColumn": 4,
+                        "startOffset": 6114,
+                        "endLine": 135,
+                        "endColumn": 19,
+                        "endOffset": 6313
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 259,
+                    "endLine": 13,
+                    "endColumn": 19,
+                    "endOffset": 411
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 137,
+                        "startColumn": 4,
+                        "startOffset": 6319,
+                        "endLine": 142,
+                        "endColumn": 19,
+                        "endOffset": 6471
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 416,
+                    "endLine": 17,
+                    "endColumn": 19,
+                    "endOffset": 517
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 90,
+                        "startColumn": 4,
+                        "startOffset": 5155,
+                        "endLine": 93,
+                        "endColumn": 19,
+                        "endOffset": 5256
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 522,
+                    "endLine": 21,
+                    "endColumn": 19,
+                    "endOffset": 619
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 95,
+                        "startColumn": 4,
+                        "startOffset": 5262,
+                        "endLine": 98,
+                        "endColumn": 19,
+                        "endOffset": 5359
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 624,
+                    "endLine": 25,
+                    "endColumn": 19,
+                    "endOffset": 727
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 144,
+                        "startColumn": 4,
+                        "startOffset": 6481,
+                        "endLine": 147,
+                        "endColumn": 19,
+                        "endOffset": 6584
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 732,
+                    "endLine": 29,
+                    "endColumn": 19,
+                    "endOffset": 838
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 149,
+                        "startColumn": 4,
+                        "startOffset": 6590,
+                        "endLine": 152,
+                        "endColumn": 19,
+                        "endOffset": 6696
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 843,
+                    "endLine": 39,
+                    "endColumn": 19,
+                    "endOffset": 1314
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 68,
+                        "startColumn": 4,
+                        "startOffset": 4429,
+                        "endLine": 77,
+                        "endColumn": 19,
+                        "endOffset": 4900
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 40,
+                    "startColumn": 4,
+                    "startOffset": 1319,
+                    "endLine": 49,
+                    "endColumn": 19,
+                    "endOffset": 1562
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 79,
+                        "startColumn": 4,
+                        "startOffset": 4906,
+                        "endLine": 88,
+                        "endColumn": 19,
+                        "endOffset": 5149
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 50,
+                    "startColumn": 4,
+                    "startOffset": 1567,
+                    "endLine": 55,
+                    "endColumn": 19,
+                    "endOffset": 1773
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 116,
+                        "startColumn": 4,
+                        "startOffset": 5739,
+                        "endLine": 121,
+                        "endColumn": 19,
+                        "endOffset": 5945
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 56,
+                    "startColumn": 4,
+                    "startOffset": 1778,
+                    "endLine": 61,
+                    "endColumn": 19,
+                    "endOffset": 1931
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 123,
+                        "startColumn": 4,
+                        "startOffset": 5951,
+                        "endLine": 128,
+                        "endColumn": 19,
+                        "endOffset": 6104
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 62,
+                    "startColumn": 4,
+                    "startOffset": 1936,
+                    "endLine": 68,
+                    "endColumn": 19,
+                    "endOffset": 2130
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 100,
+                        "startColumn": 4,
+                        "startOffset": 5365,
+                        "endLine": 106,
+                        "endColumn": 19,
+                        "endOffset": 5559
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 69,
+                    "startColumn": 4,
+                    "startOffset": 2135,
+                    "endLine": 75,
+                    "endColumn": 19,
+                    "endOffset": 2303
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 108,
+                        "startColumn": 4,
+                        "startOffset": 5565,
+                        "endLine": 114,
+                        "endColumn": 19,
+                        "endOffset": 5733
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 76,
+                    "startColumn": 4,
+                    "startOffset": 2308,
+                    "endColumn": 66,
+                    "endOffset": 2370
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 61,
+                        "startColumn": 4,
+                        "startOffset": 4080,
+                        "endColumn": 66,
+                        "endOffset": 4142
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 77,
+                    "startColumn": 4,
+                    "startOffset": 2375,
+                    "endColumn": 48,
+                    "endOffset": 2419
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 65,
+                        "startColumn": 4,
+                        "startOffset": 4311,
+                        "endColumn": 48,
+                        "endOffset": 4355
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 78,
+                    "startColumn": 4,
+                    "startOffset": 2424,
+                    "endColumn": 55,
+                    "endOffset": 2475
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 63,
+                        "startColumn": 4,
+                        "startOffset": 4203,
+                        "endColumn": 55,
+                        "endOffset": 4254
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 79,
+                    "startColumn": 4,
+                    "startOffset": 2480,
+                    "endColumn": 42,
+                    "endOffset": 2518
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 42,
+                        "endOffset": 93
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 80,
+                    "startColumn": 4,
+                    "startOffset": 2523,
+                    "endColumn": 37,
+                    "endOffset": 2556
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 266,
+                        "endColumn": 37,
+                        "endOffset": 299
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 81,
+                    "startColumn": 4,
+                    "startOffset": 2561,
+                    "endColumn": 67,
+                    "endOffset": 2624
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 66,
+                        "startColumn": 4,
+                        "startOffset": 4360,
+                        "endColumn": 67,
+                        "endOffset": 4423
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 82,
+                    "startColumn": 4,
+                    "startOffset": 2629,
+                    "endColumn": 85,
+                    "endOffset": 2710
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 428,
+                        "endColumn": 85,
+                        "endOffset": 509
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 83,
+                    "startColumn": 4,
+                    "startOffset": 2715,
+                    "endColumn": 44,
+                    "endOffset": 2755
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 98,
+                        "endColumn": 44,
+                        "endOffset": 138
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 84,
+                    "startColumn": 4,
+                    "startOffset": 2760,
+                    "endColumn": 44,
+                    "endOffset": 2800
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 143,
+                        "endColumn": 44,
+                        "endOffset": 183
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 85,
+                    "startColumn": 4,
+                    "startOffset": 2805,
+                    "endColumn": 61,
+                    "endOffset": 2862
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 51,
+                        "startColumn": 4,
+                        "startOffset": 3542,
+                        "endColumn": 61,
+                        "endOffset": 3599
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 86,
+                    "startColumn": 4,
+                    "startOffset": 2867,
+                    "endColumn": 38,
+                    "endOffset": 2901
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 227,
+                        "endColumn": 38,
+                        "endOffset": 261
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 87,
+                    "startColumn": 4,
+                    "startOffset": 2906,
+                    "endColumn": 38,
+                    "endOffset": 2940
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 188,
+                        "endColumn": 38,
+                        "endOffset": 222
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 88,
+                    "startColumn": 4,
+                    "startOffset": 2945,
+                    "endColumn": 58,
+                    "endOffset": 2999
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 60,
+                        "startColumn": 4,
+                        "startOffset": 4021,
+                        "endColumn": 58,
+                        "endOffset": 4075
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 89,
+                    "startColumn": 4,
+                    "startOffset": 3004,
+                    "endColumn": 60,
+                    "endOffset": 3060
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 59,
+                        "startColumn": 4,
+                        "startOffset": 3960,
+                        "endColumn": 60,
+                        "endOffset": 4016
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 90,
+                    "startColumn": 4,
+                    "startOffset": 3065,
+                    "endColumn": 55,
+                    "endOffset": 3116
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 62,
+                        "startColumn": 4,
+                        "startOffset": 4147,
+                        "endColumn": 55,
+                        "endOffset": 4198
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 91,
+                    "startColumn": 4,
+                    "startOffset": 3121,
+                    "endColumn": 38,
+                    "endOffset": 3155
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 346,
+                        "endColumn": 38,
+                        "endOffset": 380
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 92,
+                    "startColumn": 4,
+                    "startOffset": 3160,
+                    "endColumn": 46,
+                    "endOffset": 3202
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 56,
+                        "startColumn": 4,
+                        "startOffset": 3828,
+                        "endColumn": 46,
+                        "endOffset": 3870
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 93,
+                    "startColumn": 4,
+                    "startOffset": 3207,
+                    "endColumn": 41,
+                    "endOffset": 3244
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 304,
+                        "endColumn": 41,
+                        "endOffset": 341
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 94,
+                    "startColumn": 4,
+                    "startOffset": 3249,
+                    "endColumn": 83,
+                    "endOffset": 3328
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 40,
+                        "startColumn": 4,
+                        "startOffset": 2889,
+                        "endColumn": 83,
+                        "endOffset": 2968
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 95,
+                    "startColumn": 4,
+                    "startOffset": 3333,
+                    "endColumn": 64,
+                    "endOffset": 3393
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 39,
+                        "startColumn": 4,
+                        "startOffset": 2824,
+                        "endColumn": 64,
+                        "endOffset": 2884
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 96,
+                    "startColumn": 4,
+                    "startOffset": 3398,
+                    "endColumn": 44,
+                    "endOffset": 3438
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 55,
+                        "startColumn": 4,
+                        "startOffset": 3783,
+                        "endColumn": 44,
+                        "endOffset": 3823
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 97,
+                    "startColumn": 4,
+                    "startOffset": 3443,
+                    "endColumn": 39,
+                    "endOffset": 3478
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 58,
+                        "startColumn": 4,
+                        "startOffset": 3920,
+                        "endColumn": 39,
+                        "endOffset": 3955
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 98,
+                    "startColumn": 4,
+                    "startOffset": 3483,
+                    "endColumn": 137,
+                    "endOffset": 3616
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 1713,
+                        "endColumn": 137,
+                        "endOffset": 1846
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 99,
+                    "startColumn": 4,
+                    "startOffset": 3621,
+                    "endColumn": 107,
+                    "endOffset": 3724
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 1605,
+                        "endColumn": 107,
+                        "endOffset": 1708
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 100,
+                    "startColumn": 4,
+                    "startOffset": 3729,
+                    "endColumn": 130,
+                    "endOffset": 3855
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 2188,
+                        "endColumn": 130,
+                        "endOffset": 2314
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 101,
+                    "startColumn": 4,
+                    "startOffset": 3860,
+                    "endColumn": 107,
+                    "endOffset": 3963
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 2080,
+                        "endColumn": 107,
+                        "endOffset": 2183
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 102,
+                    "startColumn": 4,
+                    "startOffset": 3968,
+                    "endColumn": 124,
+                    "endOffset": 4088
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1247,
+                        "endColumn": 124,
+                        "endOffset": 1367
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 103,
+                    "startColumn": 4,
+                    "startOffset": 4093,
+                    "endColumn": 101,
+                    "endOffset": 4190
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1145,
+                        "endColumn": 101,
+                        "endOffset": 1242
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 104,
+                    "startColumn": 4,
+                    "startOffset": 4195,
+                    "endColumn": 58,
+                    "endOffset": 4249
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 52,
+                        "startColumn": 4,
+                        "startOffset": 3604,
+                        "endColumn": 58,
+                        "endOffset": 3658
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 105,
+                    "startColumn": 4,
+                    "startOffset": 4254,
+                    "endColumn": 56,
+                    "endOffset": 4306
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 53,
+                        "startColumn": 4,
+                        "startOffset": 3663,
+                        "endColumn": 56,
+                        "endOffset": 3715
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 106,
+                    "startColumn": 4,
+                    "startOffset": 4311,
+                    "endColumn": 62,
+                    "endOffset": 4369
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 54,
+                        "startColumn": 4,
+                        "startOffset": 3720,
+                        "endColumn": 62,
+                        "endOffset": 3778
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 107,
+                    "startColumn": 4,
+                    "startOffset": 4374,
+                    "endColumn": 128,
+                    "endOffset": 4498
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1476,
+                        "endColumn": 128,
+                        "endOffset": 1600
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 108,
+                    "startColumn": 4,
+                    "startOffset": 4503,
+                    "endColumn": 103,
+                    "endOffset": 4602
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1372,
+                        "endColumn": 103,
+                        "endOffset": 1471
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 109,
+                    "startColumn": 4,
+                    "startOffset": 4607,
+                    "endColumn": 124,
+                    "endOffset": 4727
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 1955,
+                        "endColumn": 124,
+                        "endOffset": 2075
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 110,
+                    "startColumn": 4,
+                    "startOffset": 4732,
+                    "endColumn": 103,
+                    "endOffset": 4831
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 1851,
+                        "endColumn": 103,
+                        "endOffset": 1950
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 111,
+                    "startColumn": 4,
+                    "startOffset": 4836,
+                    "endColumn": 121,
+                    "endOffset": 4953
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1023,
+                        "endColumn": 121,
+                        "endOffset": 1140
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 112,
+                    "startColumn": 4,
+                    "startOffset": 4958,
+                    "endColumn": 96,
+                    "endOffset": 5050
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 926,
+                        "endColumn": 96,
+                        "endOffset": 1018
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 113,
+                    "startColumn": 4,
+                    "startOffset": 5055,
+                    "endColumn": 44,
+                    "endOffset": 5095
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 57,
+                        "startColumn": 4,
+                        "startOffset": 3875,
+                        "endColumn": 44,
+                        "endOffset": 3915
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 114,
+                    "startColumn": 4,
+                    "startOffset": 5100,
+                    "endColumn": 42,
+                    "endOffset": 5138
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 385,
+                        "endColumn": 42,
+                        "endOffset": 423
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 115,
+                    "startColumn": 4,
+                    "startOffset": 5143,
+                    "endColumn": 51,
+                    "endOffset": 5190
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 64,
+                        "startColumn": 4,
+                        "startOffset": 4259,
+                        "endColumn": 51,
+                        "endOffset": 4306
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 116,
+                    "startColumn": 4,
+                    "startOffset": 5195,
+                    "endColumn": 62,
+                    "endOffset": 5253
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 36,
+                        "startColumn": 4,
+                        "startOffset": 2613,
+                        "endColumn": 62,
+                        "endOffset": 2671
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 117,
+                    "startColumn": 4,
+                    "startOffset": 5258,
+                    "endColumn": 72,
+                    "endOffset": 5326
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 32,
+                        "startColumn": 4,
+                        "startOffset": 2378,
+                        "endColumn": 72,
+                        "endOffset": 2446
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 118,
+                    "startColumn": 4,
+                    "startOffset": 5331,
+                    "endColumn": 59,
+                    "endOffset": 5386
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 48,
+                        "startColumn": 4,
+                        "startOffset": 3377,
+                        "endColumn": 59,
+                        "endOffset": 3432
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 119,
+                    "startColumn": 4,
+                    "startOffset": 5391,
+                    "endColumn": 58,
+                    "endOffset": 5445
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 50,
+                        "startColumn": 4,
+                        "startOffset": 3483,
+                        "endColumn": 58,
+                        "endOffset": 3537
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 120,
+                    "startColumn": 4,
+                    "startOffset": 5450,
+                    "endColumn": 84,
+                    "endOffset": 5530
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 38,
+                        "startColumn": 4,
+                        "startOffset": 2739,
+                        "endColumn": 84,
+                        "endOffset": 2819
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 121,
+                    "startColumn": 4,
+                    "startOffset": 5535,
+                    "endColumn": 59,
+                    "endOffset": 5590
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 34,
+                        "startColumn": 4,
+                        "startOffset": 2503,
+                        "endColumn": 59,
+                        "endOffset": 2558
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 122,
+                    "startColumn": 4,
+                    "startOffset": 5595,
+                    "endColumn": 64,
+                    "endOffset": 5655
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 44,
+                        "startColumn": 4,
+                        "startOffset": 3142,
+                        "endColumn": 64,
+                        "endOffset": 3202
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 123,
+                    "startColumn": 4,
+                    "startOffset": 5660,
+                    "endColumn": 66,
+                    "endOffset": 5722
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 42,
+                        "startColumn": 4,
+                        "startOffset": 3025,
+                        "endColumn": 66,
+                        "endOffset": 3087
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 124,
+                    "startColumn": 4,
+                    "startOffset": 5727,
+                    "endColumn": 69,
+                    "endOffset": 5792
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 46,
+                        "startColumn": 4,
+                        "startOffset": 3262,
+                        "endColumn": 69,
+                        "endOffset": 3327
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 125,
+                    "startColumn": 4,
+                    "startOffset": 5797,
+                    "endColumn": 49,
+                    "endOffset": 5842
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 35,
+                        "startColumn": 4,
+                        "startOffset": 2563,
+                        "endColumn": 49,
+                        "endOffset": 2608
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 126,
+                    "startColumn": 4,
+                    "startOffset": 5847,
+                    "endColumn": 58,
+                    "endOffset": 5901
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 31,
+                        "startColumn": 4,
+                        "startOffset": 2319,
+                        "endColumn": 58,
+                        "endOffset": 2373
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 127,
+                    "startColumn": 4,
+                    "startOffset": 5906,
+                    "endColumn": 44,
+                    "endOffset": 5946
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 47,
+                        "startColumn": 4,
+                        "startOffset": 3332,
+                        "endColumn": 44,
+                        "endOffset": 3372
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 128,
+                    "startColumn": 4,
+                    "startOffset": 5951,
+                    "endColumn": 45,
+                    "endOffset": 5992
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 49,
+                        "startColumn": 4,
+                        "startOffset": 3437,
+                        "endColumn": 45,
+                        "endOffset": 3478
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 129,
+                    "startColumn": 4,
+                    "startOffset": 5997,
+                    "endColumn": 56,
+                    "endOffset": 6049
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 808,
+                        "endColumn": 56,
+                        "endOffset": 860
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 130,
+                    "startColumn": 4,
+                    "startOffset": 6054,
+                    "endColumn": 62,
+                    "endOffset": 6112
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 37,
+                        "startColumn": 4,
+                        "startOffset": 2676,
+                        "endColumn": 62,
+                        "endOffset": 2734
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 131,
+                    "startColumn": 4,
+                    "startOffset": 6117,
+                    "endColumn": 51,
+                    "endOffset": 6164
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 33,
+                        "startColumn": 4,
+                        "startOffset": 2451,
+                        "endColumn": 51,
+                        "endOffset": 2498
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 132,
+                    "startColumn": 4,
+                    "startOffset": 6169,
+                    "endColumn": 49,
+                    "endOffset": 6214
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 43,
+                        "startColumn": 4,
+                        "startOffset": 3092,
+                        "endColumn": 49,
+                        "endOffset": 3137
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 133,
+                    "startColumn": 4,
+                    "startOffset": 6219,
+                    "endColumn": 61,
+                    "endOffset": 6276
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 629,
+                        "endColumn": 61,
+                        "endOffset": 686
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 134,
+                    "startColumn": 4,
+                    "startOffset": 6281,
+                    "endColumn": 51,
+                    "endOffset": 6328
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 41,
+                        "startColumn": 4,
+                        "startOffset": 2973,
+                        "endColumn": 51,
+                        "endOffset": 3020
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 135,
+                    "startColumn": 4,
+                    "startOffset": 6333,
+                    "endColumn": 58,
+                    "endOffset": 6387
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 514,
+                        "endColumn": 58,
+                        "endOffset": 568
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 136,
+                    "startColumn": 4,
+                    "startOffset": 6392,
+                    "endColumn": 55,
+                    "endOffset": 6443
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 573,
+                        "endColumn": 55,
+                        "endOffset": 624
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 137,
+                    "startColumn": 4,
+                    "startOffset": 6448,
+                    "endColumn": 60,
+                    "endOffset": 6504
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 865,
+                        "endColumn": 60,
+                        "endOffset": 921
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 138,
+                    "startColumn": 4,
+                    "startOffset": 6509,
+                    "endColumn": 59,
+                    "endOffset": 6564
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 748,
+                        "endColumn": 59,
+                        "endOffset": 803
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 139,
+                    "startColumn": 4,
+                    "startOffset": 6569,
+                    "endColumn": 56,
+                    "endOffset": 6621
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 691,
+                        "endColumn": 56,
+                        "endOffset": 743
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 140,
+                    "startColumn": 4,
+                    "startOffset": 6626,
+                    "endColumn": 54,
+                    "endOffset": 6676
+                },
+                "from": {
+                    "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
+                    "position": {
+                        "startLine": 45,
+                        "startColumn": 4,
+                        "startOffset": 3207,
+                        "endColumn": 54,
+                        "endOffset": 3257
+                    }
+                }
+            }
+        ]
+    }
+]

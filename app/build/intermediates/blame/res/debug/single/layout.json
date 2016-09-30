@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/layout/hijri.xml",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/layout/hijri.xml"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/layout/mediaplayervideo.xml",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/layout/mediaplayervideo.xml"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/layout/qibla.xml",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/layout/qibla.xml"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/layout/location.xml",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/layout/location.xml"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/layout/next.xml",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/layout/next.xml"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/layout/settings.xml",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/layout/settings.xml"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/layout/main.xml",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/layout/main.xml"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/layout/activity_login_form.xml",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/layout/activity_login_form.xml"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/layout/options.xml",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/layout/options.xml"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/layout/about.xml",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/layout/about.xml"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/layout/video.xml",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/layout/video.xml"
+    }
+]

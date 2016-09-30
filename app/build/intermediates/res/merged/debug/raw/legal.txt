@@ -1,0 +1,4 @@
+This is a free software distributed under the terms of 
+the GNU General Public License version 3 
+(http://www.gnu.org/licenses/gpl-3.0.html) 
+Desing : Alexandre Michel, Marc-André Deguire, Alexandre Geoffrion

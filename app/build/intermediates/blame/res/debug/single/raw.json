@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/raw/athan.3gp",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/raw/athan.3gp"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/raw/legal.txt",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/raw/legal.txt"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/raw/info.txt",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/raw/info.txt"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/raw/fajr.3gp",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/raw/fajr.3gp"
+    }
+]

@@ -1,0 +1,66 @@
+[
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/bg2.jpg",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/bg2.jpg"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/qibla.png",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/qibla.png"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/hijri.png",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/hijri.png"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/bg1.jpg",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/bg1.jpg"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/about.png",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/about.png"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/makka_icon.png",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/makka_icon.png"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/aiguille2.png",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/aiguille2.png"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/location.png",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/location.png"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/bg.png",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/bg.png"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/settings.png",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/settings.png"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/makka_icon_about.png",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/makka_icon_about.png"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/salat.png",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/salat.png"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/arrow.png",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/arrow.png"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/layout_bg.xml",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/layout_bg.xml"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/aiguille.png",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/aiguille.png"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/cadran.png",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/cadran.png"
+    }
+]
