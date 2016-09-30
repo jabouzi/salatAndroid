@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/sjabouzi/Developement/Android/wheel/app/build/intermediates/res/merged/debug/drawable/wheel_val.xml",
+        "source": "/home/sjabouzi/Developement/Android/wheel/app/src/main/res/drawable/wheel_val.xml"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/wheel/app/build/intermediates/res/merged/debug/drawable/wheel_bg.xml",
+        "source": "/home/sjabouzi/Developement/Android/wheel/app/src/main/res/drawable/wheel_bg.xml"
+    }
+]
