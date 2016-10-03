@@ -16,10 +16,10 @@
                     "position": {
                         "startLine": 130,
                         "startColumn": 4,
-                        "startOffset": 6114,
+                        "startOffset": 6120,
                         "endLine": 135,
                         "endColumn": 19,
-                        "endOffset": 6313
+                        "endOffset": 6319
                     }
                 }
             },
@@ -37,10 +37,10 @@
                     "position": {
                         "startLine": 137,
                         "startColumn": 4,
-                        "startOffset": 6319,
+                        "startOffset": 6325,
                         "endLine": 142,
                         "endColumn": 19,
-                        "endOffset": 6471
+                        "endOffset": 6477
                     }
                 }
             },
@@ -58,10 +58,10 @@
                     "position": {
                         "startLine": 90,
                         "startColumn": 4,
-                        "startOffset": 5155,
+                        "startOffset": 5161,
                         "endLine": 93,
                         "endColumn": 19,
-                        "endOffset": 5256
+                        "endOffset": 5262
                     }
                 }
             },
@@ -79,10 +79,10 @@
                     "position": {
                         "startLine": 95,
                         "startColumn": 4,
-                        "startOffset": 5262,
+                        "startOffset": 5268,
                         "endLine": 98,
                         "endColumn": 19,
-                        "endOffset": 5359
+                        "endOffset": 5365
                     }
                 }
             },
@@ -100,10 +100,10 @@
                     "position": {
                         "startLine": 144,
                         "startColumn": 4,
-                        "startOffset": 6481,
+                        "startOffset": 6487,
                         "endLine": 147,
                         "endColumn": 19,
-                        "endOffset": 6584
+                        "endOffset": 6590
                     }
                 }
             },
@@ -121,10 +121,10 @@
                     "position": {
                         "startLine": 149,
                         "startColumn": 4,
-                        "startOffset": 6590,
+                        "startOffset": 6596,
                         "endLine": 152,
                         "endColumn": 19,
-                        "endOffset": 6696
+                        "endOffset": 6702
                     }
                 }
             },
@@ -142,10 +142,10 @@
                     "position": {
                         "startLine": 68,
                         "startColumn": 4,
-                        "startOffset": 4429,
+                        "startOffset": 4435,
                         "endLine": 77,
                         "endColumn": 19,
-                        "endOffset": 4900
+                        "endOffset": 4906
                     }
                 }
             },
@@ -163,10 +163,10 @@
                     "position": {
                         "startLine": 79,
                         "startColumn": 4,
-                        "startOffset": 4906,
+                        "startOffset": 4912,
                         "endLine": 88,
                         "endColumn": 19,
-                        "endOffset": 5149
+                        "endOffset": 5155
                     }
                 }
             },
@@ -184,10 +184,10 @@
                     "position": {
                         "startLine": 116,
                         "startColumn": 4,
-                        "startOffset": 5739,
+                        "startOffset": 5745,
                         "endLine": 121,
                         "endColumn": 19,
-                        "endOffset": 5945
+                        "endOffset": 5951
                     }
                 }
             },
@@ -205,10 +205,10 @@
                     "position": {
                         "startLine": 123,
                         "startColumn": 4,
-                        "startOffset": 5951,
+                        "startOffset": 5957,
                         "endLine": 128,
                         "endColumn": 19,
-                        "endOffset": 6104
+                        "endOffset": 6110
                     }
                 }
             },
@@ -226,10 +226,10 @@
                     "position": {
                         "startLine": 100,
                         "startColumn": 4,
-                        "startOffset": 5365,
+                        "startOffset": 5371,
                         "endLine": 106,
                         "endColumn": 19,
-                        "endOffset": 5559
+                        "endOffset": 5565
                     }
                 }
             },
@@ -247,10 +247,10 @@
                     "position": {
                         "startLine": 108,
                         "startColumn": 4,
-                        "startOffset": 5565,
+                        "startOffset": 5571,
                         "endLine": 114,
                         "endColumn": 19,
-                        "endOffset": 5733
+                        "endOffset": 5739
                     }
                 }
             },
@@ -267,9 +267,9 @@
                     "position": {
                         "startLine": 61,
                         "startColumn": 4,
-                        "startOffset": 4080,
+                        "startOffset": 4086,
                         "endColumn": 66,
-                        "endOffset": 4142
+                        "endOffset": 4148
                     }
                 }
             },
@@ -286,9 +286,9 @@
                     "position": {
                         "startLine": 65,
                         "startColumn": 4,
-                        "startOffset": 4311,
+                        "startOffset": 4317,
                         "endColumn": 48,
-                        "endOffset": 4355
+                        "endOffset": 4361
                     }
                 }
             },
@@ -305,9 +305,9 @@
                     "position": {
                         "startLine": 63,
                         "startColumn": 4,
-                        "startOffset": 4203,
+                        "startOffset": 4209,
                         "endColumn": 55,
-                        "endOffset": 4254
+                        "endOffset": 4260
                     }
                 }
             },
@@ -316,17 +316,17 @@
                     "startLine": 79,
                     "startColumn": 4,
                     "startOffset": 2480,
-                    "endColumn": 42,
-                    "endOffset": 2518
+                    "endColumn": 37,
+                    "endOffset": 2513
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 2,
+                        "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 42,
-                        "endOffset": 93
+                        "startOffset": 272,
+                        "endColumn": 37,
+                        "endOffset": 305
                     }
                 }
             },
@@ -334,18 +334,18 @@
                 "to": {
                     "startLine": 80,
                     "startColumn": 4,
-                    "startOffset": 2523,
-                    "endColumn": 37,
-                    "endOffset": 2556
+                    "startOffset": 2518,
+                    "endColumn": 67,
+                    "endOffset": 2581
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 66,
                         "startColumn": 4,
-                        "startOffset": 266,
-                        "endColumn": 37,
-                        "endOffset": 299
+                        "startOffset": 4366,
+                        "endColumn": 67,
+                        "endOffset": 4429
                     }
                 }
             },
@@ -353,18 +353,18 @@
                 "to": {
                     "startLine": 81,
                     "startColumn": 4,
-                    "startOffset": 2561,
-                    "endColumn": 67,
-                    "endOffset": 2624
+                    "startOffset": 2586,
+                    "endColumn": 85,
+                    "endOffset": 2667
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 66,
+                        "startLine": 11,
                         "startColumn": 4,
-                        "startOffset": 4360,
-                        "endColumn": 67,
-                        "endOffset": 4423
+                        "startOffset": 434,
+                        "endColumn": 85,
+                        "endOffset": 515
                     }
                 }
             },
@@ -372,18 +372,18 @@
                 "to": {
                     "startLine": 82,
                     "startColumn": 4,
-                    "startOffset": 2629,
-                    "endColumn": 85,
-                    "endOffset": 2710
+                    "startOffset": 2672,
+                    "endColumn": 44,
+                    "endOffset": 2712
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 11,
+                        "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 428,
-                        "endColumn": 85,
-                        "endOffset": 509
+                        "startOffset": 104,
+                        "endColumn": 44,
+                        "endOffset": 144
                     }
                 }
             },
@@ -391,18 +391,18 @@
                 "to": {
                     "startLine": 83,
                     "startColumn": 4,
-                    "startOffset": 2715,
+                    "startOffset": 2717,
                     "endColumn": 44,
-                    "endOffset": 2755
+                    "endOffset": 2757
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 3,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 98,
+                        "startOffset": 149,
                         "endColumn": 44,
-                        "endOffset": 138
+                        "endOffset": 189
                     }
                 }
             },
@@ -410,18 +410,18 @@
                 "to": {
                     "startLine": 84,
                     "startColumn": 4,
-                    "startOffset": 2760,
-                    "endColumn": 44,
-                    "endOffset": 2800
+                    "startOffset": 2762,
+                    "endColumn": 61,
+                    "endOffset": 2819
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 51,
                         "startColumn": 4,
-                        "startOffset": 143,
-                        "endColumn": 44,
-                        "endOffset": 183
+                        "startOffset": 3548,
+                        "endColumn": 61,
+                        "endOffset": 3605
                     }
                 }
             },
@@ -429,18 +429,18 @@
                 "to": {
                     "startLine": 85,
                     "startColumn": 4,
-                    "startOffset": 2805,
-                    "endColumn": 61,
-                    "endOffset": 2862
+                    "startOffset": 2824,
+                    "endColumn": 38,
+                    "endOffset": 2858
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 51,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 3542,
-                        "endColumn": 61,
-                        "endOffset": 3599
+                        "startOffset": 233,
+                        "endColumn": 38,
+                        "endOffset": 267
                     }
                 }
             },
@@ -448,18 +448,18 @@
                 "to": {
                     "startLine": 86,
                     "startColumn": 4,
-                    "startOffset": 2867,
+                    "startOffset": 2863,
                     "endColumn": 38,
-                    "endOffset": 2901
+                    "endOffset": 2897
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 6,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 227,
+                        "startOffset": 194,
                         "endColumn": 38,
-                        "endOffset": 261
+                        "endOffset": 228
                     }
                 }
             },
@@ -467,18 +467,18 @@
                 "to": {
                     "startLine": 87,
                     "startColumn": 4,
-                    "startOffset": 2906,
-                    "endColumn": 38,
-                    "endOffset": 2940
+                    "startOffset": 2902,
+                    "endColumn": 58,
+                    "endOffset": 2956
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 5,
+                        "startLine": 60,
                         "startColumn": 4,
-                        "startOffset": 188,
-                        "endColumn": 38,
-                        "endOffset": 222
+                        "startOffset": 4027,
+                        "endColumn": 58,
+                        "endOffset": 4081
                     }
                 }
             },
@@ -486,18 +486,18 @@
                 "to": {
                     "startLine": 88,
                     "startColumn": 4,
-                    "startOffset": 2945,
-                    "endColumn": 58,
-                    "endOffset": 2999
+                    "startOffset": 2961,
+                    "endColumn": 60,
+                    "endOffset": 3017
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 60,
+                        "startLine": 59,
                         "startColumn": 4,
-                        "startOffset": 4021,
-                        "endColumn": 58,
-                        "endOffset": 4075
+                        "startOffset": 3966,
+                        "endColumn": 60,
+                        "endOffset": 4022
                     }
                 }
             },
@@ -505,18 +505,18 @@
                 "to": {
                     "startLine": 89,
                     "startColumn": 4,
-                    "startOffset": 3004,
-                    "endColumn": 60,
-                    "endOffset": 3060
+                    "startOffset": 3022,
+                    "endColumn": 55,
+                    "endOffset": 3073
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 59,
+                        "startLine": 62,
                         "startColumn": 4,
-                        "startOffset": 3960,
-                        "endColumn": 60,
-                        "endOffset": 4016
+                        "startOffset": 4153,
+                        "endColumn": 55,
+                        "endOffset": 4204
                     }
                 }
             },
@@ -524,18 +524,18 @@
                 "to": {
                     "startLine": 90,
                     "startColumn": 4,
-                    "startOffset": 3065,
-                    "endColumn": 55,
-                    "endOffset": 3116
+                    "startOffset": 3078,
+                    "endColumn": 38,
+                    "endOffset": 3112
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 62,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 4147,
-                        "endColumn": 55,
-                        "endOffset": 4198
+                        "startOffset": 352,
+                        "endColumn": 38,
+                        "endOffset": 386
                     }
                 }
             },
@@ -543,18 +543,18 @@
                 "to": {
                     "startLine": 91,
                     "startColumn": 4,
-                    "startOffset": 3121,
-                    "endColumn": 38,
-                    "endOffset": 3155
+                    "startOffset": 3117,
+                    "endColumn": 46,
+                    "endOffset": 3159
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 9,
+                        "startLine": 56,
                         "startColumn": 4,
-                        "startOffset": 346,
-                        "endColumn": 38,
-                        "endOffset": 380
+                        "startOffset": 3834,
+                        "endColumn": 46,
+                        "endOffset": 3876
                     }
                 }
             },
@@ -562,18 +562,18 @@
                 "to": {
                     "startLine": 92,
                     "startColumn": 4,
-                    "startOffset": 3160,
-                    "endColumn": 46,
-                    "endOffset": 3202
+                    "startOffset": 3164,
+                    "endColumn": 41,
+                    "endOffset": 3201
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 56,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 3828,
-                        "endColumn": 46,
-                        "endOffset": 3870
+                        "startOffset": 310,
+                        "endColumn": 41,
+                        "endOffset": 347
                     }
                 }
             },
@@ -581,18 +581,18 @@
                 "to": {
                     "startLine": 93,
                     "startColumn": 4,
-                    "startOffset": 3207,
-                    "endColumn": 41,
-                    "endOffset": 3244
+                    "startOffset": 3206,
+                    "endColumn": 83,
+                    "endOffset": 3285
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 8,
+                        "startLine": 40,
                         "startColumn": 4,
-                        "startOffset": 304,
-                        "endColumn": 41,
-                        "endOffset": 341
+                        "startOffset": 2895,
+                        "endColumn": 83,
+                        "endOffset": 2974
                     }
                 }
             },
@@ -600,18 +600,18 @@
                 "to": {
                     "startLine": 94,
                     "startColumn": 4,
-                    "startOffset": 3249,
-                    "endColumn": 83,
-                    "endOffset": 3328
+                    "startOffset": 3290,
+                    "endColumn": 64,
+                    "endOffset": 3350
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 40,
+                        "startLine": 39,
                         "startColumn": 4,
-                        "startOffset": 2889,
-                        "endColumn": 83,
-                        "endOffset": 2968
+                        "startOffset": 2830,
+                        "endColumn": 64,
+                        "endOffset": 2890
                     }
                 }
             },
@@ -619,18 +619,18 @@
                 "to": {
                     "startLine": 95,
                     "startColumn": 4,
-                    "startOffset": 3333,
-                    "endColumn": 64,
-                    "endOffset": 3393
+                    "startOffset": 3355,
+                    "endColumn": 44,
+                    "endOffset": 3395
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 39,
+                        "startLine": 55,
                         "startColumn": 4,
-                        "startOffset": 2824,
-                        "endColumn": 64,
-                        "endOffset": 2884
+                        "startOffset": 3789,
+                        "endColumn": 44,
+                        "endOffset": 3829
                     }
                 }
             },
@@ -638,18 +638,18 @@
                 "to": {
                     "startLine": 96,
                     "startColumn": 4,
-                    "startOffset": 3398,
-                    "endColumn": 44,
-                    "endOffset": 3438
+                    "startOffset": 3400,
+                    "endColumn": 39,
+                    "endOffset": 3435
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 55,
+                        "startLine": 58,
                         "startColumn": 4,
-                        "startOffset": 3783,
-                        "endColumn": 44,
-                        "endOffset": 3823
+                        "startOffset": 3926,
+                        "endColumn": 39,
+                        "endOffset": 3961
                     }
                 }
             },
@@ -657,18 +657,18 @@
                 "to": {
                     "startLine": 97,
                     "startColumn": 4,
-                    "startOffset": 3443,
-                    "endColumn": 39,
-                    "endOffset": 3478
+                    "startOffset": 3440,
+                    "endColumn": 137,
+                    "endOffset": 3573
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 58,
+                        "startLine": 26,
                         "startColumn": 4,
-                        "startOffset": 3920,
-                        "endColumn": 39,
-                        "endOffset": 3955
+                        "startOffset": 1719,
+                        "endColumn": 137,
+                        "endOffset": 1852
                     }
                 }
             },
@@ -676,18 +676,18 @@
                 "to": {
                     "startLine": 98,
                     "startColumn": 4,
-                    "startOffset": 3483,
-                    "endColumn": 137,
-                    "endOffset": 3616
+                    "startOffset": 3578,
+                    "endColumn": 107,
+                    "endOffset": 3681
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 26,
+                        "startLine": 25,
                         "startColumn": 4,
-                        "startOffset": 1713,
-                        "endColumn": 137,
-                        "endOffset": 1846
+                        "startOffset": 1611,
+                        "endColumn": 107,
+                        "endOffset": 1714
                     }
                 }
             },
@@ -695,18 +695,18 @@
                 "to": {
                     "startLine": 99,
                     "startColumn": 4,
-                    "startOffset": 3621,
-                    "endColumn": 107,
-                    "endOffset": 3724
+                    "startOffset": 3686,
+                    "endColumn": 130,
+                    "endOffset": 3812
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 25,
+                        "startLine": 30,
                         "startColumn": 4,
-                        "startOffset": 1605,
-                        "endColumn": 107,
-                        "endOffset": 1708
+                        "startOffset": 2194,
+                        "endColumn": 130,
+                        "endOffset": 2320
                     }
                 }
             },
@@ -714,18 +714,18 @@
                 "to": {
                     "startLine": 100,
                     "startColumn": 4,
-                    "startOffset": 3729,
-                    "endColumn": 130,
-                    "endOffset": 3855
+                    "startOffset": 3817,
+                    "endColumn": 107,
+                    "endOffset": 3920
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 30,
+                        "startLine": 29,
                         "startColumn": 4,
-                        "startOffset": 2188,
-                        "endColumn": 130,
-                        "endOffset": 2314
+                        "startOffset": 2086,
+                        "endColumn": 107,
+                        "endOffset": 2189
                     }
                 }
             },
@@ -733,18 +733,18 @@
                 "to": {
                     "startLine": 101,
                     "startColumn": 4,
-                    "startOffset": 3860,
-                    "endColumn": 107,
-                    "endOffset": 3963
+                    "startOffset": 3925,
+                    "endColumn": 124,
+                    "endOffset": 4045
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 29,
+                        "startLine": 22,
                         "startColumn": 4,
-                        "startOffset": 2080,
-                        "endColumn": 107,
-                        "endOffset": 2183
+                        "startOffset": 1253,
+                        "endColumn": 124,
+                        "endOffset": 1373
                     }
                 }
             },
@@ -752,18 +752,18 @@
                 "to": {
                     "startLine": 102,
                     "startColumn": 4,
-                    "startOffset": 3968,
-                    "endColumn": 124,
-                    "endOffset": 4088
+                    "startOffset": 4050,
+                    "endColumn": 101,
+                    "endOffset": 4147
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 22,
+                        "startLine": 21,
                         "startColumn": 4,
-                        "startOffset": 1247,
-                        "endColumn": 124,
-                        "endOffset": 1367
+                        "startOffset": 1151,
+                        "endColumn": 101,
+                        "endOffset": 1248
                     }
                 }
             },
@@ -771,18 +771,18 @@
                 "to": {
                     "startLine": 103,
                     "startColumn": 4,
-                    "startOffset": 4093,
-                    "endColumn": 101,
-                    "endOffset": 4190
+                    "startOffset": 4152,
+                    "endColumn": 48,
+                    "endOffset": 4196
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
-                        "startLine": 21,
+                        "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 1145,
-                        "endColumn": 101,
-                        "endOffset": 1242
+                        "startOffset": 55,
+                        "endColumn": 48,
+                        "endOffset": 99
                     }
                 }
             },
@@ -790,18 +790,18 @@
                 "to": {
                     "startLine": 104,
                     "startColumn": 4,
-                    "startOffset": 4195,
+                    "startOffset": 4201,
                     "endColumn": 58,
-                    "endOffset": 4249
+                    "endOffset": 4255
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 52,
                         "startColumn": 4,
-                        "startOffset": 3604,
+                        "startOffset": 3610,
                         "endColumn": 58,
-                        "endOffset": 3658
+                        "endOffset": 3664
                     }
                 }
             },
@@ -809,18 +809,18 @@
                 "to": {
                     "startLine": 105,
                     "startColumn": 4,
-                    "startOffset": 4254,
+                    "startOffset": 4260,
                     "endColumn": 56,
-                    "endOffset": 4306
+                    "endOffset": 4312
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 53,
                         "startColumn": 4,
-                        "startOffset": 3663,
+                        "startOffset": 3669,
                         "endColumn": 56,
-                        "endOffset": 3715
+                        "endOffset": 3721
                     }
                 }
             },
@@ -828,18 +828,18 @@
                 "to": {
                     "startLine": 106,
                     "startColumn": 4,
-                    "startOffset": 4311,
+                    "startOffset": 4317,
                     "endColumn": 62,
-                    "endOffset": 4369
+                    "endOffset": 4375
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 54,
                         "startColumn": 4,
-                        "startOffset": 3720,
+                        "startOffset": 3726,
                         "endColumn": 62,
-                        "endOffset": 3778
+                        "endOffset": 3784
                     }
                 }
             },
@@ -847,18 +847,18 @@
                 "to": {
                     "startLine": 107,
                     "startColumn": 4,
-                    "startOffset": 4374,
+                    "startOffset": 4380,
                     "endColumn": 128,
-                    "endOffset": 4498
+                    "endOffset": 4504
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 24,
                         "startColumn": 4,
-                        "startOffset": 1476,
+                        "startOffset": 1482,
                         "endColumn": 128,
-                        "endOffset": 1600
+                        "endOffset": 1606
                     }
                 }
             },
@@ -866,18 +866,18 @@
                 "to": {
                     "startLine": 108,
                     "startColumn": 4,
-                    "startOffset": 4503,
+                    "startOffset": 4509,
                     "endColumn": 103,
-                    "endOffset": 4602
+                    "endOffset": 4608
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 23,
                         "startColumn": 4,
-                        "startOffset": 1372,
+                        "startOffset": 1378,
                         "endColumn": 103,
-                        "endOffset": 1471
+                        "endOffset": 1477
                     }
                 }
             },
@@ -885,18 +885,18 @@
                 "to": {
                     "startLine": 109,
                     "startColumn": 4,
-                    "startOffset": 4607,
+                    "startOffset": 4613,
                     "endColumn": 124,
-                    "endOffset": 4727
+                    "endOffset": 4733
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 28,
                         "startColumn": 4,
-                        "startOffset": 1955,
+                        "startOffset": 1961,
                         "endColumn": 124,
-                        "endOffset": 2075
+                        "endOffset": 2081
                     }
                 }
             },
@@ -904,18 +904,18 @@
                 "to": {
                     "startLine": 110,
                     "startColumn": 4,
-                    "startOffset": 4732,
+                    "startOffset": 4738,
                     "endColumn": 103,
-                    "endOffset": 4831
+                    "endOffset": 4837
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 27,
                         "startColumn": 4,
-                        "startOffset": 1851,
+                        "startOffset": 1857,
                         "endColumn": 103,
-                        "endOffset": 1950
+                        "endOffset": 1956
                     }
                 }
             },
@@ -923,18 +923,18 @@
                 "to": {
                     "startLine": 111,
                     "startColumn": 4,
-                    "startOffset": 4836,
+                    "startOffset": 4842,
                     "endColumn": 121,
-                    "endOffset": 4953
+                    "endOffset": 4959
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
-                        "startOffset": 1023,
+                        "startOffset": 1029,
                         "endColumn": 121,
-                        "endOffset": 1140
+                        "endOffset": 1146
                     }
                 }
             },
@@ -942,18 +942,18 @@
                 "to": {
                     "startLine": 112,
                     "startColumn": 4,
-                    "startOffset": 4958,
+                    "startOffset": 4964,
                     "endColumn": 96,
-                    "endOffset": 5050
+                    "endOffset": 5056
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
-                        "startOffset": 926,
+                        "startOffset": 932,
                         "endColumn": 96,
-                        "endOffset": 1018
+                        "endOffset": 1024
                     }
                 }
             },
@@ -961,18 +961,18 @@
                 "to": {
                     "startLine": 113,
                     "startColumn": 4,
-                    "startOffset": 5055,
+                    "startOffset": 5061,
                     "endColumn": 44,
-                    "endOffset": 5095
+                    "endOffset": 5101
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 57,
                         "startColumn": 4,
-                        "startOffset": 3875,
+                        "startOffset": 3881,
                         "endColumn": 44,
-                        "endOffset": 3915
+                        "endOffset": 3921
                     }
                 }
             },
@@ -980,18 +980,18 @@
                 "to": {
                     "startLine": 114,
                     "startColumn": 4,
-                    "startOffset": 5100,
+                    "startOffset": 5106,
                     "endColumn": 42,
-                    "endOffset": 5138
+                    "endOffset": 5144
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
-                        "startOffset": 385,
+                        "startOffset": 391,
                         "endColumn": 42,
-                        "endOffset": 423
+                        "endOffset": 429
                     }
                 }
             },
@@ -999,18 +999,18 @@
                 "to": {
                     "startLine": 115,
                     "startColumn": 4,
-                    "startOffset": 5143,
+                    "startOffset": 5149,
                     "endColumn": 51,
-                    "endOffset": 5190
+                    "endOffset": 5196
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 64,
                         "startColumn": 4,
-                        "startOffset": 4259,
+                        "startOffset": 4265,
                         "endColumn": 51,
-                        "endOffset": 4306
+                        "endOffset": 4312
                     }
                 }
             },
@@ -1018,18 +1018,18 @@
                 "to": {
                     "startLine": 116,
                     "startColumn": 4,
-                    "startOffset": 5195,
+                    "startOffset": 5201,
                     "endColumn": 62,
-                    "endOffset": 5253
+                    "endOffset": 5259
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 36,
                         "startColumn": 4,
-                        "startOffset": 2613,
+                        "startOffset": 2619,
                         "endColumn": 62,
-                        "endOffset": 2671
+                        "endOffset": 2677
                     }
                 }
             },
@@ -1037,18 +1037,18 @@
                 "to": {
                     "startLine": 117,
                     "startColumn": 4,
-                    "startOffset": 5258,
+                    "startOffset": 5264,
                     "endColumn": 72,
-                    "endOffset": 5326
+                    "endOffset": 5332
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 32,
                         "startColumn": 4,
-                        "startOffset": 2378,
+                        "startOffset": 2384,
                         "endColumn": 72,
-                        "endOffset": 2446
+                        "endOffset": 2452
                     }
                 }
             },
@@ -1056,18 +1056,18 @@
                 "to": {
                     "startLine": 118,
                     "startColumn": 4,
-                    "startOffset": 5331,
+                    "startOffset": 5337,
                     "endColumn": 59,
-                    "endOffset": 5386
+                    "endOffset": 5392
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 48,
                         "startColumn": 4,
-                        "startOffset": 3377,
+                        "startOffset": 3383,
                         "endColumn": 59,
-                        "endOffset": 3432
+                        "endOffset": 3438
                     }
                 }
             },
@@ -1075,18 +1075,18 @@
                 "to": {
                     "startLine": 119,
                     "startColumn": 4,
-                    "startOffset": 5391,
+                    "startOffset": 5397,
                     "endColumn": 58,
-                    "endOffset": 5445
+                    "endOffset": 5451
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 50,
                         "startColumn": 4,
-                        "startOffset": 3483,
+                        "startOffset": 3489,
                         "endColumn": 58,
-                        "endOffset": 3537
+                        "endOffset": 3543
                     }
                 }
             },
@@ -1094,18 +1094,18 @@
                 "to": {
                     "startLine": 120,
                     "startColumn": 4,
-                    "startOffset": 5450,
+                    "startOffset": 5456,
                     "endColumn": 84,
-                    "endOffset": 5530
+                    "endOffset": 5536
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 38,
                         "startColumn": 4,
-                        "startOffset": 2739,
+                        "startOffset": 2745,
                         "endColumn": 84,
-                        "endOffset": 2819
+                        "endOffset": 2825
                     }
                 }
             },
@@ -1113,18 +1113,18 @@
                 "to": {
                     "startLine": 121,
                     "startColumn": 4,
-                    "startOffset": 5535,
+                    "startOffset": 5541,
                     "endColumn": 59,
-                    "endOffset": 5590
+                    "endOffset": 5596
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 34,
                         "startColumn": 4,
-                        "startOffset": 2503,
+                        "startOffset": 2509,
                         "endColumn": 59,
-                        "endOffset": 2558
+                        "endOffset": 2564
                     }
                 }
             },
@@ -1132,18 +1132,18 @@
                 "to": {
                     "startLine": 122,
                     "startColumn": 4,
-                    "startOffset": 5595,
+                    "startOffset": 5601,
                     "endColumn": 64,
-                    "endOffset": 5655
+                    "endOffset": 5661
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 44,
                         "startColumn": 4,
-                        "startOffset": 3142,
+                        "startOffset": 3148,
                         "endColumn": 64,
-                        "endOffset": 3202
+                        "endOffset": 3208
                     }
                 }
             },
@@ -1151,18 +1151,18 @@
                 "to": {
                     "startLine": 123,
                     "startColumn": 4,
-                    "startOffset": 5660,
+                    "startOffset": 5666,
                     "endColumn": 66,
-                    "endOffset": 5722
+                    "endOffset": 5728
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 42,
                         "startColumn": 4,
-                        "startOffset": 3025,
+                        "startOffset": 3031,
                         "endColumn": 66,
-                        "endOffset": 3087
+                        "endOffset": 3093
                     }
                 }
             },
@@ -1170,18 +1170,18 @@
                 "to": {
                     "startLine": 124,
                     "startColumn": 4,
-                    "startOffset": 5727,
+                    "startOffset": 5733,
                     "endColumn": 69,
-                    "endOffset": 5792
+                    "endOffset": 5798
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 46,
                         "startColumn": 4,
-                        "startOffset": 3262,
+                        "startOffset": 3268,
                         "endColumn": 69,
-                        "endOffset": 3327
+                        "endOffset": 3333
                     }
                 }
             },
@@ -1189,18 +1189,18 @@
                 "to": {
                     "startLine": 125,
                     "startColumn": 4,
-                    "startOffset": 5797,
+                    "startOffset": 5803,
                     "endColumn": 49,
-                    "endOffset": 5842
+                    "endOffset": 5848
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 35,
                         "startColumn": 4,
-                        "startOffset": 2563,
+                        "startOffset": 2569,
                         "endColumn": 49,
-                        "endOffset": 2608
+                        "endOffset": 2614
                     }
                 }
             },
@@ -1208,18 +1208,18 @@
                 "to": {
                     "startLine": 126,
                     "startColumn": 4,
-                    "startOffset": 5847,
+                    "startOffset": 5853,
                     "endColumn": 58,
-                    "endOffset": 5901
+                    "endOffset": 5907
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 31,
                         "startColumn": 4,
-                        "startOffset": 2319,
+                        "startOffset": 2325,
                         "endColumn": 58,
-                        "endOffset": 2373
+                        "endOffset": 2379
                     }
                 }
             },
@@ -1227,18 +1227,18 @@
                 "to": {
                     "startLine": 127,
                     "startColumn": 4,
-                    "startOffset": 5906,
+                    "startOffset": 5912,
                     "endColumn": 44,
-                    "endOffset": 5946
+                    "endOffset": 5952
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 47,
                         "startColumn": 4,
-                        "startOffset": 3332,
+                        "startOffset": 3338,
                         "endColumn": 44,
-                        "endOffset": 3372
+                        "endOffset": 3378
                     }
                 }
             },
@@ -1246,18 +1246,18 @@
                 "to": {
                     "startLine": 128,
                     "startColumn": 4,
-                    "startOffset": 5951,
+                    "startOffset": 5957,
                     "endColumn": 45,
-                    "endOffset": 5992
+                    "endOffset": 5998
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 49,
                         "startColumn": 4,
-                        "startOffset": 3437,
+                        "startOffset": 3443,
                         "endColumn": 45,
-                        "endOffset": 3478
+                        "endOffset": 3484
                     }
                 }
             },
@@ -1265,18 +1265,18 @@
                 "to": {
                     "startLine": 129,
                     "startColumn": 4,
-                    "startOffset": 5997,
+                    "startOffset": 6003,
                     "endColumn": 56,
-                    "endOffset": 6049
+                    "endOffset": 6055
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
-                        "startOffset": 808,
+                        "startOffset": 814,
                         "endColumn": 56,
-                        "endOffset": 860
+                        "endOffset": 866
                     }
                 }
             },
@@ -1284,18 +1284,18 @@
                 "to": {
                     "startLine": 130,
                     "startColumn": 4,
-                    "startOffset": 6054,
+                    "startOffset": 6060,
                     "endColumn": 62,
-                    "endOffset": 6112
+                    "endOffset": 6118
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 37,
                         "startColumn": 4,
-                        "startOffset": 2676,
+                        "startOffset": 2682,
                         "endColumn": 62,
-                        "endOffset": 2734
+                        "endOffset": 2740
                     }
                 }
             },
@@ -1303,18 +1303,18 @@
                 "to": {
                     "startLine": 131,
                     "startColumn": 4,
-                    "startOffset": 6117,
+                    "startOffset": 6123,
                     "endColumn": 51,
-                    "endOffset": 6164
+                    "endOffset": 6170
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 33,
                         "startColumn": 4,
-                        "startOffset": 2451,
+                        "startOffset": 2457,
                         "endColumn": 51,
-                        "endOffset": 2498
+                        "endOffset": 2504
                     }
                 }
             },
@@ -1322,18 +1322,18 @@
                 "to": {
                     "startLine": 132,
                     "startColumn": 4,
-                    "startOffset": 6169,
+                    "startOffset": 6175,
                     "endColumn": 49,
-                    "endOffset": 6214
+                    "endOffset": 6220
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 43,
                         "startColumn": 4,
-                        "startOffset": 3092,
+                        "startOffset": 3098,
                         "endColumn": 49,
-                        "endOffset": 3137
+                        "endOffset": 3143
                     }
                 }
             },
@@ -1341,18 +1341,18 @@
                 "to": {
                     "startLine": 133,
                     "startColumn": 4,
-                    "startOffset": 6219,
+                    "startOffset": 6225,
                     "endColumn": 61,
-                    "endOffset": 6276
+                    "endOffset": 6282
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 629,
+                        "startOffset": 635,
                         "endColumn": 61,
-                        "endOffset": 686
+                        "endOffset": 692
                     }
                 }
             },
@@ -1360,18 +1360,18 @@
                 "to": {
                     "startLine": 134,
                     "startColumn": 4,
-                    "startOffset": 6281,
+                    "startOffset": 6287,
                     "endColumn": 51,
-                    "endOffset": 6328
+                    "endOffset": 6334
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 41,
                         "startColumn": 4,
-                        "startOffset": 2973,
+                        "startOffset": 2979,
                         "endColumn": 51,
-                        "endOffset": 3020
+                        "endOffset": 3026
                     }
                 }
             },
@@ -1379,18 +1379,18 @@
                 "to": {
                     "startLine": 135,
                     "startColumn": 4,
-                    "startOffset": 6333,
+                    "startOffset": 6339,
                     "endColumn": 58,
-                    "endOffset": 6387
+                    "endOffset": 6393
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
-                        "startOffset": 514,
+                        "startOffset": 520,
                         "endColumn": 58,
-                        "endOffset": 568
+                        "endOffset": 574
                     }
                 }
             },
@@ -1398,18 +1398,18 @@
                 "to": {
                     "startLine": 136,
                     "startColumn": 4,
-                    "startOffset": 6392,
+                    "startOffset": 6398,
                     "endColumn": 55,
-                    "endOffset": 6443
+                    "endOffset": 6449
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
-                        "startOffset": 573,
+                        "startOffset": 579,
                         "endColumn": 55,
-                        "endOffset": 624
+                        "endOffset": 630
                     }
                 }
             },
@@ -1417,18 +1417,18 @@
                 "to": {
                     "startLine": 137,
                     "startColumn": 4,
-                    "startOffset": 6448,
+                    "startOffset": 6454,
                     "endColumn": 60,
-                    "endOffset": 6504
+                    "endOffset": 6510
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
-                        "startOffset": 865,
+                        "startOffset": 871,
                         "endColumn": 60,
-                        "endOffset": 921
+                        "endOffset": 927
                     }
                 }
             },
@@ -1436,18 +1436,18 @@
                 "to": {
                     "startLine": 138,
                     "startColumn": 4,
-                    "startOffset": 6509,
+                    "startOffset": 6515,
                     "endColumn": 59,
-                    "endOffset": 6564
+                    "endOffset": 6570
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
-                        "startOffset": 748,
+                        "startOffset": 754,
                         "endColumn": 59,
-                        "endOffset": 803
+                        "endOffset": 809
                     }
                 }
             },
@@ -1455,18 +1455,18 @@
                 "to": {
                     "startLine": 139,
                     "startColumn": 4,
-                    "startOffset": 6569,
+                    "startOffset": 6575,
                     "endColumn": 56,
-                    "endOffset": 6621
+                    "endOffset": 6627
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 691,
+                        "startOffset": 697,
                         "endColumn": 56,
-                        "endOffset": 743
+                        "endOffset": 749
                     }
                 }
             },
@@ -1474,18 +1474,18 @@
                 "to": {
                     "startLine": 140,
                     "startColumn": 4,
-                    "startOffset": 6626,
+                    "startOffset": 6632,
                     "endColumn": 54,
-                    "endOffset": 6676
+                    "endOffset": 6682
                 },
                 "from": {
                     "file": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/values-es/strings.xml",
                     "position": {
                         "startLine": 45,
                         "startColumn": 4,
-                        "startOffset": 3207,
+                        "startOffset": 3213,
                         "endColumn": 54,
-                        "endOffset": 3257
+                        "endOffset": 3263
                     }
                 }
             }

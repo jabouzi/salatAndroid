@@ -2,7 +2,8 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "24.0.2"
+    buildToolsVersion "23.0.0"
+    useLibrary  'org.apache.http.legacy'
 
     defaultConfig {
         applicationId "com.skanderjabouzi.salat"
@@ -19,6 +20,7 @@ android {
 }
 
 dependencies {
+    compile project(':android-wheel')
+    compile files('libs/org.apache.http.legacy.jar')
     compile fileTree(include: '*.jar', dir: 'libs')
-    compile 'kankan.wheel:wheel0@aar'
 }

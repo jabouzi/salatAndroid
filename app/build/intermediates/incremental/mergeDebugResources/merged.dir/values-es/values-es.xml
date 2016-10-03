@@ -77,7 +77,6 @@
     <string name="ChristianCalendar">Calendario cristiano</string>
     <string name="about">Sobre esta app</string>
     <string name="adhanOptions">Opciones Adhan</string>
-    <string name="app_name">Salat</string>
     <string name="asr">00:00</string>
     <string name="autoDetectLocation">Auto Detect Location</string>
     <string name="cityCountry">Por favor, establece las opciones y ubicación</string>
@@ -102,6 +101,7 @@
     <string name="receive_phone_notifications_permission_label">Recibe notificaciones del teléfono</string>
     <string name="receive_salat_notifications_permission_description">Permita que esta solicitud para recibir salat</string>
     <string name="receive_salat_notifications_permission_label">Recibir notificaciones salat</string>
+    <string name="salat_app_name">Salat</string>
     <string name="saveLocation">Guardar ubicación</string>
     <string name="saveOptions">Guardar opciones</string>
     <string name="saveSettings">Guardar configuración</string>

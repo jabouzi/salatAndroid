@@ -77,7 +77,6 @@
     <string name="ChristianCalendar">التقويم المسيحي</string>
     <string name="about">حول هذا التطبيق</string>
     <string name="adhanOptions">خيارات الأذان</string>
-    <string name="app_name">الصلاة</string>
     <string name="asr">00:00</string>
     <string name="autoDetectLocation">Auto Detect Location</string>
     <string name="cityCountry">يرجى تحديد خياراتك، والمكان</string>
@@ -102,6 +101,7 @@
     <string name="receive_phone_notifications_permission_label">تلقي إشعارات الهاتف</string>
     <string name="receive_salat_notifications_permission_description">يسمح لهذا التطبيق تلقي إشعارات الصلاة</string>
     <string name="receive_salat_notifications_permission_label">تلقي إشعارات الصلاة</string>
+    <string name="salat_app_name">الصلاة</string>
     <string name="saveLocation">حفظ الموقع</string>
     <string name="saveOptions">حفظ الإعدادات</string>
     <string name="saveSettings">حفظ الإعدادات</string>

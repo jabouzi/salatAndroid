@@ -171,7 +171,7 @@ public class AdhanService extends Service{
                 }
         CharSequence notificationTitle = this.getText(R.string.msgNotificationTitle);
         CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, salatName);
-        this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent);
+        //this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent);
         this.notificationManager.notify(0, this.notification);
 
         Log.i(TAG, "sendTimelineNotificatione -> " + salatName);

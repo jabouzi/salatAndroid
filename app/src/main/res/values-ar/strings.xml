@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">الصلاة</string>
+    <string name="salat_app_name">الصلاة</string>
     <string name="date1">00 00 0000</string>
     <string name="date2">00 00 0000</string>
     <string name="fajr">00:00</string>
