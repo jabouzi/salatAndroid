@@ -3,29 +3,29 @@
     api-level="23"
     format="8"
     plugin-version="2.2.0"
-    timestamp="233052496962023"
+    timestamp="250662371787902"
     token="2522033072000543572"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="115" />
+        duration="102" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="227" />
+        duration="134" />
     <task
         name="verifier"
-        duration="7" />
+        duration="5" />
 
     <artifact
         location="/home/sjabouzi/Developement/Android/salatAndroid/app/build/outputs/apk/app-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="233052496962023"
+        timestamp="250662371787902"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/sjabouzi/Developement/Android/salatAndroid/app/build/outputs/apk/app-debug.apk"

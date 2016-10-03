@@ -7,8 +7,8 @@ android {
 
     defaultConfig {
         applicationId "com.skanderjabouzi.salat"
-        minSdkVersion 4
-        targetSdkVersion 4
+        minSdkVersion 9
+        targetSdkVersion 9
     }
 
     buildTypes {
@@ -22,4 +22,5 @@ android {
 dependencies {
     compile project(':android-wheel')
     compile fileTree(include: '*.jar', dir: 'libs')
+    compile 'com.android.support:support-v4:24.2.1'
 }

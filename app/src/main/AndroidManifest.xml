@@ -4,7 +4,7 @@
       android:versionCode="1"
       android:versionName="1.0"
      xmlns:tools="http://schemas.android.com/tools">
-    <uses-sdk android:minSdkVersion="5"  android:targetSdkVersion="7" tools:overrideLibrary="kankan.wheel"/>
+    <uses-sdk android:minSdkVersion="9"  android:targetSdkVersion="9" tools:overrideLibrary="kankan.wheel"/>
 
     <permission android:name="com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS"
                 android:label="@string/send_salat_notifications_permission_label"

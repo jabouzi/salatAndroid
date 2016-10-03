@@ -7,8 +7,107 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.0"
-        sha1="e51279704aaddb27aa1622c6df64139fb6a126cb">
+        sha1="f78ed159bf229215c05afd122673b00986b1fc26">
         <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f0745570204d25202b72924158dcd5b521c6e312/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_67f3322c0a96fc37b13c2fbe8a598ed93a580369/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/sjabouzi/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_4fe92f2c103cc789f29c17c56397da627f01535c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_2bd33f041c4833cca4ca2f72a7ce739cd397e116/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_ef8d3ac372c935536e1308c536af444dbf939f2b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_2a36591105d7ab2358e5f2241e30f25b75c455fa/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_247acc6fd5aaa82be4a7c54cc686ea7836240d0c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.1_eacfd8d2eb510894e481eb5101f805ae25abb11d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_d201ab22ca751788ca8acb95e6bb491a7089ae05/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_b30dc8d5e0f7895fefbc911d61f17fe8e08283a8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.1_949487533a4ea61ad1d28cf078727515cac56f42/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_c3f1ef3d9ee8c2144ab23b26c98448574f61b641/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -16,8 +115,17 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.0"
-        sha1="f66773ba1031296e25bb4599b4fc32f9e72ab9ed">
+        sha1="2a3dca3933639b814203cadd1a34fd1a33ec9d89">
         <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_8f7bc10d3016809ee5b93578d913f1a25c9ff239/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_b18b2d02aa00d64cbcad72d9e97f1a432757b66d/classes.dex" />
     </item>
 
 </items>

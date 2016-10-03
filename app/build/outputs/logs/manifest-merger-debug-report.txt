@@ -20,6 +20,12 @@ ADDED from /home/sjabouzi/Developement/Android/salatAndroid/app/src/main/Android
 uses-sdk
 ADDED from /home/sjabouzi/Developement/Android/salatAndroid/app/src/main/AndroidManifest.xml:7:5-109
 MERGED from [salatAndroid:android-wheel:unspecified] /home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/salatAndroid/android-wheel/unspecified/AndroidManifest.xml:7:5-9:40
+MERGED from [com.android.support:support-v4:24.2.1] /home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-compat:24.2.1] /home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-media-compat:24.2.1] /home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:24.2.1] /home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-ui:24.2.1] /home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-fragment:24.2.1] /home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/AndroidManifest.xml:21:5-23:60
 	tools:overrideLibrary
 		ADDED from /home/sjabouzi/Developement/Android/salatAndroid/app/src/main/AndroidManifest.xml:7:71-107
 	android:targetSdkVersion
@@ -165,6 +171,12 @@ ADDED from /home/sjabouzi/Developement/Android/salatAndroid/app/src/main/Android
 application
 ADDED from /home/sjabouzi/Developement/Android/salatAndroid/app/src/main/AndroidManifest.xml:63:5-127:19
 MERGED from [salatAndroid:android-wheel:unspecified] /home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/salatAndroid/android-wheel/unspecified/AndroidManifest.xml:11:5-12:19
+MERGED from [com.android.support:support-v4:24.2.1] /home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:24.2.1] /home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:24.2.1] /home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:24.2.1] /home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:24.2.1] /home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:24.2.1] /home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/AndroidManifest.xml:25:5-20
 	android:label
 		ADDED from /home/sjabouzi/Developement/Android/salatAndroid/app/src/main/AndroidManifest.xml:63:82-120
 		REJECTED from [salatAndroid:android-wheel:unspecified] /home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/salatAndroid/android-wheel/unspecified/AndroidManifest.xml:11:18-54

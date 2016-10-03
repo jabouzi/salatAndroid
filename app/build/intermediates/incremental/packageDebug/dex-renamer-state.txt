@@ -1,4 +1,4 @@
-#Mon Oct 03 09:49:41 EDT 2016
+#Mon Oct 03 14:43:14 EDT 2016
 base.0=/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f0745570204d25202b72924158dcd5b521c6e312
 renamed.1=classes.dex
 renamed.0=classes2.dex

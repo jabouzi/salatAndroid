@@ -13,6 +13,8 @@ import android.os.IBinder;
 import android.util.Log;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
+import android.os.Build;
+import android.support.v4.app.NotificationCompat;
 
 public class AdhanService extends Service{
 
@@ -158,21 +160,44 @@ public class AdhanService extends Service{
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, -1, new Intent(this, SalatActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
-                this.notification.when = System.currentTimeMillis();
-                this.notification.flags |= Notification.FLAG_AUTO_CANCEL ;
-                this.notification.flags |= Notification.FLAG_SHOW_LIGHTS;
-                this.notification.ledARGB = 0xff00ff00;
-                this.notification.ledOnMS = 300;
-                this.notification.ledOffMS = 1000;
-                if (athanType == 2 || athanType == 3)
-                {
-                        this.notification.defaults |= Notification.DEFAULT_VIBRATE;
-                        this.notification.vibrate = new long[]{0,100,200,300};
-                }
-        CharSequence notificationTitle = this.getText(R.string.msgNotificationTitle);
-        CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, salatName);
-        //this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent);
-        this.notificationManager.notify(0, this.notification);
+//        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
+//
+//            this.notification.when = System.currentTimeMillis();
+//            this.notification.flags |= Notification.FLAG_AUTO_CANCEL ;
+//            this.notification.flags |= Notification.FLAG_SHOW_LIGHTS;
+//            this.notification.ledARGB = 0xff00ff00;
+//            this.notification.ledOnMS = 300;
+//            this.notification.ledOffMS = 1000;
+//            if (athanType == 2 || athanType == 3)
+//            {
+//                this.notification.defaults |= Notification.DEFAULT_VIBRATE;
+//                this.notification.vibrate = new long[]{0,100,200,300};
+//            }
+//            CharSequence notificationTitle = this.getText(R.string.msgNotificationTitle);
+//            CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, salatName);
+//            this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent);
+//
+//        } else {
+//            NotificationCompat.Builder builder = new NotificationCompat.Builder(
+//                    this);
+//            notification = builder.setContentIntent(contentIntent)
+//                    .setSmallIcon(icon).setTicker(text).setWhen(time)
+//                    .setAutoCancel(true).setContentTitle(title)
+//                    .setContentText(text).build();
+//
+//            mNM.notify(NOTIFICATION, notification);
+//        }
+        Context context = this;
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        NotificationCompat.Builder reminderNotification = new NotificationCompat.Builder(AdhanService.this);
+        reminderNotification.setContentTitle(context.getString(R.string.msgNotificationTitle));
+        reminderNotification.setContentText(context.getString(R.string.msgNotificationMessage, salatName));
+        reminderNotification.setSmallIcon(R.drawable.makka_icon);
+        reminderNotification.setContentIntent(pendingIntent);
+        notificationManager.notify(0,reminderNotification.build());
+
+
+//        this.notificationManager.notify(0, this.notification);
 
         Log.i(TAG, "sendTimelineNotificatione -> " + salatName);
         SalatApplication.write2sd(TAG, "sendTimelineNotification : SATAT NAME : " + salatName);
