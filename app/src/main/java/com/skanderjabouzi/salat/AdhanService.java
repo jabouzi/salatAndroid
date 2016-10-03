@@ -39,7 +39,7 @@ public class AdhanService extends Service{
    
     @Override
         public int onStartCommand(Intent intent, int flags, int startId) {
-               
+
                 WakeLock.acquire(this, "AdhanService");
                
                 //salatApp = SalatApplication.getInstance(this);
@@ -122,6 +122,7 @@ public class AdhanService extends Service{
         Intent intent;
         Log.i(TAG, " STARTADHAN -> " + nextSalat);
                 this.notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//                NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                 this.notification = new Notification(R.drawable.makka_icon,"", 0);
                 //salatName = salatApp.salatNames[nextSalat];
                 sendTimelineNotification(salatName);
@@ -159,45 +160,24 @@ public class AdhanService extends Service{
     private void sendTimelineNotification(String salatName) {
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, -1, new Intent(this, SalatActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
-
-//        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
-//
-//            this.notification.when = System.currentTimeMillis();
-//            this.notification.flags |= Notification.FLAG_AUTO_CANCEL ;
-//            this.notification.flags |= Notification.FLAG_SHOW_LIGHTS;
-//            this.notification.ledARGB = 0xff00ff00;
-//            this.notification.ledOnMS = 300;
-//            this.notification.ledOffMS = 1000;
-//            if (athanType == 2 || athanType == 3)
-//            {
-//                this.notification.defaults |= Notification.DEFAULT_VIBRATE;
-//                this.notification.vibrate = new long[]{0,100,200,300};
-//            }
-//            CharSequence notificationTitle = this.getText(R.string.msgNotificationTitle);
-//            CharSequence notificationSummary = this.getString(R.string.msgNotificationMessage, salatName);
-//            this.notification.setLatestEventInfo(this, notificationTitle, notificationSummary, pendingIntent);
-//
-//        } else {
-//            NotificationCompat.Builder builder = new NotificationCompat.Builder(
-//                    this);
-//            notification = builder.setContentIntent(contentIntent)
-//                    .setSmallIcon(icon).setTicker(text).setWhen(time)
-//                    .setAutoCancel(true).setContentTitle(title)
-//                    .setContentText(text).build();
-//
-//            mNM.notify(NOTIFICATION, notification);
-//        }
         Context context = this;
-        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         NotificationCompat.Builder reminderNotification = new NotificationCompat.Builder(AdhanService.this);
         reminderNotification.setContentTitle(context.getString(R.string.msgNotificationTitle));
         reminderNotification.setContentText(context.getString(R.string.msgNotificationMessage, salatName));
         reminderNotification.setSmallIcon(R.drawable.makka_icon);
         reminderNotification.setContentIntent(pendingIntent);
-        notificationManager.notify(0,reminderNotification.build());
-
-
-//        this.notificationManager.notify(0, this.notification);
+        this.notificationManager.notify(0,reminderNotification.build());
+        this.notification.when = System.currentTimeMillis();
+        this.notification.flags |= Notification.FLAG_AUTO_CANCEL ;
+        this.notification.flags |= Notification.FLAG_SHOW_LIGHTS;
+        this.notification.ledARGB = 0xff00ff00;
+        this.notification.ledOnMS = 300;
+        this.notification.ledOffMS = 1000;
+        if (athanType == 2 || athanType == 3)
+        {
+            this.notification.defaults |= Notification.DEFAULT_VIBRATE;
+            this.notification.vibrate = new long[]{0,100,200,300};
+        }
 
         Log.i(TAG, "sendTimelineNotificatione -> " + salatName);
         SalatApplication.write2sd(TAG, "sendTimelineNotification : SATAT NAME : " + salatName);
