@@ -1,0 +1,7 @@
+#Mon Oct 03 17:01:30 EDT 2016
+base.0=/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f0745570204d25202b72924158dcd5b521c6e312
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_8f7bc10d3016809ee5b93578d913f1a25c9ff239/classes.dex
+base.1=/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_8f7bc10d3016809ee5b93578d913f1a25c9ff239
+file.0=/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f0745570204d25202b72924158dcd5b521c6e312/classes.dex
