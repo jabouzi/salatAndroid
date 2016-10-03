@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/wheel_val.xml",
-        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/salatAndroid/android-wheel/unspecified/res/drawable/wheel_val.xml"
-    },
-    {
         "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/bg2.jpg",
         "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/bg2.jpg"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/wheel_val.xml",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/salatAndroid/android-wheel/unspecified/res/drawable/wheel_val.xml"
     },
     {
         "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/qibla.png",
@@ -48,12 +48,12 @@
         "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/exploded-aar/salatAndroid/android-wheel/unspecified/res/drawable/wheel_bg.xml"
     },
     {
-        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/makka_icon_about.png",
-        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/makka_icon_about.png"
-    },
-    {
         "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/salat.png",
         "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/salat.png"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/makka_icon_about.png",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/makka_icon_about.png"
     },
     {
         "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/arrow.png",

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.skanderjabouzi.salat"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="4"
+        android:targetSdkVersion="4" />
+
+    <permission
+        android:name="com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS"
+        android:description="@string/send_salat_notifications_permission_description"
+        android:label="@string/send_salat_notifications_permission_label"
+        android:permissionGroup="android.permission-group.PERSONAL_INFO"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS"
+        android:description="@string/receive_salat_notifications_permission_description"
+        android:label="@string/receive_salat_notifications_permission_label"
+        android:permissionGroup="android.permission-group.PERSONAL_INFO"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="com.skanderjabouzi.salat.SEND_LOCATION_NOTIFICATIONS"
+        android:description="@string/send_location_notifications_permission_description"
+        android:label="@string/send_location_notifications_permission_label"
+        android:permissionGroup="android.permission-group.PERSONAL_INFO"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="com.skanderjabouzi.salat.RECEIVE_LOCATION_NOTIFICATIONS"
+        android:description="@string/receive_location_notifications_permission_description"
+        android:label="@string/receive_location_notifications_permission_label"
+        android:permissionGroup="android.permission-group.PERSONAL_INFO"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="com.skanderjabouzi.salat.SEND_PHONE_NOTIFICATIONS"
+        android:description="@string/send_phone_notifications_permission_description"
+        android:label="@string/send_phone_notifications_permission_label"
+        android:permissionGroup="android.permission-group.PERSONAL_INFO"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="com.skanderjabouzi.salat.RECEIVE_PHONE_NOTIFICATIONS"
+        android:description="@string/receive_phone_notifications_permission_description"
+        android:label="@string/receive_phone_notifications_permission_label"
+        android:permissionGroup="android.permission-group.PERSONAL_INFO"
+        android:protectionLevel="normal" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.SET_TIME" />
+    <uses-permission android:name="android.permission.SET_TIME_ZONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.skanderjabouzi.salat.SEND_SALATTIME_NOTIFICATIONS" />
+    <uses-permission android:name="com.skanderjabouzi.salat.RECEIVE_SALATTIME_NOTIFICATIONS" />
+    <uses-permission android:name="com.skanderjabouzi.salat.SEND_LOCATION_NOTIFICATIONS" />
+    <uses-permission android:name="com.skanderjabouzi.salat.RECEIVE_LOCATION_NOTIFICATIONS" />
+
+    <application
+        android:name="com.android.tools.fd.runtime.BootstrapApplication"
+        android:icon="@drawable/makka_icon"
+        android:label="@string/salat_app_name" >
+        <activity
+            android:name="com.skanderjabouzi.salat.SalatActivity"
+            android:label="@string/salat_app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="nosensor"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.skanderjabouzi.salat.LocationActivity"
+            android:label="@string/titleLocation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+        <activity
+            android:name="com.skanderjabouzi.salat.OptionsActivity"
+            android:label="@string/titleOptions"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+        <activity
+            android:name="com.skanderjabouzi.salat.SalatQibla"
+            android:label="@string/titleSalatQibla"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+        <activity
+            android:name="com.skanderjabouzi.salat.MediaPlayerVideo"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+        <activity
+            android:name="com.skanderjabouzi.salat.Video"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+        <activity
+            android:name="com.skanderjabouzi.salat.NextActivity"
+            android:label="@string/titleNext"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+        <activity
+            android:name="com.skanderjabouzi.salat.HijriActivity"
+            android:label="@string/titleHijri"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+        <activity
+            android:name="com.skanderjabouzi.salat.SettingsActivity"
+            android:label="@string/titleSettings"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+
+        <service
+            android:name="com.skanderjabouzi.salat.AdhanService"
+            android:enabled="true" />
+        <service
+            android:name="com.skanderjabouzi.salat.LocationService"
+            android:enabled="true" />
+
+        <receiver android:name="com.skanderjabouzi.salat.SalatBootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.skanderjabouzi.salat.SalatPhoneReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.skanderjabouzi.salat.SalatTimeReciever" >
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.skanderjabouzi.salat.NetworkReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

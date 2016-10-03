@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="e51279704aaddb27aa1622c6df64139fb6a126cb">
+        <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f0745570204d25202b72924158dcd5b521c6e312/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.0"
+        sha1="f66773ba1031296e25bb4599b4fc32f9e72ab9ed">
+        <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_8f7bc10d3016809ee5b93578d913f1a25c9ff239/classes.dex" />
+    </item>
+
+</items>

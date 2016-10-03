@@ -21,6 +21,5 @@ android {
 
 dependencies {
     compile project(':android-wheel')
-    compile files('libs/org.apache.http.legacy.jar')
     compile fileTree(include: '*.jar', dir: 'libs')
 }
