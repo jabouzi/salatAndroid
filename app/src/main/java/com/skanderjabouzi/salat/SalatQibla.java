@@ -5,7 +5,9 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
@@ -21,6 +23,9 @@ import android.graphics.Paint;
 import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.graphics.Canvas;
+import android.animation.ObjectAnimator;
+import java.util.ArrayList;
+import android.animation.AnimatorSet;
 
 public class SalatQibla extends Activity implements SensorEventListener {
 
@@ -47,6 +52,7 @@ public class SalatQibla extends Activity implements SensorEventListener {
 		setContentView(R.layout.qibla);
 		qiblaLayout = findViewById(R.id.qibla_bg);
 		image = (ImageView) findViewById(R.id.compass);
+		image2 = (ImageView) findViewById(R.id.compass2);
 //        image.setImageBitmap(initImage());
 //		image2 = (ImageView) findViewById(R.id.compass2);
 		//rotate(image2, 0, 178f, 0);
@@ -93,7 +99,8 @@ public class SalatQibla extends Activity implements SensorEventListener {
         //mSensorManager.unregisterListener(this);
     }
 
-	@Override
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
+    @Override
 	public void onSensorChanged(SensorEvent event) {
 		float degree = Math.round(event.values[0]);
 		
@@ -121,15 +128,28 @@ public class SalatQibla extends Activity implements SensorEventListener {
 		sensorAccuracy = accuracy;
 		Log.d("SENSOR : ", String.valueOf(sensorAccuracy));
 	}
-	
-	private void rotate(ImageView imgview, float currentDegree, float degree, int duration) {
-		RotateAnimation rotateAnim = new RotateAnimation(currentDegree, -degree,
-				RotateAnimation.RELATIVE_TO_SELF, 0.5f,
-				RotateAnimation.RELATIVE_TO_SELF, 0.5f);
 
-		rotateAnim.setDuration(duration);
-		rotateAnim.setFillAfter(true);
-		imgview.startAnimation(rotateAnim);
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
+    private void rotate(ImageView imgview, float currentDegree, float degree, int duration) {
+
+		ArrayList<ObjectAnimator> arrayListObjectAnimators = new ArrayList<ObjectAnimator>();
+        ObjectAnimator anim1 = ObjectAnimator.ofFloat(image , "rotation", currentDegree, -degree);
+        arrayListObjectAnimators.add(anim1);
+        ObjectAnimator anim2 = ObjectAnimator.ofFloat(image2 , "rotation", currentDegree, -degree);
+        arrayListObjectAnimators.add(anim2);
+
+        ObjectAnimator[] objectAnimators = arrayListObjectAnimators.toArray(new ObjectAnimator[arrayListObjectAnimators.size()]);
+        AnimatorSet animSetXY = new AnimatorSet();
+        animSetXY.playTogether(objectAnimators);
+        animSetXY.setDuration((long) 0.5f);//1sec
+        animSetXY.start();
+//		RotateAnimation rotateAnim = new RotateAnimation(currentDegree, -degree,
+//				RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+//				RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+//
+//		rotateAnim.setDuration(duration);
+//		rotateAnim.setFillAfter(true);
+//		imgview.startAnimation(rotateAnim);
 	}
 
 	private float getQibla()
