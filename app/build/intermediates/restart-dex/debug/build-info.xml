@@ -4,47 +4,33 @@
     api-level="23"
     format="8"
     plugin-version="2.2.2"
-    timestamp="1130550288195172"
+    timestamp="1131511180418317"
     token="2522033072000543572"
-    verifier="COMPATIBLE" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="709" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="61" />
     <task
         name="verifier"
         duration="0" />
 
     <artifact
-        location="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
-        type="RESOURCES" />
+        location="/home/sjabouzi/Developement/Android/salatAndroid/app/build/outputs/apk/app-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="1130343332353611"
+        timestamp="1131511180418317"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/sjabouzi/Developement/Android/salatAndroid/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
-    </build>
-    <build
-        timestamp="1130392644724745"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="1130550288195172"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
-            type="RESOURCES" />
     </build>
 
 </instant-run>

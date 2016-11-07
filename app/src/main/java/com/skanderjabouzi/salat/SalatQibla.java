@@ -53,7 +53,7 @@ public class SalatQibla extends Activity implements SensorEventListener {
 		qiblaLayout = findViewById(R.id.qibla_bg);
 		image = (ImageView) findViewById(R.id.compass);
 		image2 = (ImageView) findViewById(R.id.compass2);
-//        image.setImageBitmap(initImage());
+        image2.setImageBitmap(rotateImage());
 //		image2 = (ImageView) findViewById(R.id.compass2);
 		//rotate(image2, 0, 178f, 0);
 		compassDegree = (TextView) findViewById(R.id.degree);
@@ -201,5 +201,14 @@ public class SalatQibla extends Activity implements SensorEventListener {
         canvas.drawBitmap(bmp2, 0, 0, null);
 
         return bmOverlay;
+	}
+
+	private Bitmap rotateImage()
+	{
+		Bitmap bmpOriginal = BitmapFactory.decodeResource(this.getResources(), R.drawable.arrow);
+		Matrix matrix = new Matrix();
+		matrix.postRotate(getQibla());
+		Bitmap bitmap = Bitmap.createBitmap(bmpOriginal, 0, 0, bmpOriginal.getWidth(), bmpOriginal.getHeight(),matrix,true);
+		return bitmap;
 	}
 }
