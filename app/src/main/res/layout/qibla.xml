@@ -13,8 +13,7 @@
         android:id="@+id/compass"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_gravity="center"
-        android:src="@drawable/cadran" />
+        android:layout_gravity="center"/> <!--android:src="@drawable/cadran" -->
         <ImageView
         android:id="@+id/compass2"
         android:layout_width="250dp"

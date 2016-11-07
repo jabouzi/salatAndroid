@@ -4,19 +4,19 @@
     api-level="23"
     format="8"
     plugin-version="2.2.2"
-    timestamp="1109862152765846"
+    timestamp="1128740600747037"
     token="2522033072000543572"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="124" />
+        duration="130" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="6" />
+        duration="14" />
     <task
         name="verifier"
         duration="1" />
@@ -26,14 +26,14 @@
         type="DEX" />
 
     <build
-        timestamp="1107103871784787"
+        timestamp="1128466605180553"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/sjabouzi/Developement/Android/salatAndroid/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="1109862152765846"
+        timestamp="1128740600747037"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex"
