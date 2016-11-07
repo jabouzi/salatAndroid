@@ -1,35 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
+    abi="arm64-v8a,armeabi-v7a,armeabi"
     api-level="23"
     format="8"
-    plugin-version="2.2.0"
-    timestamp="258962192267565"
+    plugin-version="2.2.2"
+    timestamp="1109862152765846"
     token="2522033072000543572"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="747" />
+        duration="124" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="29" />
+        duration="6" />
     <task
         name="verifier"
-        duration="24" />
+        duration="1" />
 
     <artifact
-        location="/home/sjabouzi/Developement/Android/salatAndroid/app/build/outputs/apk/app-debug.apk"
-        type="MAIN" />
+        location="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex"
+        type="DEX" />
 
     <build
-        timestamp="258962192267565"
+        timestamp="1107103871784787"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/sjabouzi/Developement/Android/salatAndroid/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="1109862152765846"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex"
+            type="DEX" />
     </build>
 
 </instant-run>

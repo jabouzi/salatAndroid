@@ -28,6 +28,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.os.Handler;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class LocationService extends Service implements LocationListener{
@@ -230,8 +232,20 @@ public class LocationService extends Service implements LocationListener{
 	public float getTimeZone()
 	{
 		tz = TimeZone.getDefault();
-		return (tz.getRawOffset()/3600*1000+tz.getDSTSavings()/3600*1000)/1000000;
+        Calendar calendar = Calendar.getInstance(tz);
+        int dst = isInDst(tz, new Date()) ? 1 : 0;
+        Log.d(TAG + " -> #4 ", String.valueOf(tz.getRawOffset()/3600*1000/1000000 + dst));
+		return tz.getRawOffset()/3600*1000/1000000 + dst;
 	}
+
+    public static boolean isInDst(TimeZone tz, Date time)
+    {
+        Calendar calendar = Calendar.getInstance(tz);
+        calendar.setTime(time);
+        // or supply a configured calendar with TZ as argument instead
+
+        return calendar.get(Calendar.DST_OFFSET) != 0;
+    }
 	
 	public void sendNotification(String extra)
 	{

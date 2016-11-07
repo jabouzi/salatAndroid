@@ -7,7 +7,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.0"
-        sha1="f24c0087ca083941ec0dfa7930ebec1bd3b86a95">
+        sha1="004de4a3caf0456046f518242e38147c609dbdd8">
         <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f0745570204d25202b72924158dcd5b521c6e312/classes.dex" />
     </item>
     <item
@@ -115,7 +115,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.0"
-        sha1="f0edb81db0fc24da8fea523137048249b5bcdc9e">
+        sha1="f02bb9160a698154e99f08955d80bd080023bb21">
         <dex dex="/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_8f7bc10d3016809ee5b93578d913f1a25c9ff239/classes.dex" />
     </item>
     <item

@@ -64,11 +64,11 @@
         "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/layout_bg.xml"
     },
     {
-        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/aiguille.png",
-        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/aiguille.png"
-    },
-    {
         "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/cadran.png",
         "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/cadran.png"
+    },
+    {
+        "merged": "/home/sjabouzi/Developement/Android/salatAndroid/app/build/intermediates/res/merged/debug/drawable/aiguille.png",
+        "source": "/home/sjabouzi/Developement/Android/salatAndroid/app/src/main/res/drawable/aiguille.png"
     }
 ]
